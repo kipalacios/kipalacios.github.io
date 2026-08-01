@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<!--
+    Type on Strap jekyll theme v2.5.2
+    Theme free for personal and commercial use under the MIT license
+    https://github.com/sylhare/Type-on-Strap/blob/master/LICENSE
+-->
+<html lang="en">
+  
+  <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=5"> <!-- Theme Mode--> <script> const darkBtn = "Dark"; const lightBtn = "Light"; const isAutoTheme = true; const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; if (isAutoTheme) { document.documentElement.setAttribute('data-theme', sessionStorage.getItem('theme') ?? preferredTheme); } else { document.documentElement.setAttribute('data-theme', "auto"); } </script> <!-- Main JS (navbar.js, katex_init.js)--> <script defer src="/Type-on-Strap/assets/js/main.min.js"></script> <!-- CSS --> <link rel="stylesheet" href="/Type-on-Strap/assets/css/main.css"> <!--Favicon--> <link rel="shortcut icon" href="/Type-on-Strap/assets/favicon.ico" type="image/x-icon"> <!-- Preconnect to Cusdis for faster loading when comments become visible --> <!-- KaTeX 0.18.1 --> <script defer src="/Type-on-Strap/assets/js/vendor/katex.min.js"></script> <script defer src="/Type-on-Strap/assets/js/vendor/katex.auto-render.min.js" onload="renderMathInElement(document.body);"></script> <!-- Mermaid 11.16.0 --> <script defer src="/Type-on-Strap/assets/js/vendor/mermaid.min.js"></script> <!-- Simple-Jekyll-Search 2.1.4 --> <script src="/Type-on-Strap/assets/js/vendor/simple-jekyll-search.min.js" type="text/javascript"></script> <!-- Google Analytics / Cookie Consent --> <script> const cookieName = 'cookie-notice-dismissed-http://localhost:4000'; const isCookieConsent = 'false'; const analyticsName = ''; const analyticsNameGA4 = ''; </script> <!-- seo tags --> <meta property="og:image" content="http://localhost:4000/Type-on-Strap/assets/img/header/triangular.jpeg"> <meta property="og:type" content="website" /> <!-- Begin Jekyll SEO tag v2.8.0 --> <title>KaTeX Math Rendering | Type on Strap</title> <meta name="generator" content="Jekyll v4.4.1" /> <meta property="og:title" content="KaTeX Math Rendering" /> <meta property="og:locale" content="en_US" /> <meta name="description" content="This post showcases KaTeX math rendering. Make sure katex: true is set in _config.yml." /> <meta property="og:description" content="This post showcases KaTeX math rendering. Make sure katex: true is set in _config.yml." /> <link rel="canonical" href="http://localhost:4000/Type-on-Strap/2016/12/04/Katex.html" /> <meta property="og:url" content="http://localhost:4000/Type-on-Strap/2016/12/04/Katex.html" /> <meta property="og:site_name" content="Type on Strap" /> <meta property="og:type" content="article" /> <meta property="article:published_time" content="2016-12-04T00:00:00-07:00" /> <meta name="twitter:card" content="summary" /> <meta property="twitter:title" content="KaTeX Math Rendering" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2016-12-04T00:00:00-07:00","datePublished":"2016-12-04T00:00:00-07:00","description":"This post showcases KaTeX math rendering. Make sure katex: true is set in _config.yml.","headline":"KaTeX Math Rendering","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/Type-on-Strap/2016/12/04/Katex.html"},"url":"http://localhost:4000/Type-on-Strap/2016/12/04/Katex.html"}</script> <!-- End Jekyll SEO tag --> <!-- RSS --> <link rel="alternate" type="application/atom+xml" title="Type on Strap" href="http://localhost:4000/Type-on-Strap/feed.xml"/> <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/Type-on-Strap/feed.xml" title="Type on Strap" /> <!-- Twitter Cards --> <meta name="twitter:title" content="KaTeX Math Rendering"> <meta name="twitter:description" content="This post showcases KaTeX math rendering. Make sure katex: true is set in _config.yml.Inline MathEinstein’s famous equation \(E = mc^2\) changed physics fore..."> <meta name="twitter:card" content="summary"> <meta name="twitter:image" content="http://localhost:4000/Type-on-Strap/assets/img/header/triangular.jpeg"> <meta name="twitter:image:alt" content="KaTeX Math Rendering"> </head>
+  <body>
+    
+    <header class="site-header"> <!-- Logo and title --> <div class="branding"> <a href="/Type-on-Strap/"> <img alt="logo img" class="avatar" src="/Type-on-Strap/assets/img/triangle.png" loading="lazy"/> </a> <a class="site-title" aria-label="Type on Strap" href="/Type-on-Strap/"> Type on Strap </a> </div> <!-- Toggle menu --> <nav class="clear"> <a aria-label="pull" id="pull" class="toggle" href="#"> <i class="fas fa-bars fa-lg"></i> </a> <!-- Menu --> <ul class="hide"> <li class="separator"> | </li> <li> <a class="clear" aria-label="About" title="About" href="/Type-on-Strap/about/"> <span class="navbar-label ">About</span> </a> </li> <li class="separator"> | </li> <li> <a class="clear" aria-label="Type on Strap" title="Type on Strap" href="https://github.com/sylhare/Type-on-Strap"> <span class="navbar-label ">Type on Strap</span> </a> </li> <li class="separator"> | </li> <li> <a class="clear" aria-label="Gallery" title="Gallery" href="/Type-on-Strap/gallery/"> <span class="navbar-label ">Gallery</span> </a> </li> <li class="separator"> | </li> <li> <a class="clear" aria-label="Portfolio" title="Portfolio" href="/Type-on-Strap/portfolio/"> <span class="navbar-label ">Portfolio</span> </a> </li> <li class="separator"> | </li> <li> <a class="clear" aria-label="Search" title="Search" href="/Type-on-Strap/search/"> <i class="navbar-icon fas fa-search" aria-hidden="true"></i> <span class="navbar-label navbar-label-with-icon">Search</span> </a> </li> <li class="separator"> | </li> <li> <a class="clear" aria-label="Tags" title="Tags" href="/Type-on-Strap/tags/"> <i class="navbar-icon fas fa-tags" aria-hidden="true"></i> <span class="navbar-label navbar-label-with-icon">Tags</span> </a> </li> <li class="separator"> | </li> <li><a id="theme-toggle" title="Dark" aria-label="Dark" onclick="themeToggle()"></a></li> </ul> </nav> </header>
+    <main class="content">
+      <article >
+    <header id="main" style="">
+        <div class="title-padder">
+            
+                <h1 id="KaTeX+Math+Rendering" class="title">KaTeX Math Rendering</h1>
+                
+
+
+<div class="post-info">
+  <div class="post-meta">
+    
+    
+    <p class="meta">December 04, 2016</p>
+  </div>
+  
+</div>
+
+            
+        </div>
+    </header>
+
+    <section class="post-content">
+        
+        <p>This post showcases KaTeX math rendering. Make sure <code class="language-plaintext highlighter-rouge">katex: true</code> is set in <code class="language-plaintext highlighter-rouge">_config.yml</code>.</p>
+
+<h2 id="inline-math">Inline Math</h2>
+
+<p>Einstein’s famous equation \(E = mc^2\) changed physics forever.
+The quadratic formula \(x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\) solves any quadratic equation.
+Euler’s identity \(e^{i\pi} + 1 = 0\) is often called the most beautiful equation in mathematics.</p>
+
+<h2 id="display-math">Display Math</h2>
+
+<h3 id="fractions-and-roots">Fractions and Roots</h3>
+
+\[f(x) = \frac{x^2 + 2x + 1}{x - 1}\]
+
+\[\sqrt[n]{x} = x^{\frac{1}{n}}, \quad \sqrt{\frac{a}{b}} = \frac{\sqrt{a}}{\sqrt{b}}\]
+
+<h3 id="greek-letters">Greek Letters</h3>
+
+\[\alpha + \beta = \gamma, \quad \Delta = \Sigma \cdot \Pi\]
+
+\[\phi = \frac{1 + \sqrt{5}}{2} \approx 1.618, \quad \lambda \in \mathbb{R}\]
+
+\[\theta, \vartheta, \Theta, \quad \epsilon, \varepsilon, \quad \rho, \varrho\]
+
+<h3 id="integrals">Integrals</h3>
+
+\[\int_0^\infty e^{-x^2}\, dx = \frac{\sqrt{\pi}}{2}\]
+
+\[\int_a^b f(x)\, dx = F(b) - F(a)\]
+
+\[\oint_C \mathbf{F} \cdot d\mathbf{r} = \iint_S (\nabla \times \mathbf{F}) \cdot d\mathbf{S}\]
+
+<h3 id="summations-and-products">Summations and Products</h3>
+
+\[\sum_{n=0}^{\infty} \frac{x^n}{n!} = e^x\]
+
+\[\sum_{k=1}^{n} k = \frac{n(n+1)}{2}\]
+
+\[\prod_{k=1}^{n} k = n!\]
+
+<h3 id="limits-and-derivatives">Limits and Derivatives</h3>
+
+\[\lim_{x \to 0} \frac{\sin x}{x} = 1\]
+
+\[\lim_{n \to \infty} \left(1 + \frac{1}{n}\right)^n = e\]
+
+\[\frac{d}{dx}\left[\int_a^x f(t)\, dt\right] = f(x)\]
+
+<h3 id="vectors-and-operators">Vectors and Operators</h3>
+
+\[\nabla f = \left(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}\right)\]
+
+\[\mathbf{F} = m\mathbf{a} = m\frac{d^2\mathbf{r}}{dt^2}\]
+
+\[\hat{H}\psi = E\psi\]
+
+<h3 id="matrices">Matrices</h3>
+
+\[\begin{pmatrix}
+a &amp; b \\
+c &amp; d
+\end{pmatrix}
+\begin{pmatrix}
+x \\
+y
+\end{pmatrix}
+=
+\begin{pmatrix}
+ax + by \\
+cx + dy
+\end{pmatrix}\]
+
+\[A = \begin{bmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6 \\
+7 &amp; 8 &amp; 9
+\end{bmatrix}, \quad
+\det(A) = \begin{vmatrix}
+a &amp; b \\
+c &amp; d
+\end{vmatrix} = ad - bc\]
+
+<h3 id="cases">Cases</h3>
+
+\[f(x) = \begin{cases}
+  x^2 &amp; \text{if } x \geq 0 \\
+  -x  &amp; \text{if } x &lt; 0
+\end{cases}\]
+
+\[|x| = \begin{cases}
+  x  &amp; \text{if } x \geq 0 \\
+  -x &amp; \text{if } x &lt; 0
+\end{cases}\]
+
+<h3 id="aligned-equations">Aligned Equations</h3>
+
+\[\begin{aligned}
+(a + b)^2 &amp;= a^2 + 2ab + b^2 \\
+(a - b)^2 &amp;= a^2 - 2ab + b^2 \\
+(a + b)(a - b) &amp;= a^2 - b^2
+\end{aligned}\]
+
+<h3 id="maxwells-equations">Maxwell’s Equations</h3>
+
+\[\begin{aligned}
+\nabla \cdot \mathbf{E}  &amp;= \frac{\rho}{\varepsilon_0} \\
+\nabla \cdot \mathbf{B}  &amp;= 0 \\
+\nabla \times \mathbf{E} &amp;= -\frac{\partial \mathbf{B}}{\partial t} \\
+\nabla \times \mathbf{B} &amp;= \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}
+\end{aligned}\]
+
+<h3 id="binomial-and-combinatorics">Binomial and Combinatorics</h3>
+
+\[\binom{n}{k} = \frac{n!}{k!(n-k)!}\]
+
+\[(x + y)^n = \sum_{k=0}^{n} \binom{n}{k} x^{n-k} y^k\]
+
+<h3 id="number-sets">Number Sets</h3>
+
+\[\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}\]
+
+\[\forall x \in \mathbb{R},\; \exists y \in \mathbb{R} : y &gt; x\]
+
+<h3 id="logic-and-sets">Logic and Sets</h3>
+
+\[A \cup B = \{x \mid x \in A \lor x \in B\}\]
+
+\[A \cap B \subseteq A \subseteq A \cup B\]
+
+\[P \Rightarrow Q \iff \neg P \lor Q\]
+
+        
+    </section>
+
+    <!-- Social media shares -->
+    
+
+<div class="share-buttons">
+    <ul class="share-buttons">
+        <li class="meta">Share</li>
+        
+        <li>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/Type-on-Strap/2016/12/04/Katex.html" target="_blank" rel="noopener noreferrer"
+               title=" Facebook">
+                <i class="fab fa-facebook-square fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Share on Facebook</span>
+            </a>
+        </li>
+         
+        <li>
+            <a href="https://twitter.com/intent/tweet?text=KaTeX+Math+Rendering%20http%3A%2F%2Flocalhost%3A4000%2FType-on-Strap%2F2016%2F12%2F04%2FKatex.html"
+               target="_blank" rel="noopener noreferrer" title="">
+                <i class="fab fa-twitter-square fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Tweet</span>
+            </a>
+        </li>
+         
+        <li>
+            <a href="https://www.tumblr.com/share?v=3&u=http://localhost:4000/Type-on-Strap/2016/12/04/Katex.html&quote=KaTeX+Math+Rendering%20%7C%20Type+on+Strap&s="
+               target="_blank" rel="noopener noreferrer" title=" Tumblr">
+                <i class="fab fa-tumblr-square fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Share on Tumblr</span>
+            </a>
+        </li>
+         
+        <li>
+            <a href="https://pinterest.com/pin/create/button/?url=http://localhost:4000/Type-on-Strap/2016/12/04/Katex.html&media=$description=This+post+showcases+KaTeX+math+rendering.+Make+sure+katex%3A+true+is+set+in+_config.yml.%0A"
+               target="_blank" rel="noopener noreferrer" title="">
+                <i class="fab fa-pinterest-square fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Pin it</span>
+            </a>
+        </li>
+          
+        <li>
+            <a href="https://www.reddit.com/submit?url=http://localhost:4000/Type-on-Strap/2016/12/04/Katex.html&title=KaTeX+Math+Rendering%20%7C%20Type+on+Strap"
+               target="_blank" rel="noopener noreferrer" title=" Reddit">
+                <i class="fab fa-reddit-square fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Share on Reddit</span>
+            </a>
+        </li>
+         
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/Type-on-Strap/2016/12/04/Katex.html&title=KaTeX+Math+Rendering%20%7C%20Type+on+Strap&summary=&source=http://localhost:4000/Type-on-Strap/2016/12/04/Katex.html"
+               target="_blank" rel="noopener noreferrer" title=" LinkedIn">
+                <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Share on LinkedIn</span>
+            </a>
+        </li>
+          
+        <li>
+            <a href="mailto:?subject=KaTeX Math Rendering%20%7C%20Type on Strap&body=http://localhost:4000/Type-on-Strap/2016/12/04/Katex.html"
+               target="_blank" rel="noopener noreferrer" title="">
+                <i class="fas fa-envelope-square fa-2x" aria-hidden="true"></i>
+                <span class="sr-only">Email</span></a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+
+    <!-- Category and Tag list -->
+    <div class="tag-category-container">
+        <!-- Category list -->
+        
+        
+
+
+  <div class="category-list"></div>
+
+
+
+
+        <!-- Tag list -->
+        
+        
+
+
+  <div class="tag-list" data-testid="tag-list">
+    <ul>
+      
+        <li class="meta">Tag</li>
+      
+
+      
+        <li><a class="button" data-testid="tag-link" href="/Type-on-Strap/tags#Katex">
+          <p><i class="fas fa-tag fa-fw fa-sm"></i> Katex</p>
+        </a></li>
+      
+    </ul>
+  </div>
+
+
+    </div>
+
+</article>
+
+
+
+
+<!-- To change color of links in the page --> <style> header#main { background-size: cover; background-repeat: no-repeat; background-position: center; } </style> <!-- Post navigation --> <div id="post-nav"> <div id="previous-post"> <a href="/Type-on-Strap/2016/12/05/Font-Awesome.html"> <p>Previous post</p> Font Awesome Icons </a> </div> <div id="next-post"> <a href="/Type-on-Strap/2016/12/03/Mermaid.html"> <p>Next post</p> Mermaid Chart </a> </div> </div> <!-- Giscus --> <!--Utterances--> <!-- Cusdis --> <!-- Disqus -->
+
+
+    </main>
+    
+    <footer class="site-footer"> <p class="text"> Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a> </p> <div class="footer-icons"> <ul> <!-- Social icons from Font Awesome, if enabled --> <li> <a feed.xml href="/Type-on-Strap/feed.xml" title="Follow RSS feed" target="_blank"> <span class="fa-stack fa-lg"> <i class="fas fa-circle fa-stack-2x"></i> <i class="fas fa-rss fa-stack-1x fa-inverse"></i> </span> </a> </li> <li> <a href="https://github.com/sylhare" title="Follow on Github" target="_blank" rel="noopener"> <span class="fa-stack fa-lg"> <i class="fas fa-circle fa-stack-2x"></i> <i class="fab fa-github fa-stack-1x fa-inverse"></i> </span> </a> </li> </ul> </div> <script type="module"> mermaid.initialize({ startOnLoad: false, theme: "default" }); mermaid.run({ nodes: [...document.querySelectorAll('.language-mermaid'), ...document.querySelectorAll('.mermaid')] }); </script> </footer>
+  </body>
+</html>

@@ -1,0 +1,1208 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/Type-on-Strap/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/Type-on-Strap/" rel="alternate" type="text/html" /><updated>2026-08-01T15:56:02-07:00</updated><id>http://localhost:4000/Type-on-Strap/feed.xml</id><title type="html">Type on Strap</title><subtitle>A website with blog posts and pages</subtitle><entry><title type="html">Dark Mode</title><link href="http://localhost:4000/Type-on-Strap/demo/2021/04/27/dark-mode.html" rel="alternate" type="text/html" title="Dark Mode" /><published>2021-04-27T00:00:00-07:00</published><updated>2021-04-27T00:00:00-07:00</updated><id>http://localhost:4000/Type-on-Strap/demo/2021/04/27/dark-mode</id><content type="html" xml:base="http://localhost:4000/Type-on-Strap/demo/2021/04/27/dark-mode.html"><![CDATA[<p>More colors with less light. Click the <strong>half-moon</strong> most top-right button to turn the lights ON/OFF.
+Here is a bit of everything, so you can check how the theme look, have fun! 👌</p>
+
+<h1 id="headers">Headers</h1>
+<h2 id="level-2">Level 2</h2>
+<h3 id="level-3">Level 3</h3>
+<h4 id="level-4">Level 4</h4>
+<h5 id="level-5">Level 5</h5>
+<h6 id="level-6">Level 6</h6>
+
+<h1 id="headers-with-links"><a href="https://sylhare.github.io/Type-on-Strap">Headers with links</a></h1>
+<h2 id="level-2-1"><a href="https://sylhare.github.io/Type-on-Strap">Level 2</a></h2>
+<h3 id="level-3-1"><a href="https://sylhare.github.io/Type-on-Strap">Level 3</a></h3>
+<h4 id="level-4-1"><a href="https://sylhare.github.io/Type-on-Strap">Level 4</a></h4>
+<h5 id="level-5-1"><a href="https://sylhare.github.io/Type-on-Strap">Level 5</a></h5>
+<h6 id="level-6-1"><a href="https://sylhare.github.io/Type-on-Strap">Level 6</a></h6>
+
+<h2 id="code-highlight">Code highlight</h2>
+<p>Mode specific code highlighting themes. <a href="https://kramdown.gettalong.org/">Kramdown</a> which is responsible for the color highlighting may be more limited than your IDE.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env python
+</span><span class="sh">"""</span><span class="s">
+Test file for syntax
+</span><span class="sh">"""</span>
+<span class="c1"># TODO: Use dark mode
+</span><span class="kn">from</span> <span class="n">sys</span> <span class="kn">import</span> <span class="n">os</span>
+
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">bar</span><span class="p">):</span> 
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="n">bar</span><span class="p">)</span>
+    <span class="k">except</span> <span class="nb">NameError</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Variable bar is not defined</span><span class="sh">"</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Bar</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span> 
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="nf">foo</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">octal</span> <span class="o">=</span> <span class="sh">'</span><span class="se">\04</span><span class="sh">'</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="sh">"""</span><span class="s">Example </span><span class="se">\t\n</span><span class="sh">"""</span>
+    
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">exit</span><span class="se">\u1111\xFF</span><span class="sh">'</span><span class="p">)</span>
+        <span class="k">pass</span>
+    
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">example</span><span class="p">():</span>
+        <span class="nf">assert </span><span class="p">(</span><span class="mf">1.0</span> <span class="ow">and</span> <span class="il">2L</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="p">{</span> <span class="sh">"</span><span class="s">example</span><span class="sh">"</span><span class="p">:</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,),</span> <span class="p">(</span><span class="sa">r</span><span class="sh">'</span><span class="s">raw</span><span class="sh">'</span><span class="p">,</span> <span class="sa">u</span><span class="sh">'</span><span class="s">unicode</span><span class="sh">'</span><span class="p">)]}</span>
+</code></pre></div></div>
+
+<h2 id="tables">Tables</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>hex</th>
+      <th>dec</th>
+      <th>oct</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>10</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>16</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>F5</td>
+      <td>21</td>
+      <td>25</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="katex">KaTeX</h2>
+
+<p>Some KaTeX diagrams to check in dark mode:</p>
+
+\[\begin{CD}
+A @&gt;a&gt;&gt; B \\
+@VbVV @AAcA \\
+C @= D
+\end{CD}\]
+
+\[\utilde{AB}\]
+
+<h2 id="mermaid">Mermaid</h2>
+
+<div class="mermaid">
+flowchart TB
+    c1--&gt;a2
+    subgraph one
+    a1--&gt;a2
+    end
+    subgraph two
+    b1--&gt;b2
+    end
+    subgraph three
+    c1--&gt;c2
+    end
+</div>]]></content><author><name></name></author><category term="Demo" /><category term="Katex" /><category term="Mermaid" /><category term="Markdown" /><summary type="html"><![CDATA[More colors with less light. Click the half-moon most top-right button to turn the lights ON/OFF. Here is a bit of everything, so you can check how the theme look, have fun! 👌]]></summary></entry><entry><title type="html">Tech Stuff example</title><link href="http://localhost:4000/Type-on-Strap/2019/11/02/Tech-stuff-example.html" rel="alternate" type="text/html" title="Tech Stuff example" /><published>2019-11-02T00:00:00-07:00</published><updated>2019-11-02T00:00:00-07:00</updated><id>http://localhost:4000/Type-on-Strap/2019/11/02/Tech-stuff-example</id><content type="html" xml:base="http://localhost:4000/Type-on-Strap/2019/11/02/Tech-stuff-example.html"><![CDATA[<p>Let’s demo some code snippet, with some mermaid diagrams.
+Because if you put some code in your blog, you would at least make it:</p>
+<ol>
+  <li>Searchable</li>
+  <li>Good-looking</li>
+</ol>
+
+<h2 id="search-on-code">Search on code</h2>
+
+<p>Search should be working even for complicated escape symbols.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sed</span> <span class="nt">-i</span> <span class="s1">'s/\"hostname\"\:.*$/\"hostname\"\: \"'</span><span class="nv">$IPADDR</span><span class="s1">'\"\,/g'</span> open-falcon/agent/config/cfg.json
+</code></pre></div></div>
+
+<p>Or try searching for partial of a command, like this article should be returned when looking for “find grep”</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find /etc <span class="nt">-type</span> f <span class="nt">-exec</span> <span class="nb">cat</span> <span class="s1">'{}'</span> <span class="se">\;</span> | <span class="nb">tr</span> <span class="nt">-c</span> <span class="s1">'.[:digit:]'</span> <span class="s1">'\n'</span> | <span class="nb">grep</span> <span class="s1">'^[^.][^.]*\.[^.][^.]*\.[^.][^.]*\.[^.][^.]*$'</span>
+</code></pre></div></div>
+
+<h2 id="code-highlighting-examples">Code highlighting examples</h2>
+
+<p>Because you might put code in your blog post, and you want to make sure it will look good in here. Plus that the search
+function will still be working!</p>
+
+<h3 id="xml">XML</h3>
+
+<p>Example from <a href="https://www.w3.org/standards/xml/core">W3C</a></p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;part</span> <span class="na">number=</span><span class="s">"1976"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;name&gt;</span>Windscreen Wiper<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;description&gt;</span>The Windscreen wiper
+    automatically removes rain
+    from your windscreen, if it
+    should happen to splash there.
+    It has a rubber <span class="nt">&lt;ref</span> <span class="na">part=</span><span class="s">"1977"</span><span class="nt">&gt;</span>blade<span class="nt">&lt;/ref&gt;</span>
+    which can be ordered separately
+    if you need to replace it.
+  <span class="nt">&lt;/description&gt;</span>
+<span class="nt">&lt;/part&gt;</span>
+</code></pre></div></div>
+
+<h3 id="java">Java</h3>
+
+<p>java example</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="nd">@Example</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">CONSTANT</span> <span class="o">=</span> <span class="s">"String"</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">Object</span> <span class="n">o</span><span class="o">;</span>
+  <span class="cm">/**
+   * Creates a new demo.
+   * @param o The object to demonstrate.
+   */</span>
+  <span class="kd">public</span> <span class="nf">Demo</span><span class="o">(</span><span class="nc">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">o</span> <span class="o">=</span> <span class="n">o</span> <span class="o">!==</span> <span class="kc">null</span> <span class="o">?</span> <span class="n">o</span> <span class="o">:</span> <span class="k">new</span> <span class="nc">Object</span><span class="o">();</span>
+    <span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="no">CONSTANT</span> <span class="o">+</span> <span class="s">"Other example of text"</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">123</span> <span class="o">-</span> <span class="mi">33</span> <span class="o">%</span> <span class="mi">11</span><span class="o">;</span>
+  <span class="o">}</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Demo</span> <span class="n">demo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Demo</span><span class="o">();</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">demo</span><span class="o">.</span><span class="na">o</span><span class="o">.</span><span class="na">toString</span><span class="o">())</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="javascript">Javascript</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Does a thing
+ */</span>
+<span class="kd">function</span> <span class="nf">helloWorld</span><span class="p">(</span><span class="nx">param1</span><span class="p">,</span> <span class="nx">param2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">example</span> <span class="o">=</span> <span class="s2">`hello </span><span class="p">${</span><span class="nx">param1</span><span class="p">}</span><span class="s2">`</span>
+    <span class="kd">var</span> <span class="nx">something</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">key</span><span class="p">:</span> <span class="dl">"</span><span class="s2">value</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">number</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">};</span>
+
+    <span class="c1">// Do something</span>
+    <span class="k">if </span><span class="p">(</span><span class="mf">2.0</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="nx">something</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello, world!</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// TODO comment</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="json">JSON</h3>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"animals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"tiger"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tiger"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"🐯"</span><span class="p">,</span><span class="w"> </span><span class="s2">"🐅"</span><span class="p">,</span><span class="w"> </span><span class="s2">"⻁"</span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"turtle"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"age"</span><span class="p">:</span><span class="w"> </span><span class="mi">126</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🐢"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"unicorn"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"doesExist"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🦄"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="python">Python</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">os</span>
+
+
+<span class="k">def</span> <span class="nf">some_function</span><span class="p">(</span><span class="n">param_one</span><span class="o">=</span><span class="sh">""</span><span class="p">,</span> <span class="n">param_two</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sh">'''</span><span class="s">A docstring</span><span class="sh">'''</span>
+    <span class="k">if</span> <span class="n">param_one</span> <span class="o">&gt;</span> <span class="n">param_two</span><span class="p">:</span>  <span class="c1"># interesting
+</span>        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Greater</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">return </span><span class="p">(</span><span class="n">param_two</span> <span class="o">-</span> <span class="n">param_one</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mb">0b10</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">None</span>
+
+
+<span class="k">class</span> <span class="nc">SomeClass</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s"> dunno what I am doing </span><span class="sh">"""</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+</code></pre></div></div>
+
+<h3 id="yaml">YAML</h3>
+
+<p>You can also render some yaml, like this <code class="language-plaintext highlighter-rouge">_config.yml</code>:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1"># Welcome to Jekyll!</span>
+<span class="c1">#</span>
+<span class="c1"># This config file is meant for settings that affect your whole blog, values</span>
+<span class="c1"># which you are expected to set up once and rarely edit after that. If you find</span>
+<span class="c1"># yourself editing this file very often, consider using Jekyll's data files</span>
+<span class="c1"># feature for the data you need to update frequently.</span>
+<span class="c1">#</span>
+<span class="c1"># This file, "_config.yml" is *NOT* reloaded automatically when you use</span>
+<span class="c1"># 'bundle exec jekyll serve'. If you change this file, please restart the server process.</span>
+
+<span class="c1"># Site settings</span>
+<span class="c1"># These are used to personalize your new site. If you look in the HTML files,</span>
+<span class="c1"># you will see them accessed via Type on Strap, , and so on.</span>
+<span class="c1"># You can create any custom variable you would like, and they will be accessible</span>
+<span class="c1"># in the templates via .</span>
+
+<span class="c1"># SITE CONFIGURATION</span>
+<span class="na">baseurl</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/Type-on-Strap"</span>
+<span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://sylhare.github.io"</span>
+
+<span class="c1"># THEME-SPECIFIC CONFIGURATION</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Type on Strap</span>                                    <span class="c1"># site's title</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">A</span><span class="nv"> </span><span class="s">website</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">blog</span><span class="nv"> </span><span class="s">posts</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">pages"</span>      <span class="c1"># used by search engines</span>
+<span class="na">avatar</span><span class="pi">:</span> <span class="s">assets/img/triangle.png</span>                         <span class="c1"># Empty for no avatar in navbar</span>
+<span class="na">favicon</span><span class="pi">:</span> <span class="s">assets/favicon.ico</span>                             <span class="c1"># Icon displayed in the tab</span>
+
+<span class="na">remote_theme</span><span class="pi">:</span> <span class="s">sylhare/Type-on-Strap</span>                     <span class="c1"># If using as a remote_theme in github</span>
+</code></pre></div></div>]]></content><author><name></name></author><category term="Highlight" /><category term="Markdown" /><summary type="html"><![CDATA[Let’s demo some code snippet, with some mermaid diagrams. Because if you put some code in your blog, you would at least make it: Searchable Good-looking]]></summary></entry><entry><title type="html">Sample post</title><link href="http://localhost:4000/Type-on-Strap/example/2019/06/30/sample-post.html" rel="alternate" type="text/html" title="Sample post" /><published>2019-06-30T00:00:00-07:00</published><updated>2019-06-30T00:00:00-07:00</updated><id>http://localhost:4000/Type-on-Strap/example/2019/06/30/sample-post</id><content type="html" xml:base="http://localhost:4000/Type-on-Strap/example/2019/06/30/sample-post.html"><![CDATA[<p>Consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. 
+Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. 
+<!--more-->
+Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem.</p>
+
+<ul>
+  <li>Consectetur adipiscing elit</li>
+  <li>Donec a diam lectus</li>
+  <li>Sed sit amet ipsum mauris</li>
+</ul>
+
+<p>Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.</p>
+
+<p>Nunc diam velit, adipiscing ut tristique vitae, sagittis vel odio. Maecenas convallis ullamcorper ultricies. Curabitur ornare, ligula <em>semper consectetur sagittis</em>, nisi diam iaculis velit, id fringilla sem nunc vel mi. Nam dictum, odio nec pretium volutpat, arcu ante placerat erat, non tristique elit urna et turpis. Quisque mi metus, ornare sit amet fermentum et, tincidunt et orci. Fusce eget orci a orci congue vestibulum.</p>
+
+<figure class="row">
+    
+    <div class="column">
+        <img class="single" src="/Type-on-Strap/assets/img/pexels/travel.jpeg" alt="travel.jpeg" />
+    </div>
+    
+    
+    <figcaption class="caption-style">A relaxing image illustrating the content</figcaption>
+</figure>
+
+<p>Ut dolor diam, elementum et vestibulum eu, porttitor vel elit. Curabitur venenatis pulvinar tellus gravida ornare. Sed et erat faucibus nunc euismod ultricies ut id justo. Nullam cursus suscipit nisi, et ultrices justo sodales nec. Fusce venenatis facilisis lectus ac semper. Aliquam at massa ipsum. Quisque bibendum purus convallis nulla ultrices ultricies. Nullam aliquam, mi eu aliquam tincidunt, purus velit laoreet tortor, viverra pretium nisi quam vitae mi. Fusce vel volutpat elit. Nam sagittis nisi dui.</p>
+
+<blockquote>
+  <p>Suspendisse lectus leo, consectetur in tempor sit amet, placerat quis neque</p>
+</blockquote>
+
+<p>Etiam luctus porttitor lorem, sed suscipit est rutrum non. Curabitur lobortis nisl a enim congue semper. Aenean commodo ultrices imperdiet. Vestibulum ut justo vel sapien venenatis tincidunt.</p>
+
+\[\Theta \ne \Gamma\]
+
+<p>Phasellus eget dolor sit amet ipsum dapibus condimentum vitae quis lectus. Aliquam ut massa in turpis dapibus convallis. Praesent elit lacus, vestibulum at malesuada et, ornare et est. Ut augue nunc, sodales ut euismod non, adipiscing vitae orci<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>. Mauris ut placerat justo. Mauris in ultricies enim. Quisque nec est eleifend nulla ultrices egestas quis ut quam. Donec sollicitudin lectus a mauris pulvinar id aliquam urna cursus. Cras quis ligula sem, vel elementum mi. Phasellus non ullamcorper urna.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p><span class="cit-authors">John Smith</span>, <span class="cit-title">A Title About Citations</span> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name></name></author><category term="Example" /><category term="A Tag" /><summary type="html"><![CDATA[Consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur.]]></summary></entry><entry><title type="html">Color Post</title><link href="http://localhost:4000/Type-on-Strap/example/2019/05/18/color-post.html" rel="alternate" type="text/html" title="Color Post" /><published>2019-05-18T00:00:00-07:00</published><updated>2019-05-18T00:00:00-07:00</updated><id>http://localhost:4000/Type-on-Strap/example/2019/05/18/color-post</id><content type="html" xml:base="http://localhost:4000/Type-on-Strap/example/2019/05/18/color-post.html"><![CDATA[<h1 id="what-a-colorful-post">What a colorful post!</h1>
+
+<p>This is an idea that came from <a href="https://github.com/xukimseven/HardCandy-Jekyll">xukimseven/HardCandy-Jekyll</a> 
+looking at this cheerful and colorful theme, I wanted to enable something similar for Type-on-Strap.</p>
+
+<p>You can go fork and star <em>HardCandy-Jekyll</em> too! 😉</p>
+
+<!--more-->
+
+<h2 id="how-does-it-work">How does it work?</h2>
+
+<p>Basically you need to add just one thing, the color:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Color Post</span>
+<span class="na">color</span><span class="pi">:</span> <span class="s">brown</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<p>It can either be a html color like <code class="language-plaintext highlighter-rouge">brown</code> (which look like red to me). Or with the rgb:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Color Post</span>
+<span class="na">color</span><span class="pi">:</span> <span class="s">rgb(165,42,42)</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<p>The background used is <code class="language-plaintext highlighter-rouge">lineart.png</code> from <a href="https://github.com/xukimseven">xukimseven</a> you can edit it in the config file. 
+If you want another one, put it in <code class="language-plaintext highlighter-rouge">/assets/img</code> as well.</p>
+
+<blockquote>
+  <p>⚠️ It’s a bit hacking the css in the <code class="language-plaintext highlighter-rouge">post.html</code></p>
+</blockquote>]]></content><author><name>Sylhare</name></author><category term="Example" /><category term="Test" /><category term="Color" /><summary type="html"><![CDATA[What a colorful post! This is an idea that came from xukimseven/HardCandy-Jekyll looking at this cheerful and colorful theme, I wanted to enable something similar for Type-on-Strap. You can go fork and star HardCandy-Jekyll too! 😉]]></summary></entry><entry><title type="html">Feature images</title><link href="http://localhost:4000/Type-on-Strap/example/2018/10/29/feature-images.html" rel="alternate" type="text/html" title="Feature images" /><published>2018-10-29T00:00:00-07:00</published><updated>2018-10-29T00:00:00-07:00</updated><id>http://localhost:4000/Type-on-Strap/example/2018/10/29/feature-images</id><content type="html" xml:base="http://localhost:4000/Type-on-Strap/example/2018/10/29/feature-images.html"><![CDATA[<p>Hopefully you will find enough information about how to set images in your blog here.
+This is an example of a post which includes a feature image specified in the front matter of the post. 
+The feature image spans the full-width of the page, and is shown with the title on permalink pages:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">feature-img</span><span class="pi">:</span> <span class="s2">"</span><span class="s">assets/img/feature-img/desk-messy.jpeg"</span>
+<span class="na">thumbnail</span><span class="pi">:</span> <span class="s2">"</span><span class="s">assets/img/thumbnails/feature-img/desk-messy.jpeg"</span> 
+</code></pre></div></div>
+
+<p>You can also use a thumbnail, a smaller version of the same image to improve loading of the page.
+The thumbnail will also be used when you share your article on other platform (linkedin, whatsapp, facebook, …).</p>
+
+<blockquote>
+  <ul>
+    <li>And now it is working</li>
+  </ul>
+</blockquote>
+
+<p>You can also add images aligned in your post using the <code class="language-plaintext highlighter-rouge">aligner</code> include.
+Make sure to separate all of the image path from in a string separated with <code class="language-plaintext highlighter-rouge">,</code>.
+It by default look into <code class="language-plaintext highlighter-rouge">assets/img/</code> so give the path from there, example:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="p">{</span><span class="sx">% include </span><span class="n">aligner</span><span class="p">.</span><span class="nf">html</span> <span class="n">images</span><span class="o">=</span><span class="s2">"pexels/book-glass.jpeg,triangle.png"</span> <span class="n">caption</span><span class="o">=</span><span class="s2">"A caption under the images"</span> <span class="o">%</span><span class="p">}</span></code></pre></figure>
+
+<figure class="row">
+    
+    <div class="column">
+        <img src="/Type-on-Strap/assets/img/pexels/book-glass.jpeg" alt="book-glass.jpeg" />
+    </div>
+    
+    <div class="column">
+        <img src="/Type-on-Strap/assets/img/feature-img/desk-messy.jpeg" alt="desk-messy.jpeg" />
+    </div>
+    
+    
+    <figcaption class="caption-style">A caption under the images</figcaption>
+</figure>
+
+<p>Here you have two images side by side, but you can set more and set the amount per columns 
+(by specifying the number of columns or let it be automatic using <code class="language-plaintext highlighter-rouge">"auto"</code>):</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="p">{</span><span class="sx">% include </span><span class="n">aligner</span><span class="p">.</span><span class="nf">html</span> <span class="n">images</span><span class="o">=</span><span class="s2">"portfolio/cabin.png,portfolio/cake.png,portfolio/circus.png"</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span> <span class="o">%</span><span class="p">}</span></code></pre></figure>
+
+<figure class="row">
+    
+    <div class="column">
+        <img src="/Type-on-Strap/assets/img/portfolio/cabin.png" alt="cabin.png" />
+    </div>
+    
+    <div class="column">
+        <img src="/Type-on-Strap/assets/img/portfolio/cake.png" alt="cake.png" />
+    </div>
+    
+    <div class="column">
+        <img src="/Type-on-Strap/assets/img/portfolio/circus.png" alt="circus.png" />
+    </div>
+    
+    
+    <figcaption class="caption-style"></figcaption>
+</figure>
+
+<p>it also works with only one images, it is made to display it smaller than normally.
+However you can just use the Markdown way of doing it to get the image normal sized and centered.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Markdown way</span>
+<span class="o">!</span><span class="p">[</span><span class="no">Travel</span><span class="p">]({{</span> <span class="s2">"/assets/img/pexels/computer.jpeg"</span> <span class="o">|</span> <span class="n">relative_url</span><span class="p">}})</span>
+<span class="c1"># Aligner with only one image</span>
+<span class="p">{</span><span class="sx">% include </span><span class="n">aligner</span><span class="p">.</span><span class="nf">html</span> <span class="n">images</span><span class="o">=</span><span class="s2">"pexels/computer.jpeg"</span> <span class="o">%</span><span class="p">}</span></code></pre></figure>
+
+<figure class="row">
+    
+    <div class="column">
+        <img class="single" src="/Type-on-Strap/assets/img/pexels/computer.jpeg" alt="computer.jpeg" />
+    </div>
+    
+    
+    <figcaption class="caption-style"></figcaption>
+</figure>]]></content><author><name></name></author><category term="Example" /><category term="Test" /><category term="Image" /><summary type="html"><![CDATA[Hopefully you will find enough information about how to set images in your blog here. This is an example of a post which includes a feature image specified in the front matter of the post. The feature image spans the full-width of the page, and is shown with the title on permalink pages:]]></summary></entry><entry><title type="html">Bootstrap</title><link href="http://localhost:4000/Type-on-Strap/demo/2017/09/17/Use-Bootstrap.html" rel="alternate" type="text/html" title="Bootstrap" /><published>2017-09-17T00:00:00-07:00</published><updated>2017-09-17T00:00:00-07:00</updated><id>http://localhost:4000/Type-on-Strap/demo/2017/09/17/Use-Bootstrap</id><content type="html" xml:base="http://localhost:4000/Type-on-Strap/demo/2017/09/17/Use-Bootstrap.html"><![CDATA[<p>This theme is compatible with Bootstrap if you choose to use it in your pages or posts.
+Here is a little demo with a code snippet, look at the source to see how the HTML and markdown get tangled.</p>
+
+<h2 id="use-bootstrap">Use bootstrap</h2>
+
+<p>Add some custom Bootstrap in the custom layout!</p>
+
+<p><img src="https://startbootstrap.com/assets/img/sb-logo.svg" alt="startbootstrap" width="500" /></p>
+
+<h3 id="snippet-example">Snippet example</h3>
+
+<p>If you are new to Bootstrap you can  always check the <a href="https://getbootstrap.com/docs/4.1/getting-started/introduction/">documentation</a>.<br />
+Here is an example from <a href="https://startbootstrap.com/snippets/portfolio-two-column">startbootstrap.com</a>.</p>
+
+<!-- Page Content -->
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt="" /></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">Project One</a>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt="" /></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">Project Two</a>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit aliquam aperiam nulla perferendis dolor nobis numquam, rem expedita, aliquid optio, alias illum eaque. Non magni, voluptates quae, necessitatibus unde temporibus.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt="" /></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">Project Three</a>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt="" /></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">Project Four</a>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit aliquam aperiam nulla perferendis dolor nobis numquam, rem expedita, aliquid optio, alias illum eaque. Non magni, voluptates quae, necessitatibus unde temporibus.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt="" /></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">Project Five</a>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt="" /></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">Project Six</a>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit aliquam aperiam nulla perferendis dolor nobis numquam, rem expedita, aliquid optio, alias illum eaque. Non magni, voluptates quae, necessitatibus unde temporibus.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+<h3 id="mix-it-with-markdown">Mix it with Markdown</h3>
+
+<p>All the above was custom HTML with Bootstrap.
+You can also mix it up with some markdown.</p>
+
+<p>You can use the bootstrap’s build in javascript API to control your event.
+Here is a code snippet for the <a href="https://getbootstrap.com/docs/4.0/getting-started/javascript/">documentation</a>:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#myModal</span><span class="dl">'</span><span class="p">).</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">show.bs.modal</span><span class="dl">'</span><span class="p">,</span> <span class="nf">function </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">data</span><span class="p">)</span> <span class="k">return</span> <span class="nx">e</span><span class="p">.</span><span class="nf">preventDefault</span><span class="p">()</span> <span class="c1">// stops modal from being shown</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>That’s just for demo though, you would need to properly integrate your javascript in your page.
+Usually you would put any custom javascript script in the <em>assets</em> folder under js and reference it in your page from there.</p>
+
+<p>So try it out using the <code class="language-plaintext highlighter-rouge">bootstrap: true</code> flag! 😉</p>]]></content><author><name></name></author><category term="Demo" /><category term="Bootstrap" /><category term="Test" /><summary type="html"><![CDATA[This theme is compatible with Bootstrap if you choose to use it in your pages or posts. Here is a little demo with a code snippet, look at the source to see how the HTML and markdown get tangled.]]></summary></entry><entry><title type="html">Font Awesome Icons</title><link href="http://localhost:4000/Type-on-Strap/2016/12/05/Font-Awesome.html" rel="alternate" type="text/html" title="Font Awesome Icons" /><published>2016-12-05T00:00:00-07:00</published><updated>2016-12-05T00:00:00-07:00</updated><id>http://localhost:4000/Type-on-Strap/2016/12/05/Font-Awesome</id><content type="html" xml:base="http://localhost:4000/Type-on-Strap/2016/12/05/Font-Awesome.html"><![CDATA[<p>This post showcases <a href="https://fontawesome.com">Font Awesome</a> icons available in Type-on-Strap.
+Icons are included via the bundled Font Awesome 6 stylesheet.</p>
+
+<h2 id="solid-icons">Solid Icons</h2>
+
+<div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0;">
+  <span><i class="fas fa-home"></i> home</span>
+  <span><i class="fas fa-user"></i> user</span>
+  <span><i class="fas fa-star"></i> star</span>
+  <span><i class="fas fa-heart"></i> heart</span>
+  <span><i class="fas fa-envelope"></i> envelope</span>
+  <span><i class="fas fa-bell"></i> bell</span>
+  <span><i class="fas fa-camera"></i> camera</span>
+  <span><i class="fas fa-cog"></i> cog</span>
+  <span><i class="fas fa-search"></i> search</span>
+  <span><i class="fas fa-lock"></i> lock</span>
+  <span><i class="fas fa-unlock"></i> unlock</span>
+  <span><i class="fas fa-check"></i> check</span>
+  <span><i class="fas fa-times"></i> times</span>
+  <span><i class="fas fa-plus"></i> plus</span>
+  <span><i class="fas fa-minus"></i> minus</span>
+  <span><i class="fas fa-pencil-alt"></i> pencil-alt</span>
+  <span><i class="fas fa-trash"></i> trash</span>
+  <span><i class="fas fa-download"></i> download</span>
+  <span><i class="fas fa-upload"></i> upload</span>
+  <span><i class="fas fa-share"></i> share</span>
+  <span><i class="fas fa-bookmark"></i> bookmark</span>
+  <span><i class="fas fa-tag"></i> tag</span>
+  <span><i class="fas fa-tags"></i> tags</span>
+  <span><i class="fas fa-folder"></i> folder</span>
+  <span><i class="fas fa-file"></i> file</span>
+  <span><i class="fas fa-image"></i> image</span>
+  <span><i class="fas fa-video"></i> video</span>
+  <span><i class="fas fa-music"></i> music</span>
+  <span><i class="fas fa-code"></i> code</span>
+  <span><i class="fas fa-terminal"></i> terminal</span>
+  <span><i class="fas fa-database"></i> database</span>
+  <span><i class="fas fa-server"></i> server</span>
+  <span><i class="fas fa-bug"></i> bug</span>
+  <span><i class="fas fa-rocket"></i> rocket</span>
+  <span><i class="fas fa-globe"></i> globe</span>
+  <span><i class="fas fa-map"></i> map</span>
+  <span><i class="fas fa-map-marker-alt"></i> map-marker-alt</span>
+  <span><i class="fas fa-car"></i> car</span>
+  <span><i class="fas fa-plane"></i> plane</span>
+  <span><i class="fas fa-ship"></i> ship</span>
+  <span><i class="fas fa-bicycle"></i> bicycle</span>
+  <span><i class="fas fa-coffee"></i> coffee</span>
+  <span><i class="fas fa-utensils"></i> utensils</span>
+  <span><i class="fas fa-shopping-cart"></i> shopping-cart</span>
+  <span><i class="fas fa-credit-card"></i> credit-card</span>
+  <span><i class="fas fa-trophy"></i> trophy</span>
+  <span><i class="fas fa-graduation-cap"></i> graduation-cap</span>
+  <span><i class="fas fa-book"></i> book</span>
+  <span><i class="fas fa-newspaper"></i> newspaper</span>
+  <span><i class="fas fa-chart-bar"></i> chart-bar</span>
+  <span><i class="fas fa-chart-line"></i> chart-line</span>
+  <span><i class="fas fa-chart-pie"></i> chart-pie</span>
+  <span><i class="fas fa-sun"></i> sun</span>
+  <span><i class="fas fa-moon"></i> moon</span>
+  <span><i class="fas fa-cloud"></i> cloud</span>
+  <span><i class="fas fa-snowflake"></i> snowflake</span>
+  <span><i class="fas fa-fire"></i> fire</span>
+  <span><i class="fas fa-tree"></i> tree</span>
+  <span><i class="fas fa-leaf"></i> leaf</span>
+  <span><i class="fas fa-paw"></i> paw</span>
+  <span><i class="fas fa-cat"></i> cat</span>
+  <span><i class="fas fa-dog"></i> dog</span>
+</div>
+
+<h2 id="regular-icons">Regular Icons</h2>
+
+<div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0;">
+  <span><i class="far fa-star"></i> star</span>
+  <span><i class="far fa-heart"></i> heart</span>
+  <span><i class="far fa-envelope"></i> envelope</span>
+  <span><i class="far fa-bell"></i> bell</span>
+  <span><i class="far fa-bookmark"></i> bookmark</span>
+  <span><i class="far fa-folder"></i> folder</span>
+  <span><i class="far fa-file"></i> file</span>
+  <span><i class="far fa-image"></i> image</span>
+  <span><i class="far fa-user"></i> user</span>
+  <span><i class="far fa-calendar"></i> calendar</span>
+  <span><i class="far fa-clock"></i> clock</span>
+  <span><i class="far fa-comment"></i> comment</span>
+  <span><i class="far fa-eye"></i> eye</span>
+  <span><i class="far fa-thumbs-up"></i> thumbs-up</span>
+  <span><i class="far fa-thumbs-down"></i> thumbs-down</span>
+  <span><i class="far fa-smile"></i> smile</span>
+  <span><i class="far fa-frown"></i> frown</span>
+  <span><i class="far fa-meh"></i> meh</span>
+  <span><i class="far fa-copy"></i> copy</span>
+  <span><i class="far fa-edit"></i> edit</span>
+  <span><i class="far fa-trash-alt"></i> trash-alt</span>
+  <span><i class="far fa-check-circle"></i> check-circle</span>
+  <span><i class="far fa-times-circle"></i> times-circle</span>
+  <span><i class="far fa-question-circle"></i> question-circle</span>
+  <span><i class="far fa-circle"></i> circle</span>
+  <span><i class="far fa-dot-circle"></i> dot-circle</span>
+  <span><i class="far fa-square"></i> square</span>
+  <span><i class="far fa-map"></i> map</span>
+  <span><i class="far fa-newspaper"></i> newspaper</span>
+  <span><i class="far fa-chart-bar"></i> chart-bar</span>
+</div>
+
+<h2 id="brand-icons">Brand Icons</h2>
+
+<div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0;">
+  <span><i class="fab fa-github"></i> github</span>
+  <span><i class="fab fa-gitlab"></i> gitlab</span>
+  <span><i class="fab fa-git"></i> git</span>
+  <span><i class="fab fa-twitter"></i> twitter</span>
+  <span><i class="fab fa-facebook"></i> facebook</span>
+  <span><i class="fab fa-instagram"></i> instagram</span>
+  <span><i class="fab fa-linkedin"></i> linkedin</span>
+  <span><i class="fab fa-youtube"></i> youtube</span>
+  <span><i class="fab fa-twitch"></i> twitch</span>
+  <span><i class="fab fa-discord"></i> discord</span>
+  <span><i class="fab fa-slack"></i> slack</span>
+  <span><i class="fab fa-reddit"></i> reddit</span>
+  <span><i class="fab fa-stack-overflow"></i> stack-overflow</span>
+  <span><i class="fab fa-npm"></i> npm</span>
+  <span><i class="fab fa-node-js"></i> node-js</span>
+  <span><i class="fab fa-js"></i> js</span>
+  <span><i class="fab fa-python"></i> python</span>
+  <span><i class="fab fa-java"></i> java</span>
+  <span><i class="fab fa-rust"></i> rust</span>
+  <span><i class="fab fa-golang"></i> golang</span>
+  <span><i class="fab fa-docker"></i> docker</span>
+  <span><i class="fab fa-linux"></i> linux</span>
+  <span><i class="fab fa-apple"></i> apple</span>
+  <span><i class="fab fa-windows"></i> windows</span>
+  <span><i class="fab fa-android"></i> android</span>
+  <span><i class="fab fa-html5"></i> html5</span>
+  <span><i class="fab fa-css3-alt"></i> css3-alt</span>
+  <span><i class="fab fa-sass"></i> sass</span>
+  <span><i class="fab fa-react"></i> react</span>
+  <span><i class="fab fa-vuejs"></i> vuejs</span>
+  <span><i class="fab fa-aws"></i> aws</span>
+  <span><i class="fab fa-google"></i> google</span>
+  <span><i class="fab fa-stripe"></i> stripe</span>
+  <span><i class="fab fa-paypal"></i> paypal</span>
+  <span><i class="fab fa-bitcoin"></i> bitcoin</span>
+</div>
+
+<h2 id="icon-sizes">Icon Sizes</h2>
+
+<div style="display: flex; align-items: center; gap: 1rem; margin: 1rem 0; flex-wrap: wrap;">
+  <span><i class="fas fa-rocket fa-xs"></i> xs</span>
+  <span><i class="fas fa-rocket fa-sm"></i> sm</span>
+  <span><i class="fas fa-rocket"></i> base</span>
+  <span><i class="fas fa-rocket fa-lg"></i> lg</span>
+  <span><i class="fas fa-rocket fa-2x"></i> 2x</span>
+  <span><i class="fas fa-rocket fa-3x"></i> 3x</span>
+  <span><i class="fas fa-rocket fa-5x"></i> 5x</span>
+</div>
+
+<h2 id="stacked-icons">Stacked Icons</h2>
+
+<div style="display: flex; gap: 2rem; margin: 1rem 0; flex-wrap: wrap; align-items: center;">
+  <span class="fa-stack fa-2x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+  </span>
+  <span class="fa-stack fa-2x">
+    <i class="fas fa-square fa-stack-2x"></i>
+    <i class="fas fa-terminal fa-stack-1x fa-inverse"></i>
+  </span>
+  <span class="fa-stack fa-2x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fas fa-home fa-stack-1x fa-inverse"></i>
+  </span>
+  <span class="fa-stack fa-2x">
+    <i class="far fa-circle fa-stack-2x"></i>
+    <i class="fas fa-code fa-stack-1x"></i>
+  </span>
+</div>
+
+<h2 id="animated-icons">Animated Icons</h2>
+
+<div style="display: flex; gap: 2rem; margin: 1rem 0; flex-wrap: wrap; align-items: center;">
+  <span><i class="fas fa-spinner fa-spin fa-2x"></i> spin</span>
+  <span><i class="fas fa-circle-notch fa-spin fa-2x"></i> spin</span>
+  <span><i class="fas fa-sync fa-spin fa-2x"></i> spin</span>
+  <span><i class="fas fa-cog fa-spin fa-2x"></i> spin</span>
+  <span><i class="fas fa-asterisk fa-pulse fa-2x"></i> pulse</span>
+</div>]]></content><author><name></name></author><category term="Font Awesome" /><category term="Icons" /><summary type="html"><![CDATA[This post showcases Font Awesome icons available in Type-on-Strap. Icons are included via the bundled Font Awesome 6 stylesheet.]]></summary></entry><entry><title type="html">KaTeX Math Rendering</title><link href="http://localhost:4000/Type-on-Strap/2016/12/04/Katex.html" rel="alternate" type="text/html" title="KaTeX Math Rendering" /><published>2016-12-04T00:00:00-07:00</published><updated>2016-12-04T00:00:00-07:00</updated><id>http://localhost:4000/Type-on-Strap/2016/12/04/Katex</id><content type="html" xml:base="http://localhost:4000/Type-on-Strap/2016/12/04/Katex.html"><![CDATA[<p>This post showcases KaTeX math rendering. Make sure <code class="language-plaintext highlighter-rouge">katex: true</code> is set in <code class="language-plaintext highlighter-rouge">_config.yml</code>.</p>
+
+<h2 id="inline-math">Inline Math</h2>
+
+<p>Einstein’s famous equation \(E = mc^2\) changed physics forever.
+The quadratic formula \(x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\) solves any quadratic equation.
+Euler’s identity \(e^{i\pi} + 1 = 0\) is often called the most beautiful equation in mathematics.</p>
+
+<h2 id="display-math">Display Math</h2>
+
+<h3 id="fractions-and-roots">Fractions and Roots</h3>
+
+\[f(x) = \frac{x^2 + 2x + 1}{x - 1}\]
+
+\[\sqrt[n]{x} = x^{\frac{1}{n}}, \quad \sqrt{\frac{a}{b}} = \frac{\sqrt{a}}{\sqrt{b}}\]
+
+<h3 id="greek-letters">Greek Letters</h3>
+
+\[\alpha + \beta = \gamma, \quad \Delta = \Sigma \cdot \Pi\]
+
+\[\phi = \frac{1 + \sqrt{5}}{2} \approx 1.618, \quad \lambda \in \mathbb{R}\]
+
+\[\theta, \vartheta, \Theta, \quad \epsilon, \varepsilon, \quad \rho, \varrho\]
+
+<h3 id="integrals">Integrals</h3>
+
+\[\int_0^\infty e^{-x^2}\, dx = \frac{\sqrt{\pi}}{2}\]
+
+\[\int_a^b f(x)\, dx = F(b) - F(a)\]
+
+\[\oint_C \mathbf{F} \cdot d\mathbf{r} = \iint_S (\nabla \times \mathbf{F}) \cdot d\mathbf{S}\]
+
+<h3 id="summations-and-products">Summations and Products</h3>
+
+\[\sum_{n=0}^{\infty} \frac{x^n}{n!} = e^x\]
+
+\[\sum_{k=1}^{n} k = \frac{n(n+1)}{2}\]
+
+\[\prod_{k=1}^{n} k = n!\]
+
+<h3 id="limits-and-derivatives">Limits and Derivatives</h3>
+
+\[\lim_{x \to 0} \frac{\sin x}{x} = 1\]
+
+\[\lim_{n \to \infty} \left(1 + \frac{1}{n}\right)^n = e\]
+
+\[\frac{d}{dx}\left[\int_a^x f(t)\, dt\right] = f(x)\]
+
+<h3 id="vectors-and-operators">Vectors and Operators</h3>
+
+\[\nabla f = \left(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}\right)\]
+
+\[\mathbf{F} = m\mathbf{a} = m\frac{d^2\mathbf{r}}{dt^2}\]
+
+\[\hat{H}\psi = E\psi\]
+
+<h3 id="matrices">Matrices</h3>
+
+\[\begin{pmatrix}
+a &amp; b \\
+c &amp; d
+\end{pmatrix}
+\begin{pmatrix}
+x \\
+y
+\end{pmatrix}
+=
+\begin{pmatrix}
+ax + by \\
+cx + dy
+\end{pmatrix}\]
+
+\[A = \begin{bmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6 \\
+7 &amp; 8 &amp; 9
+\end{bmatrix}, \quad
+\det(A) = \begin{vmatrix}
+a &amp; b \\
+c &amp; d
+\end{vmatrix} = ad - bc\]
+
+<h3 id="cases">Cases</h3>
+
+\[f(x) = \begin{cases}
+  x^2 &amp; \text{if } x \geq 0 \\
+  -x  &amp; \text{if } x &lt; 0
+\end{cases}\]
+
+\[|x| = \begin{cases}
+  x  &amp; \text{if } x \geq 0 \\
+  -x &amp; \text{if } x &lt; 0
+\end{cases}\]
+
+<h3 id="aligned-equations">Aligned Equations</h3>
+
+\[\begin{aligned}
+(a + b)^2 &amp;= a^2 + 2ab + b^2 \\
+(a - b)^2 &amp;= a^2 - 2ab + b^2 \\
+(a + b)(a - b) &amp;= a^2 - b^2
+\end{aligned}\]
+
+<h3 id="maxwells-equations">Maxwell’s Equations</h3>
+
+\[\begin{aligned}
+\nabla \cdot \mathbf{E}  &amp;= \frac{\rho}{\varepsilon_0} \\
+\nabla \cdot \mathbf{B}  &amp;= 0 \\
+\nabla \times \mathbf{E} &amp;= -\frac{\partial \mathbf{B}}{\partial t} \\
+\nabla \times \mathbf{B} &amp;= \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}
+\end{aligned}\]
+
+<h3 id="binomial-and-combinatorics">Binomial and Combinatorics</h3>
+
+\[\binom{n}{k} = \frac{n!}{k!(n-k)!}\]
+
+\[(x + y)^n = \sum_{k=0}^{n} \binom{n}{k} x^{n-k} y^k\]
+
+<h3 id="number-sets">Number Sets</h3>
+
+\[\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}\]
+
+\[\forall x \in \mathbb{R},\; \exists y \in \mathbb{R} : y &gt; x\]
+
+<h3 id="logic-and-sets">Logic and Sets</h3>
+
+\[A \cup B = \{x \mid x \in A \lor x \in B\}\]
+
+\[A \cap B \subseteq A \subseteq A \cup B\]
+
+\[P \Rightarrow Q \iff \neg P \lor Q\]]]></content><author><name></name></author><category term="Katex" /><summary type="html"><![CDATA[This post showcases KaTeX math rendering. Make sure katex: true is set in _config.yml.]]></summary></entry><entry><title type="html">Mermaid Chart</title><link href="http://localhost:4000/Type-on-Strap/2016/12/03/Mermaid.html" rel="alternate" type="text/html" title="Mermaid Chart" /><published>2016-12-03T00:00:00-07:00</published><updated>2016-12-03T00:00:00-07:00</updated><id>http://localhost:4000/Type-on-Strap/2016/12/03/Mermaid</id><content type="html" xml:base="http://localhost:4000/Type-on-Strap/2016/12/03/Mermaid.html"><![CDATA[<h2 id="mermaid">Mermaid</h2>
+
+<p>Diagrams with mermaid, make sure it is enabled in the <code class="language-plaintext highlighter-rouge">_config.yml</code>.
+Here is a simple example:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- To generate a diagram --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mermaid"</span><span class="nt">&gt;</span>
+sequenceDiagram
+    Alice-&gt;&gt;John: Hello John, how are you?
+    John--&gt;&gt;Alice: Great!
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>💡 Now render also work with the GitHub markdown highlight.</p>
+</blockquote>
+
+<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown"><span class="p">```</span><span class="nl">mermaid
+</span><span class="sb">sequenceDiagram
+    Alice-&gt;&gt;John: Hello John, how are you?
+    John--&gt;&gt;Alice: Great!</span>
+<span class="p">```</span></code></pre></figure>
+
+<p>That will be rendered into this:</p>
+
+<figure class="row">
+    
+    <div class="column">
+        <img class="single" src="/Type-on-Strap/assets/img/mermaid-example.png" alt="mermaid-example.png" />
+    </div>
+    
+    
+    <figcaption class="caption-style"></figcaption>
+</figure>
+
+<p>You can also go with more complex features and diagrams from the <a href="https://mermaid-js.github.io/mermaid/">documentation</a>,
+and try it out with the <a href="https://mermaid.live/">live editor</a>.</p>
+
+<h3 id="sequencediagram">SequenceDiagram</h3>
+
+<div class="mermaid">
+sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice-&gt;&gt;John: Hello John, how are you?
+    loop Healthcheck
+        John-&gt;&gt;John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts prevail!
+    John--&gt;&gt;Alice: Great!
+    John-&gt;&gt;Bob: How about you?
+    Bob--&gt;&gt;John: Jolly good!
+</div>
+
+<h3 id="flow">Flow</h3>
+
+<pre><code class="language-mermaid">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'lineColor': '#F8B229'
+    }
+  }
+}%%
+
+flowchart TD
+    A[Christmas] --&gt;|Get money| B(Go shopping)
+    B --&gt; C{Let me think}
+    C --&gt;|One| D[Laptop]
+    D ~~~ E
+    C --&gt;|Two| E[iPhone]
+    C --&gt;|Three| F[fa:fa-car Car]
+    %% Grinch
+</code></pre>
+
+<h3 id="class">Class</h3>
+
+<pre><code class="language-mermaid">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'lineColor': '#F8B229'
+    }
+  }
+}%%
+
+classDiagram
+    Animal &lt;|-- Duck
+    Animal &lt;|-- Fish
+    Animal &lt;|-- Zebra
+    Animal : +int age
+    Animal : +String gender
+    Animal: +isMammal()
+    Animal: +mate()
+    class Duck{
+      +String beakColor
+      +swim()
+      +quack()
+    }
+    class Fish{
+      -int sizeInFeet
+      -canEat()
+    }
+    class Zebra{
+      +bool is_wild
+      +run()
+    }
+</code></pre>
+
+<h3 id="state">State</h3>
+
+<pre><code class="language-mermaid">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'lineColor': '#F8B229'
+    }
+  }
+}%%
+
+stateDiagram-v2
+    [*] --&gt; Still
+    Still --&gt; [*]
+    Still --&gt; Moving
+    Moving --&gt; Still
+    Moving --&gt; Crash
+    Crash --&gt; [*]
+</code></pre>
+
+<h3 id="er">ER</h3>
+
+<pre><code class="language-mermaid">erDiagram
+    CUSTOMER }|..|{ DELIVERY-ADDRESS : has
+    CUSTOMER ||--o{ ORDER : places
+    CUSTOMER ||--o{ INVOICE : "liable for"
+    DELIVERY-ADDRESS ||--o{ ORDER : receives
+    INVOICE ||--|{ ORDER : covers
+    ORDER ||--|{ ORDER-ITEM : includes
+    PRODUCT-CATEGORY ||--|{ PRODUCT : contains
+    PRODUCT ||--o{ ORDER-ITEM : "ordered in"
+</code></pre>
+
+<h3 id="gantt">Gantt</h3>
+
+<pre><code class="language-mermaid">gantt
+    title A Gantt Diagram
+    dateFormat  YYYY-MM-DD
+    section Section
+    A task           :a1, 2014-01-01, 30d
+    Another task     :after a1  , 20d
+    section Another
+    Task in sec      :2014-01-12  , 12d
+    another task      : 24d
+</code></pre>
+
+<h3 id="user-journey">User Journey</h3>
+
+<pre><code class="language-mermaid">journey
+    title My working day
+    section Go to work
+      Make tea: 5: Me
+      Go upstairs: 3: Me
+      Do work: 1: Me, Cat
+    section Go home
+      Go downstairs: 5: Me
+      Sit down: 3: Me
+</code></pre>
+
+<h3 id="git">Git</h3>
+
+<pre><code class="language-mermaid">gitGraph
+    commit
+    commit
+    branch develop
+    checkout develop
+    commit
+    commit
+    checkout main
+    merge develop
+    commit
+    commit
+</code></pre>
+
+<h3 id="pie">Pie</h3>
+
+<pre><code class="language-mermaid">pie title Pets adopted by volunteers
+    "Dogs" : 386
+    "Cats" : 85
+    "Rats" : 15
+</code></pre>
+
+<h3 id="mindmap">Mindmap</h3>
+
+<pre><code class="language-mermaid">mindmap
+  root((mindmap))
+    Origins
+      Long history
+      ::icon(fa fa-book)
+      Popularisation
+        British popular psychology author Tony Buzan
+    Research
+      On effectivness&lt;br/&gt;and features
+      On Automatic creation
+        Uses
+            Creative techniques
+            Strategic planning
+            Argument mapping
+    Tools
+      Pen and paper
+      Mermaid
+</code></pre>
+
+<h3 id="quadrantchart">QuadrantChart</h3>
+
+<pre><code class="language-mermaid">quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --&gt; High Reach
+    y-axis Low Engagement --&gt; High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    Campaign A: [0.3, 0.6]
+    Campaign B: [0.45, 0.23]
+    Campaign C: [0.57, 0.69]
+    Campaign D: [0.78, 0.34]
+    Campaign E: [0.40, 0.34]
+    Campaign F: [0.35, 0.78]
+</code></pre>
+
+<h3 id="xychart">XYChart</h3>
+
+<pre><code class="language-mermaid">    xychart-beta
+    title "Sales Revenue"
+    x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+    y-axis "Revenue (in $)" 4000 --&gt; 11000
+    bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+    line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+</code></pre>]]></content><author><name></name></author><category term="Mermaid" /><summary type="html"><![CDATA[Mermaid]]></summary></entry><entry><title type="html">Markdown and HTML</title><link href="http://localhost:4000/Type-on-Strap/syntax/2014/11/28/markdown-and-html.html" rel="alternate" type="text/html" title="Markdown and HTML" /><published>2014-11-28T00:00:00-07:00</published><updated>2014-11-28T00:00:00-07:00</updated><id>http://localhost:4000/Type-on-Strap/syntax/2014/11/28/markdown-and-html</id><content type="html" xml:base="http://localhost:4000/Type-on-Strap/syntax/2014/11/28/markdown-and-html.html"><![CDATA[<p>Jekyll supports the use of <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> with inline HTML tags which makes it easier to quickly write posts with Jekyll, without having to worry too much about text formatting. A sample of the formatting follows.</p>
+
+<h2 id="table-of-content">Table of content</h2>
+
+<!-- To be placed at the beginning of the post, it is where the table of content will be generated -->
+<ul>
+  <li>TOC</li>
+  <li>You need to put this at the beginning of the page where you want the table of content to be displayed</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* TOC
+{:toc}
+</code></pre></div></div>
+
+<p>It will then render the markdown and html titles (lines that begins with <code class="language-plaintext highlighter-rouge">#</code> or using the <code class="language-plaintext highlighter-rouge">&lt;h1&gt;&lt;/h1&gt;</code> tages)</p>
+
+<h2 id="title">Title</h2>
+
+<h3 id="subtitle">Subtitle</h3>
+
+<p>Tables have also been extended from Markdown:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Header</th>
+      <th>Second Header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Content Cell</td>
+      <td>Content Cell</td>
+    </tr>
+    <tr>
+      <td>Content Cell</td>
+      <td>Content Cell</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Here’s an example of an image, which is included using Markdown:</p>
+
+<p><img src="/Type-on-Strap/assets/img/pexels/book-glass.jpeg" alt="Image of a glass on a book" /></p>
+
+<p>This is another example of list:</p>
+
+<ul>
+  <li>list of things
+    <ol>
+      <li>Sub list</li>
+      <li>of Other things</li>
+      <li>with numbers</li>
+    </ol>
+  </li>
+  <li>And many more
+    <ul>
+      <li>Sub sub list
+        <ul>
+          <li>can go on …
+            <ul>
+              <li>and on …
+                <ul>
+                  <li>and on !</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>That’s it.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="other-subtitle">Other subtitle</h3>
+
+<p>Highlighting for code in Jekyll is done using Base16 or Rouge. This theme makes use of Rouge by default.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// count to ten</span>
+<span class="k">for </span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// count to twenty</span>
+<span class="kd">var</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">while </span><span class="p">(</span><span class="nx">j</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">j</span><span class="o">++</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">j</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<h3 id="math">Math</h3>
+
+<p>Type on Strap uses KaTeX to display maths. Equations such as \(S_n = a \times \frac{1-r^n}{1-r}\) can be displayed inline.</p>
+
+<p>Alternatively, they can be shown on a new line:</p>
+
+\[f(x) = \int \frac{2x^2+4x+6}{x-2}\]
+
+<p>And in your markdown file:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$$ f(x) = <span class="se">\i</span>nt <span class="se">\f</span>rac{2x^2+4x+6}{x-2} $$
+</code></pre></div></div>
+
+<h3 id="expandable-content">Expandable content</h3>
+
+<p>Click on the expandable content to display it:</p>
+
+<details>
+    <summary>Click here!</summary>
+    Now you see me
+</details>
+
+<p>And in your markdown file:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;details&gt;</span>
+    <span class="nt">&lt;summary&gt;</span>Click here!<span class="nt">&lt;/summary&gt;</span>
+    Now you see me
+<span class="nt">&lt;/details&gt;</span>
+</code></pre></div></div>]]></content><author><name>Rohan Chandra</name></author><category term="Syntax" /><category term="Markdown" /><summary type="html"><![CDATA[Jekyll supports the use of Markdown with inline HTML tags which makes it easier to quickly write posts with Jekyll, without having to worry too much about text formatting. A sample of the formatting follows.]]></summary></entry></feed>
