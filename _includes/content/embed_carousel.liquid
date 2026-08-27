@@ -1,0 +1,57 @@
+<!-- One campaign's pieces as a swipeable "as it would appear on social" carousel —
+     one embed visible at a time behind arrows + dots, instead of a static row.
+     Reuses the same [data-carousel] JS contract as the home page's project
+     carousel and the About page's story carousel (assets/js/project-carousel.js),
+     so no new JS is needed. A single-piece campaign skips the data-carousel
+     attributes entirely (the JS's own querySelectorAll never picks it up),
+     so it just renders as one static slide with no dead arrows/dots. -->
+{% assign pieces = include.pieces %}
+{% assign multi = false %}
+{% if pieces.size > 1 %}{% assign multi = true %}{% endif %}
+<div class="campaign-carousel{% unless multi %} campaign-carousel--single{% endunless %}"{% if multi %} data-carousel{% endif %}>
+    <div class="campaign-carousel__row">
+        {% if multi %}
+        <button type="button" class="campaign-carousel__arrow campaign-carousel__arrow--prev" data-carousel-prev aria-label="Previous piece of content">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 7 12l8 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        {% endif %}
+        <div class="campaign-carousel__viewport">
+            <div class="campaign-carousel__track"{% if multi %} data-carousel-track{% endif %}>
+                {% for item in pieces %}
+                <div class="campaign-carousel__slide{% if forloop.first %} is-active{% endif %}"{% if multi %} data-carousel-slide{% endif %} aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
+                    <span class="campaign-carousel__badge campaign-carousel__badge--{{ item.platform }}">
+                        {% if item.platform == 'instagram' %}Instagram{% elsif item.platform == 'tiktok' %}TikTok{% endif %}
+                    </span>
+                    {% if item.platform == 'instagram' %}
+                    <blockquote class="instagram-media" data-instgrm-permalink="{{ item.url }}" data-instgrm-version="14"></blockquote>
+                    {% elsif item.platform == 'tiktok' %}
+                    <blockquote class="tiktok-embed" cite="{{ item.url }}" data-video-id="{{ item.video_id }}" style="max-width: 100%;">
+                        <section></section>
+                    </blockquote>
+                    {% endif %}
+                    {% if item.stats %}
+                    <ul class="campaign-carousel__stats">
+                        {% if item.stats.views %}<li><strong>{{ item.stats.views }}</strong> views</li>{% endif %}
+                        {% if item.stats.likes %}<li><strong>{{ item.stats.likes }}</strong> likes</li>{% endif %}
+                        {% if item.stats.comments %}<li><strong>{{ item.stats.comments }}</strong> comments</li>{% endif %}
+                        {% if item.stats.saves %}<li><strong>{{ item.stats.saves }}</strong> saves</li>{% endif %}
+                    </ul>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% if multi %}
+        <button type="button" class="campaign-carousel__arrow campaign-carousel__arrow--next" data-carousel-next aria-label="Next piece of content">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 8 7-8 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        {% endif %}
+    </div>
+    {% if multi %}
+    <div class="campaign-carousel__dots" role="tablist" aria-label="Choose a piece of content">
+        {% for item in pieces %}
+        <button type="button" class="campaign-carousel__dot{% if forloop.first %} is-active{% endif %}" data-carousel-dot role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="Piece {{ forloop.index }}"></button>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>

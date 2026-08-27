@@ -1,0 +1,11 @@
+<section class="why-create">
+    <div class="why-create__photo-wrap">
+        <img class="why-create__photo" src="{{ page.why_create.photo | relative_url }}" alt="{{ page.why_create.photo_alt | default: 'Klarissa Palacios' }}" loading="lazy">
+    </div>
+    <div class="why-create__text">
+        <h2 class="why-create__title">{{ page.why_create.title }}</h2>
+        {% for paragraph in page.why_create.paragraphs %}
+        <p class="why-create__body">{{ paragraph }}</p>
+        {% endfor %}
+    </div>
+</section>

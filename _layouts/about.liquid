@@ -1,0 +1,46 @@
+---
+layout: default
+---
+<div class="call-out call-out_solid">
+    <h1 class="call-out_title">About Me</h1>
+</div>
+<article class="about-hero">
+    <div class="about-hero__photo-wrap">
+        <div class="about-hero__photo-clip">
+            <img class="about-hero__photo" src="{{ page.photo | relative_url }}" alt="{{ page.photo_alt | default: page.title }}" loading="lazy">
+        </div>
+    </div>
+    <div class="about-hero__text">
+        {{ content }}
+        <div class="about-hero__actions">
+            <a class="button about-hero__cta" href="mailto:klarissaipalacios@gmail.com">Contact Me</a>
+            {% if page.linkedin %}
+            <a class="about-hero__linkedin" href="{{ page.linkedin }}" target="_blank" rel="noopener noreferrer" aria-label="Klarissa Palacios on LinkedIn (opens in a new window)">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.48 1 4.98 2.12 4.98 3.5zM.24 8.25h4.48V23H.24V8.25zm7.87 0h4.29v2.01h.06c.6-1.13 2.06-2.33 4.24-2.33 4.53 0 5.37 2.98 5.37 6.86V23h-4.47v-6.4c0-1.53-.03-3.49-2.13-3.49-2.13 0-2.46 1.66-2.46 3.38V23H7.11V8.25z" fill="currentColor"/></svg>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</article>
+
+{% if page.why_create %}
+{% include about/why_create.liquid %}
+{% endif %}
+
+{% if page.my_story %}
+<section class="my-story">
+    <div class="my-story__inner">
+        <h2 class="my-story__title">My Story</h2>
+        {% for part in page.my_story %}
+        <h3 class="my-story__heading">{{ part.heading }}</h3>
+        <p class="my-story__body">{{ part.body }}</p>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+{% if page.story_photos %}
+{% include about/story_carousel.liquid %}
+{% endif %}
+
+<script defer src="{{ '/assets/js/project-carousel.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

@@ -1,0 +1,12 @@
+<!-- Hand-scribbled star — the actual "one continuous pen stroke without lifting"
+     way people doodle a star: five straight lines jumping every other point of a
+     pentagon, self-crossing in the middle, ending just short of where it started
+     rather than closing neatly. Two overlapping passes (slightly different wobble
+     each) fake a pen re-tracing its own doodle. Called with `class:` for
+     positioning/sizing/animation-delay (see .home-intro__sparkle in _custom.scss). -->
+<svg class="{{ include.class }}" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+    <path d="M20.3 2.6 L30.6 34.3 L3.2 14.4 L36.6 15.1 L9.5 34 L19.8 3.4"
+          fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M19.6 3.3 L29.7 33.6 L4.1 15.3 L35.6 14.3 L10.6 33.3 L20.6 2"
+          fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

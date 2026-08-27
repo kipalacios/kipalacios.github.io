@@ -1,0 +1,103 @@
+---
+layout: default
+---
+<div class="call-out call-out_solid">
+    <h1 class="call-out_title">{{ page.title }}</h1>
+</div>
+
+{% if page.intro %}
+<section class="content-intro">
+    <div class="content-intro__inner">
+        <p>{{ page.intro }}</p>
+    </div>
+</section>
+{% endif %}
+
+{% if page.creator_bio %}
+<section class="creator-bio">
+    <div class="creator-bio__photo-wrap">
+        <div class="creator-bio__photo-clip">
+            <img class="creator-bio__photo" src="{{ page.creator_bio.photo | relative_url }}" alt="{{ page.creator_bio.photo_alt | default: page.title }}" loading="lazy">
+        </div>
+    </div>
+    <div class="creator-bio__text">
+        <p class="creator-bio__tagline">{{ page.creator_bio.tagline }}</p>
+        {% if page.creator_bio.location %}
+        <p class="creator-bio__location">
+            <i class="fas fa-location-dot" aria-hidden="true"></i>
+            {{ page.creator_bio.location }}
+        </p>
+        {% endif %}
+        {% for paragraph in page.creator_bio.bio_paragraphs %}
+        <p class="creator-bio__body">{{ paragraph }}</p>
+        {% endfor %}
+        <div class="creator-bio__actions">
+            {% if page.creator_bio.instagram_url %}
+            <a class="creator-bio__social" href="{{ page.creator_bio.instagram_url }}" target="_blank" rel="noopener noreferrer" aria-label="Klarissa Palacios on Instagram (opens in a new window)">
+                <i class="fab fa-instagram" aria-hidden="true"></i>
+            </a>
+            {% endif %}
+            {% if page.creator_bio.tiktok_url %}
+            <a class="creator-bio__social" href="{{ page.creator_bio.tiktok_url }}" target="_blank" rel="noopener noreferrer" aria-label="Klarissa Palacios on TikTok (opens in a new window)">
+                <i class="fab fa-tiktok" aria-hidden="true"></i>
+            </a>
+            {% endif %}
+            {% if page.creator_bio.youtube_url %}
+            <a class="creator-bio__social" href="{{ page.creator_bio.youtube_url }}" target="_blank" rel="noopener noreferrer" aria-label="Klarissa Palacios on YouTube (opens in a new window)">
+                <i class="fab fa-youtube" aria-hidden="true"></i>
+            </a>
+            {% endif %}
+            {% if page.creator_bio.vsco_url %}
+            <a class="creator-bio__social creator-bio__social--text" href="{{ page.creator_bio.vsco_url }}" target="_blank" rel="noopener noreferrer" aria-label="Klarissa Palacios on VSCO (opens in a new window)">
+                <span aria-hidden="true">VSCO</span>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% if page.brands %}
+<section class="brand-strip">
+    <div class="brand-strip__inner">
+        <p class="brand-strip__label">Brands &amp; Organizations I've Worked With</p>
+        <ul class="brand-strip__list">
+            {% for brand in page.brands %}
+            <li class="brand-strip__item">
+                <img src="{{ brand.logo | relative_url }}" alt="{{ brand.name }}" loading="lazy">
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endif %}
+
+{% if page.content_groups %}
+{% for group in page.content_groups %}
+<section class="content-group">
+    <div class="content-group__heading">
+        <h2 class="content-group__title">{{ group.name }}</h2>
+    </div>
+
+    {% for campaign in group.campaigns %}
+    <div class="campaign">
+        <div class="campaign__info">
+            <h3 class="campaign__title">{{ campaign.name }}</h3>
+            {% if campaign.summary %}
+            <p class="campaign__summary">{{ campaign.summary }}</p>
+            {% else %}
+            <p class="campaign__summary campaign__summary--placeholder">Add a summary of this campaign here — what it was, your role, and the result.</p>
+            {% endif %}
+        </div>
+        <div class="campaign__media">
+            {% include content/embed_carousel.liquid pieces=campaign.pieces %}
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endfor %}
+
+<script async src="//www.instagram.com/embed.js"></script>
+<script async src="https://www.tiktok.com/embed.js"></script>
+<script defer src="{{ '/assets/js/project-carousel.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+{% endif %}

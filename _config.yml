@@ -1,19 +1,26 @@
 # SITE CONFIGURATION
-baseurl: "/Type-on-Strap"
-url: "https://sylhare.github.io"
+baseurl: ""
+url: "https://klarissapalacios.com"
 
 # THEME-SPECIFIC CONFIGURATION
-title: Type on Strap                                    # site's title
-description: "A website with blog posts and pages"      # used by search engines
-avatar: assets/img/triangle.png                         # Empty for no avatar in navbar
+title: Klarissa Palacios — Public Relations              # site's title (browser tab, SEO, logo alt text)
+description: "Portfolio of PR and advertising campaigns by Klarissa Palacios." # used by search engines
+avatar: assets/img/kppr-logo.png                         # Empty for no avatar in navbar
 favicon: assets/favicon.ico                             # Icon displayed in the tab
 
 # Header and footer text
-header_text: Change <code>header_text</code> in <code>_config.yml</code>  # Change Blog header text
-header_feature_image: assets/img/header/triangular.jpeg
-header_feature_image_responsive: true
-footer_text: >
-  Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+header_text: Create More Than You Consume                # Home page banner text
+header_feature_image: assets/img/header/triangular.jpeg  # Fallback social-share image (og:image)
+# Footer content lives directly in _includes/default/footer.liquid now (name,
+# tagline, nav, icons, copyright) — footer_text is no longer used.
+
+# Home page intro (below the banner)
+intro_name: Klarissa Palacios
+intro_name_suffix: Public Relations
+intro_bio: >
+  I'm a Los Angeles–based strategic communicator and storyteller who believes in creating
+  more than you consume — crafting accessible ways to tell stories so audiences of every
+  background and ability can connect.
 
 # Blog
 excerpt: true                                           # Or "truncate" (first 250 characters), "false" to disable
@@ -27,7 +34,7 @@ katex: true                                             # Enable if using math m
 mermaid: default                                        # Enable mermaid-js for diagrams, use theme: base, forest, dark, default, neutral
 google_analytics:                                       # Measurement ID, e.g. "G-00000"
 cookie_consent: false                                   # To respect the usage of cookies
-color_theme: auto                                       # auto, dark or light
+color_theme: light                                      # auto, dark or light
 
 # PAGINATION
 paginate: 5

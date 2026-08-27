@@ -2,27 +2,47 @@
 layout: default
 ---
 <div class="home">
-    <style scoped>
-        {% assign image = site.header_feature_image | relative_url | split: '.' %}
-        .call-out_img {
-            background-image: url('{{ image | join: '.' }}');
-        }
-        {% if site.header_feature_image_responsive %}
-        @media screen and (max-width: 768px) {
-            .call-out_img {
-                background-image: url('{{ image[0] | append: '-medium.' | append: image[1] | default: image}}');
-            }
-        }
-        @media screen and (max-width: 576px) {
-            .call-out_img {
-                background-image: url('{{ image[0] | append: '-small.' | append: image[1] }}');
-            }
-        }
-        {% endif %}
-    </style>
-    <div id="main" class="call-out call-out_img">
-        <h1> {{ site.header_text | default: "Change <code>header_text</code> in <code>_config.yml</code>"}} </h1>
+    <div id="main" class="call-out call-out_solid">
+        <h1 class="call-out_title">{{ site.header_text | default: "Change <code>header_text</code> in <code>_config.yml</code>"}}</h1>
     </div>
-    {% capture _blog %}{% include blog/blog.liquid %}{% endcapture %}
-    {{ _blog | split: " " | join: " "}}
+    <section class="home-intro">
+        <div class="home-intro__sparkles" aria-hidden="true">
+            {% include home/sparkle.liquid class="home-intro__sparkle home-intro__sparkle--1" %}
+            {% include home/sparkle.liquid class="home-intro__sparkle home-intro__sparkle--2" %}
+            {% include home/sparkle.liquid class="home-intro__sparkle home-intro__sparkle--3" %}
+            {% include home/sparkle.liquid class="home-intro__sparkle home-intro__sparkle--4" %}
+        </div>
+        <div class="home-intro__inner">
+            <h2 class="home-intro__name">{{ site.intro_name }} <span class="home-intro__name-accent">{{ site.intro_name_suffix }}</span></h2>
+            <div class="home-intro__divider" aria-hidden="true">
+                <div class="home-intro__shooting-star-glow"></div>
+                <svg class="home-intro__shooting-star-trail" viewBox="0 0 120 40" focusable="false">
+                    <!-- Two loose, dotted wisps (not parallel — different curves and
+                         endpoints so they don't read as road lanes) trailing behind the
+                         mini-stars, to hint at motion without looking solid/drawn-in. -->
+                    <path d="M4 32 C20 4 60 -2 104 18" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-dasharray="0.5 6" opacity="0.35"/>
+                    <path d="M16 20 C38 32 56 30 94 32" fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" stroke-dasharray="0.5 7" opacity="0.28"/>
+                    <!-- Trail along the same rainbow-style arch, alternating tiny arc
+                         flicks and mini scribbled stars (arc, star, arc, star, star)
+                         instead of stars only — growing in size and opacity toward
+                         the head, where it meets the main star. -->
+                    <path d="M-3.2 1.4 Q0 -2.8 3.2 1.4" transform="translate(17.2,21.1) scale(0.6)" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.4"/>
+                    <path d="M0 -4.5 L2.65 3.64 L-4.28 -1.39 L4.28 -1.39 L-2.65 3.64 L-0.3 -4" transform="translate(35.6,13.1) scale(0.5)" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" opacity="0.6"/>
+                    <path d="M-3.2 1.4 Q0 -2.8 3.2 1.4" transform="translate(54,10) scale(0.85)" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.5"/>
+                    <path d="M0 -4.5 L2.65 3.64 L-4.28 -1.39 L4.28 -1.39 L-2.65 3.64 L-0.3 -4" transform="translate(72.4,13.1) scale(0.75)" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" opacity="0.75"/>
+                    <path d="M0 -4.5 L2.65 3.64 L-4.28 -1.39 L4.28 -1.39 L-2.65 3.64 L-0.3 -4" transform="translate(90.8,21.1) scale(1.05)" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" opacity="0.9"/>
+                </svg>
+                <svg class="home-intro__shooting-star" viewBox="0 0 40 40" focusable="false">
+                    <path d="M20.3 2.6 L30.6 34.3 L3.2 14.4 L36.6 15.1 L9.5 34 L19.8 3.4"
+                          fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+                    <path d="M19.6 3.3 L29.7 33.6 L4.1 15.3 L35.6 14.3 L10.6 33.3 L20.6 2"
+                          fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <p class="home-intro__bio">{{ site.intro_bio }}</p>
+            <a class="button home-intro__cta" href="{{ '/about/' | relative_url }}">About Me</a>
+        </div>
+    </section>
+    {% include home/project_carousel.liquid %}
+    <script defer src="{{ '/assets/js/project-carousel.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 </div>

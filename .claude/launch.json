@@ -1,0 +1,19 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "jekyll-serve",
+      "runtimeExecutable": "/usr/bin/env",
+      "runtimeArgs": [
+        "GEM_HOME=/Users/klarissapalacios/.gem/ruby/4.0.6",
+        "GEM_PATH=/Users/klarissapalacios/.gem/ruby/4.0.6:/Users/klarissapalacios/.rubies/ruby-4.0.6/lib/ruby/gems/4.0.0",
+        "RUBY_ROOT=/Users/klarissapalacios/.rubies/ruby-4.0.6",
+        "RUBY_ENGINE=ruby",
+        "RUBY_VERSION=4.0.6",
+        "/Users/klarissapalacios/.gem/ruby/4.0.6/bin/bundle",
+        "exec", "jekyll", "serve", "--port", "4400", "--host", "127.0.0.1", "--livereload"
+      ],
+      "port": 4400
+    }
+  ]
+}

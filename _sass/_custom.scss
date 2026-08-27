@@ -1,0 +1,1339 @@
+/* Custom brand styling, layered on top of the Type on Strap defaults above. */
+
+/* Poppins carries body copy (bio, carousel descriptions, about page) — a free
+   geometric-rounded sans in the spirit of jayacunzo.com's Sofia Pro (that one's
+   a paid Fontspring/Adobe Fonts license, so Poppins stands in for it here).
+   Nav/labels/carousel titles/campaign titles use Glacial Indifference Bold
+   instead of the theme's own base Source Sans Pro (still self-hosted via
+   _sass/external/_source-sans-pro.scss and still the site-wide default for
+   plain body/heading fallback — this file just no longer opts into it for
+   anything, so the Google Fonts weight-900 request below was dropped too).
+   The hero line uses Palmer Lake Print — the real font jayacunzo.com uses for
+   "Don't market more. Matter more.", purchased (Desktop + Web license) from
+   Jen Wagner Co. Self-hosted below since it's not on Google Fonts. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Glacial Indifference — SIL Open Font License, self-hosted (not on Google Fonts).
+   See assets/fonts/glacial-indifference/LICENSE.txt. */
+@font-face {
+  font-family: 'Glacial Indifference';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../assets/fonts/glacial-indifference/GlacialIndifference-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Glacial Indifference';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../../assets/fonts/glacial-indifference/GlacialIndifference-Bold.woff2') format('woff2');
+}
+
+/* Palmer Lake Print + Script — purchased Desktop + Web license (Jen Wagner Co), self-hosted. */
+@font-face {
+  font-family: 'Palmer Lake Print';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../assets/fonts/palmer-lake/PalmerLakePrint-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Palmer Lake Script';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../assets/fonts/palmer-lake/PalmerLakeScript-Regular.woff2') format('woff2');
+}
+
+/* KPPR palette */
+$kppr-yellow:      #F7E7A6;   // primary accent
+$kppr-yellow-pale: #FBF3DC;   // second, paler yellow — home banner fades into this before white
+$kppr-blue:        #BED9F4;   // secondary surface / accent
+$kppr-navy:        #304355;   // dark neutral — the only text-safe color in this palette (AAA on every other swatch)
+$kppr-bg:          #FDFDFD;   // light neutral — page background
+$kppr-white:       #FFFFFF;   // navbar / chrome surface
+$kppr-gold:        #E3B23C;   // decorative-only accent (sketched stars) — richer than $kppr-yellow so it
+                               // actually reads against the pale intro band; never used for text
+
+/* Page background: light neutral instead of the theme's default pure white.
+   site.color_theme is fixed to "light" (see _config.yml) — no dark mode to
+   account for here. */
+html {
+  --background: #{$kppr-bg};
+}
+
+/* Home banner: solid brand yellow instead of a background photo.
+   Modeled on jpublicrelations.com's hero — one huge, confident, bold-sans
+   statement line instead of a smaller italic-serif treatment. */
+.call-out.call-out_solid {
+  background: $kppr-yellow;
+  backdrop-filter: none;
+  color: $kppr-navy;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.call-out .call-out_title {
+  font-family: 'Palmer Lake Print', cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(2.8rem, 8vw, 5.2rem);
+  line-height: 1.25;
+  color: $kppr-navy;
+  text-shadow: none;
+}
+
+/* Navbar: solid white regardless of light/dark mode */
+header.site-header {
+  background: $kppr-white;
+}
+
+/* Avatar: KPPR wordmark logo is wide, not a square icon — let it keep its own aspect ratio */
+.site-header .avatar {
+  height: 2.4em;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  border-radius: 0;
+  padding: 0;
+  margin-top: -3px;
+}
+
+/* Home page intro: name, bio, About CTA */
+.home-intro {
+  /* Full-width pale-yellow band — the banner's rich yellow fades into this,
+     then this fades into the page background over its own last stretch
+     instead of cutting off in a hard line, so the carousel section below
+     (white) reads as a continuation of the page rather than a new box. */
+  background: linear-gradient(to bottom, $kppr-yellow-pale 0%, $kppr-yellow-pale 78%, var(--background) 100%);
+  position: relative;
+  overflow: hidden;
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: $padding-large $padding-medium;
+    text-align: center;
+  }
+
+  &__name {
+    font-family: 'Palmer Lake Print', cursive;
+    font-weight: 400;
+    font-size: 2.4em;
+    margin-bottom: 0.4em;
+  }
+
+  &__name-accent {
+    font-family: 'Palmer Lake Script', cursive;
+    font-weight: 400;
+    font-size: 1.35em;
+    display: inline-block;
+  }
+
+  /* Scattered hand-sketched sparkles behind the name/bio — decorative only,
+     so they sit in an unclipped absolute layer under the text (z-index 0)
+     rather than in the flow. */
+  &__sparkles {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  &__sparkle {
+    position: absolute;
+    width: 2em;
+    height: 2em;
+    color: $kppr-gold;
+    opacity: 0.7;
+    animation: home-intro-twinkle 3.6s ease-in-out infinite;
+
+    &--1 { top: 8%;  left: 12%; width: 1.6em; height: 1.6em; animation-delay: 0s; }
+    &--2 { top: 14%; right: 10%; width: 2.3em; height: 2.3em; animation-delay: 1.1s; }
+    &--3 { bottom: 18%; left: 7%; width: 1.4em; height: 1.4em; animation-delay: 2.2s; }
+    &--4 { bottom: 10%; right: 14%; width: 1.9em; height: 1.9em; animation-delay: 0.6s; }
+  }
+
+  /* Sketched shooting star that streaks in between the name and the bio copy,
+     then lands dead-center and freezes there, with the whole composition —
+     a one-shot entrance rather than a loop. Three layers, all sharing one 4s
+     timeline (iteration-count:1, fill-mode:forwards, so each holds its final
+     keyframe forever once it's done): a glow that settles into a soft
+     permanent halo, an arched trail of mini-sparkles that rides in and stays
+     put alongside the star, and the star itself, resting centered. */
+  &__divider {
+    position: relative;
+    height: 3.4em;
+    margin: 0.2em 0 0.8em;
+    overflow: hidden;
+  }
+
+  &__shooting-star-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3.2em;
+    height: 3.2em;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba($kppr-gold, 0.55) 0%, rgba($kppr-gold, 0) 72%);
+    transform: translate(-50%, -50%) scale(0.6);
+    opacity: 0;
+    animation: home-intro-shoot-glow 4s ease-out 1 forwards;
+  }
+
+  &__shooting-star-trail {
+    position: absolute;
+    top: 50%;
+    left: -20%;
+    width: 7.5em;
+    height: 2.5em;
+    color: $kppr-gold;
+    /* -76% instead of -50% because the arch's last (biggest) sparkle — the
+       point that should land under the star — sits at ~76% across the
+       trail's own viewBox, not dead-center. */
+    transform: translateY(-50%) translateX(-76%);
+    opacity: 0;
+    animation: home-intro-shoot-trail 4s ease-out 1 forwards;
+  }
+
+  &__shooting-star {
+    position: absolute;
+    top: 50%;
+    left: -20%;
+    width: 1.9em;
+    height: 1.9em;
+    color: $kppr-gold;
+    transform: translateY(-50%) scale(0.8);
+    opacity: 0;
+    animation: home-intro-shoot 4s ease-out 1 forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-intro__sparkle {
+      animation: none;
+      opacity: 0.8;
+    }
+
+    .home-intro__shooting-star-trail {
+      animation: none;
+      left: 50%;
+      opacity: 1;
+    }
+
+    .home-intro__shooting-star-glow {
+      animation: none;
+      opacity: 0.4;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .home-intro__shooting-star {
+      animation: none;
+      left: 50%;
+      opacity: 1;
+      transform: translateY(-50%) scale(1);
+    }
+  }
+
+  &__bio {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05em;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+  }
+}
+
+@keyframes home-intro-twinkle {
+  0%, 100% { opacity: 0.35; transform: scale(0.8) rotate(0deg); }
+  50%      { opacity: 1;    transform: scale(1.1) rotate(10deg); }
+}
+
+/* Streaks in from the left, arrives dead-center at 55% and does a couple of
+   quick sparkle pulses, then settles to scale(1)/rotate(0) by 100% — with
+   animation-fill-mode:forwards on the element, that final frame is where it
+   freezes, permanently, once the animation finishes (no reset, no loop). */
+@keyframes home-intro-shoot {
+  0%   { left: -20%; opacity: 0;   transform: translateY(-50%) scale(0.8) rotate(0deg); }
+  15%  { opacity: 1;               transform: translateY(-50%) scale(1)   rotate(0deg); }
+  55%  { left: 50%;  opacity: 1;   transform: translateY(-50%) scale(1)   rotate(0deg); }
+  68%  {                           transform: translateY(-50%) scale(1.3) rotate(-10deg); }
+  80%  {                           transform: translateY(-50%) scale(0.95) rotate(6deg); }
+  92%  {                           transform: translateY(-50%) scale(1.15) rotate(-4deg); }
+  100% { left: 50%;  opacity: 1;   transform: translateY(-50%) scale(1)   rotate(0deg); }
+}
+
+/* Rides in alongside the star and, with fill-mode:forwards, stays put and
+   visible once landed — the arch freezes as part of the final composition
+   instead of fading away. */
+@keyframes home-intro-shoot-trail {
+  0%   { left: -20%; opacity: 0; }
+  15%  { opacity: 0.9; }
+  55%  { left: 50%;  opacity: 1; }
+  100% { left: 50%;  opacity: 1; }
+}
+
+/* Blooms as the star lands and pulses, then eases down to a soft, permanent
+   halo — the "frame" around the star — instead of dimming back out. */
+@keyframes home-intro-shoot-glow {
+  0%, 52%  { opacity: 0;    transform: translate(-50%, -50%) scale(0.6); }
+  60%      { opacity: 0.9;  transform: translate(-50%, -50%) scale(1.05); }
+  80%      { opacity: 0.55; transform: translate(-50%, -50%) scale(1); }
+  100%     { opacity: 0.4;  transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Sharp corners, letterspaced caps — modeled on J/PR's blocky "LET'S CONNECT" button
+   instead of the theme's default soft, rounded pill. Shared by the home CTA and
+   the About page's contact button, so both look like one consistent button style. */
+a.button.home-intro__cta,
+a.button.about-hero__cta {
+  background: $kppr-yellow;
+  border-color: $kppr-yellow;
+  color: $kppr-navy;
+  font-weight: bold;
+  font-size: 0.9em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 0;
+  padding: 0.9em 1.8em;
+
+  &:hover {
+    background: $kppr-navy;
+    border-color: $kppr-navy;
+    color: $kppr-yellow;
+  }
+}
+
+/* Featured project carousel */
+.project-carousel {
+  max-width: 900px;
+  margin: 0 auto $padding-large auto;
+  /* Top padding gives the heading room to breathe below the intro band's
+     fade-to-white edge, instead of sitting right at the seam. */
+  padding: 2.5rem $padding-medium $padding-large $padding-medium;
+
+  &__heading {
+    font-family: 'Palmer Lake Script', cursive;
+    font-weight: 400;
+    font-size: 2.4em;
+    color: $kppr-navy;
+    text-align: center;
+    margin: 0 0 1em;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  &__viewport {
+    flex: 1 1 auto;
+    overflow: hidden;
+    border-radius: $border-radius;
+  }
+
+  &__track {
+    display: flex;
+    transition: transform 0.4s ease;
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__image {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+  }
+
+  // Fixed height + line-clamped text so every slide matches, regardless of how long
+  // its excerpt is — flex rows stretch all slides to the tallest one otherwise.
+  &__caption {
+    height: 150px;
+    overflow: hidden;
+    padding: 1.2em 1em 0 1em;
+    text-align: center;
+  }
+
+  &__title {
+    font-family: 'Palmer Lake Print', cursive;
+    font-weight: 400;
+    font-size: 1.7em;
+    margin-bottom: 0.35em;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+  }
+
+  &__desc {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text);
+    margin-bottom: 0.6em;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+  &__link {
+    font-weight: bold;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__arrow {
+    flex: 0 0 auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text);
+    padding: 0.5em;
+
+    svg {
+      width: 1.4em;
+      height: 1.4em;
+      display: block;
+    }
+
+    &:hover {
+      color: var(--link);
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    margin-top: 1em;
+  }
+
+  &__dot {
+    width: 0.6em;
+    height: 0.6em;
+    border-radius: 50%;
+    border: none;
+    background: var(--border);
+    cursor: pointer;
+    padding: 0;
+
+    &.is-active {
+      background: $kppr-yellow;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .project-carousel__track {
+      transition: none;
+    }
+  }
+
+  @media screen and (max-width: $break) {
+    .project-carousel__image {
+      height: 220px;
+    }
+  }
+}
+
+/* About page: photo in an organic mask beside the bio, modeled on
+   jayacunzo.com's intro hero — soft color backdrop instead of his gray blob. */
+.about-hero {
+  /* The theme floats every <article> (see article{@extend .comments} in
+     layouts/_posts.scss), which breaks margin:auto centering — cancel it. */
+  float: none;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem $padding-medium;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+
+  &__photo-wrap {
+    flex: 0 0 auto;
+    position: relative;
+    width: 320px;
+    height: 380px;
+  }
+
+  &__photo-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -1.5rem;
+    background: $kppr-blue;
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  /* Clip boundary lives here, separate from the ::before halo above so the
+     halo can still bleed past the photo's own edges. Same 50% radius as the
+     halo (just a smaller, concentric ellipse) so the photo's edge lines up
+     with the circular outline behind it instead of cutting an off-center blob. */
+  &__photo-clip {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 72%;
+    display: block;
+    /* Zoom the photo's content itself, independent of the clip boundary above */
+    transform: scale(1.15);
+  }
+
+  &__text {
+    flex: 1 1 auto;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05em;
+    line-height: 1.7;
+
+    p {
+      margin: 0 0 1.3em;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+      font-weight: 600;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-top: 1.8em;
+  }
+
+  @media screen and (max-width: $break) {
+    flex-direction: column;
+    text-align: center;
+    padding: 2.5rem $padding-medium;
+    gap: 2.5rem;
+
+    &__photo-wrap {
+      width: 260px;
+      height: 310px;
+    }
+
+    &__actions {
+      justify-content: center;
+    }
+  }
+}
+
+/* Circular LinkedIn icon button beside the Contact Me CTA — same hover-invert
+   language as the CTA button, just outlined instead of filled at rest. */
+.about-hero__linkedin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 2.6em;
+  height: 2.6em;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid $kppr-navy;
+  color: $kppr-navy;
+
+  svg {
+    width: 1.15em;
+    height: 1.15em;
+    display: block;
+  }
+
+  &:hover {
+    background: $kppr-navy;
+    color: $kppr-yellow;
+  }
+}
+
+/* About page: "Why Create More Than You Consume" — the philosophy behind the
+   site's hero line, told in the reverse layout of the hero above (photo on the
+   right, offset yellow card behind it instead of the hero's blue halo/blob) so
+   the two photo sections don't read as identical blocks stacked on top of each other. */
+.why-create {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem $padding-medium 4rem;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 4rem;
+
+  &__photo-wrap {
+    flex: 0 0 auto;
+    position: relative;
+    width: 320px;
+    height: 380px;
+  }
+
+  &__photo-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translate(0.9rem, 0.9rem);
+    background: $kppr-yellow;
+    border-radius: $border-radius;
+    z-index: 0;
+  }
+
+  &__photo {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+    border-radius: $border-radius;
+  }
+
+  &__text {
+    flex: 1 1 auto;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05em;
+    line-height: 1.7;
+  }
+
+  &__title {
+    font-family: 'Palmer Lake Script', cursive;
+    font-weight: 400;
+    font-size: 2.2em;
+    line-height: 1.2;
+    color: $kppr-navy;
+    margin: 0 0 0.5em;
+  }
+
+  &__body {
+    margin: 0 0 1.3em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @media screen and (max-width: $break) {
+    flex-direction: column;
+    text-align: center;
+    padding: 0.5rem $padding-medium 3rem;
+    gap: 2.5rem;
+
+    &__photo-wrap {
+      width: 260px;
+      height: 310px;
+    }
+  }
+}
+
+/* About page: "My Story" — a longer narrative section below the hero + contact button.
+   Narrower reading column than the hero above, since it's prose meant to be read
+   start to finish rather than skimmed. */
+.my-story {
+  padding: 1rem $padding-medium 4rem;
+
+  &__inner {
+    max-width: 700px;
+    margin: 0 auto;
+    /* Same 1.05em bump the hero bio and "Why Create..." text blocks use — the
+       theme's own p{font-size:.8em} rule then lands exactly where it does for
+       those, instead of coming out 5% smaller here. */
+    font-size: 1.05em;
+  }
+
+  &__title {
+    font-family: 'Palmer Lake Script', cursive;
+    font-weight: 400;
+    font-size: 2.6em;
+    color: $kppr-navy;
+    text-align: center;
+    margin: 0 0 1.4em;
+  }
+
+  &__heading {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 1.25em;
+    color: $kppr-navy;
+    margin: 1.8em 0 0.5em;
+  }
+
+  &__body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.75;
+    margin: 0;
+  }
+}
+
+/* About page: story-photo carousel. Same interaction mechanics as the home page's
+   project carousel (see assets/js/project-carousel.js, which drives both via
+   data-carousel attributes) but a simpler single-caption slide, since these are
+   personal photos rather than project cards needing a title/link. */
+.story-carousel {
+  max-width: 900px;
+  margin: 0 auto $padding-large auto;
+  padding: 0 $padding-medium $padding-large $padding-medium;
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  &__viewport {
+    flex: 1 1 auto;
+    overflow: hidden;
+    border-radius: $border-radius;
+  }
+
+  &__track {
+    display: flex;
+    transition: transform 0.4s ease;
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    margin: 0;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 5 / 4;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__caption {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95em;
+    color: var(--meta);
+    text-align: center;
+    padding: 1em 1em 0;
+  }
+
+  &__arrow {
+    flex: 0 0 auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $kppr-navy;
+    padding: 0.5em;
+
+    svg {
+      width: 1.4em;
+      height: 1.4em;
+      display: block;
+    }
+
+    &:hover {
+      color: var(--link);
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    margin-top: 1em;
+  }
+
+  &__dot {
+    width: 0.6em;
+    height: 0.6em;
+    border-radius: 50%;
+    border: none;
+    background: var(--border);
+    cursor: pointer;
+    padding: 0;
+
+    &.is-active {
+      background: $kppr-yellow;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .story-carousel__track {
+      transition: none;
+    }
+  }
+
+}
+
+/* Content Creation & UGC page: intro line under the yellow banner, then a
+   loose wrapping grid of live Instagram/TikTok embeds. Flexbox instead of a
+   strict CSS grid — embed heights vary a lot by platform/post, so a real grid
+   would leave awkward gaps; wrapping flex items settle into their own rows. */
+.content-intro {
+  padding: 3rem $padding-medium 1rem;
+
+  &__inner {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05em;
+    line-height: 1.7;
+    color: $kppr-navy;
+  }
+}
+
+/* Content Creation & UGC page: a compact "meet the creator" beat between the
+   intro line and the brand strip — same circular-photo-plus-halo language as
+   the About page's hero, scaled down to mini/aside size, and yellow instead
+   of blue so it reads as this page's own accent rather than a repeat of About. */
+.creator-bio {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 1rem $padding-medium 3rem;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+
+  /* Sized to roughly match the height of the two-paragraph bio next to it —
+     bigger than the original single-paragraph-era circle. A true dynamic
+     "match the text's exact rendered height" (via flex stretch, or via JS
+     measuring .creator-bio__text) turned out to be a real feedback loop:
+     making the photo taller also makes it wider (fixed aspect ratio), which
+     steals width from the text column, which makes the text wrap taller,
+     which grows the photo further — it never settles. A larger fixed size
+     sidesteps that instability entirely. */
+  &__photo-wrap {
+    flex: 0 0 auto;
+    position: relative;
+    width: 240px;
+    height: 285px;
+  }
+
+  &__photo-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -1rem;
+    background: $kppr-yellow;
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  &__photo-clip {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Full-body beach shot — cover alone barely crops it (image and
+       container are close in aspect ratio), so without extra zoom she
+       reads as a tiny figure in a landscape. Zoom in on her face/shoulders
+       like a real headshot crop. object-position's X has no effect here
+       (the image's width already matches the container exactly under
+       cover, so there's no horizontal slack for it to act on) — the
+       translateX is what actually shifts the crop toward her face, which
+       sits left of the photo's true horizontal center since she's turned
+       back over her shoulder. */
+    object-position: center 34%;
+    display: block;
+    transform: scale(2) translateX(12px);
+  }
+
+  &__text {
+    flex: 1 1 auto;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  &__tagline {
+    font-family: 'Palmer Lake Print', cursive;
+    font-size: 2em;
+    color: $kppr-navy;
+    margin: 0 0 0.3em;
+  }
+
+  &__location {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    font-family: 'Palmer Lake Print', cursive;
+    font-weight: 400;
+    font-size: 1.2em;
+    color: var(--meta);
+    margin: 0 0 1.1em;
+
+    i {
+      color: $kppr-gold;
+      font-size: 0.85em;
+    }
+  }
+
+  &__body {
+    font-size: 0.95em;
+    line-height: 1.65;
+    color: var(--text);
+    margin: 0 0 1em;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 0.7em;
+    margin-top: 1em;
+  }
+
+  &__social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4em;
+    height: 2.4em;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid $kppr-navy;
+    color: $kppr-navy;
+    font-size: 1em;
+
+    &:hover {
+      background: $kppr-navy;
+      color: $kppr-yellow;
+    }
+  }
+
+  /* VSCO has no icon glyph in Font Awesome's brand set — it's a wordmark,
+     not a pictorial logo — so this one's a tiny letter badge instead of an
+     <i> icon, sized to fit the same circle as its siblings. */
+  &__social--text span {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.5em;
+    letter-spacing: 0.02em;
+  }
+
+  @media screen and (max-width: $break) {
+    flex-direction: column;
+    /* In column mode "stretch" is a horizontal cross-axis behavior, not
+       what we want (it would pull the circle full-width) — go back to a
+       plain fixed-size photo, centered above the text like before. */
+    align-items: center;
+    text-align: center;
+    padding: 0.5rem $padding-medium 2.5rem;
+    gap: 1.5rem;
+
+    &__photo-wrap {
+      width: 200px;
+      height: 238px;
+    }
+
+    &__location {
+      justify-content: center;
+    }
+
+    &__actions {
+      justify-content: center;
+    }
+  }
+}
+
+/* One labeled section per campaign/story group (Beauty + Skincare, Technology,
+   USC Student Life, Events, Fashion...) — a generous band of space + a bold
+   rule above each group's title, so categories read as clearly separate
+   chapters rather than one long undifferentiated wall of embeds. Extra
+   bottom padding too, so the LAST campaign in a group doesn't run straight
+   into the next group's heading. */
+.content-group {
+  padding-bottom: 2rem;
+
+  &__heading {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem $padding-medium 0;
+    border-top: 2px solid var(--border);
+  }
+
+  &:first-of-type &__heading {
+    border-top: none;
+    padding-top: 1rem;
+  }
+
+  &__title {
+    font-family: 'Palmer Lake Print', cursive;
+    font-weight: 400;
+    font-size: 2em;
+    color: $kppr-navy;
+    text-align: center;
+    margin: 2rem 0 0;
+  }
+}
+
+/* One campaign within a category, laid out as two columns — the summary
+   (what it was, my role, the result) sitting beside its own swipeable
+   carousel of the actual pieces, the way a caption sits next to a carousel
+   post on Instagram rather than stacked above a static row of embeds.
+   Campaigns within the same group get a hairline rule between them so each
+   one still reads as its own beat, not a continuous scroll. */
+.campaign {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem $padding-medium;
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+
+  & + & {
+    border-top: 1px solid var(--border);
+  }
+
+  &__info {
+    flex: 0 0 34%;
+    max-width: 34%;
+  }
+
+  &__media {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  &__title {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 1.2em;
+    letter-spacing: 0.02em;
+    color: $kppr-navy;
+    margin: 0 0 0.6em;
+  }
+
+  &__summary {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: var(--text);
+    margin: 0;
+  }
+
+  &__summary--placeholder {
+    color: var(--meta);
+    font-style: italic;
+    border: 1px dashed var(--border);
+    border-radius: $border-radius;
+    padding: 0.8em 1em;
+  }
+
+  @media screen and (max-width: $break) {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2.5rem $padding-medium;
+
+    &__info {
+      flex: 0 0 auto;
+      max-width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+/* Swipeable "social carousel" for one campaign's pieces — same track/slide
+   mechanics as .project-carousel (driven by the same assets/js/project-
+   carousel.js via [data-carousel] attributes), just narrower and without a
+   heading, since it lives beside the campaign summary instead of under a
+   page-level title. Single-piece campaigns render without data-carousel at
+   all (see embed_carousel.liquid), so --single never needs arrows/dots. */
+.campaign-carousel {
+  max-width: 420px;
+
+  &--single {
+    margin: 0 auto;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  &__viewport {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: $border-radius;
+  }
+
+  &__track {
+    display: flex;
+    transition: transform 0.4s ease;
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__badge {
+    display: inline-block;
+    align-self: flex-start;
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.75em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $kppr-navy;
+    background: $kppr-yellow-pale;
+    border-radius: $border-radius;
+    padding: 0.3em 0.7em;
+    margin-bottom: 0.6em;
+  }
+
+  // Real view/like/comment counts pulled from Instagram Insights and TikTok
+  // Studio — a plain text line under the embed, not another loud badge.
+  &__stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 0.9em;
+    list-style: none;
+    margin: 0.8em 0 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85em;
+    color: var(--meta);
+
+    strong {
+      color: $kppr-navy;
+      font-weight: 700;
+    }
+  }
+
+  &__arrow {
+    flex: 0 0 auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text);
+    padding: 0.4em;
+
+    svg {
+      width: 1.3em;
+      height: 1.3em;
+      display: block;
+    }
+
+    &:hover {
+      color: var(--link);
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    margin-top: 1em;
+  }
+
+  &__dot {
+    width: 0.55em;
+    height: 0.55em;
+    border-radius: 50%;
+    border: none;
+    background: var(--border);
+    cursor: pointer;
+    padding: 0;
+
+    &.is-active {
+      background: $kppr-yellow;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .campaign-carousel__track {
+      transition: none;
+    }
+  }
+}
+
+/* "Brands & Organizations I've Worked With" — a quick credibility strip
+   between the intro line and the embed grid. Real logo marks, sourced from
+   each brand's own site/official assets. Grayscale-at-rest, full color on
+   hover — keeps a row of otherwise mismatched logo colors (JBL's orange box,
+   Clinique's black wordmark, the Coliseum's tan icon) reading as one calm
+   unified row instead of a clashing lineup, a common "as seen in" pattern. */
+.brand-strip {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 2rem $padding-medium;
+  margin: 1rem 0 0;
+
+  &__inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__label {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.8em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--meta);
+    margin: 0 0 1.4em;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem 3rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.6em;
+
+    img {
+      display: block;
+      height: 100%;
+      width: auto;
+      max-width: 160px;
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: filter 0.2s ease, opacity 0.2s ease;
+    }
+
+    &:hover img,
+    &:focus-within img {
+      filter: none;
+      opacity: 1;
+    }
+  }
+
+  @media screen and (max-width: $break) {
+    &__list {
+      gap: 1.6em 2em;
+    }
+
+    &__item {
+      height: 2.1em;
+    }
+  }
+}
+
+/* Site footer: a confident navy band to close out every page — the one
+   deliberate dark surface on an otherwise all-light-pastel site, and a home
+   for real navy + yellow contrast that doesn't touch the hero banner. */
+.site-footer {
+  @extend %padding-post;
+  z-index: -1;
+  background: $kppr-navy;
+  color: $kppr-bg;
+  text-align: center;
+  padding-top: 3.5rem;
+  padding-bottom: 2.5rem;
+
+  &__inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  &__name {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 1.3em;
+    color: $kppr-bg;
+    margin: 0 0 0.15em;
+  }
+
+  &__tagline {
+    font-family: 'Palmer Lake Print', cursive;
+    font-weight: 400;
+    font-size: 1.1em;
+    color: $kppr-yellow;
+    margin: 0 0 1.8em;
+  }
+
+  &__nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6em 1.6em;
+    margin-bottom: 1.8em;
+
+    a {
+      color: $kppr-bg;
+      font-family: 'Glacial Indifference', sans-serif;
+      font-weight: 700;
+      font-size: 0.8em;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+
+      &:hover {
+        color: $kppr-yellow;
+      }
+    }
+  }
+
+  &__icons {
+    margin-bottom: 1.8em;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 0.7em;
+    }
+
+    li {
+      display: inline-block;
+    }
+
+    // Recolor the theme's default fa-stack circle icons for a navy footer:
+    // yellow circle, navy glyph (overriding Font Awesome's fa-inverse white).
+    .fa-circle {
+      color: $kppr-yellow;
+    }
+
+    .fa-inverse {
+      color: $kppr-navy;
+    }
+
+    a:hover .fa-circle {
+      filter: brightness(0.92);
+    }
+  }
+
+  &__copyright {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8em;
+    color: rgba($kppr-bg, 0.65);
+    margin: 0;
+  }
+}

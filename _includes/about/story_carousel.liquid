@@ -1,0 +1,30 @@
+<!-- Photo captions in pages/about.md are drafted from what's visibly on each
+     banner/sign — check them for accuracy, they're not verified facts. -->
+<section class="story-carousel" data-carousel aria-roledescription="carousel" aria-label="Photos from my story">
+    <div class="story-carousel__row">
+        <button type="button" class="story-carousel__arrow story-carousel__arrow--prev" data-carousel-prev aria-label="Previous photo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 7 12l8 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <div class="story-carousel__viewport">
+            <div class="story-carousel__track" data-carousel-track>
+                {% for photo in page.story_photos %}
+                <figure class="story-carousel__slide{% if forloop.first %} is-active{% endif %}" data-carousel-slide aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}" aria-roledescription="slide" aria-label="{{ forloop.index }} of {{ forloop.length }}">
+                    <img class="story-carousel__image" src="{{ photo.image | relative_url }}" alt="{{ photo.caption }}" style="object-position: center {{ photo.focal_y | default: 50 }}%;">
+                    <figcaption class="story-carousel__caption">{{ photo.caption }}</figcaption>
+                </figure>
+                {% endfor %}
+            </div>
+        </div>
+
+        <button type="button" class="story-carousel__arrow story-carousel__arrow--next" data-carousel-next aria-label="Next photo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 8 7-8 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+    </div>
+
+    <div class="story-carousel__dots" role="tablist" aria-label="Choose a photo">
+        {% for photo in page.story_photos %}
+        <button type="button" class="story-carousel__dot{% if forloop.first %} is-active{% endif %}" data-carousel-dot role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="Photo {{ forloop.index }}"></button>
+        {% endfor %}
+    </div>
+</section>

@@ -1,11 +1,22 @@
 <footer class="site-footer">
-    <p class="text">
-        {{ site.footer_text | default: "Powered by <a href='https://jekyllrb.com/'>Jekyll</a> with <a href='https://github.com/sylhare/Type-on-Strap'>Type on Strap</a>" }}</p>
-    <div class="footer-icons">
-        <ul>
-            <!-- Social icons from Font Awesome, if enabled -->
-            {% include social/icons.liquid %}
-        </ul>
+    <div class="site-footer__inner">
+        <p class="site-footer__name">Klarissa Palacios</p>
+        <p class="site-footer__tagline">Create More Than You Consume</p>
+
+        <nav class="site-footer__nav" aria-label="Footer">
+            <a href="{{ '/about/' | relative_url }}">About</a>
+            <a href="{{ '/content-creation/' | relative_url }}">Content Creation &amp; UGC</a>
+            <a href="{{ '/portfolio/' | relative_url }}">Portfolio</a>
+            <a href="mailto:klarissaipalacios@gmail.com">Contact</a>
+        </nav>
+
+        <div class="site-footer__icons">
+            <ul>
+                {% include social/icons.liquid %}
+            </ul>
+        </div>
+
+        <p class="site-footer__copyright">&copy; {{ "now" | date: "%Y" }} Klarissa Palacios. All rights reserved.</p>
     </div>
     {% if site.mermaid %}
         <script type="module">
@@ -14,5 +25,3 @@
         </script>
     {% endif %}
 </footer>
-
-
