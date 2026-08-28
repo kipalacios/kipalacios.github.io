@@ -16,7 +16,6 @@
                     </div>
                     <div class="project-carousel__caption">
                         <h3 class="project-carousel__title">{{ item.title }}</h3>
-                        <p class="project-carousel__desc">{{ item.excerpt | strip_html | strip_newlines | truncate: 110 }}</p>
                         <a class="project-carousel__link" href="{{ item.redirect_url | default: item.url | relative_url }}">View project &rarr;</a>
                     </div>
                 </article>

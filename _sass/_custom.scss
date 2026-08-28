@@ -410,7 +410,7 @@ a.button.creator-bio__collab-cta {
   // Fixed height + line-clamped text so every slide matches, regardless of how long
   // its excerpt is — flex rows stretch all slides to the tallest one otherwise.
   &__caption {
-    height: 185px;
+    height: 175px;
     overflow: hidden;
     padding: 1.2em 1em 0 1em;
     text-align: center;
@@ -422,16 +422,6 @@ a.button.creator-bio__collab-cta {
     font-size: 1.7em;
     line-height: 1.15;
     margin-bottom: 0.35em;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-  }
-
-  &__desc {
-    font-family: 'Poppins', sans-serif;
-    color: var(--text);
-    margin-bottom: 0.6em;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
