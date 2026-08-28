@@ -287,7 +287,8 @@ header.site-header {
    instead of the theme's default soft, rounded pill. Shared by the home CTA and
    the About page's contact button, so both look like one consistent button style. */
 a.button.home-intro__cta,
-a.button.about-hero__cta {
+a.button.about-hero__cta,
+a.button.creator-bio__collab-cta {
   background: $kppr-yellow;
   border-color: $kppr-yellow;
   color: $kppr-navy;
@@ -926,6 +927,23 @@ a.button.about-hero__cta {
     font-weight: 700;
     font-size: 0.5em;
     letter-spacing: 0.02em;
+  }
+
+  /* A second, distinct ask below the social row — brand/PR outreach
+     specifically, routed to its own inbox rather than her personal email,
+     with its own line of copy so it doesn't read as the same CTA repeated. */
+  &__collab {
+    margin-top: 1.6em;
+    padding-top: 1.6em;
+    border-top: 1px solid var(--border);
+  }
+
+  &__collab-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: var(--text);
+    margin: 0 0 1em;
   }
 
   @media screen and (max-width: $break) {
