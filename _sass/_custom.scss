@@ -350,9 +350,14 @@ a.button.creator-bio__collab-cta {
     flex-direction: column;
   }
 
+  /* 4:5 — the standard Instagram feed "portrait post" ratio, instead of a
+     fixed pixel height. The old 320px-tall crop was much wider/shorter than
+     these images actually are, so it cropped in from the top and bottom and
+     cut off text baked into the graphics themselves (e.g. the Open Mind
+     post's headline). 4:5 keeps far more of the image intact. */
   &__image {
     width: 100%;
-    height: 320px;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
     display: block;
   }
