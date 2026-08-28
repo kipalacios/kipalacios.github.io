@@ -10,7 +10,7 @@ favicon: assets/favicon.ico                             # Icon displayed in the 
 
 # Header and footer text
 header_text: Create More Than You Consume                # Home page banner text
-header_feature_image: assets/img/header/triangular.jpeg  # Fallback social-share image (og:image)
+header_feature_image: assets/img/kppr-logo.png            # Fallback social-share image (og:image) — the KPPR logo
 # Footer content lives directly in _includes/default/footer.liquid now (name,
 # tagline, nav, icons, copyright) — footer_text is no longer used.
 
