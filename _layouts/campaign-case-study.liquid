@@ -14,12 +14,32 @@ layout: default
         {% if page.role %}<span><strong>Role</strong> {{ page.role }}</span>{% endif %}
       </div>
       {% if page.summary %}<p class="case-hero__summary">{{ page.summary }}</p>{% endif %}
+
+      {% if page.at_a_glance %}
+      <div class="case-hero__stats">
+        {% for item in page.at_a_glance %}
+        <div class="case-hero__stat">
+          <span class="case-hero__stat-num">{{ item.stat }}</span>
+          <span class="case-hero__stat-label">{{ item.label }}</span>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
       {% if page.concept_note %}<p class="case-hero__note">{{ page.concept_note }}</p>{% endif %}
     </div>
   </header>
 
+  <nav class="case-jumpnav" aria-label="Jump to campaign section">
+    {% if page.overview %}<a href="#brief">Brief</a>{% endif %}
+    {% if page.paid %}<a href="#paid">Paid</a>{% endif %}
+    {% if page.earned %}<a href="#earned">Earned</a>{% endif %}
+    {% if page.shared %}<a href="#shared">Shared</a>{% endif %}
+    {% if page.owned %}<a href="#owned">Owned</a>{% endif %}
+  </nav>
+
   {% if page.overview %}
-  <section class="case-band case-band--yellow">
+  <section id="brief" class="case-band case-band--yellow">
     <div class="case-band__sparkles" aria-hidden="true">
       {% include home/sparkle.liquid class="case-band__sparkle case-band__sparkle--1" %}
       {% include home/sparkle.liquid class="case-band__sparkle case-band__sparkle--2" %}
@@ -57,7 +77,7 @@ layout: default
   {% endif %}
 
   {% if page.paid %}
-  <section class="case-section">
+  <section id="paid" class="case-section">
     <div class="case-section__inner">
       <p class="case-section__label">Paid Media</p>
       <h2 class="case-section__title">Creative Brief &amp; Placement Strategy</h2>
@@ -91,7 +111,7 @@ layout: default
   {% endif %}
 
   {% if page.earned %}
-  <section class="case-section case-section--tint">
+  <section id="earned" class="case-section case-section--tint">
     <div class="case-section__inner">
       <p class="case-section__label">Earned Media</p>
       <h2 class="case-section__title">Thought Leadership Op-Ed</h2>
@@ -99,9 +119,22 @@ layout: default
         <h3 class="case-article__headline">{{ page.earned.headline }}</h3>
         {% if page.earned.subhead %}<p class="case-article__subhead">{{ page.earned.subhead }}</p>{% endif %}
         <p class="case-article__byline">{{ page.earned.byline }}<br>{{ page.earned.dateline }}</p>
+        {% assign earned_visible = 2 %}
         {% for paragraph in page.earned.body_paragraphs %}
-        <p>{{ paragraph }}</p>
+        {% if forloop.index <= earned_visible %}<p>{{ paragraph }}</p>{% endif %}
         {% endfor %}
+        {% if page.earned.body_paragraphs.size > earned_visible %}
+        <div class="case-article__more" id="earned-more" hidden>
+          {% for paragraph in page.earned.body_paragraphs %}
+          {% if forloop.index > earned_visible %}<p>{{ paragraph }}</p>{% endif %}
+          {% endfor %}
+        </div>
+        <button type="button" class="case-article__toggle" data-toggle-target="earned-more" aria-expanded="false">
+          <span data-label-more>Continue reading</span>
+          <span data-label-less hidden>Show less</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        {% endif %}
       </div>
       {% if page.earned.strategy_note %}
       <div class="case-note">
@@ -114,15 +147,28 @@ layout: default
   {% endif %}
 
   {% if page.shared %}
-  <section class="case-section">
+  <section id="shared" class="case-section">
     <div class="case-section__inner">
       <p class="case-section__label">Shared Media</p>
       <h2 class="case-section__title">Blog Post</h2>
       <div class="case-article">
         {% if page.shared.blog_title %}<h3 class="case-article__headline">{{ page.shared.blog_title }}</h3>{% endif %}
+        {% assign shared_visible = 2 %}
         {% for paragraph in page.shared.blog_paragraphs %}
-        <p>{{ paragraph }}</p>
+        {% if forloop.index <= shared_visible %}<p>{{ paragraph }}</p>{% endif %}
         {% endfor %}
+        {% if page.shared.blog_paragraphs.size > shared_visible %}
+        <div class="case-article__more" id="shared-more" hidden>
+          {% for paragraph in page.shared.blog_paragraphs %}
+          {% if forloop.index > shared_visible %}<p>{{ paragraph }}</p>{% endif %}
+          {% endfor %}
+        </div>
+        <button type="button" class="case-article__toggle" data-toggle-target="shared-more" aria-expanded="false">
+          <span data-label-more>Continue reading</span>
+          <span data-label-less hidden>Show less</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        {% endif %}
       </div>
     </div>
   </section>
@@ -173,7 +219,7 @@ layout: default
   {% endif %}
 
   {% if page.owned.swot %}
-  <section class="case-section case-section--tint">
+  <section id="owned" class="case-section case-section--tint">
     <div class="case-section__inner">
       <p class="case-section__label">Owned Media</p>
       <h2 class="case-section__title">SWOT Analysis</h2>
@@ -222,3 +268,4 @@ layout: default
 </article>
 
 <script defer src="{{ '/assets/js/project-carousel.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+<script defer src="{{ '/assets/js/case-collapse.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

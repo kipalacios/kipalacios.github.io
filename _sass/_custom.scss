@@ -1538,6 +1538,39 @@ a.button.creator-bio__collab-cta {
     margin: 0 0 1.3em;
   }
 
+  &__stats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2.2em;
+    margin: 0 0 1.6em;
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__stat-num {
+    font-family: 'Palmer Lake Print', cursive;
+    font-weight: 400;
+    font-size: 1.7em;
+    color: $kppr-navy;
+    line-height: 1;
+  }
+
+  &__stat-label {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.66em;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--meta);
+    max-width: 12em;
+    margin-top: 0.4em;
+  }
+
   &__note {
     font-family: 'Poppins', sans-serif;
     font-size: 0.85em;
@@ -1548,6 +1581,37 @@ a.button.creator-bio__collab-cta {
     border-radius: $border-radius;
     padding: 1em 1.2em;
     text-align: left;
+  }
+}
+
+/* Anchor row letting a scanning recruiter jump straight to whichever PESO
+   section they care about, instead of scrolling past everything. */
+.case-jumpnav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6em;
+  max-width: 1040px;
+  margin: 0 auto 2.5rem;
+  padding: 0 $padding-medium;
+
+  a {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.72em;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $kppr-navy;
+    text-decoration: none;
+    border: 1.5px solid rgba($kppr-navy, 0.25);
+    border-radius: 999px;
+    padding: 0.55em 1.1em;
+
+    &:hover {
+      background: $kppr-navy;
+      color: $kppr-yellow;
+      border-color: $kppr-navy;
+    }
   }
 }
 
@@ -1729,6 +1793,44 @@ a.button.creator-bio__collab-cta {
     line-height: 1.75;
     color: var(--text);
     margin: 0 0 1.1em;
+  }
+
+  &__more {
+    /* [hidden] already removes it from layout entirely; nothing else needed
+       here beyond inheriting the same p{} rules above. */
+  }
+
+  &__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.78em;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: $kppr-navy;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: 0.2em;
+    cursor: pointer;
+
+    svg {
+      width: 0.9em;
+      height: 0.9em;
+      transition: transform 0.2s ease;
+    }
+
+    &:hover { color: $kppr-blue-deep; }
+
+    &.is-expanded svg {
+      transform: rotate(180deg);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      svg { transition: none; }
+    }
   }
 }
 

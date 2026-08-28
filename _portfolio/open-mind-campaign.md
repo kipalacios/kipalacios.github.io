@@ -17,6 +17,13 @@ summary: >
   A full-funnel campaign positioning free Gemini AI Labs inside all 73 Los Angeles Public Library
   branches as an everyday learning tool for Gen Z and Gen Alpha — reframing both AI and the public
   library itself as accessible, modern, and built for them.
+at_a_glance:
+  - stat: "73"
+    label: "LA Public Library branches"
+  - stat: "10–18"
+    label: "primary audience age range"
+  - stat: "500K+"
+    label: "students already ride LA Metro free on GoPass"
 overview:
   problem: >
     AI is rapidly shaping education and the workforce, yet access to it remains uneven. Students in
