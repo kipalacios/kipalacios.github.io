@@ -458,14 +458,30 @@ a.button.creator-bio__collab-cta {
   margin: 0 auto;
   padding: 4rem $padding-medium;
   display: flex;
-  align-items: center;
+  /* Top-aligned instead of centered, and the photo below is sized taller
+     (closer to the height of the bio copy) so the two columns read as one
+     balanced block instead of a small photo floating in a sea of
+     whitespace next to a much taller paragraph of text. */
+  align-items: flex-start;
   gap: 4rem;
+
+  /* Photo + actions live in their own column now (instead of the CTA
+     trailing the bio copy) so the leftover space under the shorter photo
+     does something useful, rather than the two columns just visually
+     stopping at very different heights. */
+  &__photo-col {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
 
   &__photo-wrap {
     flex: 0 0 auto;
     position: relative;
-    width: 320px;
-    height: 380px;
+    width: 380px;
+    height: 640px;
   }
 
   &__photo-wrap::before {
@@ -520,7 +536,6 @@ a.button.creator-bio__collab-cta {
     display: flex;
     align-items: center;
     gap: 1em;
-    margin-top: 1.8em;
   }
 
   @media screen and (max-width: $break) {

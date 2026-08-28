@@ -5,13 +5,12 @@ layout: default
     <h1 class="call-out_title">About Me</h1>
 </div>
 <article class="about-hero">
-    <div class="about-hero__photo-wrap">
-        <div class="about-hero__photo-clip">
-            <img class="about-hero__photo" src="{{ page.photo | relative_url }}" alt="{{ page.photo_alt | default: page.title }}" loading="lazy">
+    <div class="about-hero__photo-col">
+        <div class="about-hero__photo-wrap">
+            <div class="about-hero__photo-clip">
+                <img class="about-hero__photo" src="{{ page.photo | relative_url }}" alt="{{ page.photo_alt | default: page.title }}" loading="lazy">
+            </div>
         </div>
-    </div>
-    <div class="about-hero__text">
-        {{ content }}
         <div class="about-hero__actions">
             <a class="button about-hero__cta" href="mailto:klarissaipalacios@gmail.com">Contact Me</a>
             {% if page.linkedin %}
@@ -20,6 +19,9 @@ layout: default
             </a>
             {% endif %}
         </div>
+    </div>
+    <div class="about-hero__text">
+        {{ content }}
     </div>
 </article>
 
