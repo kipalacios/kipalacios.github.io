@@ -2062,3 +2062,141 @@ a.button.creator-bio__collab-cta {
   text-align: center;
   padding: 1rem $padding-medium 4rem;
 }
+
+/* ==========================================================================
+   Portfolio index (_layouts/portfolio-index.liquid)
+   Replaces the theme's default magnifying-glass grid with cards that match
+   the rest of the site — Palmer Lake Print titles, the same yellow
+   call-out hero every other custom page uses, and the "Concept Campaign"
+   badge language introduced on the case-study page.
+   ========================================================================== */
+
+.portfolio-index__subtitle {
+  max-width: 640px;
+  margin: 2rem auto 0;
+  padding: 0 $padding-medium;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05em;
+  color: var(--meta);
+  text-align: center;
+}
+
+.portfolio-index {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.2rem;
+  max-width: 1040px;
+  margin: 2.5rem auto 0;
+  padding: 0 $padding-medium 4rem;
+
+  @media screen and (max-width: $break) {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+}
+
+.portfolio-index__card {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+  background: var(--card-background);
+  border: 1px solid rgba($kppr-navy, 0.1);
+  border-radius: $border-radius;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba($kppr-navy, 0.14);
+
+    .portfolio-index__image {
+      transform: scale(1.04);
+    }
+
+    .portfolio-index__link {
+      color: $kppr-blue-deep;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    &:hover .portfolio-index__image { transform: none; }
+  }
+}
+
+.portfolio-index__image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: $kppr-yellow-pale;
+}
+
+.portfolio-index__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-index__badge {
+  position: absolute;
+  top: 0.9em;
+  right: 0.9em;
+  font-family: 'Glacial Indifference', sans-serif;
+  font-weight: 700;
+  font-size: 0.68em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $kppr-navy;
+  background: $kppr-yellow;
+  border-radius: 999px;
+  padding: 0.45em 0.9em;
+  box-shadow: 0 2px 8px rgba($kppr-navy, 0.18);
+}
+
+.portfolio-index__body {
+  padding: 1.4em 1.5em 1.6em;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-index__title {
+  font-family: 'Palmer Lake Print', cursive;
+  font-weight: 400;
+  font-size: 1.7em;
+  color: $kppr-navy;
+  margin: 0 0 0.25em;
+}
+
+.portfolio-index__meta {
+  font-family: 'Glacial Indifference', sans-serif;
+  font-weight: 700;
+  font-size: 0.68em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $kppr-gold;
+  margin: 0 0 0.6em;
+}
+
+.portfolio-index__desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9em;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0 0 1em;
+}
+
+.portfolio-index__link {
+  margin-top: auto;
+  font-family: 'Glacial Indifference', sans-serif;
+  font-weight: 700;
+  font-size: 0.78em;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: $kppr-navy;
+  transition: color 0.2s ease;
+}

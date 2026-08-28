@@ -1,0 +1,32 @@
+---
+layout: default
+---
+<div class="call-out call-out_solid">
+    <h1 class="call-out_title">{{ page.title }}</h1>
+</div>
+
+{% if page.subtitle %}
+<p class="portfolio-index__subtitle">{{ page.subtitle }}</p>
+{% endif %}
+
+<div class="portfolio-index">
+    {% for item in site.portfolio %}
+    <a class="portfolio-index__card" href="{{ item.redirect_url | default: item.url | relative_url }}">
+        <div class="portfolio-index__image-wrap">
+            <img class="portfolio-index__image" src="{{ item.img | relative_url }}" alt="{{ item.title }}" loading="lazy">
+            {% if item.concept %}<span class="portfolio-index__badge">Concept Campaign</span>{% endif %}
+        </div>
+        <div class="portfolio-index__body">
+            <h2 class="portfolio-index__title">{{ item.title }}</h2>
+            {% if item.industry %}
+            <p class="portfolio-index__meta">{{ item.industry | join: ' &middot; ' }}</p>
+            {% endif %}
+            {% assign blurb = item.summary | default: item.excerpt %}
+            {% if blurb %}
+            <p class="portfolio-index__desc">{{ blurb | strip_html | truncatewords: 26 }}</p>
+            {% endif %}
+            <span class="portfolio-index__link">View project &rarr;</span>
+        </div>
+    </a>
+    {% endfor %}
+</div>
