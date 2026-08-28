@@ -1463,6 +1463,12 @@ a.button.creator-bio__collab-cta {
    ========================================================================== */
 
 .case-study {
+  /* The theme floats every <article> (see article{@extend .comments} in
+     layouts/_posts.scss), which breaks margin:auto centering and makes the
+     block shrink-to-fit its content instead of filling the page — cancel
+     it, same fix as .about-hero. */
+  float: none;
+  width: 100%;
   max-width: 780px;
   margin: 0 auto;
 }
