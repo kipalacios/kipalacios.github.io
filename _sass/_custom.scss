@@ -915,16 +915,19 @@ a.button.creator-bio__collab-cta {
     top: 0;
     left: 0;
     z-index: 1;
-    width: 68%;
-    height: 65%;
+    width: 62%;
+    height: 56%;
     overflow: hidden;
     border-radius: 50%;
     border: 4px solid $kppr-bg;
     box-shadow: 0 10px 22px rgba($kppr-navy, 0.16);
 
+    /* Slightly smaller circles pushed further down/right than they'd need
+       to be just to fit — the two now graze each other at the diagonal
+       rather than eclipsing a third of one another. */
     &--second {
-      top: 35%;
-      left: 32%;
+      top: 44%;
+      left: 38%;
       z-index: 2;
     }
   }
