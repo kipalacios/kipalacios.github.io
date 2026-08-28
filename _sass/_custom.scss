@@ -980,25 +980,58 @@ a.button.creator-bio__collab-cta {
 .content-group {
   padding-bottom: 2rem;
 
+  /* A full-bleed pale-blue band behind each category title — the same
+     "solid color banner" language as the page's own yellow header, just in
+     the brand's secondary blue, so each category reads as its own chapter
+     the way a section divider in a magazine would, not a thin rule. */
   &__heading {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 5rem $padding-medium 0;
-    border-top: 2px solid var(--border);
+    position: relative;
+    width: 100%;
+    background: $kppr-blue;
+    padding: 3rem $padding-medium;
+    margin: 0 0 2.5rem;
+    overflow: hidden;
   }
 
   &:first-of-type &__heading {
-    border-top: none;
-    padding-top: 1rem;
+    margin-top: 0;
+  }
+
+  /* Same hand-sketched sparkle motif as the home page intro — reused here
+     (same include, same twinkle keyframes) so the category bands feel like
+     part of the same site rather than a one-off pattern. */
+  &__sparkles {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  &__sparkle {
+    position: absolute;
+    width: 1.6em;
+    height: 1.6em;
+    /* Navy instead of the usual gold sparkle color — gold would still work
+       here, but navy (the palette's other blue) reads more clearly against
+       the pale blue band itself instead of blending into it. */
+    color: $kppr-navy;
+    opacity: 0.6;
+    animation: home-intro-twinkle 3.6s ease-in-out infinite;
+
+    &--1 { top: 18%;  left: 8%;  width: 1.3em; height: 1.3em; animation-delay: 0s; }
+    &--2 { top: 55%;  left: 92%; width: 1.6em; height: 1.6em; animation-delay: 1.3s; }
+    &--3 { top: 70%;  left: 15%; width: 1.1em; height: 1.1em; animation-delay: 2s; }
   }
 
   &__title {
+    position: relative;
+    z-index: 1;
     font-family: 'Palmer Lake Print', cursive;
     font-weight: 400;
     font-size: 2em;
     color: $kppr-navy;
     text-align: center;
-    margin: 2rem 0 0;
+    margin: 0;
   }
 }
 
@@ -1107,21 +1140,6 @@ a.button.creator-bio__collab-cta {
     align-items: center;
   }
 
-  &__badge {
-    display: inline-block;
-    align-self: flex-start;
-    font-family: 'Glacial Indifference', sans-serif;
-    font-weight: 700;
-    font-size: 0.75em;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: $kppr-navy;
-    background: $kppr-yellow-pale;
-    border-radius: $border-radius;
-    padding: 0.3em 0.7em;
-    margin-bottom: 0.6em;
-  }
-
   // Real view/like/comment counts pulled from Instagram Insights and TikTok
   // Studio — a plain text line under the embed, not another loud badge.
   &__stats {
@@ -1139,6 +1157,42 @@ a.button.creator-bio__collab-cta {
     strong {
       color: $kppr-navy;
       font-weight: 700;
+    }
+  }
+
+  /* Stand-in for pieces whose embed never renders (see embed_carousel.liquid) —
+     same footprint as a real embed (roughly matches the platform badge +
+     ~326px-wide card above), so it doesn't look like a mistake or a missing
+     asset, just a different, deliberate way of presenting that one piece. */
+  &__fallback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7em;
+    width: 100%;
+    max-width: 326px;
+  }
+
+  &__fallback-image {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    display: block;
+    border-radius: $border-radius;
+    transition: opacity 0.2s ease;
+
+    .campaign-carousel__fallback:hover & {
+      opacity: 0.88;
+    }
+  }
+
+  &__fallback-link {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    color: $kppr-navy;
+
+    .campaign-carousel__fallback:hover & {
+      text-decoration: underline;
     }
   }
 

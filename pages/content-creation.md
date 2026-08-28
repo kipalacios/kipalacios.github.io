@@ -69,7 +69,7 @@ content_groups:
           voice to short-form video — translating a legacy print title's aesthetic into
           content built for Reels.
         pieces:
-          - url: https://www.instagram.com/reels/DKm_poNP-R6/
+          - url: https://www.instagram.com/reel/DKm_poNP-R6/
             platform: instagram
       - name: BiotechBeauty
         summary: >
@@ -77,8 +77,11 @@ content_groups:
           to feel like a genuine recommendation rather than an ad, aimed at driving
           trust-based consideration.
         pieces:
-          - url: https://www.instagram.com/reels/DJhuxZTzbT1/
+          - url: https://www.instagram.com/reel/DJhuxZTzbT1/
             platform: instagram
+            embed_fallback: true
+            fallback_image: assets/img/portfolio/biotechbeauty-event.jpg
+            fallback_alt: Klarissa Palacios at the BiotechBeauty pop-up event
   - name: Technology
     campaigns:
       - name: JBL Audio
@@ -152,7 +155,7 @@ content_groups:
           capturing the panels, energy, and community from a first-person, on-the-ground
           perspective.
         pieces:
-          - url: https://www.instagram.com/reels/DMbXAxryl-D/
+          - url: https://www.instagram.com/reel/DMbXAxryl-D/
             platform: instagram
       - name: Swim & Social
         summary: >

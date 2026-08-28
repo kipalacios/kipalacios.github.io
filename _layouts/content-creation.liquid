@@ -80,6 +80,11 @@ layout: default
 {% for group in page.content_groups %}
 <section class="content-group">
     <div class="content-group__heading">
+        <div class="content-group__sparkles" aria-hidden="true">
+            {% include home/sparkle.liquid class="content-group__sparkle content-group__sparkle--1" %}
+            {% include home/sparkle.liquid class="content-group__sparkle content-group__sparkle--2" %}
+            {% include home/sparkle.liquid class="content-group__sparkle content-group__sparkle--3" %}
+        </div>
         <h2 class="content-group__title">{{ group.name }}</h2>
     </div>
 
