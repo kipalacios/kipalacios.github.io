@@ -1146,9 +1146,12 @@ a.button.creator-bio__collab-cta {
     border-top: 1px solid var(--border);
   }
 
+  /* Wider than the media column needs to give up: the Instagram/TikTok
+     embeds beside it cap out around 540px on their own, so the extra
+     width here comes out of slack rather than squeezing the embed. */
   &__info {
-    flex: 0 0 34%;
-    max-width: 34%;
+    flex: 0 0 50%;
+    max-width: 50%;
   }
 
   &__media {
