@@ -11,7 +11,9 @@
             <div class="project-carousel__track" data-carousel-track>
                 {% for item in site.portfolio %}
                 <article class="project-carousel__slide{% if forloop.first %} is-active{% endif %}" data-carousel-slide aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}" aria-roledescription="slide" aria-label="{{ forloop.index }} of {{ forloop.length }}">
-                    <img class="project-carousel__image" src="{{ item.img | relative_url }}" alt="{{ item.title }}">
+                    <div class="project-carousel__image-wrap">
+                        <img class="project-carousel__image" src="{{ item.img | relative_url }}" alt="{{ item.title }}">
+                    </div>
                     <div class="project-carousel__caption">
                         <h3 class="project-carousel__title">{{ item.title }}</h3>
                         <p class="project-carousel__desc">{{ item.excerpt | strip_html | strip_newlines | truncate: 110 }}</p>

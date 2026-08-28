@@ -66,6 +66,20 @@ html {
   --background: #{$kppr-bg};
 }
 
+/* Type on Strap's base reset (_sass/base/_global.scss) adds 9% horizontal
+   padding to every <img>/<iframe>/<embed>/<object>/<video> on the page —
+   meant to keep an image inline in blog-post prose from touching the text
+   column's edges. It was silently insetting every custom photo component
+   on this site too (hero photos, carousels, case-study images, portfolio
+   cards) inside their own containers, shrinking what object-fit actually
+   had to work with. Reset it for real content areas; a future inline
+   blog-post image can still opt back into the theme's spacing on its own. */
+main.content img,
+main.content iframe,
+main.content video {
+  padding: 0;
+}
+
 /* Home banner: solid brand yellow instead of a background photo.
    Modeled on jpublicrelations.com's hero — one huge, confident, bold-sans
    statement line instead of a smaller italic-serif treatment. */
@@ -343,21 +357,52 @@ a.button.creator-bio__collab-cta {
     transition: transform 0.4s ease;
   }
 
+  /* This is an <article> tag, and the theme gives every <article> a
+     responsive horizontal padding meant for blog-post text columns
+     (article{@extend .comments} in layouts/_posts.scss, same rule whose
+     float:left we already cancel on .about-hero/.case-study) — cancel the
+     padding too, or it silently eats into the space the image and caption
+     actually have to work with. This was the real cause of the image
+     looking cropped/off-ratio, not the aspect-ratio math itself. */
   &__slide {
     flex: 0 0 100%;
     min-width: 0;
     display: flex;
     flex-direction: column;
+    padding: 0;
   }
 
   /* 4:5 — the standard Instagram feed "portrait post" ratio, instead of a
      fixed pixel height. The old 320px-tall crop was much wider/shorter than
      these images actually are, so it cropped in from the top and bottom and
      cut off text baked into the graphics themselves (e.g. the Open Mind
-     post's headline). 4:5 keeps far more of the image intact. */
-  &__image {
+     post's headline). 4:5 keeps far more of the image intact.
+
+     aspect-ratio lives on this wrapper div rather than the <img> itself —
+     the <img> is a flex item (.project-carousel__slide is display:flex),
+     and Chrome collapses a flex item's width when aspect-ratio is set
+     directly on it instead of stretching to fill. Wrapping sidesteps that
+     entirely, same pattern already used by .portfolio-index__image-wrap. */
+  /* The `aspect-ratio` property + a percentage width was collapsing this
+     box's rendered width to a fraction of its container in this nested
+     flex context (track > slide > wrap), for reasons that resisted every
+     standard fix (min-width:0, flex-shrink:0, align-self, even removing
+     aspect-ratio itself made no difference to the already-resolved width).
+     The classic padding-top percentage technique sidesteps whatever that
+     was entirely — padding-top resolves against the element's own width,
+     which has a much simpler, long-established resolution path. */
+  &__image-wrap {
+    position: relative;
     width: 100%;
-    aspect-ratio: 4 / 5;
+    padding-top: 125%; // 5/4 — a 4:5 box, expressed as height/width
+    overflow: hidden;
+  }
+
+  &__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     display: block;
   }
@@ -1469,6 +1514,11 @@ a.button.creator-bio__collab-cta {
   width: 100%;
   max-width: 1040px;
   margin: 0 auto;
+  /* Same theme article-padding as .project-carousel__slide above — this
+     was quietly shrinking the usable width below the 1040px just set,
+     since every inner section already brings its own $padding-medium
+     gutter and doesn't need the theme's on top of it. */
+  padding: 0;
 }
 
 .case-hero {
