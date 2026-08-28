@@ -325,7 +325,7 @@ a.button.creator-bio__collab-cta {
 
 /* Featured project carousel */
 .project-carousel {
-  max-width: 900px;
+  max-width: 560px;
   margin: 0 auto $padding-large auto;
   /* Top padding gives the heading room to breathe below the intro band's
      fade-to-white edge, instead of sitting right at the seam. */
@@ -410,7 +410,7 @@ a.button.creator-bio__collab-cta {
   // Fixed height + line-clamped text so every slide matches, regardless of how long
   // its excerpt is — flex rows stretch all slides to the tallest one otherwise.
   &__caption {
-    height: 150px;
+    height: 185px;
     overflow: hidden;
     padding: 1.2em 1em 0 1em;
     text-align: center;
@@ -420,10 +420,11 @@ a.button.creator-bio__collab-cta {
     font-family: 'Palmer Lake Print', cursive;
     font-weight: 400;
     font-size: 1.7em;
+    line-height: 1.15;
     margin-bottom: 0.35em;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
     overflow: hidden;
   }
 
