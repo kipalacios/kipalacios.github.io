@@ -29,14 +29,19 @@ layout: default
             <div class="creator-bio__photo-clip">
                 <img class="creator-bio__photo" src="{{ page.creator_bio.photo | relative_url }}" alt="{{ page.creator_bio.photo_alt | default: page.title }}" loading="lazy">
             </div>
+            {% comment %}
+            Lives inside the photo box (not below it in the flex column) so it
+            can sit right under the oval rather than at the bottom of the
+            full-height column.
+            {% endcomment %}
+            {% if page.creator_bio.username %}
+            {% if page.creator_bio.instagram_url %}
+            <a class="creator-bio__username" href="{{ page.creator_bio.instagram_url }}" target="_blank" rel="noopener noreferrer">@{{ page.creator_bio.username }}</a>
+            {% else %}
+            <p class="creator-bio__username">@{{ page.creator_bio.username }}</p>
+            {% endif %}
+            {% endif %}
         </div>
-        {% if page.creator_bio.username %}
-        {% if page.creator_bio.instagram_url %}
-        <a class="creator-bio__username" href="{{ page.creator_bio.instagram_url }}" target="_blank" rel="noopener noreferrer">@{{ page.creator_bio.username }}</a>
-        {% else %}
-        <p class="creator-bio__username">@{{ page.creator_bio.username }}</p>
-        {% endif %}
-        {% endif %}
     </div>
     <div class="creator-bio__text">
         <p class="creator-bio__tagline">{{ page.creator_bio.tagline }}</p>
