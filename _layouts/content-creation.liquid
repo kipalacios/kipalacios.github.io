@@ -17,14 +17,18 @@ layout: default
 <section class="creator-bio">
     <div class="creator-bio__photo-col">
         <div class="creator-bio__photo-wrap">
+            <div class="creator-bio__sparkles" aria-hidden="true">
+                {% include home/sparkle.liquid class="creator-bio__sparkle creator-bio__sparkle--1" %}
+                {% include home/sparkle.liquid class="creator-bio__sparkle creator-bio__sparkle--2" %}
+                {% include home/sparkle.liquid class="creator-bio__sparkle creator-bio__sparkle--3" %}
+                {% include home/sparkle.liquid class="creator-bio__sparkle creator-bio__sparkle--4" %}
+                {% include home/sparkle.liquid class="creator-bio__sparkle creator-bio__sparkle--5" %}
+                {% include home/sparkle.liquid class="creator-bio__sparkle creator-bio__sparkle--6" %}
+                {% include home/sparkle.liquid class="creator-bio__sparkle creator-bio__sparkle--7" %}
+            </div>
             <div class="creator-bio__photo-clip">
                 <img class="creator-bio__photo" src="{{ page.creator_bio.photo | relative_url }}" alt="{{ page.creator_bio.photo_alt | default: page.title }}" loading="lazy">
             </div>
-            {% if page.creator_bio.photo2 %}
-            <div class="creator-bio__photo-clip creator-bio__photo-clip--second">
-                <img class="creator-bio__photo creator-bio__photo--second" src="{{ page.creator_bio.photo2 | relative_url }}" alt="{{ page.creator_bio.photo2_alt | default: page.title }}" loading="lazy">
-            </div>
-            {% endif %}
         </div>
         {% if page.creator_bio.username %}
         {% if page.creator_bio.instagram_url %}
