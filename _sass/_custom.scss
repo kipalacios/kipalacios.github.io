@@ -55,6 +55,9 @@ $kppr-bg:          #FDFDFD;   // light neutral — page background
 $kppr-white:       #FFFFFF;   // navbar / chrome surface
 $kppr-gold:        #E3B23C;   // decorative-only accent (sketched stars) — richer than $kppr-yellow so it
                                // actually reads against the pale intro band; never used for text
+$kppr-blue-deep:   #3D6EA6;   // decorative-only accent (sketched stars on the blue category bands) —
+                               // a true medium blue, deeper than $kppr-blue so it doesn't wash into the
+                               // band, and more clearly "blue" than $kppr-navy reads at a glance
 
 /* Page background: light neutral instead of the theme's default pure white.
    site.color_theme is fixed to "light" (see _config.yml) — no dark mode to
@@ -1011,11 +1014,12 @@ a.button.creator-bio__collab-cta {
     position: absolute;
     width: 1.6em;
     height: 1.6em;
-    /* Navy instead of the usual gold sparkle color — gold would still work
-       here, but navy (the palette's other blue) reads more clearly against
-       the pale blue band itself instead of blending into it. */
-    color: $kppr-navy;
-    opacity: 0.6;
+    /* A deeper, true blue instead of the usual gold sparkle color — gold
+       clashes with this band, plain $kppr-blue disappears into it, and
+       navy reads more gray than blue at this size. This is the palette's
+       one dedicated "blue star" shade. */
+    color: $kppr-blue-deep;
+    opacity: 0.85;
     animation: home-intro-twinkle 3.6s ease-in-out infinite;
 
     &--1 { top: 18%;  left: 8%;  width: 1.3em; height: 1.3em; animation-delay: 0s; }
