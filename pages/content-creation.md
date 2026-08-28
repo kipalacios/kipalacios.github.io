@@ -7,6 +7,7 @@ creator_bio:
   photo: assets/img/beach-headshot.jpg
   photo_alt: Klarissa Palacios
   tagline: UGC + Content Creator
+  username: klarissa.palacios
   location: Los Angeles / Orange County — willing to travel
   bio_paragraphs:
     - >

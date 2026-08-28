@@ -684,9 +684,9 @@ a.button.creator-bio__collab-cta {
   }
 
   &__heading {
-    font-family: 'Glacial Indifference', sans-serif;
-    font-weight: 700;
-    font-size: 1.25em;
+    font-family: 'Palmer Lake Print', cursive;
+    font-weight: 400;
+    font-size: 1.5em;
     color: $kppr-navy;
     margin: 1.8em 0 0.5em;
   }
@@ -831,11 +831,35 @@ a.button.creator-bio__collab-cta {
      steals width from the text column, which makes the text wrap taller,
      which grows the photo further — it never settles. A larger fixed size
      sidesteps that instability entirely. */
+  &__photo-col {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
   &__photo-wrap {
     flex: 0 0 auto;
     position: relative;
     width: 240px;
     height: 285px;
+  }
+
+  /* Instagram-style handle under the photo, in the same hand-lettered
+     "Palm" font as the tagline/location beside it — links out to the
+     Instagram profile when one is set, otherwise renders as plain text. */
+  &__username {
+    font-family: 'Palmer Lake Print', cursive;
+    font-weight: 400;
+    font-size: 1.3em;
+    color: $kppr-navy;
+    text-decoration: none;
+    margin: 0;
+
+    &[href]:hover {
+      text-decoration: underline;
+    }
   }
 
   &__photo-wrap::before {
