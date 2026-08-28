@@ -2,8 +2,7 @@
 layout: page
 title : Portfolio 
 permalink: /portfolio/
-subtitle: "Projects I am working on" 
-feature-img: "assets/img/pexels/computer.jpeg"
+subtitle: "PR &amp; advertising campaign work — client and concept" 
 position: 4
 tags: [Page]
 ---
