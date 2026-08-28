@@ -1469,7 +1469,7 @@ a.button.creator-bio__collab-cta {
      it, same fix as .about-hero. */
   float: none;
   width: 100%;
-  max-width: 780px;
+  max-width: 1040px;
   margin: 0 auto;
 }
 
@@ -1478,7 +1478,7 @@ a.button.creator-bio__collab-cta {
   text-align: center;
 
   &__inner {
-    max-width: 700px;
+    max-width: 860px;
     margin: 0 auto;
   }
 
@@ -1582,7 +1582,7 @@ a.button.creator-bio__collab-cta {
   &__inner {
     position: relative;
     z-index: 1;
-    max-width: 700px;
+    max-width: 860px;
     margin: 0 auto;
   }
 
@@ -1639,7 +1639,7 @@ a.button.creator-bio__collab-cta {
   }
 
   &__inner {
-    max-width: 700px;
+    max-width: 860px;
     margin: 0 auto;
   }
 
