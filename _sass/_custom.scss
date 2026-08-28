@@ -659,14 +659,12 @@ a.button.creator-bio__collab-cta {
   }
 }
 
-/* About page: "My Story" — a longer narrative section below the hero + contact button.
-   Narrower reading column than the hero above, since it's prose meant to be read
-   start to finish rather than skimmed. */
+/* About page: "My Story" — a longer narrative section below the hero + contact button. */
 .my-story {
   padding: 1rem $padding-medium 4rem;
 
   &__inner {
-    max-width: 700px;
+    max-width: 860px;
     margin: 0 auto;
     /* Same 1.05em bump the hero bio and "Why Create..." text blocks use — the
        theme's own p{font-size:.8em} rule then lands exactly where it does for
