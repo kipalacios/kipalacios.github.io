@@ -850,7 +850,7 @@ a.button.creator-bio__collab-cta {
    the About page's hero, scaled down to mini/aside size, and yellow instead
    of blue so it reads as this page's own accent rather than a repeat of About. */
 .creator-bio {
-  max-width: 980px;
+  max-width: 1080px;
   margin: 0 auto;
   padding: 1rem $padding-medium 3rem;
   display: flex;
@@ -874,11 +874,15 @@ a.button.creator-bio__collab-cta {
      with the single mobile override below. The taller wrap (vs. the old
      single-circle version) is deliberate: it's meant to run the same
      rough height as the multi-paragraph bio beside it. */
+  /* Sized to run roughly the height of the bio copy beside it rather than
+     stopping a third of the way down — the old 300x380 wrap left ~380px of
+     dead space under the photos. Both circles scale off this box, so the
+     one mobile override below rescales the whole composition. */
   &__photo-wrap {
     flex: 0 0 auto;
     position: relative;
-    width: 300px;
-    height: 380px;
+    width: 350px;
+    height: 660px;
   }
 
   /* Instagram-style handle under the photo, in the same hand-lettered
@@ -906,19 +910,19 @@ a.button.creator-bio__collab-cta {
     top: 0;
     left: 0;
     z-index: 1;
-    width: 62%;
-    height: 56%;
+    width: 70%;
+    height: 52%;
     overflow: hidden;
     border-radius: 50%;
     border: 11px solid $kppr-yellow;
     box-shadow: 0 8px 20px rgba($kppr-navy, 0.14);
 
-    /* Slightly smaller circles pushed further down/right than they'd need
-       to be just to fit — the two now graze each other at the diagonal
-       rather than eclipsing a third of one another. */
+    /* Staggered top-left to bottom-right across the taller box, so the
+       pair spans the copy's height while still grazing at the diagonal
+       instead of eclipsing one another. */
     &--second {
-      top: 44%;
-      left: 38%;
+      top: 48%;
+      left: 30%;
       z-index: 2;
     }
   }
@@ -1048,9 +1052,11 @@ a.button.creator-bio__collab-cta {
     padding: 0.5rem $padding-medium 2.5rem;
     gap: 1.5rem;
 
+    /* Stacked on mobile there's no copy column running alongside for the
+       tall composition to balance against, so scale it back down. */
     &__photo-wrap {
-      width: 230px;
-      height: 292px;
+      width: 235px;
+      height: 430px;
     }
 
     &__location {
