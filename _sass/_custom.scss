@@ -854,17 +854,11 @@ a.button.creator-bio__collab-cta {
   margin: 0 auto;
   padding: 1rem $padding-medium 3rem;
   display: flex;
-  align-items: center;
+  /* Top-aligned so the photo pair reads as its own column running
+     parallel to the copy, not centered against it. */
+  align-items: flex-start;
   gap: 2.5rem;
 
-  /* Sized to roughly match the height of the two-paragraph bio next to it —
-     bigger than the original single-paragraph-era circle. A true dynamic
-     "match the text's exact rendered height" (via flex stretch, or via JS
-     measuring .creator-bio__text) turned out to be a real feedback loop:
-     making the photo taller also makes it wider (fixed aspect ratio), which
-     steals width from the text column, which makes the text wrap taller,
-     which grows the photo further — it never settles. A larger fixed size
-     sidesteps that instability entirely. */
   &__photo-col {
     flex: 0 0 auto;
     display: flex;
@@ -873,11 +867,31 @@ a.button.creator-bio__collab-cta {
     gap: 0.9rem;
   }
 
+  /* Two equal-size photos, diagonally staggered with a modest overlap
+     (roughly a third of each), instead of one big hero circle with a
+     small accent corner. Sized as a percentage of this wrap rather than
+     fixed px so both photos — and the overlap itself — scale together
+     with the single mobile override below. The taller wrap (vs. the old
+     single-circle version) is deliberate: it's meant to run the same
+     rough height as the multi-paragraph bio beside it. */
   &__photo-wrap {
     flex: 0 0 auto;
     position: relative;
-    width: 240px;
-    height: 285px;
+    width: 300px;
+    height: 380px;
+  }
+
+  /* Yellow backdrop shape behind the whole pair — same halo language as
+     the rest of the site's photo treatments, just sized to the full
+     diagonal footprint instead of one circle, so it still peeks out
+     around both photos' edges instead of disappearing behind them. */
+  &__photo-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -0.9rem;
+    background: $kppr-yellow;
+    border-radius: 50%;
+    z-index: 0;
   }
 
   /* Instagram-style handle under the photo, in the same hand-lettered
@@ -896,22 +910,23 @@ a.button.creator-bio__collab-cta {
     }
   }
 
-  &__photo-wrap::before {
-    content: '';
-    position: absolute;
-    inset: -1rem;
-    background: $kppr-yellow;
-    border-radius: 50%;
-    z-index: 0;
-  }
-
   &__photo-clip {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     z-index: 1;
-    width: 100%;
-    height: 100%;
+    width: 68%;
+    height: 65%;
     overflow: hidden;
     border-radius: 50%;
+    border: 4px solid $kppr-bg;
+    box-shadow: 0 10px 22px rgba($kppr-navy, 0.16);
+
+    &--second {
+      top: 35%;
+      left: 32%;
+      z-index: 2;
+    }
   }
 
   &__photo {
@@ -930,6 +945,13 @@ a.button.creator-bio__collab-cta {
     object-position: center 34%;
     display: block;
     transform: scale(2) translateX(12px);
+
+    /* Flower shop photo is already a close, well-framed portrait crop —
+       none of the beach photo's zoom compensation is needed here. */
+    &--second {
+      object-position: center 22%;
+      transform: none;
+    }
   }
 
   &__text {
@@ -1033,8 +1055,8 @@ a.button.creator-bio__collab-cta {
     gap: 1.5rem;
 
     &__photo-wrap {
-      width: 200px;
-      height: 238px;
+      width: 230px;
+      height: 292px;
     }
 
     &__location {

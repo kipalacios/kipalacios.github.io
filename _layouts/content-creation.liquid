@@ -20,6 +20,11 @@ layout: default
             <div class="creator-bio__photo-clip">
                 <img class="creator-bio__photo" src="{{ page.creator_bio.photo | relative_url }}" alt="{{ page.creator_bio.photo_alt | default: page.title }}" loading="lazy">
             </div>
+            {% if page.creator_bio.photo2 %}
+            <div class="creator-bio__photo-clip creator-bio__photo-clip--second">
+                <img class="creator-bio__photo creator-bio__photo--second" src="{{ page.creator_bio.photo2 | relative_url }}" alt="{{ page.creator_bio.photo2_alt | default: page.title }}" loading="lazy">
+            </div>
+            {% endif %}
         </div>
         {% if page.creator_bio.username %}
         {% if page.creator_bio.instagram_url %}

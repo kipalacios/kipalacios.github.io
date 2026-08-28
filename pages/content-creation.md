@@ -6,6 +6,8 @@ position: 2
 creator_bio:
   photo: assets/img/beach-headshot.jpg
   photo_alt: Klarissa Palacios
+  photo2: assets/img/flowershop-web.jpg
+  photo2_alt: Klarissa Palacios holding lilies at a flower shop
   tagline: UGC + Content Creator
   username: klarissa.palacios
   location: Los Angeles / Orange County — willing to travel
