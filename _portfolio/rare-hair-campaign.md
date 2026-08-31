@@ -4,6 +4,9 @@ title: Rare Hair
 permalink: /portfolio/rare-hair/
 img: "assets/img/portfolio/rare-hair/cover.jpg"
 campaign_key: rare-hair
+# Single accent token for this campaign, used only for small markers
+# (section labels, pillar eyebrows). The page chrome stays KPPR.
+accent: "#7A1E3C"
 concept: true
 client: "Rare Beauty (concept engagement)"
 industry: ["Beauty", "Accessibility & Inclusive Design"]

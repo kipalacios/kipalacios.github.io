@@ -1821,7 +1821,10 @@ a.button.creator-bio__collab-cta {
     font-size: 0.72em;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: $kppr-gold;
+    /* Per-campaign accent where one is set (see `accent:` in a campaign's
+       front matter); the site's gold otherwise. Only these small markers
+       take the client's colour — the page chrome stays KPPR. */
+    color: var(--campaign-accent, #{$kppr-gold});
     margin: 0 0 0.4em;
   }
 
@@ -1947,7 +1950,7 @@ a.button.creator-bio__collab-cta {
 .case-note {
   margin-top: 1.6em;
   padding: 1.1em 1.3em;
-  border-left: 3px solid $kppr-gold;
+  border-left: 3px solid var(--campaign-accent, #{$kppr-gold});
   background: var(--card-background);
   border-radius: 0 $border-radius $border-radius 0;
 
@@ -2359,7 +2362,7 @@ a.button.creator-bio__collab-cta {
     font-size: 0.68em;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: $kppr-gold;
+    color: var(--campaign-accent, #{$kppr-gold});
     margin-bottom: 0.4em;
   }
 

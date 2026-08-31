@@ -19,7 +19,7 @@ layout: default
         <div class="portfolio-index__body">
             <h2 class="portfolio-index__title">{{ item.title }}</h2>
             {% if item.industry %}
-            <p class="portfolio-index__meta">{{ item.industry | join: ' &middot; ' }}</p>
+            <p class="portfolio-index__meta"{% if item.accent %} style="color: {{ item.accent }};"{% endif %}>{{ item.industry | join: ' &middot; ' }}</p>
             {% endif %}
             {% assign blurb = item.summary | default: item.excerpt %}
             {% if blurb %}

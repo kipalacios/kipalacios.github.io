@@ -5,6 +5,11 @@ permalink: /portfolio/open-mind/
 # Looked up by the four sub-pages (layout: campaign-section) so all campaign
 # content stays in this one file rather than being duplicated across five.
 campaign_key: open-mind
+# Single accent token for this campaign (see rare-hair for rationale).
+# Google's deeper blue rather than #4285F4 — the brighter blue only
+# reaches 3.5:1 on this background, and a campaign about accessibility
+# shouldn't ship label text that fails contrast.
+accent: "#0B57D0"
 citations_pdf: assets/docs/open-mind/open-mind-citations.pdf
 pillars:
   - key: paid
