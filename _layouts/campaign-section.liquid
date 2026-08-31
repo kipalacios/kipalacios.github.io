@@ -1,0 +1,81 @@
+---
+layout: default
+---
+{% comment %}
+One PESO pillar as a standalone page. The campaign's content lives in a single
+_portfolio document (matched on campaign_key) so there's one source of truth —
+this layout only resolves that document and renders the requested pillar, plus
+hub/prev/next navigation.
+{% endcomment %}
+{% assign campaign = site.portfolio | where: "campaign_key", page.campaign_key | first %}
+
+{% if campaign %}
+{% assign pillars = campaign.pillars %}
+
+<article class="case-study case-study--section">
+
+  <header class="case-hero case-hero--section">
+    <div class="case-hero__inner">
+      <a class="case-hero__kicker" href="{{ campaign.url | relative_url }}">&larr; {{ campaign.title }}</a>
+      <h1 class="case-hero__title">{{ page.title }}</h1>
+      {% if page.subtitle %}<p class="case-hero__summary">{{ page.subtitle }}</p>{% endif %}
+    </div>
+  </header>
+
+  <nav class="case-jumpnav" aria-label="Campaign sections">
+    {% for pillar in pillars %}
+    <a href="{{ pillar.url | relative_url }}"{% if pillar.key == page.pillar %} class="is-current" aria-current="page"{% endif %}>{{ pillar.label }}</a>
+    {% endfor %}
+  </nav>
+
+  {% case page.pillar %}
+    {% when 'paid'   %}{% include campaign/pillar_paid.liquid   campaign=campaign %}
+    {% when 'earned' %}{% include campaign/pillar_earned.liquid campaign=campaign %}
+    {% when 'shared' %}{% include campaign/pillar_shared.liquid campaign=campaign %}
+    {% when 'owned'  %}{% include campaign/pillar_owned.liquid  campaign=campaign %}
+  {% endcase %}
+
+  {% comment %} Previous / next within the PESO order, so the four pages can be read as one sequence. {% endcomment %}
+  {% assign prev = null %}
+  {% assign next = null %}
+  {% for pillar in pillars %}
+    {% if pillar.key == page.pillar %}
+      {% assign i = forloop.index0 %}
+      {% if i > 0 %}{% assign pi = i | minus: 1 %}{% assign prev = pillars[pi] %}{% endif %}
+      {% unless forloop.last %}{% assign ni = i | plus: 1 %}{% assign next = pillars[ni] %}{% endunless %}
+    {% endif %}
+  {% endfor %}
+
+  <nav class="case-pager" aria-label="Previous and next section">
+    <div class="case-pager__side">
+      {% if prev %}
+      <a class="case-pager__link" href="{{ prev.url | relative_url }}">
+        <span class="case-pager__dir">&larr; Previous</span>
+        <span class="case-pager__label">{{ prev.label }}</span>
+      </a>
+      {% endif %}
+    </div>
+    <a class="case-pager__hub" href="{{ campaign.url | relative_url }}">All sections</a>
+    <div class="case-pager__side case-pager__side--right">
+      {% if next %}
+      <a class="case-pager__link" href="{{ next.url | relative_url }}">
+        <span class="case-pager__dir">Next &rarr;</span>
+        <span class="case-pager__label">{{ next.label }}</span>
+      </a>
+      {% endif %}
+    </div>
+  </nav>
+
+</article>
+
+<script defer src="{{ '/assets/js/project-carousel.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+{% else %}
+<article class="case-study">
+  <header class="case-hero">
+    <div class="case-hero__inner">
+      <h1 class="case-hero__title">{{ page.title }}</h1>
+      <p class="case-hero__summary">This section's campaign could not be found.</p>
+    </div>
+  </header>
+</article>
+{% endif %}

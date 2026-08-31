@@ -1,0 +1,39 @@
+<!-- Paid Media pillar. `include.campaign` is the _portfolio document holding
+     the campaign's front matter, so this renders identically whether it's
+     called from the hub or from the standalone /paid/ sub-page. -->
+{% assign c = include.campaign %}
+<section class="case-section">
+    <div class="case-section__inner">
+        <p class="case-section__label">Paid Media</p>
+        <h2 class="case-section__title">Creative Brief &amp; Placement Strategy</h2>
+
+        {% if c.paid.tagline_strategy %}
+        <p class="case-section__lead">{{ c.paid.tagline_strategy }}</p>
+        {% endif %}
+
+        <div class="case-channels">
+            {% if c.paid.ooh %}
+            <div class="case-channels__col">
+                <h4>Out-of-Home</h4>
+                <ul>{% for item in c.paid.ooh %}<li>{{ item }}</li>{% endfor %}</ul>
+            </div>
+            {% endif %}
+            {% if c.paid.digital %}
+            <div class="case-channels__col">
+                <h4>Digital</h4>
+                <ul>{% for item in c.paid.digital %}<li>{{ item }}</li>{% endfor %}</ul>
+            </div>
+            {% endif %}
+            {% if c.paid.print %}
+            <div class="case-channels__col">
+                <h4>Print &amp; Newsletters</h4>
+                <ul>{% for item in c.paid.print %}<li>{{ item }}</li>{% endfor %}</ul>
+            </div>
+            {% endif %}
+        </div>
+
+        {% if c.paid.pdf %}
+        {% include campaign/pdf_link.liquid href=c.paid.pdf label="Download the full creative brief (PDF)" %}
+        {% endif %}
+    </div>
+</section>

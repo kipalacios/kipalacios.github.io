@@ -1,0 +1,48 @@
+<!-- Owned Media pillar: SWOT grid plus strategic recommendations with the
+     success metrics that back each one. -->
+{% assign c = include.campaign %}
+{% if c.owned.swot %}
+<section class="case-section">
+    <div class="case-section__inner">
+        <p class="case-section__label">Owned Media</p>
+        <h2 class="case-section__title">SWOT Analysis</h2>
+        <div class="case-swot">
+            {% for quad in c.owned.swot %}
+            <div class="case-swot__card case-swot__card--{{ quad.key }}">
+                <h4>{{ quad.label }}</h4>
+                <ul>
+                    {% for point in quad.points %}
+                    <li><strong>{{ point.title }}</strong><span>{{ point.rationale }}</span></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+        {% if c.owned.pdf %}
+        {% include campaign/pdf_link.liquid href=c.owned.pdf label="Download the full SWOT analysis (PDF)" %}
+        {% endif %}
+    </div>
+</section>
+{% endif %}
+
+{% if c.owned.recommendations %}
+<section class="case-section case-section--tint">
+    <div class="case-section__inner">
+        <p class="case-section__label">Owned Media</p>
+        <h2 class="case-section__title">Strategic Recommendations &amp; Key Metrics</h2>
+        <div class="case-recs">
+            {% for rec in c.owned.recommendations %}
+            <div class="case-recs__item">
+                <h4>{{ forloop.index }}. {{ rec.title }}</h4>
+                <p>{{ rec.body }}</p>
+                {% if rec.metrics %}
+                <ul class="case-recs__metrics">
+                    {% for m in rec.metrics %}<li>{{ m }}</li>{% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}

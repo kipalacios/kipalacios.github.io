@@ -1,0 +1,117 @@
+---
+layout: default
+---
+{% comment %}
+Campaign hub — the "mini home page" for one campaign. Carries the hero, the
+at-a-glance stats and the full brief, then hands off to a sub-page per PESO
+pillar. The pillar cards deliberately show real substance (the actual op-ed
+headline, the actual blog title, what's in the SWOT) rather than bare labels,
+so someone who only reads this page still understands the whole campaign.
+{% endcomment %}
+<article class="case-study">
+
+  <header class="case-hero">
+    <div class="case-hero__inner">
+      {% if page.concept %}<p class="case-hero__badge">Concept Campaign</p>{% endif %}
+      <h1 class="case-hero__title">{{ page.title }}</h1>
+      {% if page.tagline %}<p class="case-hero__tagline">&ldquo;{{ page.tagline }}&rdquo;</p>{% endif %}
+      <div class="case-hero__meta">
+        {% if page.client %}<span><strong>Client</strong> {{ page.client }}</span>{% endif %}
+        {% if page.industry %}<span><strong>Industry</strong> {{ page.industry | join: ' &middot; ' }}</span>{% endif %}
+        {% if page.role %}<span><strong>Role</strong> {{ page.role }}</span>{% endif %}
+      </div>
+      {% if page.summary %}<p class="case-hero__summary">{{ page.summary }}</p>{% endif %}
+
+      {% if page.at_a_glance %}
+      <div class="case-hero__stats">
+        {% for item in page.at_a_glance %}
+        <div class="case-hero__stat">
+          <span class="case-hero__stat-num">{{ item.stat }}</span>
+          <span class="case-hero__stat-label">{{ item.label }}</span>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% if page.concept_note %}<p class="case-hero__note">{{ page.concept_note }}</p>{% endif %}
+    </div>
+  </header>
+
+  {% if page.overview %}
+  <section id="brief" class="case-band case-band--yellow">
+    <div class="case-band__sparkles" aria-hidden="true">
+      {% include home/sparkle.liquid class="case-band__sparkle case-band__sparkle--1" %}
+      {% include home/sparkle.liquid class="case-band__sparkle case-band__sparkle--2" %}
+    </div>
+    <div class="case-band__inner">
+      <p class="case-band__eyebrow">The Brief</p>
+      <div class="case-overview">
+        {% if page.overview.problem %}
+        <div class="case-overview__item">
+          <h3>The Problem</h3>
+          <p>{{ page.overview.problem }}</p>
+        </div>
+        {% endif %}
+        {% if page.overview.goal %}
+        <div class="case-overview__item">
+          <h3>The Goal</h3>
+          <p>{{ page.overview.goal }}</p>
+        </div>
+        {% endif %}
+        {% if page.overview.audience_primary %}
+        <div class="case-overview__item">
+          <h3>Primary Audience</h3>
+          <p>{{ page.overview.audience_primary }}</p>
+        </div>
+        {% endif %}
+        {% if page.overview.audience_secondary %}
+        <div class="case-overview__item">
+          <h3>Secondary Audience</h3>
+          <p>{{ page.overview.audience_secondary }}</p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="case-section">
+    <div class="case-section__inner">
+      <p class="case-section__label">Explore the campaign</p>
+      <h2 class="case-section__title">The PESO Breakdown</h2>
+      <p class="case-section__lead">Four channels, each with its own deliverables. Start anywhere &mdash; or read straight through from Paid.</p>
+
+      <div class="pillar-grid">
+        {% for pillar in page.pillars %}
+        <a class="pillar-card" href="{{ pillar.url | relative_url }}">
+          <span class="pillar-card__eyebrow">{{ pillar.label }}</span>
+          <h3 class="pillar-card__title">{{ pillar.title }}</h3>
+          <p class="pillar-card__desc">{{ pillar.teaser }}</p>
+          {% if pillar.items %}
+          <ul class="pillar-card__items">
+            {% for item in pillar.items %}<li>{{ item }}</li>{% endfor %}
+          </ul>
+          {% endif %}
+          <span class="pillar-card__cta">{{ pillar.cta | default: 'View this section' }} &rarr;</span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {% if page.citations_pdf %}
+  <section class="case-section case-section--tint">
+    <div class="case-section__inner">
+      <p class="case-section__label">Appendix</p>
+      <h2 class="case-section__title">Sources &amp; Citations</h2>
+      <p class="case-section__lead">Every statistic and source referenced across the campaign, in full.</p>
+      {% include campaign/pdf_link.liquid href=page.citations_pdf label="Download citations (PDF)" %}
+    </div>
+  </section>
+  {% endif %}
+
+  <footer class="case-footer">
+    <a class="button case-footer__cta" href="{{ '/portfolio/' | relative_url }}">&larr; Back to Portfolio</a>
+  </footer>
+
+</article>

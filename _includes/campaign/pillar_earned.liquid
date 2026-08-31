@@ -1,0 +1,26 @@
+<!-- Earned Media pillar. Shows the op-ed in full rather than the collapsed
+     excerpt the old single-page case study used — someone who clicked into
+     this page came for the piece itself. -->
+{% assign c = include.campaign %}
+<section class="case-section">
+    <div class="case-section__inner">
+        <p class="case-section__label">Earned Media</p>
+        <h2 class="case-section__title">Thought Leadership Op-Ed</h2>
+
+        <div class="case-article">
+            <h3 class="case-article__headline">{{ c.earned.headline }}</h3>
+            {% if c.earned.subhead %}<p class="case-article__subhead">{{ c.earned.subhead }}</p>{% endif %}
+            <p class="case-article__byline">{{ c.earned.byline }}<br>{{ c.earned.dateline }}</p>
+            {% for paragraph in c.earned.body_paragraphs %}
+            <p>{{ paragraph }}</p>
+            {% endfor %}
+        </div>
+
+        {% if c.earned.strategy_note %}
+        <div class="case-note">
+            <p class="case-note__label">Why This Works</p>
+            <p>{{ c.earned.strategy_note }}</p>
+        </div>
+        {% endif %}
+    </div>
+</section>

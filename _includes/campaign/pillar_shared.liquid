@@ -1,0 +1,62 @@
+<!-- Shared Media pillar: blog post (full), the Instagram series carousel, and
+     the newsletter placement. -->
+{% assign c = include.campaign %}
+<section class="case-section">
+    <div class="case-section__inner">
+        <p class="case-section__label">Shared Media</p>
+        <h2 class="case-section__title">Blog Post</h2>
+        <div class="case-article">
+            {% if c.shared.blog_title %}<h3 class="case-article__headline">{{ c.shared.blog_title }}</h3>{% endif %}
+            {% for paragraph in c.shared.blog_paragraphs %}
+            <p>{{ paragraph }}</p>
+            {% endfor %}
+        </div>
+        {% if c.shared.pdf %}
+        {% include campaign/pdf_link.liquid href=c.shared.pdf label="Download the blog post (PDF)" %}
+        {% endif %}
+    </div>
+</section>
+
+{% if c.shared.instagram_posts %}
+<section class="case-section case-section--tint">
+    <div class="case-section__inner">
+        <p class="case-section__label">Shared Media</p>
+        <h2 class="case-section__title">Instagram Series</h2>
+        <div class="case-ig-carousel" data-carousel>
+            <div class="case-ig-carousel__row">
+                <button type="button" class="case-ig-carousel__arrow case-ig-carousel__arrow--prev" data-carousel-prev aria-label="Previous post">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 7 12l8 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="case-ig-carousel__viewport">
+                    <div class="case-ig-carousel__track" data-carousel-track>
+                        {% for post in c.shared.instagram_posts %}
+                        <div class="case-ig-carousel__slide{% if forloop.first %} is-active{% endif %}" data-carousel-slide aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
+                            <img src="{{ post.image | relative_url }}" alt="{{ post.alt | default: c.shared.blog_title }}" loading="lazy">
+                            {% if post.caption %}<p class="case-ig-carousel__caption">{{ post.caption }}</p>{% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <button type="button" class="case-ig-carousel__arrow case-ig-carousel__arrow--next" data-carousel-next aria-label="Next post">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 8 7-8 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </div>
+            <div class="case-ig-carousel__dots" role="tablist" aria-label="Choose a post">
+                {% for post in c.shared.instagram_posts %}
+                <button type="button" class="case-ig-carousel__dot{% if forloop.first %} is-active{% endif %}" data-carousel-dot role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="Post {{ forloop.index }}"></button>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% if c.shared.newsletter_image %}
+<section class="case-section">
+    <div class="case-section__inner">
+        <p class="case-section__label">Shared Media</p>
+        <h2 class="case-section__title">Newsletter Placement</h2>
+        <img class="case-newsletter" src="{{ c.shared.newsletter_image | relative_url }}" alt="{{ c.shared.newsletter_alt | default: 'Newsletter design' }}" loading="lazy">
+    </div>
+</section>
+{% endif %}

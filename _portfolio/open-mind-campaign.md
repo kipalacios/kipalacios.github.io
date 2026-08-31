@@ -1,7 +1,59 @@
 ---
-layout: campaign-case-study
+layout: campaign-hub
 title: Open Mind
 permalink: /portfolio/open-mind/
+# Looked up by the four sub-pages (layout: campaign-section) so all campaign
+# content stays in this one file rather than being duplicated across five.
+campaign_key: open-mind
+citations_pdf: assets/docs/open-mind/open-mind-citations.pdf
+pillars:
+  - key: paid
+    label: Paid
+    title: Paid Media
+    url: /portfolio/open-mind/paid/
+    teaser: >
+      The creative brief behind the campaign, the reasoning for the tagline, and where
+      the buy actually runs — timed to LA Metro's free student GoPass program.
+    items:
+      - Creative brief
+      - Tagline strategy
+      - OOH, digital &amp; print placement
+    cta: Read the brief
+  - key: earned
+    label: Earned
+    title: Earned Media
+    url: /portfolio/open-mind/earned/
+    teaser: >
+      "AI Is the New Literacy. Treat It Like One." — a CEO-bylined op-ed framing AI
+      literacy as a public good rather than a product pitch.
+    items:
+      - Thought leadership op-ed
+      - Media strategy note
+    cta: Read the op-ed
+  - key: shared
+    label: Shared
+    title: Shared Media
+    url: /portfolio/open-mind/shared/
+    teaser: >
+      "5 Things You Didn't Know You Could Do With AI — For Free, Right Here in LA,"
+      plus the four-post Instagram series and the LAUSD parent newsletter placement.
+    items:
+      - Blog post
+      - Instagram series (4 posts)
+      - Newsletter design
+    cta: See the content
+  - key: owned
+    label: Owned
+    title: Owned Media
+    url: /portfolio/open-mind/owned/
+    teaser: >
+      A full SWOT on Alphabet and three strategic recommendations, each with the
+      success metrics that would prove it worked.
+    items:
+      - SWOT analysis
+      - 3 recommendations
+      - Success metrics
+    cta: See the analysis
 img: "assets/img/portfolio/open-mind/ig-1.jpg"
 concept: true
 client: "Alphabet Inc. / Google Gemini (concept engagement)"
@@ -45,6 +97,7 @@ overview:
     encourage participation in extracurricular learning — and who respond to tools with tangible
     academic and career benefits, especially inside safe, trusted environments like public libraries.
 paid:
+  pdf: assets/docs/open-mind/open-mind-creative-brief.pdf
   tagline_strategy: >
     Tagline: "The future is learned here." — "Future" taps into aspirations around education and
     upward mobility that resonate with both students and the parents/educators who influence them.
@@ -84,6 +137,7 @@ earned:
     makes the Gemini Labs rollout feel like a natural extension of Alphabet's mission rather than a
     marketing push.
 shared:
+  pdf: assets/docs/open-mind/open-mind-blog-post.pdf
   blog_title: "5 Things You Didn't Know You Could Do With AI — For Free, Right Here in LA"
   blog_paragraphs:
     - "From murals in the Arts District to film sets in Hollywood and Burbank, living in Los Angeles means you're surrounded by creativity. But what if you had a tool that could help you not just experience creativity, but actually create it?"
@@ -110,6 +164,7 @@ shared:
   newsletter_image: "assets/img/portfolio/open-mind/newsletter.jpg"
   newsletter_alt: "LAUSD June 2026 Parents Newsletter featuring the Open Mind Summer program"
 owned:
+  pdf: assets/docs/open-mind/open-mind-swot.pdf
   swot:
     - key: strengths
       label: Strengths

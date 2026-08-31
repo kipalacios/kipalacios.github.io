@@ -1,0 +1,9 @@
+<!-- Download link for a campaign's source artifact (creative brief, blog post,
+     SWOT, citations). Params: href (site-relative path), label. -->
+<a class="case-pdf" href="{{ include.href | relative_url }}" target="_blank" rel="noopener noreferrer">
+    <svg class="case-pdf__icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3v12m0 0-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>{{ include.label }}</span>
+</a>
