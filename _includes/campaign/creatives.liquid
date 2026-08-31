@@ -1,0 +1,22 @@
+<!-- Produced creative work for a pillar. Sits above that pillar's
+     placeholders, so a page reads finished-work-first, planned-work-second.
+     Params: items (array of {image, label, note, alt}), title. -->
+{% if include.items %}
+<section class="case-section">
+    <div class="case-section__inner">
+        <p class="case-section__label">Creative</p>
+        <h2 class="case-section__title">{{ include.title | default: 'The Work' }}</h2>
+        <div class="creative-set">
+            {% for c in include.items %}
+            <figure class="creative">
+                <img class="creative__img" src="{{ c.image | relative_url }}" alt="{{ c.alt | default: c.label }}" loading="lazy">
+                <figcaption class="creative__caption">
+                    <strong>{{ c.label }}</strong>
+                    {% if c.note %}<span>{{ c.note }}</span>{% endif %}
+                </figcaption>
+            </figure>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}

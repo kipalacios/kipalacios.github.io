@@ -2656,3 +2656,43 @@ a.button.creator-bio__collab-cta {
     grid-template-columns: 1fr;
   }
 }
+
+/* Produced creative work on a campaign pillar page. Single column so each
+   piece is shown at a size where its copy is actually legible — these are
+   ads, and an ad you have to squint at isn't showing the work. */
+.creative-set {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.creative {
+  margin: 0;
+
+  &__img {
+    width: 100%;
+    display: block;
+    border-radius: $border-radius;
+    border: 1px solid rgba($kppr-navy, 0.1);
+  }
+
+  &__caption {
+    margin: 0.9em 0 0;
+    font-family: 'Poppins', sans-serif;
+
+    strong {
+      display: block;
+      font-size: 0.92em;
+      font-weight: 600;
+      color: $kppr-navy;
+      margin-bottom: 0.25em;
+    }
+
+    span {
+      display: block;
+      font-size: 0.85em;
+      line-height: 1.6;
+      color: var(--meta);
+    }
+  }
+}

@@ -116,19 +116,24 @@ paid:
     - Creative leads with close-up texture so the ridge system reads at distance
   print:
     - Retail and Sephora-adjacent placements supporting the October launch window
+  creatives:
+    - image: assets/img/portfolio/rare-hair/ooh-billboard.jpg
+      label: Billboard
+      note: "\"Where Every Touch is Rare\" — the tactile patterns carry the visual, so the ridge system reads even at highway distance."
+      alt: "Rare Hair billboard reading Where Every Touch is Rare, with two tactile-patterned bottles"
+    - image: assets/img/portfolio/rare-hair/ooh-bus-shelter.jpg
+      label: Bus shelter
+      note: "\"Feel the Difference in Every Bottle\" — vertical format, bottle at roughly hand height for a waiting passenger."
+      alt: "Rare Hair bus shelter poster reading Feel the Difference in Every Bottle"
+    - image: assets/img/portfolio/rare-hair/social-ad.jpg
+      label: Social ad
+      note: "Paid cut for Instagram and TikTok. The accessibility commitment is stated in the creative itself, not buried in the caption."
+      alt: "Rare Hair social advert reading Beauty you can feel"
   placeholders:
-    - label: Billboard mockup
-      note: "\"Because Everyone Deserves a Routine They Can Feel Confident In\" — macro shot of the ridge texture, high contrast, minimal copy."
-      kind: print
-      ratio: "16 / 9"
-    - label: Bus shelter mockup
-      note: "\"Feel the Difference in Every Bottle\" — bottle at hand height, shot to make the tactile ridges legible in passing."
-      kind: print
-      ratio: "3 / 4"
-    - label: Social ad creative set
-      note: "Vertical cuts for Instagram/TikTok, each captioned and audio-described."
-      kind: social
-      ratio: "4 / 5"
+    - label: Motion cut for TikTok
+      note: "15-second vertical edit demonstrating identification by touch, with captions and audio description."
+      kind: video
+      ratio: "9 / 16"
 earned:
   documents:
   - kind: News Release
@@ -166,10 +171,14 @@ earned:
       outlets: "Disability-led publications and accessibility advocacy outlets"
     - group: Interviews &amp; Events
       outlets: "Founder and CPO interviews on accessible design; launch events, panels, and accessibility design talks"
+  creatives:
+    - image: assets/img/portfolio/rare-hair/tactile-guide.jpg
+      label: Tactile system diagram
+      note: "Press-kit explainer mapping each ridge pattern to its product — the single asset most likely to be reproduced in coverage."
+      alt: "Diagram showing raised spheres for shampoo, raised lines for conditioner and swirls for styling cream"
   placeholders:
-
-    - label: Press kit visuals
-      note: "Product photography, tactile design diagrams, and founder headshots for media distribution."
+    - label: Product photography
+      note: "Studio shots of the finished bottles for media distribution, plus founder headshots."
       kind: photo
       ratio: "4 / 3"
     - label: Launch event coverage
@@ -195,20 +204,20 @@ shared:
       items:
         - Partnerships with The Braille Institute and Service for Sight
         - Organic reposts of creator reviews and influencer amplification
+  creatives:
+    - image: assets/img/portfolio/rare-hair/challenge-post.jpg
+      label: "#BeautyYouCanFeel launch post"
+      note: "Opens the challenge with a prompt anyone can answer — find your bottle by touch — rather than a branded call to action."
+      alt: "Instagram post reading Share the feeling, hashtag BeautyYouCanFeel"
+    - image: assets/img/portfolio/rare-hair/partnership-post.jpg
+      label: Community partnership announcement
+      note: "Co-branded with The Braille Institute and Service for Sight, leading with the designed-with claim the whole campaign rests on."
+      alt: "Post announcing partnership with The Braille Institute and Service for Sight"
   placeholders:
-
-    - label: "#BeautyYouCanFeel challenge assets"
-      note: "Challenge announcement post, prompt card, and creator brief templates."
-      kind: social
-      ratio: "4 / 5"
     - label: Creator UGC series
       note: "Blind and low-vision creators demonstrating identification-by-touch in their own routines."
       kind: video
       ratio: "9 / 16"
-    - label: Community partnership announcement
-      note: "Co-branded posts with The Braille Institute and Service for Sight."
-      kind: social
-      ratio: "1 / 1"
 owned:
   doc: assets/docs/rare-hair/rare-hair-faqs.docx
   doc_label: Download the launch FAQ (DOCX)
@@ -245,11 +254,12 @@ owned:
     - group: Retail partnerships
       items:
         - Sephora product descriptions with accessibility call-outs and educational visuals
+  creatives:
+    - image: assets/img/portfolio/rare-hair/tactile-guide.jpg
+      label: Tactile design guide
+      note: "The on-site explainer for how the ridge system works, written to be understood without seeing the product."
+      alt: "Rare Hair tactile design guide showing the three ridge patterns"
   placeholders:
-    - label: Tactile design guide
-      note: "Diagram of the three ridge patterns — spheres, lines, swirls — and how each maps to a product."
-      kind: photo
-      ratio: "4 / 3"
     - label: Landing page design
       note: "Accessibility-first page layout with close-up product visuals and full alt text."
       kind: photo
