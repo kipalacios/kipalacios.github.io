@@ -135,6 +135,10 @@ paid:
       kind: video
       ratio: "9 / 16"
 earned:
+  disclaimer: >
+    Rare Hair is a concept product created for a graduate course; it is not a real Rare Beauty
+    line. All quotations attributed to Rare Beauty executives below were written by me to
+    demonstrate news release and op-ed craft — they are illustrative, not real statements.
   documents:
   - kind: News Release
     headline: "Rare Beauty Launches 'Rare Hair,' a Low-Vision and Blind Accessible Hair Care Line Designed for All"

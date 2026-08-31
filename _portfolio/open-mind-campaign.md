@@ -116,6 +116,11 @@ paid:
     - "LAUSD Monthly Parent Newsletter, Arts Education's \"Palette and Pulse,\" and the Instructional Technology Initiative Newsletter"
     - "City of LA Youth Development Dept. newsletter &amp; Boyle Heights Beat"
 earned:
+  disclaimer: >
+    Open Mind is a concept campaign created for a graduate comprehensive exam. Gemini AI Labs
+    in LA Public Libraries is not a real Alphabet initiative, and the op-ed below was written
+    by me in the voice of Alphabet's CEO as a thought-leadership exercise — it is illustrative,
+    not a real statement.
   headline: "AI Is the New Literacy. Treat It Like One."
   subhead: "Alphabet launches Gemini Labs across Los Angeles Public Libraries to expand equitable access to AI education."
   byline: "By Sundar Pichai, CEO of Google &amp; Alphabet Inc."

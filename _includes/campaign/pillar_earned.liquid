@@ -5,6 +5,23 @@
      this page came for them. -->
 {% assign c = include.campaign %}
 
+{% comment %}
+Sits above the writing so a reader meets it before any attributed quote —
+these pieces put words in the mouths of real, named executives as a craft
+exercise, and that shouldn't be inferred only from the "Concept Campaign"
+badge on the hub.
+{% endcomment %}
+{% if c.earned.disclaimer %}
+<section class="case-section case-section--flush">
+    <div class="case-section__inner">
+        <p class="case-disclaimer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.6v5.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16.4" r="1.1" fill="currentColor"/></svg>
+            <span>{{ c.earned.disclaimer }}</span>
+        </p>
+    </div>
+</section>
+{% endif %}
+
 {% if c.earned.documents %}
 {% for doc in c.earned.documents %}
 <section class="case-section{% unless forloop.first %} case-section--tint{% endunless %}">
