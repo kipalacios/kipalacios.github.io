@@ -12,12 +12,21 @@ hub/prev/next navigation.
 {% if campaign %}
 {% assign pillars = campaign.pillars %}
 
+{% comment %}
+Matches the hub's banner (and the rest of the site's pages). Outside
+.case-study so it spans the full viewport rather than the article's 1040px
+cap, and it carries the <h1> so the hero below only needs the breadcrumb
+back to the campaign plus the section's one-line summary.
+{% endcomment %}
+<div class="call-out call-out_solid">
+    <h1 class="call-out_title">{{ page.title }}</h1>
+</div>
+
 <article class="case-study case-study--section">
 
   <header class="case-hero case-hero--section">
     <div class="case-hero__inner">
       <a class="case-hero__kicker" href="{{ campaign.url | relative_url }}">&larr; {{ campaign.title }}</a>
-      <h1 class="case-hero__title">{{ page.title }}</h1>
       {% if page.subtitle %}<p class="case-hero__summary">{{ page.subtitle }}</p>{% endif %}
     </div>
   </header>

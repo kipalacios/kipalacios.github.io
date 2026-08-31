@@ -8,12 +8,21 @@ pillar. The pillar cards deliberately show real substance (the actual op-ed
 headline, the actual blog title, what's in the SWOT) rather than bare labels,
 so someone who only reads this page still understands the whole campaign.
 {% endcomment %}
+{% comment %}
+Same full-bleed yellow banner every other page on the site opens with. It sits
+outside .case-study because that article is width-capped — inside it the band
+would stop at 1040px instead of spanning the viewport. It also carries the
+page's <h1>, so the hero below doesn't repeat the title.
+{% endcomment %}
+<div class="call-out call-out_solid">
+    <h1 class="call-out_title">{{ page.title }}</h1>
+</div>
+
 <article class="case-study">
 
   <header class="case-hero">
     <div class="case-hero__inner">
       {% if page.concept %}<p class="case-hero__badge">Concept Campaign</p>{% endif %}
-      <h1 class="case-hero__title">{{ page.title }}</h1>
       {% if page.tagline %}<p class="case-hero__tagline">&ldquo;{{ page.tagline }}&rdquo;</p>{% endif %}
       <div class="case-hero__meta">
         {% if page.client %}<span><strong>Client</strong> {{ page.client }}</span>{% endif %}
@@ -75,7 +84,7 @@ so someone who only reads this page still understands the whole campaign.
   </section>
   {% endif %}
 
-  <section class="case-section">
+  <section id="sections" class="case-section">
     <div class="case-section__inner">
       <p class="case-section__label">Explore the campaign</p>
       <h2 class="case-section__title">The PESO Breakdown</h2>

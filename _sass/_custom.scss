@@ -2414,10 +2414,11 @@ a.button.creator-bio__collab-cta {
 
 /* Sub-page hero is lighter than the hub's — no badge, stats or client meta,
    just a back-link kicker and the pillar name. */
+/* Sub-page hero is just the breadcrumb + one-line summary now — the page
+   title lives in the yellow banner above it, like every other page. */
 .case-hero--section {
-  padding-bottom: 1rem;
-
-  .case-hero__title { font-size: 2.4em; }
+  padding-top: 1.8rem;
+  padding-bottom: 0.6rem;
 }
 
 .case-hero__kicker {
