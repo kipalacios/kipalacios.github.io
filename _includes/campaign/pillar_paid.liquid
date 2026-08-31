@@ -1,6 +1,6 @@
-<!-- Paid Media pillar. `include.campaign` is the _portfolio document holding
-     the campaign's front matter, so this renders identically whether it's
-     called from the hub or from the standalone /paid/ sub-page. -->
+<!-- Paid Media pillar. Renders whichever blocks a campaign actually defines,
+     so it serves campaigns with different deliverable mixes without a
+     per-campaign template. `include.campaign` is the _portfolio document. -->
 {% assign c = include.campaign %}
 <section class="case-section">
     <div class="case-section__inner">
@@ -9,6 +9,15 @@
 
         {% if c.paid.tagline_strategy %}
         <p class="case-section__lead">{{ c.paid.tagline_strategy }}</p>
+        {% endif %}
+
+        {% if c.paid.headlines %}
+        <div class="case-note">
+            <p class="case-note__label">Headlines</p>
+            <ul class="case-list">
+                {% for h in c.paid.headlines %}<li>{{ h }}</li>{% endfor %}
+            </ul>
+        </div>
         {% endif %}
 
         <div class="case-channels">
@@ -35,5 +44,10 @@
         {% if c.paid.pdf %}
         {% include campaign/pdf_link.liquid href=c.paid.pdf label="Download the full creative brief (PDF)" %}
         {% endif %}
+        {% if c.paid.doc %}
+        {% include campaign/pdf_link.liquid href=c.paid.doc label=c.paid.doc_label %}
+        {% endif %}
     </div>
 </section>
+
+{% include campaign/placeholders.liquid items=c.paid.placeholders %}

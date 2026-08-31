@@ -1,12 +1,38 @@
-<!-- Earned Media pillar. Shows the op-ed in full rather than the collapsed
-     excerpt the old single-page case study used — someone who clicked into
-     this page came for the piece itself. -->
+<!-- Earned Media pillar. Supports either a single piece (headline +
+     body_paragraphs) or a `documents` list for campaigns with more than one
+     (e.g. a news release and an opinion piece), plus an optional media
+     target list. Long-form pieces render in full — someone who clicked into
+     this page came for them. -->
 {% assign c = include.campaign %}
+
+{% if c.earned.documents %}
+{% for doc in c.earned.documents %}
+<section class="case-section{% unless forloop.first %} case-section--tint{% endunless %}">
+    <div class="case-section__inner">
+        <p class="case-section__label">Earned Media</p>
+        <h2 class="case-section__title">{{ doc.kind }}</h2>
+        <div class="case-article">
+            <h3 class="case-article__headline">{{ doc.headline }}</h3>
+            {% if doc.subhead %}<p class="case-article__subhead">{{ doc.subhead }}</p>{% endif %}
+            {% if doc.byline or doc.dateline %}
+            <p class="case-article__byline">{% if doc.byline %}{{ doc.byline }}{% if doc.dateline %}<br>{% endif %}{% endif %}{{ doc.dateline }}</p>
+            {% endif %}
+            {% for paragraph in doc.paragraphs %}
+            <p>{{ paragraph }}</p>
+            {% endfor %}
+        </div>
+        {% if doc.doc %}
+        {% include campaign/pdf_link.liquid href=doc.doc label=doc.doc_label %}
+        {% endif %}
+    </div>
+</section>
+{% endfor %}
+
+{% else %}
 <section class="case-section">
     <div class="case-section__inner">
         <p class="case-section__label">Earned Media</p>
         <h2 class="case-section__title">Thought Leadership Op-Ed</h2>
-
         <div class="case-article">
             <h3 class="case-article__headline">{{ c.earned.headline }}</h3>
             {% if c.earned.subhead %}<p class="case-article__subhead">{{ c.earned.subhead }}</p>{% endif %}
@@ -15,12 +41,36 @@
             <p>{{ paragraph }}</p>
             {% endfor %}
         </div>
+    </div>
+</section>
+{% endif %}
 
-        {% if c.earned.strategy_note %}
+{% if c.earned.strategy_note %}
+<section class="case-section case-section--tint">
+    <div class="case-section__inner">
         <div class="case-note">
             <p class="case-note__label">Why This Works</p>
             <p>{{ c.earned.strategy_note }}</p>
         </div>
-        {% endif %}
     </div>
 </section>
+{% endif %}
+
+{% if c.earned.targets %}
+<section class="case-section">
+    <div class="case-section__inner">
+        <p class="case-section__label">Earned Media</p>
+        <h2 class="case-section__title">Media Targets</h2>
+        <div class="case-channels">
+            {% for t in c.earned.targets %}
+            <div class="case-channels__col">
+                <h4>{{ t.group }}</h4>
+                <ul><li>{{ t.outlets }}</li></ul>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% include campaign/placeholders.liquid items=c.earned.placeholders %}

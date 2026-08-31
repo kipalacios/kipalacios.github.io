@@ -1,6 +1,19 @@
-<!-- Shared Media pillar: blog post (full), the Instagram series carousel, and
-     the newsletter placement. -->
+<!-- Shared Media pillar. Renders whichever of these a campaign defines: a
+     strategy note, a long-form blog post, grouped channel plans, an
+     Instagram carousel, a newsletter image, and planned-asset placeholders. -->
 {% assign c = include.campaign %}
+
+{% if c.shared.strategy %}
+<section class="case-section">
+    <div class="case-section__inner">
+        <p class="case-section__label">Shared Media</p>
+        <h2 class="case-section__title">The Approach</h2>
+        <p class="case-section__lead">{{ c.shared.strategy }}</p>
+    </div>
+</section>
+{% endif %}
+
+{% if c.shared.blog_paragraphs %}
 <section class="case-section">
     <div class="case-section__inner">
         <p class="case-section__label">Shared Media</p>
@@ -16,6 +29,24 @@
         {% endif %}
     </div>
 </section>
+{% endif %}
+
+{% if c.shared.channels %}
+<section class="case-section case-section--tint">
+    <div class="case-section__inner">
+        <p class="case-section__label">Shared Media</p>
+        <h2 class="case-section__title">Channel Plan</h2>
+        <div class="case-channels">
+            {% for group in c.shared.channels %}
+            <div class="case-channels__col">
+                <h4>{{ group.group }}</h4>
+                <ul>{% for item in group.items %}<li>{{ item }}</li>{% endfor %}</ul>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
 
 {% if c.shared.instagram_posts %}
 <section class="case-section case-section--tint">
@@ -60,3 +91,5 @@
     </div>
 </section>
 {% endif %}
+
+{% include campaign/placeholders.liquid items=c.shared.placeholders %}

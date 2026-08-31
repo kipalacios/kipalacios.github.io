@@ -1,0 +1,16 @@
+<!-- Renders a pillar's planned-visual placeholders, if it has any.
+     Params: items (the placeholders array), title (optional heading). -->
+{% if include.items %}
+<section class="case-section case-section--tint">
+    <div class="case-section__inner">
+        <p class="case-section__label">Planned assets</p>
+        <h2 class="case-section__title">{{ include.title | default: 'Visuals In Development' }}</h2>
+        <p class="case-section__lead">Creative direction is set for these; the assets themselves haven't been produced yet.</p>
+        <div class="asset-ph-grid">
+            {% for ph in include.items %}
+            {% include campaign/placeholder.liquid label=ph.label note=ph.note kind=ph.kind ratio=ph.ratio %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}

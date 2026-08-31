@@ -1,6 +1,18 @@
-<!-- Owned Media pillar: SWOT grid plus strategic recommendations with the
-     success metrics that back each one. -->
+<!-- Owned Media pillar. Supports a strategy note, a SWOT grid, strategic
+     recommendations with success metrics, an FAQ, grouped channel plans, and
+     planned-asset placeholders — rendering only what a campaign defines. -->
 {% assign c = include.campaign %}
+
+{% if c.owned.strategy %}
+<section class="case-section">
+    <div class="case-section__inner">
+        <p class="case-section__label">Owned Media</p>
+        <h2 class="case-section__title">The Approach</h2>
+        <p class="case-section__lead">{{ c.owned.strategy }}</p>
+    </div>
+</section>
+{% endif %}
+
 {% if c.owned.swot %}
 <section class="case-section">
     <div class="case-section__inner">
@@ -46,3 +58,42 @@
     </div>
 </section>
 {% endif %}
+
+{% if c.owned.faqs %}
+<section class="case-section case-section--tint">
+    <div class="case-section__inner">
+        <p class="case-section__label">Owned Media</p>
+        <h2 class="case-section__title">Launch FAQ</h2>
+        <dl class="case-faq">
+            {% for item in c.owned.faqs %}
+            <div class="case-faq__item">
+                <dt>{{ item.q }}</dt>
+                <dd>{{ item.a }}</dd>
+            </div>
+            {% endfor %}
+        </dl>
+        {% if c.owned.doc %}
+        {% include campaign/pdf_link.liquid href=c.owned.doc label=c.owned.doc_label %}
+        {% endif %}
+    </div>
+</section>
+{% endif %}
+
+{% if c.owned.channels %}
+<section class="case-section">
+    <div class="case-section__inner">
+        <p class="case-section__label">Owned Media</p>
+        <h2 class="case-section__title">Channel Plan</h2>
+        <div class="case-channels case-channels--wide">
+            {% for group in c.owned.channels %}
+            <div class="case-channels__col">
+                <h4>{{ group.group }}</h4>
+                <ul>{% for item in group.items %}<li>{{ item }}</li>{% endfor %}</ul>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% include campaign/placeholders.liquid items=c.owned.placeholders %}
