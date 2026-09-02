@@ -16,8 +16,7 @@ concept_note: >
   Created for PR 535 at USC Annenberg — a full PESO campaign for a concept product line,
   Rare Hair by Rare Beauty: accessible hair care with tactile packaging designed for blind,
   low-vision, and mobility-challenged users. The creative brief, news release, opinion piece,
-  and FAQ were all researched and written for this project. Visual assets are noted as planned
-  deliverables where they haven't been produced yet.
+  and FAQ were all researched and written for this project.
 summary: >
   A launch campaign for a first-of-its-kind accessible hair care line — tactile ridge system,
   ergonomic pumps, and sensory-driven design — positioning Rare Beauty as a leader in
@@ -133,11 +132,6 @@ paid:
       label: Social ad
       note: "Paid cut for Instagram and TikTok. The accessibility commitment is stated in the creative itself, not buried in the caption."
       alt: "Rare Hair social advert reading Beauty you can feel"
-  placeholders:
-    - label: Motion cut for TikTok
-      note: "15-second vertical edit demonstrating identification by touch, with captions and audio description."
-      kind: video
-      ratio: "9 / 16"
 earned:
   disclaimer: >
     Rare Hair is a concept product created for a graduate course; it is not a real Rare Beauty
@@ -184,15 +178,6 @@ earned:
       label: Tactile system diagram
       note: "Press-kit explainer mapping each ridge pattern to its product — the single asset most likely to be reproduced in coverage."
       alt: "Diagram showing raised spheres for shampoo, raised lines for conditioner and swirls for styling cream"
-  placeholders:
-    - label: Product photography
-      note: "Studio shots of the finished bottles for media distribution, plus founder headshots."
-      kind: photo
-      ratio: "4 / 3"
-    - label: Launch event coverage
-      note: "Photography from the launch event and panel discussions, for press pickup."
-      kind: photo
-      ratio: "3 / 2"
 shared:
   strategy: >
     Shared media is where the campaign stops talking about the community and starts handing it the
@@ -221,11 +206,6 @@ shared:
       label: Community partnership announcement
       note: "Co-branded with The Braille Institute and Service for Sight, leading with the designed-with claim the whole campaign rests on."
       alt: "Post announcing partnership with The Braille Institute and Service for Sight"
-  placeholders:
-    - label: Creator UGC series
-      note: "Blind and low-vision creators demonstrating identification-by-touch in their own routines."
-      kind: video
-      ratio: "9 / 16"
 owned:
   doc: assets/docs/rare-hair/rare-hair-faqs.docx
   doc_label: Download the launch FAQ (DOCX)
@@ -267,17 +247,4 @@ owned:
       label: Tactile design guide
       note: "The on-site explainer for how the ridge system works, written to be understood without seeing the product."
       alt: "Rare Hair tactile design guide showing the three ridge patterns"
-  placeholders:
-    - label: Landing page design
-      note: "Accessibility-first page layout with close-up product visuals and full alt text."
-      kind: photo
-      ratio: "16 / 10"
-    - label: Launch event at the Beverly Hills Hotel
-      note: "Event photography: influencers of all abilities trialling the tactile bottles."
-      kind: photo
-      ratio: "3 / 2"
-    - label: Tactile sample cards
-      note: "Physical press-kit insert letting media feel the ridge system directly."
-      kind: print
-      ratio: "1 / 1"
 ---
