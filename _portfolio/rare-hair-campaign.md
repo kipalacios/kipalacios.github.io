@@ -107,10 +107,11 @@ paid:
     give back. It reframes accessibility from a limitation being accommodated into a sensory
     benefit anyone can appreciate, which is what lets the same line speak to disabled and
     non-disabled shoppers without separating them into different campaigns.
+  # The two selected lines — one from the creative brief, one from the deck.
+  # Must stay in step with the billboard and bus-shelter artwork below them.
   headlines:
     - "Bus shelter: <em>Feel the Difference in Every Bottle</em>"
-    - "Billboard: <em>Because Everyone Deserves a Routine They Can Feel Confident In</em>"
-    - "Billboard (alt): <em>Beauty Without Barriers — Rare Hair by Rare Beauty</em>"
+    - "Billboard: <em>Where Every Touch is Rare</em>"
   digital:
     - Instagram, TikTok, Facebook &amp; YouTube social ads targeting beauty shoppers, disabled communities, Gen Z and Millennials
     - Every placement ships with alt text, captions, and audio description as standard — the buy models the accessibility it advertises

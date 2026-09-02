@@ -2345,10 +2345,12 @@ a.button.creator-bio__collab-cta {
 
   &:hover {
     transform: translateY(-3px);
-    border-color: rgba($kppr-navy, 0.25);
+    /* Border and CTA take the campaign's accent on hover; the fallback
+       keeps the pre-accent look for any campaign that doesn't set one. */
+    border-color: var(--campaign-accent, #{rgba($kppr-navy, 0.25)});
     box-shadow: 0 14px 28px rgba($kppr-navy, 0.13);
 
-    .pillar-card__cta { color: $kppr-blue-deep; }
+    .pillar-card__cta { color: var(--campaign-accent, #{$kppr-blue-deep}); }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -2435,7 +2437,7 @@ a.button.creator-bio__collab-cta {
   text-decoration: none;
   margin-bottom: 0.9em;
 
-  &:hover { color: $kppr-blue-deep; }
+  &:hover { color: var(--campaign-accent, #{$kppr-blue-deep}); }
 }
 
 /* Current pillar in the sub-page's section nav. */
