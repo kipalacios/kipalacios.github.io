@@ -2731,3 +2731,44 @@ a.button.creator-bio__collab-cta {
     color: $kppr-gold;
   }
 }
+
+/* Deck section on a campaign hub: a filled primary (view the slides in the
+   browser) beside the outlined PDF download, so the no-download option
+   reads as the default. */
+.deck-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 1.6em;
+
+  /* the shared pdf_link include carries its own top margin */
+  .case-pdf { margin-top: 0; }
+
+  &__primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.78em;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    text-decoration: none;
+    /* Filled with the campaign accent, which is a dark colour by design, so
+       the label is light. Falls back to navy (not the site's yellow) so the
+       light label still holds for a campaign with no accent set. */
+    color: $kppr-bg;
+    background: var(--campaign-accent, #{$kppr-navy});
+    border: 2px solid var(--campaign-accent, #{$kppr-navy});
+    border-radius: 999px;
+    padding: 0.7em 1.3em;
+    transition: opacity 0.2s ease;
+
+    svg { width: 1.1em; height: 1.1em; flex: 0 0 auto; }
+
+    &:hover { opacity: 0.88; }
+
+    @media (prefers-reduced-motion: reduce) { transition: none; }
+  }
+}

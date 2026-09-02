@@ -7,6 +7,16 @@ campaign_key: rare-hair
 # Single accent token for this campaign, used only for small markers
 # (section labels, pillar eyebrows). The page chrome stays KPPR.
 accent: "#7A1E3C"
+# The deck the campaign was originally presented from. Sits after the PESO
+# cards on the hub — the structured pages lead, this is the deeper artifact.
+presentation:
+  title: The Full Presentation
+  note: >
+    The eleven-slide deck this campaign was presented from — brand context, the accessibility
+    gap, the product line, experiential programme, and the advertisement headlines.
+  canva_url: https://canva.link/lik4x4odwldvtux
+  pdf: assets/docs/rare-hair/rare-hair-presentation.pdf
+  pdf_label: Download the deck (PDF, 14 MB)
 concept: true
 client: "Rare Beauty (concept engagement)"
 industry: ["Beauty", "Accessibility & Inclusive Design"]
