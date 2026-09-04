@@ -227,7 +227,9 @@ shared:
     - group: User-generated content
       items:
         - Blind and low-vision creators sharing their tactile routines
-        - The #BeautyYouCanFeel challenge
+        # Quoted: an unquoted " #" starts a YAML comment, which silently ate
+        # everything after "The" and left a one-word bullet on the page.
+        - "The #BeautyYouCanFeel challenge"
     - group: Community engagement
       items:
         - Partnerships with The Braille Institute and Service for Sight
