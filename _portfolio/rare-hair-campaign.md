@@ -10,13 +10,38 @@ accent: "#7A1E3C"
 # The deck the campaign was originally presented from. Sits after the PESO
 # cards on the hub — the structured pages lead, this is the deeper artifact.
 presentation:
-  title: The Full Presentation
+  title: The Deck
   note: >
-    The eleven-slide deck this campaign was presented from — brand context, the accessibility
-    gap, the product line, experiential programme, and the advertisement headlines.
+    The eleven slides this campaign was presented from — brand context, the accessibility
+    gap, the product line, the experiential programme, and the advertisement headlines.
   canva_url: https://canva.link/lik4x4odwldvtux
   pdf: assets/docs/rare-hair/rare-hair-presentation.pdf
   pdf_label: Download the deck (PDF, 14 MB)
+  # Rasterised from the source PDF at 1600px wide. Titles carry the caption and
+  # the alt text, so they describe what's on the slide rather than numbering it.
+  slides:
+    - img: assets/img/portfolio/rare-hair/deck/slide-01.jpg
+      title: "Rare Hair — Rare Beauty's first accessible hair care line"
+    - img: assets/img/portfolio/rare-hair/deck/slide-02.jpg
+      title: "About Rare Beauty"
+    - img: assets/img/portfolio/rare-hair/deck/slide-03.jpg
+      title: "Rare Beauty's mission"
+    - img: assets/img/portfolio/rare-hair/deck/slide-04.jpg
+      title: "Accessible packaging in beauty — the gap, in numbers"
+    - img: assets/img/portfolio/rare-hair/deck/slide-05.jpg
+      title: "Introducing Rare Hair — the tactile bottle system"
+    - img: assets/img/portfolio/rare-hair/deck/slide-06.jpg
+      title: "Extending Rare Beauty's mission"
+    - img: assets/img/portfolio/rare-hair/deck/slide-07.jpg
+      title: "Campaign activation — Beauty Without Barriers"
+    - img: assets/img/portfolio/rare-hair/deck/slide-08.jpg
+      title: "Experiential marketing elements"
+    - img: assets/img/portfolio/rare-hair/deck/slide-09.jpg
+      title: "Advertisement headlines"
+    - img: assets/img/portfolio/rare-hair/deck/slide-10.jpg
+      title: "Frequently asked questions"
+    - img: assets/img/portfolio/rare-hair/deck/slide-11.jpg
+      title: "Thank you"
 concept: true
 client: "Rare Beauty (concept engagement)"
 industry: ["Beauty", "Accessibility & Inclusive Design"]

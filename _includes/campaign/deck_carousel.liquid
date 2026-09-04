@@ -1,0 +1,58 @@
+{% comment %}
+Flip-through of a campaign's presentation slides. Driven by the shared
+data-carousel hooks in assets/js/project-carousel.js, so it needs no JS of its
+own — the layout that uses it just has to load that script.
+
+Slides are rasterised from the source PDF and listed in the campaign's
+`presentation.slides` front matter, each with a `title` used for the caption
+and the alt text. Renders nothing if a campaign has no slides, so the include
+is safe to call from the shared hub layout.
+
+  deck  — the page.presentation object
+{% endcomment %}
+{% assign slides = include.deck.slides %}
+{% if slides and slides.size > 0 %}
+<div class="deck-carousel" data-carousel aria-roledescription="carousel" aria-label="{{ include.deck.title | default: 'Presentation' }} slides">
+  <div class="deck-carousel__row">
+    <button type="button" class="deck-carousel__arrow deck-carousel__arrow--prev" data-carousel-prev aria-label="Previous slide">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 7 12l8 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <div class="deck-carousel__viewport">
+      <div class="deck-carousel__track" data-carousel-track>
+        {% for slide in slides %}
+        <div class="deck-carousel__slide{% if forloop.first %} is-active{% endif %}" data-carousel-slide aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}" aria-roledescription="slide" aria-label="Slide {{ forloop.index }} of {{ forloop.length }}">
+          {% comment %}
+          Slide 1 is above the fold on the hub, so it loads eagerly; the rest
+          wait until the visitor actually pages to them. Without this every
+          visit would pull all eleven images.
+          {% endcomment %}
+          <div class="deck-carousel__image-wrap">
+            <img class="deck-carousel__image"
+                 src="{{ slide.img | relative_url }}"
+                 alt="Slide {{ forloop.index }}: {{ slide.title }}"
+                 loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                 decoding="async">
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <button type="button" class="deck-carousel__arrow deck-carousel__arrow--next" data-carousel-next aria-label="Next slide">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 8 7-8 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+  {% comment %}
+  The dots double as the slide index — each one is labelled with its slide's
+  title, so a screen-reader user can jump straight to the section they want
+  rather than stepping through all eleven.
+  {% endcomment %}
+  <div class="deck-carousel__dots" role="tablist" aria-label="Choose a slide">
+    {% for slide in slides %}
+    <button type="button" class="deck-carousel__dot{% if forloop.first %} is-active{% endif %}" data-carousel-dot role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="Slide {{ forloop.index }}: {{ slide.title }}"></button>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

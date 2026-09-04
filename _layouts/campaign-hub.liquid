@@ -46,6 +46,38 @@ page's <h1>, so the hero below doesn't repeat the title.
     </div>
   </header>
 
+  {% comment %}
+  The deck, right up top. It's the artifact the campaign was actually presented
+  from, so leading with it lets a visitor see the whole thing in ten seconds
+  before deciding how far to read — the written brief and the PESO pages below
+  are then the depth behind what they've already skimmed. The two buttons sit
+  with the carousel rather than in a section of their own so there's one
+  presentation block on the page, not two.
+  {% endcomment %}
+  {% if page.presentation %}
+  <section id="deck" class="case-section">
+    <div class="case-section__inner">
+      <p class="case-section__label">Presentation</p>
+      <h2 class="case-section__title">{{ page.presentation.title | default: 'The Deck' }}</h2>
+      {% if page.presentation.note %}<p class="case-section__lead">{{ page.presentation.note }}</p>{% endif %}
+
+      {% include campaign/deck_carousel.liquid deck=page.presentation %}
+
+      <div class="deck-actions">
+        {% if page.presentation.canva_url %}
+        <a class="deck-actions__primary" href="{{ page.presentation.canva_url }}" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 20h6M12 16v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>Open in Canva</span>
+        </a>
+        {% endif %}
+        {% if page.presentation.pdf %}
+        {% include campaign/pdf_link.liquid href=page.presentation.pdf label=page.presentation.pdf_label %}
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
   {% if page.overview %}
   <section id="brief" class="case-band case-band--yellow">
     <div class="case-band__sparkles" aria-hidden="true">
@@ -108,32 +140,6 @@ page's <h1>, so the hero below doesn't repeat the title.
     </div>
   </section>
 
-  {% comment %}
-  The original deck. Deliberately after the PESO cards: the pillar pages are
-  the structured, web-native version and should lead — this is the "see it as
-  presented" artifact for anyone who wants the whole thing in one go.
-  {% endcomment %}
-  {% if page.presentation %}
-  <section id="deck" class="case-section case-section--tint">
-    <div class="case-section__inner">
-      <p class="case-section__label">Presentation</p>
-      <h2 class="case-section__title">{{ page.presentation.title | default: 'The Full Presentation' }}</h2>
-      {% if page.presentation.note %}<p class="case-section__lead">{{ page.presentation.note }}</p>{% endif %}
-      <div class="deck-actions">
-        {% if page.presentation.canva_url %}
-        <a class="deck-actions__primary" href="{{ page.presentation.canva_url }}" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 20h6M12 16v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          <span>View the slides</span>
-        </a>
-        {% endif %}
-        {% if page.presentation.pdf %}
-        {% include campaign/pdf_link.liquid href=page.presentation.pdf label=page.presentation.pdf_label %}
-        {% endif %}
-      </div>
-    </div>
-  </section>
-  {% endif %}
-
   {% if page.citations_pdf %}
   <section class="case-section case-section--tint">
     <div class="case-section__inner">
@@ -150,3 +156,6 @@ page's <h1>, so the hero below doesn't repeat the title.
   </footer>
 
 </article>
+
+{% comment %} Drives the deck carousel above; harmless on a hub without one. {% endcomment %}
+<script defer src="{{ '/assets/js/project-carousel.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

@@ -15,9 +15,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (!track || slides.length < 2) return;
 
+    // Slides sit in a row that's moved with translateX, and Chrome does not
+    // re-evaluate loading="lazy" for images shifted into place that way — a
+    // lazy image on slide 3 stays unloaded even once slide 3 is the visible
+    // one, leaving a blank frame. So take over the decision: as each slide
+    // becomes current, promote it and its immediate neighbours to eager,
+    // which does kick off the fetch. Slides further out stay lazy, so a
+    // carousel of large images still doesn't load all of them up front.
+    function preload(i) {
+      [i - 1, i, i + 1].forEach(function (n) {
+        var slide = slides[(n + slides.length) % slides.length];
+        var images = slide.querySelectorAll('img[loading="lazy"]');
+        Array.prototype.forEach.call(images, function (img) { img.loading = 'eager'; });
+      });
+    }
+
     function goTo(newIndex) {
       index = (newIndex + slides.length) % slides.length;
       track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      preload(index);
 
       slides.forEach(function (slide, i) {
         var active = i === index;
@@ -43,5 +59,9 @@ document.addEventListener('DOMContentLoaded', function () {
       if (event.key === 'ArrowLeft') { goTo(index - 1); }
       if (event.key === 'ArrowRight') { goTo(index + 1); }
     });
+
+    // Warm the slides either side of the starting one, so the very first
+    // click shows an image immediately rather than starting its download.
+    preload(index);
   });
 });
