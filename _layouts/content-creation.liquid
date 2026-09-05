@@ -87,18 +87,6 @@ layout: default
 </section>
 {% endif %}
 
-{% comment %}
-Personal storytelling, above the brand strip. It sits between the bio and the
-client work on purpose: the brand logos say who has hired her, and this says
-what she chooses to make when nobody is paying her to — which is the part that
-explains the point of view behind the client work.
-{% endcomment %}
-{% if page.featured_stories %}
-{% for group in page.featured_stories %}
-{% include content/content_group.liquid group=group %}
-{% endfor %}
-{% endif %}
-
 {% if page.brands %}
 <section class="brand-strip">
     <div class="brand-strip__inner">
@@ -114,6 +102,17 @@ explains the point of view behind the client work.
 </section>
 {% endif %}
 
+{% comment %}
+Personal storytelling, directly under the brand strip and ahead of the client
+work: the logos establish who has hired her, and this says what she chooses to
+make when nobody is paying her to — the point of view behind everything below.
+{% endcomment %}
+{% if page.featured_stories %}
+{% for group in page.featured_stories %}
+{% include content/content_group.liquid group=group %}
+{% endfor %}
+{% endif %}
+
 {% if page.content_groups %}
 {% for group in page.content_groups %}
 {% include content/content_group.liquid group=group %}
@@ -124,9 +123,13 @@ explains the point of view behind the client work.
 Loaded for either set of groups — the featured stories near the top embed the
 same way the client work does, so gating these on content_groups alone would
 leave that section with dead embeds if the client work were ever removed.
+
+The platform embed scripts used to be loaded here directly, which mounted all
+fifteen players on page load. embed-loader.js now mounts each one as it comes
+into view, and fetches Instagram's script only if something needs it; TikTok's
+is no longer needed at all.
 {% endcomment %}
 {% if page.content_groups or page.featured_stories %}
-<script async src="//www.instagram.com/embed.js"></script>
-<script async src="https://www.tiktok.com/embed.js"></script>
 <script defer src="{{ '/assets/js/project-carousel.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+<script defer src="{{ '/assets/js/embed-loader.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 {% endif %}

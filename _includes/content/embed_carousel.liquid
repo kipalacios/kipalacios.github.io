@@ -29,12 +29,23 @@
                         <img class="campaign-carousel__fallback-image" src="{{ item.fallback_image | relative_url }}" alt="{{ item.fallback_alt | default: 'View this post on Instagram' }}" loading="lazy">
                         <span class="campaign-carousel__fallback-link">View on Instagram &rarr;</span>
                     </a>
-                    {% elsif item.platform == 'instagram' %}
-                    <blockquote class="instagram-media" data-instgrm-permalink="{{ item.url }}" data-instgrm-version="14"></blockquote>
-                    {% elsif item.platform == 'tiktok' %}
-                    <blockquote class="tiktok-embed" cite="{{ item.url }}" data-video-id="{{ item.video_id }}" style="max-width: 100%;">
-                        <section></section>
-                    </blockquote>
+                    {% elsif item.platform == 'instagram' or item.platform == 'tiktok' %}
+                    {% comment %}
+                    Placeholder only. assets/js/embed-loader.js swaps in the real embed
+                    once this is near the viewport — fifteen players mounting at once
+                    made this page lock up. The noscript link is what anyone without JS
+                    gets, so the piece is never a dead box.
+                    {% endcomment %}
+                    <div class="embed-mount"
+                         data-embed-platform="{{ item.platform }}"
+                         {% if item.platform == 'tiktok' %}data-embed-id="{{ item.video_id }}"{% endif %}
+                         data-embed-url="{{ item.url }}">
+                        <noscript>
+                            <a class="embed-mount__link" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
+                                View this post on {% if item.platform == 'tiktok' %}TikTok{% else %}Instagram{% endif %} &rarr;
+                            </a>
+                        </noscript>
+                    </div>
                     {% endif %}
                     {% if item.stats %}
                     <ul class="campaign-carousel__stats">

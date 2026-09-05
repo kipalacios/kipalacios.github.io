@@ -2732,6 +2732,39 @@ a.button.creator-bio__collab-cta {
   }
 }
 
+/* Placeholder a social embed mounts into (assets/js/embed-loader.js). It holds
+   the space the player will occupy, so a post arriving as you scroll doesn't
+   shove the rest of the page down. */
+.embed-mount {
+  width: 100%;
+  max-width: 326px;
+  /* Instagram's card height depends on the caption, so this is a floor.
+     TikTok's player is a fixed size and gets an exact reservation below. */
+  min-height: 620px;
+
+  &[data-embed-platform='tiktok'] {
+    min-height: 750px;
+  }
+
+  &__frame {
+    display: block;
+    width: 100%;
+    height: 750px;
+    border: 0;
+    /* The theme pads every iframe by 9% horizontally (base/_global.scss),
+       which would inset the player inside its own reserved box. */
+    padding: 0;
+    margin: 0;
+  }
+
+  &__link {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    color: $kppr-navy;
+    text-decoration: underline;
+  }
+}
+
 /* Flip-through of a campaign's presentation slides, near the top of its hub.
    Shares the data-carousel JS with .project-carousel but not its styling —
    these are 16:9 landscape slides shown whole, not cropped portrait cards. */

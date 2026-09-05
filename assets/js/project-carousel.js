@@ -46,6 +46,12 @@ document.addEventListener('DOMContentLoaded', function () {
         dot.classList.toggle('is-active', active);
         dot.setAttribute('aria-selected', String(active));
       });
+
+      // Lets embed-loader.js mount a social embed the moment its slide is
+      // shown, instead of waiting for its observer to notice the transform.
+      document.dispatchEvent(new CustomEvent('carousel:change', {
+        detail: { carousel: carousel, slide: slides[index], index: index }
+      }));
     }
 
     prevBtn.addEventListener('click', function () { goTo(index - 1); });
