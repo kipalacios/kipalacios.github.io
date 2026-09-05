@@ -22,6 +22,32 @@ creator_bio:
   tiktok_url: https://www.tiktok.com/@klarissapalacios
   youtube_url: https://www.youtube.com/@klarissapalacios
   vsco_url: https://vsco.co/klarissapalacios/gallery
+# Personal storytelling, shown above the brand strip. Same shape as
+# content_groups below, so both render through content/content_group.liquid.
+featured_stories:
+  - name: Favorite Stories Featured on My Socials
+    campaigns:
+      - name: Disability Advocacy &amp; Awareness
+        summary: >
+          Some of my favorite content to make is the kind that shows how I actually move
+          through the world as someone who is blind/low vision — getting around Los Angeles
+          on public transportation, navigating campus as a student, starting out as a young
+          career professional, and travelling on my own. Less awareness campaign, more
+          day-in-the-life: the logistics, the workarounds, and the independence that comes
+          with figuring them out.
+        pieces:
+          - url: https://www.tiktok.com/@klarissapalacios/video/7513311789409373482
+            platform: tiktok
+            video_id: 7513311789409373482
+          - url: https://www.tiktok.com/@klarissapalacios/video/7530091586282212621
+            platform: tiktok
+            video_id: 7530091586282212621
+          - url: https://www.tiktok.com/@klarissapalacios/video/7521191251136236855
+            platform: tiktok
+            video_id: 7521191251136236855
+          - url: https://www.tiktok.com/@klarissapalacios/video/7505523620966436142
+            platform: tiktok
+            video_id: 7505523620966436142
 brands:
   - name: JBL Audio
     logo: assets/img/brands/jbl.svg

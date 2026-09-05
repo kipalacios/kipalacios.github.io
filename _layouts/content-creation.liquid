@@ -87,6 +87,18 @@ layout: default
 </section>
 {% endif %}
 
+{% comment %}
+Personal storytelling, above the brand strip. It sits between the bio and the
+client work on purpose: the brand logos say who has hired her, and this says
+what she chooses to make when nobody is paying her to — which is the part that
+explains the point of view behind the client work.
+{% endcomment %}
+{% if page.featured_stories %}
+{% for group in page.featured_stories %}
+{% include content/content_group.liquid group=group %}
+{% endfor %}
+{% endif %}
+
 {% if page.brands %}
 <section class="brand-strip">
     <div class="brand-strip__inner">
@@ -104,34 +116,16 @@ layout: default
 
 {% if page.content_groups %}
 {% for group in page.content_groups %}
-<section class="content-group">
-    <div class="content-group__heading">
-        <div class="content-group__sparkles" aria-hidden="true">
-            {% include home/sparkle.liquid class="content-group__sparkle content-group__sparkle--1" %}
-            {% include home/sparkle.liquid class="content-group__sparkle content-group__sparkle--2" %}
-            {% include home/sparkle.liquid class="content-group__sparkle content-group__sparkle--3" %}
-        </div>
-        <h2 class="content-group__title">{{ group.name }}</h2>
-    </div>
-
-    {% for campaign in group.campaigns %}
-    <div class="campaign">
-        <div class="campaign__info">
-            <h3 class="campaign__title">{{ campaign.name }}</h3>
-            {% if campaign.summary %}
-            <p class="campaign__summary">{{ campaign.summary }}</p>
-            {% else %}
-            <p class="campaign__summary campaign__summary--placeholder">Add a summary of this campaign here — what it was, your role, and the result.</p>
-            {% endif %}
-        </div>
-        <div class="campaign__media">
-            {% include content/embed_carousel.liquid pieces=campaign.pieces %}
-        </div>
-    </div>
-    {% endfor %}
-</section>
+{% include content/content_group.liquid group=group %}
 {% endfor %}
+{% endif %}
 
+{% comment %}
+Loaded for either set of groups — the featured stories near the top embed the
+same way the client work does, so gating these on content_groups alone would
+leave that section with dead embeds if the client work were ever removed.
+{% endcomment %}
+{% if page.content_groups or page.featured_stories %}
 <script async src="//www.instagram.com/embed.js"></script>
 <script async src="https://www.tiktok.com/embed.js"></script>
 <script defer src="{{ '/assets/js/project-carousel.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

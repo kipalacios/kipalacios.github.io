@@ -1,0 +1,36 @@
+{% comment %}
+One titled group of content on the Content Creation page, with a row per
+entry: the write-up on one side, the embeds on the other. Used both by the
+`featured_stories` section near the top of the page and by every group in
+`content_groups` below the brand strip, so the two stay visually identical
+without the markup living in two places.
+
+  group — an object with `name` and `campaigns`
+{% endcomment %}
+{% assign group = include.group %}
+<section class="content-group">
+    <div class="content-group__heading">
+        <div class="content-group__sparkles" aria-hidden="true">
+            {% include home/sparkle.liquid class="content-group__sparkle content-group__sparkle--1" %}
+            {% include home/sparkle.liquid class="content-group__sparkle content-group__sparkle--2" %}
+            {% include home/sparkle.liquid class="content-group__sparkle content-group__sparkle--3" %}
+        </div>
+        <h2 class="content-group__title">{{ group.name }}</h2>
+    </div>
+
+    {% for campaign in group.campaigns %}
+    <div class="campaign">
+        <div class="campaign__info">
+            <h3 class="campaign__title">{{ campaign.name }}</h3>
+            {% if campaign.summary %}
+            <p class="campaign__summary">{{ campaign.summary }}</p>
+            {% else %}
+            <p class="campaign__summary campaign__summary--placeholder">Add a summary of this campaign here — what it was, your role, and the result.</p>
+            {% endif %}
+        </div>
+        <div class="campaign__media">
+            {% include content/embed_carousel.liquid pieces=campaign.pieces %}
+        </div>
+    </div>
+    {% endfor %}
+</section>
