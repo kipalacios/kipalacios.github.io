@@ -29,12 +29,11 @@ featured_stories:
     campaigns:
       - name: Disability Advocacy &amp; Awareness
         summary: >
-          Some of my favorite content to make is the kind that shows how I actually move
-          through the world as someone who is blind/low vision — getting around Los Angeles
-          on public transportation, navigating campus as a student, starting out as a young
-          career professional, and travelling on my own. Less awareness campaign, more
-          day-in-the-life: the logistics, the workarounds, and the independence that comes
-          with figuring them out.
+          A lot of my favorite content documents how I navigate daily life as a blind/low-vision
+          creator. Whether I am navigating public transportation across Southern California, busy
+          with balancing student life with medical needs, starting out in my career, and traveling
+          independently, I share my story to highlight the independence that comes with innovative
+          problem solving.
         pieces:
           - url: https://www.tiktok.com/@klarissapalacios/video/7513311789409373482
             platform: tiktok
