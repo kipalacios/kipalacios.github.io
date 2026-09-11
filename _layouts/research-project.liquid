@@ -63,6 +63,40 @@ hypotheses simply skips that section.
   </section>
   {% endif %}
 
+  {% comment %}
+  The written report, straight after the deck: the deck is the quick version,
+  the report is the full method, statistics, sources and survey instrument for
+  anyone who wants to check the work. The cover opens the PDF in a new tab so it
+  can be read in the browser without downloading.
+  {% endcomment %}
+  {% if page.report %}
+  <section id="report" class="case-section case-section--tint">
+    <div class="case-section__inner report-card">
+      {% if page.report.cover %}
+      <a class="report-card__cover" href="{{ page.report.pdf | relative_url }}" target="_blank" rel="noopener" aria-label="Open the full report (PDF, opens in a new tab)">
+        <img src="{{ page.report.cover | relative_url }}" alt="" loading="lazy" width="900" height="1164">
+      </a>
+      {% endif %}
+      <div class="report-card__body">
+        <p class="case-section__label">Report</p>
+        <h2 class="case-section__title">{{ page.report.title | default: 'The Full Report' }}</h2>
+        {% if page.report.note %}<p class="case-section__lead">{{ page.report.note }}</p>{% endif %}
+        {% if page.report.contents %}
+        <ul class="report-card__contents">
+          {% for c in page.report.contents %}<li>{{ c }}</li>{% endfor %}
+        </ul>
+        {% endif %}
+        {% if page.report.pages %}<p class="report-card__meta">{{ page.report.pages }} pages{% if page.date_label %} &middot; {{ page.date_label }}{% endif %}</p>{% endif %}
+        {% if page.report.pdf %}
+        <div class="deck-actions">
+          {% include campaign/pdf_link.liquid href=page.report.pdf label=page.report.pdf_label %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
   {% if page.brief %}
   <section id="brief" class="case-band case-band--yellow">
     <div class="case-band__sparkles" aria-hidden="true">

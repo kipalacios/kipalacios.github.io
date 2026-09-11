@@ -42,9 +42,6 @@ at_a_glance:
 
 presentation:
   title: The Deck
-  note: >
-    The findings as they were presented — context, research design, the four key findings,
-    and the recommendations.
   pdf: assets/docs/research/disney-deepfakes/disney-deepfakes-presentation.pdf
   pdf_label: Download the deck (PDF, 5.5 MB)
   slides:
@@ -88,6 +85,26 @@ presentation:
       title: "Recommendation — respecting legacy"
     - img: assets/img/research/disney-deepfakes/deck/slide-20.jpg
       title: "Limitations and refinement"
+
+# The written report as submitted: pages 1–24 of the final PDF (title page,
+# report, sources, survey instrument). The copy of the deck appended after
+# page 24 is left out — it repeats the deck above, and still contains the
+# team-photo and thank-you slides that were removed from it.
+report:
+  title: The Full Report
+  pdf: assets/docs/research/disney-deepfakes/disney-deepfakes-report.pdf
+  pdf_label: Download the report (PDF, 532 KB)
+  cover: assets/img/research/disney-deepfakes/report-cover.jpg
+  pages: 24
+  contents:
+    - Executive summary
+    - Purpose &amp; research questions
+    - Method
+    - Key findings
+    - Conclusions &amp; recommendations
+    - Limitations
+    - Sources
+    - The survey instrument
 
 brief:
   context: >

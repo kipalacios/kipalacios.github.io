@@ -3056,18 +3056,103 @@ a.button.creator-bio__collab-cta {
   }
 }
 
+/* The full written report on a research page (#report in
+   _layouts/research-project.liquid): the cover as a clickable preview beside
+   what's inside and the download. Stacks on narrow screens. */
+.report-card {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 2.4rem;
+  align-items: center;
+
+  @media screen and (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+
+  &__cover {
+    display: block;
+    width: 200px;
+    max-width: 100%;
+    background: $kppr-white;
+    border: 1px solid rgba($kppr-navy, 0.1);
+    border-radius: $border-radius;
+    overflow: hidden;
+    box-shadow: 0 10px 24px rgba($kppr-navy, 0.16);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover,
+    &:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba($kppr-navy, 0.22);
+    }
+
+    /* The theme pads every <img> by 9% horizontally; the cover should fill
+       its frame edge to edge. */
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      padding: 0;
+      margin: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+
+      &:hover,
+      &:focus-visible { transform: none; }
+    }
+  }
+
+  &__body .case-section__title {
+    margin-bottom: 0.5em;
+  }
+
+  &__contents {
+    columns: 2;
+    column-gap: 1.8rem;
+    margin: 0.2em 0 0.9em;
+    padding-left: 1.1em;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88em;
+    line-height: 1.75;
+    color: var(--text);
+
+    li { break-inside: avoid; }
+
+    @media screen and (max-width: 640px) {
+      columns: 1;
+    }
+  }
+
+  &__meta {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.72em;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--meta);
+    margin: 0;
+  }
+
+  .deck-actions {
+    margin-top: 1em;
+  }
+}
+
 /* Findings that have a stat or charts: the write-up and its visuals side by
    side, so the text sits level with the rings it describes. The visual
-   column is sized to hold two rings abreast (150 + 2.4rem + 150). Below
-   900px a text column beside it would be too narrow to read, so the two
-   stack — visuals first, which is their source order. */
+   column is wide enough for two ~187px rings abreast while leaving the text
+   column around 420px on desktop. Below 960px a text column beside it would
+   be too narrow to read, so the two stack — visuals first, their source order. */
 .research-finding--split .research-finding__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 350px;
-  gap: 0 3rem;
+  grid-template-columns: minmax(0, 1fr) 400px;
+  gap: 0 2.5rem;
   align-items: start;
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 960px) {
     display: block;
   }
 }
@@ -3075,6 +3160,24 @@ a.button.creator-bio__collab-cta {
 .research-finding--split .research-finding__visual {
   grid-column: 2;
   grid-row: 1;
+
+  /* Rings fill the column rather than sitting at a fixed 150px: a pair takes
+     half each (the gap is split between them, so two always fit on one
+     line), a lone ring gets more room. Both are capped so that when the
+     column stacks full-width on a tablet the rings don't balloon. */
+  .ring-charts__row {
+    gap: 1.2rem 1.6rem;
+  }
+
+  .ring {
+    width: calc(50% - 0.85rem);
+    max-width: 200px;
+  }
+
+  .ring:only-child {
+    width: 100%;
+    max-width: 250px;
+  }
 }
 
 .research-finding--split .research-finding__text {
@@ -3139,8 +3242,6 @@ a.button.creator-bio__collab-cta {
 
   @media screen and (max-width: 480px) {
     width: 132px;
-
-    .ring__value { font-size: 1.35em; }
   }
 
   &__group {
@@ -3156,6 +3257,7 @@ a.button.creator-bio__collab-cta {
   &__plot {
     position: relative;
     border-radius: 50%;
+    container-type: inline-size;
   }
 
   /* Keyboard focus lands on an arc inside the SVG, which can't show a clean
@@ -3186,7 +3288,11 @@ a.button.creator-bio__collab-cta {
   &__value {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
+    /* Scales with the ring (cqi = 1% of the plot's width) so a large ring
+       doesn't hold a small number. Browsers without container units skip the
+       second declaration and keep the fixed size. */
     font-size: 1.55em;
+    font-size: clamp(1.35em, 16cqi, 2.6em);
     line-height: 1;
     color: $kppr-navy;
   }
