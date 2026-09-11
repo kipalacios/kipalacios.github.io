@@ -3056,6 +3056,32 @@ a.button.creator-bio__collab-cta {
   }
 }
 
+/* Findings that have a stat or charts: the write-up and its visuals side by
+   side, so the text sits level with the rings it describes. The visual
+   column is sized to hold two rings abreast (150 + 2.4rem + 150). Below
+   900px a text column beside it would be too narrow to read, so the two
+   stack — visuals first, which is their source order. */
+.research-finding--split .research-finding__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 350px;
+  gap: 0 3rem;
+  align-items: start;
+
+  @media screen and (max-width: 900px) {
+    display: block;
+  }
+}
+
+.research-finding--split .research-finding__visual {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.research-finding--split .research-finding__text {
+  grid-column: 1;
+  grid-row: 1;
+}
+
 /* Ring charts on research findings (_includes/research/ring_charts.liquid).
    Each ring is a meter: the share filled in blue-deep, the remainder as a
    lighter track of the same blue. WCAG contrast: fill #3D6EA6 is 5.19:1 on

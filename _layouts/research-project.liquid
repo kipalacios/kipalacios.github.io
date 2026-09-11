@@ -152,24 +152,40 @@ hypotheses simply skips that section.
       <p class="case-section__label">Findings</p>
       <h2 class="case-section__title">What the Data Showed</h2>
       {% for f in page.findings %}
-      <div class="research-finding">
+      {% if f.stats or f.charts %}{% assign has_visual = true %}{% else %}{% assign has_visual = false %}{% endif %}
+      <div class="research-finding{% if has_visual %} research-finding--split{% endif %}">
         <p class="research-finding__label">{{ f.label }}</p>
         <h3 class="research-finding__title">{{ f.title }}</h3>
-        {% if f.stats %}
-        <div class="research-finding__stats">
-          {% for s in f.stats %}
-          <div class="research-finding__stat">
-            <span class="research-finding__num">{{ s.num }}</span>
-            <span class="research-finding__stat-label">{{ s.label }}</span>
+        <div class="research-finding__grid">
+          {% comment %}
+          Visuals come first in the source so a phone (one column) still shows
+          the data before the write-up; on wide screens the grid moves them to
+          the right-hand column, level with the text they belong to.
+          {% endcomment %}
+          {% if has_visual %}
+          <div class="research-finding__visual">
+            {% if f.stats %}
+            <div class="research-finding__stats">
+              {% for s in f.stats %}
+              <div class="research-finding__stat">
+                <span class="research-finding__num">{{ s.num }}</span>
+                <span class="research-finding__stat-label">{{ s.label }}</span>
+              </div>
+              {% endfor %}
+            </div>
+            {% endif %}
+            {% if f.charts %}{% include research/ring_charts.liquid charts=f.charts caption=f.charts_caption part="rings" %}{% endif %}
           </div>
-          {% endfor %}
+          {% endif %}
+          <div class="research-finding__text">
+            {% if f.body %}<p class="research-finding__body">{{ f.body }}</p>{% endif %}
+            {% for quote in f.quotes %}
+            <blockquote class="research-quote"><p>&ldquo;{{ quote }}&rdquo;</p><footer>Survey respondent</footer></blockquote>
+            {% endfor %}
+          </div>
         </div>
-        {% endif %}
-        {% if f.charts %}{% include research/ring_charts.liquid charts=f.charts caption=f.charts_caption %}{% endif %}
-        {% if f.body %}<p class="research-finding__body">{{ f.body }}</p>{% endif %}
-        {% for quote in f.quotes %}
-        <blockquote class="research-quote"><p>&ldquo;{{ quote }}&rdquo;</p><footer>Survey respondent</footer></blockquote>
-        {% endfor %}
+        {% comment %} The table view spans the full width under both columns — four columns won't fit in a ring-width column. {% endcomment %}
+        {% if f.charts %}{% include research/ring_charts.liquid charts=f.charts part="table" %}{% endif %}
       </div>
       {% endfor %}
     </div>

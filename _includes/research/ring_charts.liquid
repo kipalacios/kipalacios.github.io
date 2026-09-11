@@ -16,14 +16,18 @@ ring's centre, the count in its caption, and every row is in the table view.
             value is a whole-number percentage; charts sharing a `set` are
             grouped under that heading (e.g. one measure across age groups)
   caption — optional line above all the rings
+  part    — "rings" or "table" to render just that piece, so a layout can put
+            the rings beside the text and the table view beneath both.
+            Omit it to render the rings with their table directly below.
 {% endcomment %}
 {% assign charts = include.charts %}
 {% if charts and charts.size > 0 %}
+
+{% unless include.part == "table" %}
 {% comment %} r = 48 in a 120 viewBox; the 1.6-unit gap renders as the ~2px surface gap between the two arcs. {% endcomment %}
 {% assign ring_c = 301.593 %}
 {% assign ring_gap = 1.6 %}
 {% assign half_gap = ring_gap | divided_by: 2.0 %}
-{% assign has_group = charts | where_exp: "c", "c.group" | size %}
 
 <div class="ring-charts">
   {% if include.caption %}<p class="ring-charts__caption">{{ include.caption }}</p>{% endif %}
@@ -75,32 +79,6 @@ ring's centre, the count in its caption, and every row is in the table view.
     </div>
   </div>
   {% endfor %}
-
-  <details class="chart-table">
-    <summary>View this data as a table</summary>
-    <div class="chart-table__scroll">
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">Measure</th>
-            {% if has_group > 0 %}<th scope="col" class="chart-table__group">Group</th>{% endif %}
-            <th scope="col">Respondents</th>
-            <th scope="col">Share</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for c in charts %}
-          <tr>
-            <td>{{ c.measure }}</td>
-            {% if has_group > 0 %}<td class="chart-table__group">{{ c.group }}</td>{% endif %}
-            <td>{{ c.count }}</td>
-            <td>{{ c.value }}%</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-  </details>
 </div>
 
 {% comment %} Includes share the page's variable scope in Jekyll, so this loads the script once however many findings have charts. {% endcomment %}
@@ -108,4 +86,35 @@ ring's centre, the count in its caption, and every row is in the table view.
 {% assign research_charts_js = true %}
 <script defer src="{{ '/assets/js/research-charts.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 {% endunless %}
+{% endunless %}
+
+{% unless include.part == "rings" %}
+{% assign has_group = charts | where_exp: "c", "c.group" | size %}
+<details class="chart-table">
+  <summary>View this data as a table</summary>
+  <div class="chart-table__scroll">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Measure</th>
+          {% if has_group > 0 %}<th scope="col" class="chart-table__group">Group</th>{% endif %}
+          <th scope="col">Respondents</th>
+          <th scope="col">Share</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for c in charts %}
+        <tr>
+          <td>{{ c.measure }}</td>
+          {% if has_group > 0 %}<td class="chart-table__group">{{ c.group }}</td>{% endif %}
+          <td>{{ c.count }}</td>
+          <td>{{ c.value }}%</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</details>
+{% endunless %}
+
 {% endif %}
