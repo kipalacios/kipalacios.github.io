@@ -1,5 +1,5 @@
 # RSS specific
-rss: true         # Icons on the footer
+rss: false        # Icons on the footer — off: the site has no posts, so the feed is empty
 feed:
   path: feed.xml  # RSS feed path
 
