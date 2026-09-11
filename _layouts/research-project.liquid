@@ -165,6 +165,7 @@ hypotheses simply skips that section.
           {% endfor %}
         </div>
         {% endif %}
+        {% if f.charts %}{% include research/ring_charts.liquid charts=f.charts caption=f.charts_caption %}{% endif %}
         {% if f.body %}<p class="research-finding__body">{{ f.body }}</p>{% endif %}
         {% for quote in f.quotes %}
         <blockquote class="research-quote"><p>&ldquo;{{ quote }}&rdquo;</p><footer>Survey respondent</footer></blockquote>

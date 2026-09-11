@@ -3056,6 +3056,276 @@ a.button.creator-bio__collab-cta {
   }
 }
 
+/* Ring charts on research findings (_includes/research/ring_charts.liquid).
+   Each ring is a meter: the share filled in blue-deep, the remainder as a
+   lighter track of the same blue. WCAG contrast: fill #3D6EA6 is 5.19:1 on
+   the page and 3.62:1 against its track, so the split reads. The track alone
+   is under 3:1 on the page by design — which is why every value is also
+   printed (centre number, caption, table view) rather than living only in
+   the colour or the tooltip. Text wears text tokens, never the ring colour. */
+.ring-charts {
+  margin: 0.2em 0 1.4em;
+
+  &__caption {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.72em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--meta);
+    margin: 0 0 0.9em;
+  }
+
+  &__set + &__set {
+    margin-top: 1.4em;
+  }
+
+  &__set-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.92em;
+    color: $kppr-navy;
+    margin: 0 0 0.6em;
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem 2.4rem;
+
+    /* On a phone two rings still fit side by side, so the 18–24 vs. 25–34
+       pairs stay a comparison instead of stacking into a tall column. */
+    @media screen and (max-width: 480px) {
+      gap: 1.2rem 1rem;
+    }
+  }
+}
+
+/* Group labels like "Ages 18–24" shouldn't break at the en dash. */
+.chart-table__group {
+  white-space: nowrap;
+}
+
+.ring {
+  width: 150px;
+  margin: 0;
+  text-align: center;
+
+  @media screen and (max-width: 480px) {
+    width: 132px;
+
+    .ring__value { font-size: 1.35em; }
+  }
+
+  &__group {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.7em;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--meta);
+    margin: 0 0 0.45em;
+  }
+
+  &__plot {
+    position: relative;
+    border-radius: 50%;
+  }
+
+  /* Keyboard focus lands on an arc inside the SVG, which can't show a clean
+     outline of its own — so the whole ring gets one. */
+  &:focus-within &__plot {
+    outline: 2px solid $kppr-blue-deep;
+    outline-offset: 4px;
+  }
+
+  &__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  &__center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  /* Same sans as the rest of the page, proportional figures (no tabular-nums
+     on a standalone number). */
+  &__value {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.55em;
+    line-height: 1;
+    color: $kppr-navy;
+  }
+
+  &__caption {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15em;
+    margin-top: 0.6em;
+  }
+
+  &__title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.84em;
+    line-height: 1.35;
+    color: var(--text);
+  }
+
+  &__count {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.76em;
+    color: var(--meta);
+  }
+}
+
+.ring-arc {
+  fill: none;
+  stroke-width: 14;
+  transition: stroke-width 0.15s ease;
+
+  &--fill { stroke: $kppr-blue-deep; }
+  &--rest { stroke: $kppr-blue; }
+
+  /* The hovered or focused segment lifts. r 48 + 9 stays inside the 120 box. */
+  &.is-active { stroke-width: 18; }
+
+  @media (prefers-reduced-motion: reduce) { transition: none; }
+}
+
+/* Transparent, wider-than-the-mark hit targets laid over each arc. */
+.ring-hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 26;
+  pointer-events: stroke;
+  outline: none;
+  cursor: default;
+}
+
+.chart-tip {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  z-index: 1000;
+  max-width: 260px;
+  padding: 0.65em 0.85em;
+  background: $kppr-white;
+  border: 1px solid rgba($kppr-navy, 0.14);
+  border-radius: 6px;
+  box-shadow: 0 8px 22px rgba($kppr-navy, 0.16);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.12s ease;
+
+  &.is-visible { opacity: 1; }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  /* A short line key, not a filled box — at tooltip size a box is data ink
+     doing a label's job. */
+  &__key {
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 16px;
+    height: 3px;
+    border-radius: 2px;
+
+    &--fill { background: $kppr-blue-deep; }
+    &--rest { background: $kppr-blue; }
+  }
+
+  /* Value leads; the label follows. */
+  &__value {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.15em;
+    color: $kppr-navy;
+  }
+
+  &__label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85em;
+    color: var(--text);
+    margin: 0.2em 0 0;
+  }
+
+  &__detail {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.76em;
+    line-height: 1.45;
+    color: var(--meta);
+    margin: 0.35em 0 0;
+
+    &[hidden] { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { transition: none; }
+}
+
+/* The table-view twin of each chart group — the way to read every value
+   without hovering, and the screen-reader-friendly equivalent. */
+.chart-table {
+  margin-top: 1.1em;
+
+  summary {
+    cursor: pointer;
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.74em;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $kppr-blue-deep;
+  }
+
+  &__scroll {
+    overflow-x: auto;
+    margin-top: 0.7em;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.84em;
+  }
+
+  th,
+  td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.55em 0.6em;
+    border-bottom: 1px solid rgba($kppr-navy, 0.12);
+  }
+
+  th {
+    font-weight: 600;
+    color: $kppr-navy;
+  }
+
+  td { color: var(--text); }
+
+  /* Respondents and Share: right-aligned, tabular figures so the column lines up. */
+  th:nth-last-child(-n + 2),
+  td:nth-last-child(-n + 2) {
+    text-align: right;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
 .research-credit {
   font-family: 'Poppins', sans-serif;
   font-size: 0.9em;

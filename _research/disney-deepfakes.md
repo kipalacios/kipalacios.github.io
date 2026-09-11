@@ -146,8 +146,15 @@ findings:
     stats:
       - num: "2.0"
         label: Mean brand attitude — neutral
-      - num: "82%"
-        label: Reported low familiarity with deepfakes
+    # Ring charts use the paper's stated figures only. The remainder of each ring
+    # shows a share but no count: the paper doesn't state how many answered each
+    # question, so a count for "the rest" would be invented.
+    charts:
+      - value: 82
+        count: 37
+        title: Low familiarity with deepfakes
+        measure: Reported low familiarity with deepfakes and with spotting AI-generated content
+        rest: Did not report low familiarity
     body: >
       On the scales, respondents looked indifferent: the mean brand attitude score toward AI in
       advertising was a neutral 2, and respondents at the low-to-neutral end of that scale rated
@@ -159,11 +166,17 @@ findings:
       - "Lazy, anti-art, lack of environmental awareness, cheap, and underhanded."
   - label: Finding 02
     title: Non-disclosure is where trust breaks
-    stats:
-      - num: "78%"
-        label: Would feel deceived by undisclosed AI
-      - num: "83%"
-        label: Would lose trust in Disney
+    charts:
+      - value: 78
+        count: 35
+        title: Would feel deceived
+        measure: '"If Disney used AI without disclosing it, I would feel deceived." Somewhat agreed, agreed, or strongly agreed.'
+        rest: Did not agree
+      - value: 83
+        count: 38
+        title: Would lose trust in Disney
+        measure: '"If I discovered AI was used without disclosure, my trust in Disney would decrease." Somewhat agreed, agreed, or strongly agreed.'
+        rest: Did not agree
     body: >
       This was the clearest signal in the study. Asked whether they'd feel deceived if Disney used
       AI without saying so, 78% agreed; asked whether their trust would drop, 83% did. And when
@@ -173,11 +186,36 @@ findings:
       - "Clearly disclosed, and no employees suffer from wage loss or downsizing because of it."
   - label: Finding 03
     title: Ethical concern rises with age
-    stats:
-      - num: "55% → 68%"
-        label: Strongly agree disclosure is necessary (18–24 vs. 25–34)
-      - num: "40% → 55%"
-        label: Strongly agree reviving deceased actors is a problem
+    charts_caption: Share who strongly agreed, by age group
+    charts:
+      - set: AI disclosure is necessary
+        group: Ages 18–24
+        value: 55
+        count: 12
+        title: Strongly agreed
+        measure: Strongly agreed that AI disclosure is necessary
+        rest: Did not strongly agree
+      - set: AI disclosure is necessary
+        group: Ages 25–34
+        value: 68
+        count: 15
+        title: Strongly agreed
+        measure: Strongly agreed that AI disclosure is necessary
+        rest: Did not strongly agree
+      - set: Using AI to revive deceased actors is a problem
+        group: Ages 18–24
+        value: 40
+        count: 9
+        title: Strongly agreed
+        measure: Strongly agreed that using AI to revive deceased actors is problematic
+        rest: Did not strongly agree
+      - set: Using AI to revive deceased actors is a problem
+        group: Ages 25–34
+        value: 55
+        count: 12
+        title: Strongly agreed
+        measure: Strongly agreed that using AI to revive deceased actors is problematic
+        rest: Did not strongly agree
     body: >
       Cross-tabulating by age showed concern climbing between the two groups on both disclosure
       and the digital revival of deceased actors — suggesting that as Disney's audience gets older

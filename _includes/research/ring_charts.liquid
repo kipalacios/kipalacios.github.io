@@ -1,0 +1,111 @@
+{% comment %}
+Ring charts for one research finding.
+
+Each ring is a meter, not a two-colour pie: one share filled in the accent, the
+remainder as a lighter track of the same blue. A pie of two slices says nothing
+a single number doesn't, and nearly every figure in a survey write-up is one
+share against "everyone else" — so the ring keeps the circular form but carries
+exactly one value.
+
+The SVG is drawn here at build time with stroke-dasharray (no trig needed), so
+the charts read without JavaScript. assets/js/research-charts.js only adds the
+hover/focus tooltip. Tooltips enhance, never gate: the share is printed in the
+ring's centre, the count in its caption, and every row is in the table view.
+
+  charts  — list of { value, count, title, measure, rest, group?, set? }
+            value is a whole-number percentage; charts sharing a `set` are
+            grouped under that heading (e.g. one measure across age groups)
+  caption — optional line above all the rings
+{% endcomment %}
+{% assign charts = include.charts %}
+{% if charts and charts.size > 0 %}
+{% comment %} r = 48 in a 120 viewBox; the 1.6-unit gap renders as the ~2px surface gap between the two arcs. {% endcomment %}
+{% assign ring_c = 301.593 %}
+{% assign ring_gap = 1.6 %}
+{% assign half_gap = ring_gap | divided_by: 2.0 %}
+{% assign has_group = charts | where_exp: "c", "c.group" | size %}
+
+<div class="ring-charts">
+  {% if include.caption %}<p class="ring-charts__caption">{{ include.caption }}</p>{% endif %}
+
+  {% assign sets = charts | group_by: "set" %}
+  {% for s in sets %}
+  <div class="ring-charts__set">
+    {% if s.name and s.name != "" %}<p class="ring-charts__set-title">{{ s.name }}</p>{% endif %}
+    <div class="ring-charts__row">
+      {% for c in s.items %}
+      {% assign filled = c.value | times: ring_c | divided_by: 100.0 %}
+      {% assign fill_len = filled | minus: ring_gap %}
+      {% assign fill_off = half_gap | times: -1 %}
+      {% assign rest_len = ring_c | minus: filled | minus: ring_gap %}
+      {% assign rest_off = filled | plus: half_gap | times: -1 %}
+      {% assign rest_pct = 100 | minus: c.value %}
+      <figure class="ring">
+        {% if c.group %}<p class="ring__group">{{ c.group }}</p>{% endif %}
+        <div class="ring__plot">
+          <svg class="ring__svg" viewBox="0 0 120 120" role="group" aria-label="{{ c.value }}% {{ c.title | downcase | escape }}{% if c.group %}, {{ c.group | escape }}{% endif %}">
+            <g transform="rotate(-90 60 60)">
+              <circle class="ring-arc ring-arc--rest" data-seg="rest" cx="60" cy="60" r="48"
+                      stroke-dasharray="{{ rest_len | round: 3 }} {{ ring_c }}" stroke-dashoffset="{{ rest_off | round: 3 }}"/>
+              <circle class="ring-arc ring-arc--fill" data-seg="fill" cx="60" cy="60" r="48"
+                      stroke-dasharray="{{ fill_len | round: 3 }} {{ ring_c }}" stroke-dashoffset="{{ fill_off | round: 3 }}"/>
+              {% comment %} Hit targets: the same arcs, wider than the painted marks and transparent, on top. {% endcomment %}
+              <circle class="ring-hit" data-seg="rest" cx="60" cy="60" r="48" tabindex="0" role="img"
+                      stroke-dasharray="{{ rest_len | round: 3 }} {{ ring_c }}" stroke-dashoffset="{{ rest_off | round: 3 }}"
+                      aria-label="{{ rest_pct }}% {{ c.rest | downcase | escape }}"
+                      data-tip-value="{{ rest_pct }}%"
+                      data-tip-label="{{ c.rest | escape }}"
+                      data-tip-detail="{% if c.group %}{{ c.group | escape }} · {% endif %}Share of respondents who answered"/>
+              <circle class="ring-hit" data-seg="fill" cx="60" cy="60" r="48" tabindex="0" role="img"
+                      stroke-dasharray="{{ fill_len | round: 3 }} {{ ring_c }}" stroke-dashoffset="{{ fill_off | round: 3 }}"
+                      aria-label="{{ c.value }}%, {{ c.count }} respondents: {{ c.measure | escape }}"
+                      data-tip-value="{{ c.value }}%"
+                      data-tip-label="{{ c.count }} respondents{% if c.group %} · {{ c.group | escape }}{% endif %}"
+                      data-tip-detail="{{ c.measure | escape }}"/>
+            </g>
+          </svg>
+          <div class="ring__center" aria-hidden="true"><span class="ring__value">{{ c.value }}%</span></div>
+        </div>
+        <figcaption class="ring__caption">
+          <span class="ring__title">{{ c.title }}</span>
+          <span class="ring__count">{{ c.count }} respondents</span>
+        </figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+
+  <details class="chart-table">
+    <summary>View this data as a table</summary>
+    <div class="chart-table__scroll">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Measure</th>
+            {% if has_group > 0 %}<th scope="col" class="chart-table__group">Group</th>{% endif %}
+            <th scope="col">Respondents</th>
+            <th scope="col">Share</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for c in charts %}
+          <tr>
+            <td>{{ c.measure }}</td>
+            {% if has_group > 0 %}<td class="chart-table__group">{{ c.group }}</td>{% endif %}
+            <td>{{ c.count }}</td>
+            <td>{{ c.value }}%</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </details>
+</div>
+
+{% comment %} Includes share the page's variable scope in Jekyll, so this loads the script once however many findings have charts. {% endcomment %}
+{% unless research_charts_js %}
+{% assign research_charts_js = true %}
+<script defer src="{{ '/assets/js/research-charts.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+{% endunless %}
+{% endif %}
