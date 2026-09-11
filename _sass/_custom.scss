@@ -2793,6 +2793,15 @@ a.button.creator-bio__collab-cta {
 .creative {
   margin: 0;
 
+  /* A tall, narrow piece — an infographic — given the grid's full 860px
+     column renders thousands of pixels tall. Cap and centre it instead. */
+  &--narrow {
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
   /* Inside a carousel the theme's 9% image padding would inset the ad within
      its own slide. */
   &--compact &__img {

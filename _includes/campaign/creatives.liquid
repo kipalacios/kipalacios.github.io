@@ -4,7 +4,9 @@
      Params: items (array of {image, label, note, alt}), title,
              carousel (true to page through them instead of stacking — for a
              set of same-shaped pieces like four portrait Instagram ads,
-             which stack to ~860px each in the grid). -->
+             which stack to ~860px each in the grid),
+             narrow (true for tall, skinny pieces like an infographic, which
+             at the grid's full column width run thousands of pixels tall). -->
 {% if include.items %}
 <section class="case-section">
     <div class="case-section__inner">
@@ -60,7 +62,7 @@
         {% else %}
         <div class="creative-set">
             {% for c in include.items %}
-            <figure class="creative">
+            <figure class="creative{% if include.narrow %} creative--narrow{% endif %}">
                 <img class="creative__img" src="{{ c.image | relative_url }}" alt="{{ c.alt | default: c.label }}" loading="lazy">
                 <figcaption class="creative__caption">
                     <strong>{{ c.label }}</strong>

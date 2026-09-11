@@ -121,6 +121,8 @@ creative_groups:
         label: Bus shelter
         alt: Sun Bum Daily 30 Glow bus shelter poster
   - title: Digital Graphic
+    # Tall and skinny: capped rather than stretched across the full column.
+    narrow: true
     items:
       - image: assets/img/portfolio/sun-bum/infographic.jpg
         label: Infographic
