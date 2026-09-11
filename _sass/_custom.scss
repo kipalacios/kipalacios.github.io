@@ -3379,6 +3379,101 @@ a.button.creator-bio__collab-cta {
   }
 }
 
+/* A campaign told as a timeline (#story in _layouts/campaign-single.liquid):
+   each moment's copy on the left with its creative beside it, stacking on
+   narrow screens. */
+.glow-story {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 $padding-medium;
+
+  &__intro {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.02em;
+    line-height: 1.75;
+    color: var(--text);
+    margin: 0 0 0.5em;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 0 2.5rem;
+    align-items: start;
+    padding: 1.9rem 0;
+    border-bottom: 1px solid rgba($kppr-navy, 0.1);
+
+    &:last-of-type { border-bottom: 0; }
+
+    &--text-only { grid-template-columns: 1fr; }
+
+    @media screen and (max-width: 860px) {
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+  }
+
+  &__time {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.74em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--campaign-accent, #{$kppr-gold});
+    margin: 0 0 0.25em;
+  }
+
+  &__title {
+    font-family: 'Palmer Lake Print', cursive;
+    font-weight: 400;
+    font-size: 1.6em;
+    line-height: 1.15;
+    color: $kppr-navy;
+    margin: 0 0 0.5em;
+  }
+
+  &__body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.97em;
+    line-height: 1.75;
+    color: var(--text);
+    margin: 0;
+  }
+
+  &__figure {
+    margin: 0;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: $border-radius;
+      /* The theme pads every <img> by 9% horizontally. */
+      padding: 0;
+      margin: 0;
+      box-shadow: 0 8px 20px rgba($kppr-navy, 0.14);
+    }
+
+    @media screen and (max-width: 860px) {
+      max-width: 320px;
+    }
+  }
+
+  &__closer {
+    font-family: 'Palmer Lake Print', cursive;
+    font-size: 1.45em;
+    line-height: 1.3;
+    color: $kppr-navy;
+    text-align: center;
+    margin: 1.8rem 0 0;
+  }
+
+  &__cta {
+    justify-content: center;
+    margin-top: 1.4em;
+  }
+}
+
 /* The full written report on a research page (#report in
    _layouts/research-project.liquid): the cover as a clickable preview beside
    what's inside and the download. Stacks on narrow screens. */

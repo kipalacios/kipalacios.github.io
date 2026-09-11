@@ -1,0 +1,107 @@
+---
+layout: default
+---
+{% comment %}
+A campaign that lives on one page, for work without a full PESO spread —
+here a brand-voice narrative plus its paid and owned creative. Open Mind and
+Rare Hair use campaign-hub with a page per pillar; this keeps the same
+furniture (banner, case-hero, case-band, the creative grid) without inventing
+empty sections. Every block is optional.
+{% endcomment %}
+<div class="call-out call-out_solid">
+    <h1 class="call-out_title">{{ page.title }}</h1>
+</div>
+
+<article class="case-study"{% if page.accent %} style="--campaign-accent: {{ page.accent }};"{% endif %}>
+
+  <header class="case-hero">
+    <div class="case-hero__inner">
+      {% if page.concept %}<p class="case-hero__badge">Concept Campaign</p>{% endif %}
+      {% if page.tagline %}<p class="case-hero__tagline">&ldquo;{{ page.tagline }}&rdquo;</p>{% endif %}
+      <div class="case-hero__meta">
+        {% if page.client %}<span><strong>Client</strong> {{ page.client }}</span>{% endif %}
+        {% if page.course %}<span><strong>Course</strong> {{ page.course }}{% if page.date_label %} &middot; {{ page.date_label }}{% endif %}</span>{% endif %}
+        {% if page.role %}<span><strong>My role</strong> {{ page.role }}</span>{% endif %}
+        {% if page.industry %}<span><strong>Industry</strong> {{ page.industry | join: ' &middot; ' }}</span>{% endif %}
+      </div>
+      {% if page.summary %}<p class="case-hero__summary">{{ page.summary }}</p>{% endif %}
+      {% if page.concept_note %}<p class="case-hero__note">{{ page.concept_note }}</p>{% endif %}
+    </div>
+  </header>
+
+  {% if page.overview %}
+  <section id="brief" class="case-band case-band--yellow">
+    <div class="case-band__sparkles" aria-hidden="true">
+      {% include home/sparkle.liquid class="case-band__sparkle case-band__sparkle--1" %}
+      {% include home/sparkle.liquid class="case-band__sparkle case-band__sparkle--2" %}
+    </div>
+    <div class="case-band__inner">
+      <p class="case-band__eyebrow">The Brief</p>
+      <div class="case-overview">
+        {% if page.overview.assignment %}
+        <div class="case-overview__item"><h3>The Assignment</h3><p>{{ page.overview.assignment }}</p></div>
+        {% endif %}
+        {% if page.overview.idea %}
+        <div class="case-overview__item"><h3>The Idea</h3><p>{{ page.overview.idea }}</p></div>
+        {% endif %}
+        {% if page.overview.audience %}
+        <div class="case-overview__item"><h3>Audience</h3><p>{{ page.overview.audience }}</p></div>
+        {% endif %}
+        {% if page.overview.product %}
+        <div class="case-overview__item"><h3>The Product</h3><p>{{ page.overview.product }}</p></div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {% comment %} The narrative, told in the product's own voice, as a timeline. {% endcomment %}
+  {% if page.story %}
+  <section id="story" class="case-section">
+    <div class="case-section__inner">
+      <p class="case-section__label">{{ page.story_label | default: 'The Copy' }}</p>
+      <h2 class="case-section__title">{{ page.story_title | default: 'A Day in the Life' }}</h2>
+      {% if page.story_intro %}<p class="glow-story__intro">{{ page.story_intro }}</p>{% endif %}
+    </div>
+
+    <div class="glow-story">
+      {% for s in page.story %}
+      <div class="glow-story__item{% unless s.img %} glow-story__item--text-only{% endunless %}">
+        <div class="glow-story__text">
+          {% if s.time %}<p class="glow-story__time">{{ s.time }}</p>{% endif %}
+          {% if s.title %}<h3 class="glow-story__title">{{ s.title }}</h3>{% endif %}
+          {% if s.body %}<p class="glow-story__body">{{ s.body }}</p>{% endif %}
+        </div>
+        {% if s.img %}
+        <figure class="glow-story__figure">
+          <img src="{{ s.img | relative_url }}" alt="{{ s.alt }}" loading="lazy">
+        </figure>
+        {% endif %}
+      </div>
+      {% endfor %}
+
+      {% if page.story_closer %}
+      <p class="glow-story__closer">{{ page.story_closer }}</p>
+      {% endif %}
+
+      {% if page.product_url %}
+      <div class="deck-actions glow-story__cta">
+        <a class="deck-actions__primary" href="{{ page.product_url }}" target="_blank" rel="noopener noreferrer">
+          <span>{{ page.product_url_label | default: 'See the real product' }}</span>
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% comment %} Each group of finished creative, using the same grid as the other campaigns. {% endcomment %}
+  {% for group in page.creative_groups %}
+  {% include campaign/creatives.liquid items=group.items title=group.title %}
+  {% endfor %}
+
+  <footer class="case-footer">
+    <a class="button case-footer__cta" href="{{ '/portfolio/' | relative_url }}">&larr; Back to Portfolio</a>
+  </footer>
+
+</article>
