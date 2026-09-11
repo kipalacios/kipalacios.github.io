@@ -1,32 +1,45 @@
 ---
-layout: page
+layout: default
 ---
+{% comment %}
+Site search. Uses the site's banner and styling (.search-page in
+_sass/_custom.scss) rather than the theme's photo header; the search itself
+is unchanged — SimpleJekyllSearch over /assets/data/search.liquid, loaded
+site-wide by the theme.
+{% endcomment %}
+<div class="call-out call-out_solid">
+    <h1 class="call-out_title">{{ page.title }}</h1>
+</div>
 
-<!-- Html Elements for Search -->
-<input type="text" id="search-input" placeholder="Enter keywords..." class="search-bar" autofocus>
-<br>
-<br>
-<ul id="results-container"></ul>
+<section class="search-page">
+    {% if page.subtitle %}<p class="search-page__lead">{{ page.subtitle }}</p>{% endif %}
 
-<section>
-    <script type="text/javascript">
-        SimpleJekyllSearch({
-            searchInput: document.getElementById('search-input'),
-            resultsContainer: document.getElementById('results-container'),
-            json: '{{ "/assets/data/search.liquid" | relative_url }}',
-            searchResultTemplate: '<div class="search-title" data-testid="search-result-item"><a href="{url}" data-testid="search-result-link"><h3>{title}</h3></a><div class="meta">{date} <div class="right"><i class="fas fa-tag"></i> {tags}</div></div><p>{content}</p></div><hr>',
-            noResultsText: '{{ site.data.language.str_no_result_found | default: "No result found" }}',
-            limit: 10,
-            strategy: {
-                type: 'hybrid',
-            },
-            sortMiddleware: window.RelevanceSort,
-            exclude: [],
-            templateMiddleware: window.createHighlightTemplateMiddleware({
-                className: 'search-highlight',
-                maxLength: 100,
-                contextLength: 150
-            })
-        })
-    </script>
+    <div class="search-page__field">
+        <label class="search-page__label" for="search-input">Search the site</label>
+        <i class="fas fa-search search-page__icon" aria-hidden="true"></i>
+        <input type="text" id="search-input" placeholder="Enter keywords..." class="search-bar" autocomplete="off" autofocus>
+    </div>
+
+    <ul id="results-container" class="search-page__results" aria-live="polite"></ul>
 </section>
+
+<script type="text/javascript">
+    SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: '{{ "/assets/data/search.liquid" | relative_url }}',
+        searchResultTemplate: '<li class="search-result" data-testid="search-result-item"><a class="search-result__link" href="{url}" data-testid="search-result-link"><h3 class="search-result__title">{title}</h3></a><p class="search-result__meta">{date}</p><p class="search-result__excerpt">{content}</p></li>',
+        noResultsText: '{{ site.data.language.str_no_result_found | default: "No result found" }}',
+        limit: 10,
+        strategy: {
+            type: 'hybrid',
+        },
+        sortMiddleware: window.RelevanceSort,
+        exclude: [],
+        templateMiddleware: window.createHighlightTemplateMiddleware({
+            className: 'search-highlight',
+            maxLength: 100,
+            contextLength: 150
+        })
+    })
+</script>

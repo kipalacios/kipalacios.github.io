@@ -130,17 +130,28 @@ header.site-header {
   &__inner {
     position: relative;
     z-index: 1;
-    max-width: 640px;
+    /* Wide enough that the bio sets in about four lines rather than six. */
+    max-width: 760px;
     margin: 0 auto;
-    padding: $padding-large $padding-medium;
+    /* Fixed padding on every side. It used to be percentages ($padding-large
+       / $padding-medium), and percentage padding resolves against the page
+       *width* — ~130px above and below and ~86px on each side on a desktop
+       screen, which both padded the section out and squeezed the bio into
+       extra lines. */
+    padding: 3.25rem 1.5rem 3rem;
     text-align: center;
+
+    @media screen and (max-width: $break) {
+      padding: 2.5rem 1.5rem 2.25rem;
+    }
   }
 
   &__name {
     font-family: 'Palmer Lake Print', cursive;
     font-weight: 400;
     font-size: 2.4em;
-    margin-bottom: 0.4em;
+    margin-top: 0;
+    margin-bottom: 0.15em;
   }
 
   &__name-accent {
@@ -172,6 +183,16 @@ header.site-header {
     &--2 { top: 14%; right: 10%; width: 2.3em; height: 2.3em; animation-delay: 1.1s; }
     &--3 { bottom: 18%; left: 7%; width: 1.4em; height: 1.4em; animation-delay: 2.2s; }
     &--4 { bottom: 10%; right: 14%; width: 1.9em; height: 1.9em; animation-delay: 0.6s; }
+
+    /* On a phone the name and bio span nearly the full width, so the stars
+       tuck into the corners — above the name and below the button — rather
+       than landing on the text. */
+    @media screen and (max-width: $break) {
+      &--1 { top: 1.5%; left: 5%; }
+      &--2 { top: 1.5%; right: 5%; width: 1.6em; height: 1.6em; }
+      &--3 { bottom: 3%; left: 6%; }
+      &--4 { bottom: 2%; right: 6%; }
+    }
   }
 
   /* Sketched shooting star that streaks in between the name and the bio copy,
@@ -184,7 +205,7 @@ header.site-header {
   &__divider {
     position: relative;
     height: 3.4em;
-    margin: 0.2em 0 0.8em;
+    margin: 0 0 0.4em;
     overflow: hidden;
   }
 
@@ -258,7 +279,7 @@ header.site-header {
     font-family: 'Poppins', sans-serif;
     font-size: 1.05em;
     line-height: 1.6;
-    margin-bottom: 1.6em;
+    margin-bottom: 1.1em;
   }
 }
 
@@ -3053,6 +3074,290 @@ a.button.creator-bio__collab-cta {
     line-height: 1.7;
     color: var(--text);
     margin-bottom: 0.6em;
+  }
+}
+
+/* ==========================================================================
+   Tags and Search pages (_layouts/tags.liquid, _layouts/search.liquid).
+   Brought into the site's look: the yellow banner, Palmer Lake headings,
+   Poppins text, and pill-shaped tags and search field, in place of the
+   theme's gray title, blue buttons and stock photo header. Scoped to these
+   pages so the theme's tag list elsewhere is untouched.
+   ========================================================================== */
+
+.tags-page,
+.search-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2.5rem $padding-medium 4rem;
+}
+
+.tags-page {
+  /* The pill row of every tag at the top. */
+  .tag-list {
+    padding-bottom: 1.6rem;
+    margin-bottom: 0.4rem;
+    border-bottom: 1px solid rgba($kppr-navy, 0.12);
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5em;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      display: inline-flex;
+    }
+
+    li.meta {
+      font-family: 'Glacial Indifference', sans-serif;
+      font-weight: 700;
+      font-size: 0.72em;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--meta);
+      margin-right: 0.3em;
+    }
+
+    a.button {
+      display: inline-flex;
+      align-items: center;
+      margin: 0;
+      padding: 0.45em 1em;
+      font-family: 'Glacial Indifference', sans-serif;
+      font-weight: 700;
+      font-size: 0.74em;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: $kppr-navy;
+      background: $kppr-yellow-pale;
+      border: 1px solid rgba($kppr-gold, 0.45);
+      border-radius: 999px;
+      box-shadow: none;
+      text-decoration: none;
+      transition: background-color 0.15s ease;
+
+      &:hover,
+      &:focus-visible {
+        background: $kppr-yellow;
+      }
+
+      p {
+        display: inline;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* The pills already read as tags; the glyph was the theme's blue look. */
+      i { display: none; }
+
+      @media (prefers-reduced-motion: reduce) { transition: none; }
+    }
+  }
+
+  &__group {
+    padding: 1.6rem 0 1.3rem;
+    border-bottom: 1px solid rgba($kppr-navy, 0.1);
+    /* Keeps a tag's heading clear of the top edge when a pill jumps to it. */
+    scroll-margin-top: 1.5rem;
+  }
+
+  &__tag {
+    font-family: 'Palmer Lake Print', cursive;
+    font-weight: 400;
+    font-size: 1.6em;
+    color: $kppr-navy;
+    margin: 0 0 0.4em;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  &__items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.55em 0;
+    border-bottom: 1px solid rgba($kppr-navy, 0.07);
+
+    &:last-child { border-bottom: 0; }
+
+    a {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.95em;
+      color: $kppr-navy;
+      text-decoration: none;
+
+      &:hover,
+      &:focus-visible { text-decoration: underline; }
+    }
+  }
+
+  &__date {
+    flex: 0 0 auto;
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.7em;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--meta);
+    white-space: nowrap;
+  }
+
+  &__top {
+    display: inline-block;
+    margin-top: 0.6em;
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.7em;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $kppr-blue-deep;
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible { text-decoration: underline; }
+  }
+}
+
+.search-page {
+  &__lead {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.02em;
+    color: var(--text);
+    margin: 0 0 1.4rem;
+  }
+
+  &__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  &__field {
+    position: relative;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  &__icon {
+    position: absolute;
+    left: 1.15em;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--meta);
+    pointer-events: none;
+  }
+
+  /* Over the theme's .search-bar, which also fades the field to 60% opacity
+     on hover and focus — that dims the text being typed, so it's reset. */
+  .search-bar {
+    height: 52px;
+    padding: 0 1.2em 0 2.9em;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    color: var(--text);
+    background: $kppr-white;
+    border: 2px solid rgba($kppr-navy, 0.18);
+    border-radius: 999px;
+    box-shadow: none;
+    opacity: 1;
+
+    &:hover {
+      border-color: rgba($kppr-navy, 0.35);
+      box-shadow: none;
+      opacity: 1;
+    }
+
+    &:focus {
+      border-color: $kppr-blue-deep;
+      box-shadow: 0 0 0 4px rgba($kppr-blue, 0.6);
+      outline: none;
+      opacity: 1;
+    }
+
+    &::placeholder {
+      color: var(--meta);
+      opacity: 1;
+    }
+  }
+
+  &__results {
+    list-style: none;
+    max-width: 760px;
+    margin: 2rem auto 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: var(--meta);
+    text-align: left;
+  }
+}
+
+.search-result {
+  padding: 1.2rem 0;
+  border-bottom: 1px solid rgba($kppr-navy, 0.1);
+
+  /* An inherited theme rule computes these as display:inline inside the
+     results list, which ran the date straight into the excerpt
+     ("June 30, 2019Consectetur…"). Stack them explicitly. */
+  &__link,
+  &__meta,
+  &__excerpt {
+    display: block;
+  }
+
+  &__link {
+    text-decoration: none;
+
+    &:hover .search-result__title,
+    &:focus-visible .search-result__title { text-decoration: underline; }
+  }
+
+  &__title {
+    font-family: 'Palmer Lake Print', cursive;
+    font-weight: 400;
+    font-size: 1.4em;
+    color: $kppr-navy;
+    margin: 0 0 0.2em;
+  }
+
+  &__meta {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.7em;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--meta);
+    margin: 0 0 0.4em;
+  }
+
+  &__excerpt {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.92em;
+    line-height: 1.65;
+    color: var(--text);
+    margin: 0;
   }
 }
 

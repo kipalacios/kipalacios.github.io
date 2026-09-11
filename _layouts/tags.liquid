@@ -1,91 +1,60 @@
 ---
-layout: page
+layout: default
 ---
+{% comment %}
+Every tag on the site, with the posts, pages and portfolio items under each.
+Uses the site's banner and styling (.tags-page in _sass/_custom.scss) rather
+than the theme's page header. Posts show their date; pages and portfolio
+items don't have one, so none is shown — the theme used to print today's date
+for them, which read as if they'd just been published.
+{% endcomment %}
+<div id="tags-top" class="call-out call-out_solid">
+    <h1 class="call-out_title">{{ page.title }}</h1>
+</div>
 
-<div class="home">
-
-    <!-- cycles through posts to get tags -->
-    {% assign rawtags = "" %}
-    {% for post in site.posts %}
-    {% if post.tags.size > 0 %}
+{% comment %} Collect tags from posts, the portfolio collection, and pages. {% endcomment %}
+{% assign rawtags = "" %}
+{% for post in site.posts %}
+  {% if post.tags.size > 0 %}
     {% assign post_tags = post.tags | join:'|' | append:'|' %}
     {% assign rawtags = rawtags | append:post_tags %}
-    {% endif %}
-    {% endfor %}
-
-    <!-- cycles through portfolio collection to get tags -->
-    {% assign portfolio = site.portfolio | map: 'tags' | join: ',' | split: ',' | uniq %}
-    {% for tag in portfolio %}
-    {% assign portfolio_tags = tag | join: '|' | append: '|' %}
-    {% assign rawtags = rawtags | append: portfolio_tags %}
-    {% endfor %}
-
-    <!-- cycles through pages to get tags -->
-    {% for page in site.pages %}
-    {% if page.tags.size > 0 %}
-    {% assign page_tags = page.tags | join:'|' | append:'|' %}
+  {% endif %}
+{% endfor %}
+{% assign portfolio = site.portfolio | map: 'tags' | join: ',' | split: ',' | uniq %}
+{% for tag in portfolio %}
+  {% assign portfolio_tags = tag | join: '|' | append: '|' %}
+  {% assign rawtags = rawtags | append: portfolio_tags %}
+{% endfor %}
+{% for p in site.pages %}
+  {% if p.tags.size > 0 %}
+    {% assign page_tags = p.tags | join:'|' | append:'|' %}
     {% assign rawtags = rawtags | append:page_tags %}
-    {% endif %}
-    {% endfor %}
+  {% endif %}
+{% endfor %}
 
-    <!-- Displays the list of tags-->
+<section class="tags-page">
     {% include default/tags_list.liquid tags=rawtags %}
 
-    <!-- Displays the posts and pages that contains the tag-->
-    <div class="posts">
-        {% for tag in tags %}
-        <h3 id="{{ tag | cgi_escape }}" class="tag-anchor">
-            <a href="#{{ tag | cgi_escape }}"><i class="fas fa-tag fa-fw fa-sm"></i> {{ tag }}</a>
-            <a href="#{{ page.title }}" style="float: right"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"> </i> </a>
+    {% for tag in tags %}
+    <div class="tags-page__group" id="{{ tag | cgi_escape }}">
+        <h2 class="tags-page__tag"><a href="#{{ tag | cgi_escape }}">{{ tag }}</a></h2>
+        <ul class="tags-page__items">
+            {% for p in site.pages %}{% if p.tags contains tag %}
+            <li class="tags-page__item"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+            {% endif %}{% endfor %}
 
-        </h3>
+            {% for post in site.posts %}{% if post.tags contains tag %}
+            <li class="tags-page__item">
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                <span class="tags-page__date">{{ post.date | date: '%B %-d, %Y' }}</span>
+            </li>
+            {% endif %}{% endfor %}
 
-        <!-- Posts and collection for each tags -->
-        <div class="tag-posts">
-
-            <!-- Pages -->
-            {% for page in site.pages %}
-            {% if page.tags contains tag %}
-            <h5 class="tag-title">
-                <a href="{{ page.url | relative_url }}">
-                    <i class="far fa-file-image" aria-hidden="true"></i>
-                    {{ page.title }}
-                </a>
-                {% include blog/post_info.liquid date=page.date %}
-            </h5>
-            {% endif %}
-            {% endfor %}
-
-            <!-- Posts -->
-            {% for post in site.posts %}
-            {% if post.tags contains tag %}
-            <h5 class="tag-title">
-                <a href="{{ post.url | relative_url }}">
-                    <i class="far fa-file-alt" aria-hidden="true"></i>
-                    {{ post.title }}
-                </a>
-
-                {% include blog/post_info.liquid date=post.date %}
-            </h5>
-            {% endif %}
-            {% endfor %}
-
-            <!-- Portfolio -->
-            {% for note in site.portfolio %}
-            {% if note.tags contains tag %}
-            <h5 class="tag-title">
-                <a href="{{ note.url | relative_url }}">
-                    <i class="far fa-file" aria-hidden="true"></i>
-                    {{ note.title }}
-                </a>
-
-                {% include blog/post_info.liquid date=note.date %}
-            </h5>
-            {% endif %}
-            {% endfor %}
-
-        </div>
-        {% endfor %}
-
+            {% for note in site.portfolio %}{% if note.tags contains tag %}
+            <li class="tags-page__item"><a href="{{ note.url | relative_url }}">{{ note.title }}</a></li>
+            {% endif %}{% endfor %}
+        </ul>
+        <a class="tags-page__top" href="#tags-top">Back to top &uarr;</a>
     </div>
-</div>
+    {% endfor %}
+</section>
