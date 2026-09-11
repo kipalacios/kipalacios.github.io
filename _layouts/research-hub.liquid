@@ -1,0 +1,55 @@
+---
+layout: default
+---
+{% comment %}
+Home page for the Data, AI & Research section: an intro, then one card per
+document in the `research` collection, sorted by each project's `order`.
+Adding a project is just adding a file to _research/ — it appears here
+automatically.
+{% endcomment %}
+<div class="call-out call-out_solid">
+    <h1 class="call-out_title">{{ page.title }}</h1>
+</div>
+
+<section class="research-hub">
+  {% if page.intro %}
+  <div class="research-hub__intro">
+    {% for p in page.intro %}<p>{{ p }}</p>{% endfor %}
+  </div>
+  {% endif %}
+
+  {% if page.focus_areas %}
+  <ul class="research-hub__focus" aria-label="Focus areas">
+    {% for f in page.focus_areas %}<li>{{ f }}</li>{% endfor %}
+  </ul>
+  {% endif %}
+
+  {% assign projects = site.research | sort: 'order' %}
+  <h2 class="research-hub__heading">Projects</h2>
+  <div class="portfolio-index research-hub__grid">
+    {% for item in projects %}
+    <a class="portfolio-index__card" href="{{ item.url | relative_url }}">
+      <div class="portfolio-index__image-wrap">
+        <img class="portfolio-index__image research-hub__image" src="{{ item.img | relative_url }}" alt="{{ item.img_alt | default: item.title }}" loading="lazy">
+        {% if item.kind %}<span class="portfolio-index__badge">{{ item.kind }}</span>{% endif %}
+      </div>
+      <div class="portfolio-index__body">
+        <h3 class="portfolio-index__title">{{ item.title }}</h3>
+        {% if item.subtitle %}<p class="research-hub__card-subtitle">{{ item.subtitle }}</p>{% endif %}
+        <p class="portfolio-index__meta">{{ item.course }}{% if item.date_label %} &middot; {{ item.date_label }}{% endif %}</p>
+        {% if item.summary %}<p class="portfolio-index__desc">{{ item.summary | strip_html | truncatewords: 30 }}</p>{% endif %}
+        {% if item.methods %}
+        <ul class="research-tags research-tags--small">
+          {% for m in item.methods %}<li>{{ m }}</li>{% endfor %}
+        </ul>
+        {% endif %}
+        <span class="portfolio-index__link">View project &rarr;</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+
+  {% if projects.size == 0 %}
+  <p class="research-hub__empty">Projects coming soon.</p>
+  {% endif %}
+</section>

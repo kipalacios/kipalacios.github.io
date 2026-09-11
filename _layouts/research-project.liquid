@@ -1,0 +1,225 @@
+---
+layout: default
+---
+{% comment %}
+One research project. Reuses the campaign pages' building blocks (case-hero,
+case-band, case-section, the deck carousel) so research reads as part of the
+same site, but orders the page the way research is actually judged: the
+question, how it was answered, what was found, what to do about it, and what
+the study can't claim. Every block is optional, so a project without, say,
+hypotheses simply skips that section.
+{% endcomment %}
+<div class="call-out call-out_solid">
+    <h1 class="call-out_title">{{ page.title }}</h1>
+</div>
+
+<article class="case-study research-project">
+
+  <header class="case-hero">
+    <div class="case-hero__inner">
+      <a class="case-hero__kicker" href="{{ '/research/' | relative_url }}">&larr; Data, AI &amp; Research</a>
+      {% if page.kind %}<p class="case-hero__badge">{{ page.kind }}</p>{% endif %}
+      {% if page.subtitle %}<p class="research-project__subtitle">{{ page.subtitle }}</p>{% endif %}
+      {% if page.question %}<p class="case-hero__tagline">&ldquo;{{ page.question }}&rdquo;</p>{% endif %}
+      <div class="case-hero__meta">
+        {% if page.course %}<span><strong>Course</strong> {{ page.course }}{% if page.date_label %} &middot; {{ page.date_label }}{% endif %}</span>{% endif %}
+        {% if page.role %}<span><strong>My role</strong> {{ page.role }}</span>{% endif %}
+      </div>
+      {% if page.summary %}<p class="case-hero__summary">{{ page.summary }}</p>{% endif %}
+
+      {% if page.at_a_glance %}
+      <div class="case-hero__stats">
+        {% for item in page.at_a_glance %}
+        <div class="case-hero__stat">
+          <span class="case-hero__stat-num">{{ item.stat }}</span>
+          <span class="case-hero__stat-label">{{ item.label }}</span>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% if page.methods %}
+      <ul class="research-tags" aria-label="Methods">
+        {% for m in page.methods %}<li>{{ m }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </header>
+
+  {% comment %} The deck leads, as on the Rare Hair hub: ten seconds of flipping gives the whole study before the detail below. {% endcomment %}
+  {% if page.presentation %}
+  <section id="deck" class="case-section">
+    <div class="case-section__inner">
+      <p class="case-section__label">Presentation</p>
+      <h2 class="case-section__title">{{ page.presentation.title | default: 'The Deck' }}</h2>
+      {% if page.presentation.note %}<p class="case-section__lead">{{ page.presentation.note }}</p>{% endif %}
+      {% include campaign/deck_carousel.liquid deck=page.presentation %}
+      {% if page.presentation.pdf %}
+      <div class="deck-actions">
+        {% include campaign/pdf_link.liquid href=page.presentation.pdf label=page.presentation.pdf_label %}
+      </div>
+      {% endif %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if page.brief %}
+  <section id="brief" class="case-band case-band--yellow">
+    <div class="case-band__sparkles" aria-hidden="true">
+      {% include home/sparkle.liquid class="case-band__sparkle case-band__sparkle--1" %}
+      {% include home/sparkle.liquid class="case-band__sparkle case-band__sparkle--2" %}
+    </div>
+    <div class="case-band__inner">
+      <p class="case-band__eyebrow">The Brief</p>
+      <div class="case-overview">
+        {% if page.brief.context %}
+        <div class="case-overview__item">
+          <h3>Why It Mattered</h3>
+          <p>{{ page.brief.context }}</p>
+        </div>
+        {% endif %}
+        {% if page.brief.purpose %}
+        <div class="case-overview__item">
+          <h3>The Goal</h3>
+          <p>{{ page.brief.purpose }}</p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {% if page.research_questions or page.hypotheses %}
+  <section id="questions" class="case-section">
+    <div class="case-section__inner">
+      <p class="case-section__label">Research Design</p>
+      <h2 class="case-section__title">What We Set Out to Answer</h2>
+      <div class="research-columns">
+        {% if page.research_questions %}
+        <div>
+          <h3 class="research-subhead">Research Questions</h3>
+          <ol class="research-list">
+            {% for q in page.research_questions %}<li><span class="research-list__key">RQ{{ forloop.index }}</span> {{ q }}</li>{% endfor %}
+          </ol>
+        </div>
+        {% endif %}
+        {% if page.hypotheses %}
+        <div>
+          <h3 class="research-subhead">Hypotheses</h3>
+          <ol class="research-list">
+            {% for h in page.hypotheses %}<li><span class="research-list__key">H{{ forloop.index }}</span> {{ h }}</li>{% endfor %}
+          </ol>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {% if page.method %}
+  <section id="method" class="case-section case-section--tint">
+    <div class="case-section__inner">
+      <p class="case-section__label">Method</p>
+      <h2 class="case-section__title">How We Answered It</h2>
+      {% if page.method.summary %}<p class="case-section__lead">{{ page.method.summary }}</p>{% endif %}
+      {% if page.method.sample %}<p class="case-section__lead">{{ page.method.sample }}</p>{% endif %}
+
+      {% if page.method.formats %}
+      <h3 class="research-subhead">Question Formats</h3>
+      <ul class="research-tags research-tags--plain">
+        {% for f in page.method.formats %}<li>{{ f }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+
+      {% if page.method.dimensions %}
+      <h3 class="research-subhead">Four Measurement Dimensions</h3>
+      <div class="research-dimensions">
+        {% for d in page.method.dimensions %}
+        <div class="research-dimensions__item">
+          <p class="research-dimensions__name">{{ d.name }}</p>
+          <p class="research-dimensions__desc">{{ d.desc }}</p>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if page.findings %}
+  <section id="findings" class="case-section">
+    <div class="case-section__inner">
+      <p class="case-section__label">Findings</p>
+      <h2 class="case-section__title">What the Data Showed</h2>
+      {% for f in page.findings %}
+      <div class="research-finding">
+        <p class="research-finding__label">{{ f.label }}</p>
+        <h3 class="research-finding__title">{{ f.title }}</h3>
+        {% if f.stats %}
+        <div class="research-finding__stats">
+          {% for s in f.stats %}
+          <div class="research-finding__stat">
+            <span class="research-finding__num">{{ s.num }}</span>
+            <span class="research-finding__stat-label">{{ s.label }}</span>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% if f.body %}<p class="research-finding__body">{{ f.body }}</p>{% endif %}
+        {% for quote in f.quotes %}
+        <blockquote class="research-quote"><p>&ldquo;{{ quote }}&rdquo;</p><footer>Survey respondent</footer></blockquote>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if page.recommendations %}
+  <section id="recommendations" class="case-band case-band--yellow">
+    <div class="case-band__inner">
+      <p class="case-band__eyebrow">Recommendations</p>
+      <div class="case-overview">
+        {% for r in page.recommendations %}
+        <div class="case-overview__item">
+          <h3>{{ r.title }}</h3>
+          <p>{{ r.body }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {% if page.limitations %}
+  <section id="limitations" class="case-section">
+    <div class="case-section__inner">
+      <p class="case-section__label">Limitations</p>
+      <h2 class="case-section__title">What This Study Can't Claim</h2>
+      <ul class="research-limitations">
+        {% for l in page.limitations %}<li>{{ l }}</li>{% endfor %}
+      </ul>
+    </div>
+  </section>
+  {% endif %}
+
+  {% if page.team %}
+  <section class="case-section">
+    <div class="case-section__inner">
+      <p class="research-credit">
+        <strong>A team project.</strong> Researched and presented with
+        {% assign others = page.team | where_exp: "n", "n != 'Klarissa Palacios'" %}
+        {% for name in others %}{% if forloop.last and forloop.length > 1 %}and {% endif %}{{ name }}{% unless forloop.last %}{% if forloop.length > 2 %}, {% else %} {% endif %}{% endunless %}{% endfor %}.
+        {% if page.role %}My contribution was {{ page.role | downcase }}.{% endif %}
+      </p>
+    </div>
+  </section>
+  {% endif %}
+
+  <footer class="case-footer">
+    <a class="button case-footer__cta" href="{{ '/research/' | relative_url }}">&larr; Back to Research</a>
+  </footer>
+
+</article>
+
+<script defer src="{{ '/assets/js/project-carousel.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

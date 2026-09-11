@@ -1,5 +1,9 @@
 ---
 layout: page
+# Parked until there are real photos for it — still the theme's demo content.
+# published: false keeps this file but leaves the page out of the build, so it
+# is gone from both the nav and its URL. Delete this line to bring it back.
+published: false
 title: Gallery
 subtitle: From the pexels folder
 permalink: /gallery/

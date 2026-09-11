@@ -2732,6 +2732,342 @@ a.button.creator-bio__collab-cta {
   }
 }
 
+/* ==========================================================================
+   Data, AI & Research — hub (_layouts/research-hub.liquid) and project pages
+   (_layouts/research-project.liquid). The project page leans on the campaign
+   case-study blocks; these are only the pieces research needs that campaigns
+   don't: method tags, RQ/hypothesis lists, findings with stats, and quotes.
+   ========================================================================== */
+
+.research-hub {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 2.5rem 0 0;
+
+  &__intro {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 $padding-medium;
+    text-align: center;
+
+    p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.02em;
+      line-height: 1.75;
+      color: var(--text);
+      margin: 0 0 1em;
+    }
+  }
+
+  &__focus {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6em;
+    list-style: none;
+    margin: 1.2em auto 0;
+    padding: 0 $padding-medium;
+
+    li {
+      font-family: 'Glacial Indifference', sans-serif;
+      font-weight: 700;
+      font-size: 0.74em;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: $kppr-navy;
+      background: $kppr-yellow-pale;
+      border: 1px solid rgba($kppr-gold, 0.45);
+      border-radius: 999px;
+      padding: 0.5em 1em;
+    }
+  }
+
+  &__heading {
+    font-family: 'Palmer Lake Print', cursive;
+    font-weight: 400;
+    font-size: 2em;
+    color: $kppr-navy;
+    text-align: center;
+    margin: 2.2rem 0 0;
+  }
+
+  /* Covers are presentation slides, so show them whole at 16:9 rather than
+     the 4:3 crop the campaign cards use — a cropped title slide loses its
+     title. */
+  &__grid .portfolio-index__image-wrap {
+    aspect-ratio: 16 / 9;
+  }
+
+  &__image {
+    padding: 0;
+    margin: 0;
+  }
+
+  &__card-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.95em;
+    color: $kppr-navy;
+    margin: -0.2em 0 0.4em;
+  }
+
+  &__empty {
+    text-align: center;
+    color: var(--meta);
+    padding: 2rem 0 4rem;
+  }
+}
+
+.research-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5em;
+  list-style: none;
+  margin: 1.4em 0 0;
+  padding: 0;
+
+  li {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.72em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $kppr-navy;
+    background: $kppr-white;
+    border: 1px solid rgba($kppr-navy, 0.18);
+    border-radius: 999px;
+    padding: 0.45em 0.95em;
+  }
+
+  /* Inside a text column (method formats), left-aligned to the copy. */
+  &--plain {
+    justify-content: flex-start;
+    margin-top: 0.6em;
+  }
+
+  /* On hub cards: smaller, and aligned with the card's left-hand text. */
+  &--small {
+    justify-content: flex-start;
+    margin: 0.2em 0 0.9em;
+
+    li { font-size: 0.64em; padding: 0.35em 0.8em; }
+  }
+}
+
+.research-project__subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.1em;
+  color: $kppr-navy;
+  margin: 0.4em 0 0;
+}
+
+.research-subhead {
+  font-family: 'Glacial Indifference', sans-serif;
+  font-weight: 700;
+  font-size: 0.95em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $kppr-navy;
+  margin: 1.8em 0 0.2em;
+}
+
+.research-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 2.5rem;
+
+  .research-subhead { margin-top: 0; }
+
+  @media screen and (max-width: $break) {
+    grid-template-columns: 1fr;
+
+    > div + div .research-subhead { margin-top: 1.8em; }
+  }
+}
+
+.research-list {
+  list-style: none;
+  margin: 0.8em 0 0;
+  padding: 0;
+
+  li {
+    display: flex;
+    gap: 0.8em;
+    align-items: baseline;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.94em;
+    line-height: 1.6;
+    color: var(--text);
+    padding: 0.7em 0;
+    border-bottom: 1px solid rgba($kppr-navy, 0.1);
+
+    &:last-child { border-bottom: 0; }
+  }
+
+  &__key {
+    flex: 0 0 2.6em;
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.85em;
+    letter-spacing: 0.04em;
+    color: $kppr-blue-deep;
+  }
+}
+
+.research-dimensions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 0.9em;
+
+  @media screen and (max-width: 900px) { grid-template-columns: repeat(2, 1fr); }
+  @media screen and (max-width: 480px) { grid-template-columns: 1fr; }
+
+  &__item {
+    background: $kppr-white;
+    border-top: 3px solid $kppr-yellow;
+    border-radius: $border-radius;
+    padding: 1em 1.1em;
+  }
+
+  &__name {
+    font-family: 'Palmer Lake Print', cursive;
+    font-size: 1.35em;
+    line-height: 1.1;
+    color: $kppr-navy;
+    margin: 0 0 0.3em;
+  }
+
+  &__desc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.86em;
+    line-height: 1.55;
+    color: var(--text);
+    margin: 0;
+  }
+}
+
+.research-finding {
+  padding: 2.2rem 0;
+  border-bottom: 1px solid rgba($kppr-navy, 0.12);
+
+  &:first-of-type { padding-top: 0.4rem; }
+  &:last-child { border-bottom: 0; }
+
+  &__label {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.72em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $kppr-blue-deep;
+    margin: 0 0 0.3em;
+  }
+
+  &__title {
+    font-family: 'Palmer Lake Print', cursive;
+    font-weight: 400;
+    font-size: 1.7em;
+    line-height: 1.15;
+    color: $kppr-navy;
+    margin: 0 0 0.8em;
+  }
+
+  &__stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2.5rem;
+    margin: 0 0 1.1em;
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    max-width: 16rem;
+  }
+
+  &__num {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 2.3em;
+    line-height: 1.05;
+    color: $kppr-navy;
+    /* Gold underline ties the numbers back to the site's accent without
+       colouring the figures themselves, which need to stay high-contrast. */
+    background: linear-gradient($kppr-yellow, $kppr-yellow) no-repeat 0 88% / 100% 0.28em;
+    align-self: flex-start;
+  }
+
+  &__stat-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.82em;
+    line-height: 1.45;
+    color: var(--meta);
+    margin-top: 0.35em;
+  }
+
+  &__body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.97em;
+    line-height: 1.75;
+    color: var(--text);
+    margin: 0 0 1em;
+  }
+}
+
+.research-quote {
+  margin: 0.8em 0 0;
+  padding: 0.9em 1.2em;
+  background: $kppr-yellow-pale;
+  border-left: 3px solid $kppr-gold;
+  border-radius: 0 $border-radius $border-radius 0;
+
+  p {
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: $kppr-navy;
+    margin: 0;
+  }
+
+  footer {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-size: 0.72em;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--meta);
+    margin-top: 0.4em;
+  }
+}
+
+.research-limitations {
+  margin: 0;
+  padding-left: 1.2em;
+
+  li {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95em;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 0.6em;
+  }
+}
+
+.research-credit {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9em;
+  line-height: 1.7;
+  color: var(--text);
+  text-align: center;
+  background: $kppr-yellow-pale;
+  border-radius: $border-radius;
+  padding: 1em 1.4em;
+  margin: 0;
+}
+
 /* Placeholder a social embed mounts into (assets/js/embed-loader.js). It holds
    the space the player will occupy, so a post arriving as you scroll doesn't
    shove the rest of the page down. */

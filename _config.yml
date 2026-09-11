@@ -45,6 +45,11 @@ collections:
   portfolio:
     output: true
     permalink: /:collection/:name
+  # Data, AI and analytics research projects. Same shape as portfolio — a hub
+  # page lists them, each document renders as its own project page.
+  research:
+    output: true
+    permalink: /:collection/:name
 
 # BUILD SETTINGS
 sass:
