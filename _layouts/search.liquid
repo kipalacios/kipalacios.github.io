@@ -28,7 +28,7 @@ site-wide by the theme.
         searchInput: document.getElementById('search-input'),
         resultsContainer: document.getElementById('results-container'),
         json: '{{ "/assets/data/search.liquid" | relative_url }}',
-        searchResultTemplate: '<li class="search-result" data-testid="search-result-item"><a class="search-result__link" href="{url}" data-testid="search-result-link"><h3 class="search-result__title">{title}</h3></a><p class="search-result__meta">{date}</p><p class="search-result__excerpt">{content}</p></li>',
+        searchResultTemplate: '<li class="search-result" data-testid="search-result-item"><a class="search-result__link" href="{url}" data-testid="search-result-link"><h3 class="search-result__title">{title}</h3></a><p class="search-result__excerpt">{content}</p></li>',
         noResultsText: '{{ site.data.language.str_no_result_found | default: "No result found" }}',
         limit: 10,
         strategy: {

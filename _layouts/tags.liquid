@@ -35,6 +35,11 @@ for them, which read as if they'd just been published.
 <section class="tags-page">
     {% include default/tags_list.liquid tags=rawtags %}
 
+    {% comment %} `tags` is set by the include above (includes share the page's scope). {% endcomment %}
+    {% if tags.size == 0 %}
+    <p class="tags-page__empty">No tags yet — they'll appear here as posts and projects are tagged.</p>
+    {% endif %}
+
     {% for tag in tags %}
     <div class="tags-page__group" id="{{ tag | cgi_escape }}">
         <h2 class="tags-page__tag"><a href="#{{ tag | cgi_escape }}">{{ tag }}</a></h2>

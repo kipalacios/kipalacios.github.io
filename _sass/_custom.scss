@@ -3159,6 +3159,20 @@ a.button.creator-bio__collab-cta {
     }
   }
 
+  /* With nothing tagged the include still prints an empty .tag-list; hide it
+     so its divider line doesn't sit alone under the banner. */
+  .tag-list:empty {
+    display: none;
+  }
+
+  &__empty {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    color: var(--meta);
+    margin: 0.5rem 0 0;
+  }
+
   &__group {
     padding: 1.6rem 0 1.3rem;
     border-bottom: 1px solid rgba($kppr-navy, 0.1);
@@ -3319,10 +3333,8 @@ a.button.creator-bio__collab-cta {
   border-bottom: 1px solid rgba($kppr-navy, 0.1);
 
   /* An inherited theme rule computes these as display:inline inside the
-     results list, which ran the date straight into the excerpt
-     ("June 30, 2019Consectetur…"). Stack them explicitly. */
+     results list, which ran the title and excerpt together. Stack them. */
   &__link,
-  &__meta,
   &__excerpt {
     display: block;
   }
@@ -3340,16 +3352,6 @@ a.button.creator-bio__collab-cta {
     font-size: 1.4em;
     color: $kppr-navy;
     margin: 0 0 0.2em;
-  }
-
-  &__meta {
-    font-family: 'Glacial Indifference', sans-serif;
-    font-weight: 700;
-    font-size: 0.7em;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--meta);
-    margin: 0 0 0.4em;
   }
 
   &__excerpt {

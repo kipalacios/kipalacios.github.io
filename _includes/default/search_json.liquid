@@ -1,47 +1,56 @@
-{% assign dateFormat = site.data.language.str_date_format | default: '%B %-d, %Y' %}
+{% comment %}
+Search index for SimpleJekyllSearch (served as /assets/data/search.liquid).
+
+- Commas go *between* entries, tracked with `first`. The theme's version put a
+  comma before the pages whenever pages existed, assuming posts came first —
+  so with no posts the file began "[ ," and search silently broke.
+- Excluded or untitled documents are skipped rather than written as {}.
+- Text is written plain and JSON-encoded once. The search page's highlight
+  middleware escapes it for display, so escaping here as well showed "&amp;"
+  in titles.
+- Many pages on this site keep their words in front matter, leaving an empty
+  body. An empty value leaves the results template's "{content}" placeholder
+  on screen, so fall back to the summary / subtitle / tagline / description /
+  intro, and to a single space if there's still nothing.
+- Only posts carry a meaningful date. Pages have none, and collection
+  documents without one inherit the build time, so both get an empty date
+  rather than "N/A" or today.
+{% endcomment %}
+{%- assign dateFormat = site.data.language.str_date_format | default: '%B %-d, %Y' -%}
+{%- assign all = site.posts | concat: site.pages -%}
+{%- for collection in site.collections -%}
+  {%- unless collection.label == 'posts' -%}
+    {%- assign all = all | concat: site[collection.label] -%}
+  {%- endunless -%}
+{%- endfor -%}
+{%- assign first = true -%}
 [
-{% for post in site.posts %}
+{%- for doc in all -%}
+  {%- unless doc.excluded or doc.title == nil -%}
+    {%- assign text = doc.content | strip_html | strip_newlines | strip -%}
+    {%- if text == "" -%}
+      {%- assign text = doc.summary | default: doc.subtitle | default: doc.tagline | default: doc.description -%}
+      {%- if text == nil or text == "" -%}{%- assign text = doc.intro | join: " " -%}{%- endif -%}
+      {%- assign text = text | strip_html | strip_newlines | strip -%}
+    {%- endif -%}
+    {%- assign text = text | replace: "&amp;", "&" -%}
+    {%- if text == "" -%}{%- assign text = " " -%}{%- endif -%}
+    {%- assign title = doc.title | strip_newlines | replace: "&amp;", "&" -%}
+    {%- if doc.collection == "posts" -%}
+      {%- assign when = doc.date | date: dateFormat -%}
+    {%- else -%}
+      {%- assign when = "" -%}
+    {%- endif -%}
+    {%- unless first -%},{%- endunless -%}{%- assign first = false -%}
     {
-    {% unless post.excluded %}
-        "title"    : "{{ post.title | strip_newlines | escape }}",
-        "category" : "{{ post.category }}",
-        "tags"     : "{{ post.tags | join: ', ' | prepend: " " }}",
-        "url"      : "{{ post.url | relative_url }}",
-        "date"     : "{{ post.date | date: dateFormat }}",
-        "excerpt"  : {{ post.content | strip_html | strip_newlines | strip | escape | truncate: '250' | escape | jsonify }},
-        "content"  : {{ post.content | strip_html | strip_newlines | strip | escape | jsonify }}
-    {% endunless %}
-    }{% unless forloop.last %},{% endunless %}
-{% endfor %}
-{% if site.pages.size > 0 %},{% endif %}
-{% for page in site.pages %}
-    {
-    {% unless page.excluded or page.title == nil %}
-        "title"    : "{{ page.title | strip_newlines | escape }}",
-        "category" : "{{ page.category }}",
-        "tags"     : "{{ page.tags | join: ', ' | prepend: " " }}",
-        "url"      : "{{ page.url | relative_url }}",
-        "date"     : "{{ page.date | date: dateFormat | default: "N/A" }}",
-        "excerpt"  : {{ page.content | strip_html | strip_newlines | strip | escape | truncate: '250' | escape | jsonify }},
-        "content"  : {{ page.content | strip_html | strip_newlines | strip | escape | jsonify }}
-    {% endunless %}
-    }{% unless forloop.last %},{% endunless %}
-{% endfor %}
-{% for collection in site.collections %}
-    {% unless collection.label == 'posts' or site[collection.label].size == 0 %}
-        {% for page in site[collection.label] %}
-            ,{
-            {% if page.excluded or page.title != nil %}
-                "title"    : "{{ page.title | strip_newlines | escape }}",
-                "category" : "{{ page.category }}",
-                "tags"     : "{{ page.tags | join: ', ' | prepend: " " }}",
-                "url"      : "{{ page.url | relative_url }}",
-                "date"     : "{{ page.date | date: dateFormat | default: "N/A" }}",
-                "excerpt"  : {{ page.content | strip_html | strip_newlines | strip | escape | truncate: '250' | jsonify }},
-                "content"  : {{ page.content | strip_html | strip_newlines | strip | escape | jsonify }}
-            {% endif %}
-            }
-        {% endfor %}
-    {% endunless %}
-{% endfor %}
+        "title"    : {{ title | jsonify }},
+        "category" : {{ doc.category | default: "" | jsonify }},
+        "tags"     : {{ doc.tags | join: ", " | prepend: " " | jsonify }},
+        "url"      : {{ doc.url | relative_url | jsonify }},
+        "date"     : {{ when | jsonify }},
+        "excerpt"  : {{ text | truncate: 250 | jsonify }},
+        "content"  : {{ text | jsonify }}
+    }
+  {%- endunless -%}
+{%- endfor -%}
 ]
