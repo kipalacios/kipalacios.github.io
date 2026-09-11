@@ -96,6 +96,9 @@ product_url_label: Shop Daily 30 Glow
 
 creative_groups:
   - title: Instagram Advertising
+    # Four portrait ads of the same shape: paged through at phone scale rather
+    # than stacked full width.
+    carousel: true
     items:
       - image: assets/img/portfolio/sun-bum/ig-01.jpg
         label: Instagram ad 01

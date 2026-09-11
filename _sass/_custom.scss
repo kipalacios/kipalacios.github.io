@@ -2708,8 +2708,97 @@ a.button.creator-bio__collab-cta {
   gap: 2.4rem;
 }
 
+/* A set of same-shaped creatives paged through instead of stacked (see
+   _includes/campaign/creatives.liquid, carousel: true). The grid gives every
+   piece the full 860px column, which is far too big for portrait social ads —
+   here a slide is capped near phone width. */
+.creative-carousel {
+  margin-top: 0.4em;
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6em;
+  }
+
+  &__viewport {
+    flex: 0 1 320px;
+    max-width: 320px;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  &__track {
+    display: flex;
+    transition: transform 0.4s ease;
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    padding: 0;
+  }
+
+  &__arrow {
+    flex: 0 0 auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text);
+    padding: 0.4em;
+
+    svg {
+      width: 1.4em;
+      height: 1.4em;
+      display: block;
+    }
+
+    &:hover,
+    &:focus-visible { color: var(--campaign-accent, #{$kppr-gold}); }
+  }
+
+  &__dots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5em;
+    margin-top: 1em;
+  }
+
+  &__dot {
+    width: 0.6em;
+    height: 0.6em;
+    border-radius: 50%;
+    border: none;
+    background: var(--border);
+    cursor: pointer;
+    padding: 0;
+
+    &.is-active { background: var(--campaign-accent, #{$kppr-gold}); }
+  }
+
+  @media screen and (max-width: 480px) {
+    &__viewport {
+      flex-basis: 240px;
+      max-width: 240px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .creative-carousel__track { transition: none; }
+  }
+}
+
 .creative {
   margin: 0;
+
+  /* Inside a carousel the theme's 9% image padding would inset the ad within
+     its own slide. */
+  &--compact &__img {
+    padding: 0;
+    margin: 0;
+  }
 
   &__img {
     width: 100%;

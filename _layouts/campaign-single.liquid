@@ -97,7 +97,7 @@ empty sections. Every block is optional.
 
   {% comment %} Each group of finished creative, using the same grid as the other campaigns. {% endcomment %}
   {% for group in page.creative_groups %}
-  {% include campaign/creatives.liquid items=group.items title=group.title %}
+  {% include campaign/creatives.liquid items=group.items title=group.title carousel=group.carousel %}
   {% endfor %}
 
   <footer class="case-footer">
