@@ -146,19 +146,35 @@ header.site-header {
     }
   }
 
+  /* The name and the script read as one lockup: the script sits on its own
+     line, tucked up under the name with tight leading, rather than running
+     alongside it (which they did once the intro column got wider) or sitting
+     a full line below. */
   &__name {
     font-family: 'Palmer Lake Print', cursive;
     font-weight: 400;
     font-size: 2.4em;
+    line-height: 1.05;
     margin-top: 0;
-    margin-bottom: 0.15em;
+    margin-bottom: 0.35em;
+
+    /* The script line is the wider of the two (~1.19x the name), so on a
+       phone the lockup is scaled down from here — both lines size off this
+       one — to keep it clear of the screen edges. */
+    @media screen and (max-width: $break) {
+      font-size: 2em;
+    }
   }
 
   &__name-accent {
+    display: block;
     font-family: 'Palmer Lake Script', cursive;
     font-weight: 400;
     font-size: 1.35em;
-    display: inline-block;
+    line-height: 0.95;
+    /* Lifts the script's ascenders up towards the name's baseline. */
+    margin-top: -0.08em;
+    color: $kppr-navy;
   }
 
   /* Scattered hand-sketched sparkles behind the name/bio — decorative only,
