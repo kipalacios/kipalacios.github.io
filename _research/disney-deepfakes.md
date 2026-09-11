@@ -10,7 +10,7 @@ order: 1
 kind: Audience Research
 course: "USC Annenberg · PR 522"
 date_label: Fall 2025
-role: Data analysis &amp; writing
+role: Survey design, data analysis &amp; writing
 # Names only. The source paper also lists USC email addresses; those are
 # deliberately never published here.
 team:
