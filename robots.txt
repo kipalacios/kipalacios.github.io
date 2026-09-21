@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://klarissapalacios.com/sitemap.xml

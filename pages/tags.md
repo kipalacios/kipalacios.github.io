@@ -9,5 +9,7 @@ position: 6
 # page itself still builds. Delete both lines once something is tagged.
 hide: true
 excluded: true
+# ...and keep it out of sitemap.xml, so search engines aren't pointed at an empty page.
+sitemap: false
 ---
 

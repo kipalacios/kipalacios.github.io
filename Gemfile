@@ -8,4 +8,9 @@ gem 'bigdecimal'
 
 # For github pages compatibility
 # gem 'github-pages', group: :jekyll_plugins
+# Site plugins (must be in the Gemfile, not just _config.yml, or the build fails)
+group :jekyll_plugins do
+  gem "jekyll-sitemap"
+end
+
 gemspec
