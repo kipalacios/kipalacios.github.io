@@ -61,6 +61,8 @@ pillars:
     cta: See the analysis
 img: "assets/img/portfolio/open-mind/ig-1.jpg"
 concept: true
+# Shown on the portfolio card; the same course named in `role` below.
+course: "USC Annenberg · MA Capstone"
 client: "Alphabet Inc. / Google Gemini (concept engagement)"
 industry: [Technology, "Education & Public Sector"]
 role: "Sole strategist &amp; copywriter — USC Annenberg MA capstone"

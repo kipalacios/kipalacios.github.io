@@ -1,0 +1,28 @@
+{% comment %}
+One portfolio card. Used by the grouped sections and by the catch-all below
+them, so both render identically.
+
+  item — a document from the portfolio collection
+{% endcomment %}
+{% assign item = include.item %}
+<a class="portfolio-index__card" href="{{ item.redirect_url | default: item.url | relative_url }}">
+    <div class="portfolio-index__image-wrap">
+        <img class="portfolio-index__image" src="{{ item.img | relative_url }}" alt="{{ item.img_alt | default: item.title }}" loading="lazy">
+        {% if item.concept %}<span class="portfolio-index__badge">Concept Campaign</span>{% endif %}
+    </div>
+    <div class="portfolio-index__body">
+        <h3 class="portfolio-index__title">{{ item.title }}</h3>
+        {% if item.tagline %}<p class="portfolio-index__tagline">&ldquo;{{ item.tagline }}&rdquo;</p>{% endif %}
+        {% if item.industry %}
+        <p class="portfolio-index__meta"{% if item.accent %} style="color: {{ item.accent }};"{% endif %}>{{ item.industry | join: ' &middot; ' }}</p>
+        {% endif %}
+        {% assign blurb = item.summary | default: item.excerpt %}
+        {% if blurb %}
+        <p class="portfolio-index__desc">{{ blurb | strip_html | truncatewords: 26 }}</p>
+        {% endif %}
+        {% if item.course %}
+        <p class="portfolio-index__course">{{ item.course }}{% if item.date_label %} &middot; {{ item.date_label }}{% endif %}</p>
+        {% endif %}
+        <span class="portfolio-index__link">View project &rarr;</span>
+    </div>
+</a>

@@ -2231,6 +2231,55 @@ a.button.creator-bio__collab-cta {
   text-align: center;
 }
 
+/* A titled group of portfolio cards (see _layouts/portfolio-index.liquid). */
+.portfolio-group {
+  &__title {
+    font-family: 'Palmer Lake Print', cursive;
+    font-weight: 400;
+    font-size: 2em;
+    color: $kppr-navy;
+    text-align: center;
+    margin: 2.4rem 0 0.3em;
+  }
+
+  &__blurb {
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 0 $padding-medium;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.98em;
+    line-height: 1.7;
+    color: var(--text);
+    text-align: center;
+  }
+
+  /* The grid carries its own top margin for the ungrouped case; inside a
+     group the heading and blurb already provide the space. */
+  .portfolio-index {
+    margin-top: 1.5rem;
+    padding-bottom: 2.6rem;
+  }
+}
+
+/* The course and term under a card's description. */
+.portfolio-index__course {
+  font-family: 'Glacial Indifference', sans-serif;
+  font-weight: 700;
+  font-size: 0.7em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--meta);
+  margin: 0 0 0.8em;
+}
+
+.portfolio-index__tagline {
+  font-family: 'Palmer Lake Script', cursive;
+  font-size: 1.15em;
+  line-height: 1.2;
+  color: $kppr-navy;
+  margin: -0.1em 0 0.35em;
+}
+
 .portfolio-index {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

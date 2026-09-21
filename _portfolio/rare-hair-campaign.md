@@ -43,6 +43,8 @@ presentation:
     - img: assets/img/portfolio/rare-hair/deck/slide-11.jpg
       title: "Thank you"
 concept: true
+# Shown on the portfolio card; the same course named in `role` below.
+course: "USC Annenberg · PR 535"
 client: "Rare Beauty (concept engagement)"
 industry: ["Beauty", "Accessibility & Inclusive Design"]
 role: "Strategist &amp; writer — USC Annenberg PR 535 final project"
