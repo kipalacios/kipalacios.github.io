@@ -2,6 +2,7 @@
 layout: about
 title: About
 permalink: /about/
+position: 1
 photo: assets/img/klarissa-headshot.jpg
 photo_alt: Klarissa Palacios
 linkedin: https://www.linkedin.com/in/klarissa-palacios/

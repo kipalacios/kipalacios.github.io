@@ -5,5 +5,5 @@ permalink: /search/
 subtitle: "What are you looking for?"
 icon: "fa-search"
 excluded: true
-position: 7
+position: 5
 ---
