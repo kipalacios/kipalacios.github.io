@@ -6,6 +6,18 @@ html { overflow-y: scroll; }
 /* article {padding:2%;} */
 </style>
 
+{% assign image_count = 0 %}
+{% for image in site.static_files %}
+  {% if image.path contains include.gallery_path %}
+    {% unless image.path contains '.md' %}
+      {% assign image_count = image_count | plus: 1 %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
+
+{% if image_count == 0 %}
+<p>Photos coming soon.</p>
+{% else %}
 <div id="gallery-grid" class="grid">
 <div class="grid-col grid-col--1"></div>
 <div class="grid-col grid-col--2"></div>
@@ -18,3 +30,4 @@ html { overflow-y: scroll; }
   {% endif %}
 {% endfor %}
 </div>
+{% endif %}
