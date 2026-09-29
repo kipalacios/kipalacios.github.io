@@ -24,14 +24,31 @@ never make it silently disappear from this page.
 <section class="portfolio-group">
     <h2 class="portfolio-group__title">{{ g.title }}</h2>
     {% if g.blurb %}<p class="portfolio-group__blurb">{{ g.blurb }}</p>{% endif %}
-    <div class="portfolio-index">
-        {% for u in g.items %}
-        {% assign item = site.portfolio | where: "url", u | first %}
-        {% if item %}{% include portfolio/card.liquid item=item %}{% endif %}
-        {% endfor %}
+    {% comment %}
+    A horizontally-scrollable row rather than a static grid — one card
+    dominates the view with the next peeking at the edge (trackpad swipe,
+    touch drag, mouse wheel, or the arrows all move it), closer to a
+    single-focus carousel than a multi-up grid. scroll-carousel.js hides the
+    arrows when a group is short enough that there's nothing to scroll to.
+    {% endcomment %}
+    <div class="campaign-scroll" data-scroll-carousel>
+        <button type="button" class="campaign-scroll__arrow campaign-scroll__arrow--prev" data-scroll-prev aria-label="Scroll {{ g.title }} left" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 7 12l8 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="campaign-scroll__track" data-scroll-track role="region" aria-label="{{ g.title }} campaigns" tabindex="0">
+            {% for u in g.items %}
+            {% assign item = site.portfolio | where: "url", u | first %}
+            {% if item %}{% include portfolio/card.liquid item=item %}{% endif %}
+            {% endfor %}
+        </div>
+        <button type="button" class="campaign-scroll__arrow campaign-scroll__arrow--next" data-scroll-next aria-label="Scroll {{ g.title }} right" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 8 7-8 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
     </div>
 </section>
 {% endfor %}
+
+<script defer src="{{ '/assets/js/scroll-carousel.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 
 {% comment %} Whatever no group claimed — including everything, when a page sets no groups at all. {% endcomment %}
 {% capture rest %}
