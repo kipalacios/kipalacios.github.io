@@ -78,10 +78,22 @@ product_url_label: Meet Your Match on the CAVA App Today
 
 creative_groups:
   - title: Instagram Ads
+    # Four portrait ads of the same shape: paged through at phone scale rather
+    # than stacked full width, matching the sun-bum-glow IG carousel.
+    carousel: true
     items:
-      - image: assets/img/portfolio/cava-bumble/ig-ads.jpg
-        label: Instagram ad set
-        alt: Four CAVA x Bumble Instagram ad mockups on phone screens, each promoting Find Your Flavor and the Perfect Match Bowl
+      - image: assets/img/portfolio/cava-bumble/ig-01.jpg
+        label: Instagram ad 01
+        alt: CAVA x Bumble Instagram ad — Find Your Flavor, two friends sharing bowls, first of four
+      - image: assets/img/portfolio/cava-bumble/ig-02.jpg
+        label: Instagram ad 02
+        alt: CAVA x Bumble Instagram ad — Spicy or Sweet flavor match, second of four
+      - image: assets/img/portfolio/cava-bumble/ig-03.jpg
+        label: Instagram ad 03
+        alt: CAVA x Bumble Instagram ad — Sophia "The Spicy One" with the Perfect Match Bowl, third of four
+      - image: assets/img/portfolio/cava-bumble/ig-04.jpg
+        label: Instagram ad 04
+        alt: CAVA x Bumble Instagram ad — Rachel "The Sweet One," swipe for your next bite, fourth of four
   - title: Out of Home
     items:
       - image: assets/img/portfolio/cava-bumble/ooh-billboard.jpg
