@@ -1639,6 +1639,12 @@ a.button.creator-bio__collab-cta {
     border-radius: 999px;
     padding: 0.4em 1em;
     margin: 0 0 1.2em;
+
+    // Real client/employer work, alongside the default (concept campaign) yellow —
+    // same pill, secondary accent color so the two read as a deliberate pair.
+    &--work {
+      background: $kppr-blue;
+    }
   }
 
   &__title {
@@ -2354,6 +2360,12 @@ a.button.creator-bio__collab-cta {
   border-radius: 999px;
   padding: 0.45em 0.9em;
   box-shadow: 0 2px 8px rgba($kppr-navy, 0.18);
+
+  // Real client/employer work, alongside the default (concept campaign) yellow —
+  // same pill, secondary accent color so the two read as a deliberate pair.
+  &--work {
+    background: $kppr-blue;
+  }
 }
 
 .portfolio-index__body {

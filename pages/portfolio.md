@@ -12,7 +12,7 @@ groups:
       - /portfolio/open-mind/
       - /portfolio/rare-hair/
       - /portfolio/sun-bum-glow/
-  - title: City of Los Angeles
+  - title: Professional Work
     items:
       - /portfolio/ysc-la-newsletter/
 ---

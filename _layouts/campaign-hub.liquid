@@ -22,7 +22,8 @@ page's <h1>, so the hero below doesn't repeat the title.
 
   <header class="case-hero">
     <div class="case-hero__inner">
-      {% if page.concept %}<p class="case-hero__badge">Concept Campaign</p>{% endif %}
+      {% if page.concept %}<p class="case-hero__badge">Concept Campaign</p>
+      {% elsif page.concept == false %}<p class="case-hero__badge case-hero__badge--work">Professional Work</p>{% endif %}
       {% if page.tagline %}<p class="case-hero__tagline">&ldquo;{{ page.tagline }}&rdquo;</p>{% endif %}
       <div class="case-hero__meta">
         {% if page.client %}<span><strong>Client</strong> {{ page.client }}</span>{% endif %}
