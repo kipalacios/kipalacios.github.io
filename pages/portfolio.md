@@ -1,6 +1,6 @@
 ---
 layout: portfolio-index
-title: Portfolio
+title: Campaigns
 permalink: /portfolio/
 position: 2
 # Groups are listed explicitly by permalink so the order is deliberate rather
