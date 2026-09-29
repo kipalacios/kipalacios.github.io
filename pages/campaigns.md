@@ -12,6 +12,7 @@ groups:
       - /portfolio/open-mind/
       - /portfolio/rare-hair/
       - /portfolio/sun-bum-glow/
+      - /portfolio/cava-bumble/
   - title: Professional Work
     items:
       - /portfolio/ysc-la-newsletter/
