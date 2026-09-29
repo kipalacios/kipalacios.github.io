@@ -2246,10 +2246,16 @@ a.button.creator-bio__collab-cta {
     color: $kppr-navy;
     text-align: left;
     margin: 2.4rem 0 0.3em;
-    padding: 0 1.4rem;
+    /* Matches the scroll row's card start exactly (container padding +
+       arrow button + the flex/track gaps before the first card), measured
+       directly against .campaign-scroll rather than derived, since the
+       arrow's own box adds a bit more than the sum of its declared
+       dimensions. Re-measure both values if the arrow or row spacing
+       changes. */
+    padding-left: 5.25rem;
 
     @media screen and (max-width: $break) {
-      padding: 0 1rem;
+      padding-left: 4.75rem;
     }
   }
 
