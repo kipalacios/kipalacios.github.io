@@ -2346,7 +2346,23 @@ a.button.creator-bio__collab-cta {
   .portfolio-index__card {
     flex: 0 0 auto;
     width: min(480px, 62vw);
+    /* Fixed rather than auto: a one-card group (Professional Work today)
+       otherwise sizes to its own content and reads visibly taller/shorter
+       than a multi-card group like Concept Campaigns, even at the same
+       width, whenever its description or industry tags wrap differently.
+       Matches Concept Campaigns' natural height at this width; the
+       description clamps below so longer copy is trimmed instead of
+       pushing the card past it. */
+    height: 748px;
     scroll-snap-align: center;
+  }
+
+  .portfolio-index__desc {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
   }
 
   &__arrow {
@@ -2379,7 +2395,7 @@ a.button.creator-bio__collab-cta {
   @media screen and (max-width: $break) {
     padding: 0 1rem 3rem;
 
-    .portfolio-index__card { width: min(280px, 78vw); }
+    .portfolio-index__card { width: min(280px, 78vw); height: 705px; }
   }
 }
 
