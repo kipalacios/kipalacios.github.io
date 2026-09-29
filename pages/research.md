@@ -2,7 +2,7 @@
 layout: research-hub
 title: Data, AI & Research
 permalink: /research/
-position: 4
+hide: true
 intro:
   - >
     Good communication starts with understanding the audience. Through intentional survey design
