@@ -2300,65 +2300,6 @@ a.button.creator-bio__collab-cta {
   }
 }
 
-/* Horizontal, natively-scrollable row for the Campaigns groups — modeled on
-   Edelman's "Our Work" section: cards are sized narrower than the row so
-   the next one peeks at the edge, inviting a scroll rather than a click.
-   Arrows (hidden by default, shown by scroll-carousel.js when a group
-   overflows) are an accelerator on top of native scroll/swipe, not a
-   replacement for it. */
-.campaign-scroll {
-  display: flex;
-  align-items: center;
-  gap: 0.4em;
-  max-width: 1040px;
-  margin: 2.5rem auto 0;
-  padding: 0 $padding-medium 4rem;
-
-  &__track {
-    flex: 1 1 auto;
-    display: flex;
-    gap: 1.6rem;
-    overflow-x: auto;
-    scroll-snap-type: x proximity;
-    scroll-behavior: smooth;
-    padding: 0.3rem 0.1rem 1rem;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: var(--border) transparent;
-
-    &::-webkit-scrollbar { height: 6px; }
-    &::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
-    &::-webkit-scrollbar-track { background: transparent; }
-  }
-
-  .portfolio-index__card {
-    flex: 0 0 auto;
-    width: min(320px, 78vw);
-    scroll-snap-align: center;
-  }
-
-  &__arrow {
-    flex: 0 0 auto;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--text);
-    padding: 0.4em;
-
-    svg { width: 1.6em; height: 1.6em; display: block; }
-
-    &:hover:not(:disabled) { color: $kppr-blue-deep; }
-    &:disabled { opacity: 0.3; cursor: default; }
-    &[hidden] { display: none; }
-  }
-
-  @media screen and (max-width: $break) {
-    padding: 0 $padding-medium 3rem;
-
-    .portfolio-index__card { width: min(280px, 82vw); }
-  }
-}
-
 .portfolio-index__card {
   display: flex;
   flex-direction: column;
