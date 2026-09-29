@@ -1,7 +1,7 @@
 ---
 layout: portfolio-index
 title: Campaigns
-permalink: /portfolio/
+permalink: /campaigns/
 position: 2
 # Groups are listed explicitly by permalink so the order is deliberate rather
 # than alphabetical. Any campaign not listed still renders below, so adding one
