@@ -20,7 +20,7 @@ empty sections. Every block is optional.
       {% if page.tagline %}<p class="case-hero__tagline">&ldquo;{{ page.tagline }}&rdquo;</p>{% endif %}
       <div class="case-hero__meta">
         {% if page.client %}<span><strong>Client</strong> {{ page.client }}</span>{% endif %}
-        {% if page.course %}<span><strong>Course</strong> {{ page.course }}{% if page.date_label %} &middot; {{ page.date_label }}{% endif %}</span>{% endif %}
+        {% if page.course %}<span><strong>{{ page.course_label | default: 'Course' }}</strong> {{ page.course }}{% if page.date_label %} &middot; {{ page.date_label }}{% endif %}</span>{% endif %}
         {% if page.role %}<span><strong>My role</strong> {{ page.role }}</span>{% endif %}
         {% if page.industry %}<span><strong>Industry</strong> {{ page.industry | join: ' &middot; ' }}</span>{% endif %}
       </div>
@@ -28,6 +28,28 @@ empty sections. Every block is optional.
       {% if page.concept_note %}<p class="case-hero__note">{{ page.concept_note }}</p>{% endif %}
     </div>
   </header>
+
+  {% comment %} Same flip-through-plus-download pattern as the research decks: the pages lead, ten seconds of flipping gives the gist before the detail below. {% endcomment %}
+  {% if page.presentation %}
+  <section id="deck" class="case-section">
+    <div class="case-section__inner">
+      <p class="case-section__label">{{ page.presentation.label | default: 'Presentation' }}</p>
+      <h2 class="case-section__title">{{ page.presentation.title | default: 'The Deck' }}</h2>
+      {% if page.presentation.note %}<p class="case-section__lead">{{ page.presentation.note }}</p>{% endif %}
+      {% include campaign/deck_carousel.liquid deck=page.presentation %}
+      {% if page.presentation.pdf %}
+      <div class="deck-actions">
+        {% include campaign/pdf_link.liquid href=page.presentation.pdf label=page.presentation.pdf_label %}
+      </div>
+      {% endif %}
+    </div>
+  </section>
+  {% comment %} Same [data-carousel] driver as campaign/creatives.liquid's carousel groups; guarded so a page using both loads it once. {% endcomment %}
+  {% unless creative_carousel_js %}
+  {% assign creative_carousel_js = true %}
+  <script defer src="{{ '/assets/js/project-carousel.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+  {% endunless %}
+  {% endif %}
 
   {% if page.overview %}
   <section id="brief" class="case-band case-band--yellow">
