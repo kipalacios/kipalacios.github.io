@@ -5,7 +5,9 @@ visitor sees the full range of work before deciding where to click deeper.
 Deliberately lighter than a .portfolio-index__card (image, title, one-line
 subtitle, link only — no tagline/description/course) since this is a fast
 scan, not a full listing; the dedicated section for each category is where
-the depth lives.
+the depth lives. The three categories are named once in the subheading
+below the section title rather than as a per-card badge overlaying the
+image, so nothing sits on top of the photo itself.
 
 Swap `campaign` below to feature a different campaign later — everything
 else keys off its own front matter, so no other line needs to change.
@@ -15,13 +17,13 @@ else keys off its own front matter, so no other line needs to change.
 <section class="featured-work">
     <div class="featured-work__inner">
         <h2 class="featured-work__heading">Featured Work</h2>
+        <p class="featured-work__subheading">Content Creation + UGC, Campaigns, and Research</p>
 
         <div class="featured-work__grid">
             {% if campaign %}
             <a class="featured-work__card" href="{{ campaign.url | relative_url }}">
                 <div class="featured-work__image-wrap">
                     <img class="featured-work__image" src="{{ campaign.img | relative_url }}" alt="{{ campaign.title }}" loading="lazy">
-                    <span class="featured-work__badge featured-work__badge--campaign">Campaign</span>
                 </div>
                 <div class="featured-work__body">
                     <h3 class="featured-work__title">{{ campaign.title }}</h3>
@@ -34,7 +36,6 @@ else keys off its own front matter, so no other line needs to change.
             <a class="featured-work__card" href="{{ '/content-creation/' | relative_url }}">
                 <div class="featured-work__image-wrap">
                     <img class="featured-work__image" src="{{ 'assets/img/portfolio/content-creation-ugc.jpeg' | relative_url }}" alt="Klarissa Palacios, content creator" loading="lazy">
-                    <span class="featured-work__badge featured-work__badge--content">Content Creation</span>
                 </div>
                 <div class="featured-work__body">
                     <h3 class="featured-work__title">Content Creation &amp; UGC</h3>
@@ -47,7 +48,6 @@ else keys off its own front matter, so no other line needs to change.
             <a class="featured-work__card" href="{{ research.url | relative_url }}">
                 <div class="featured-work__image-wrap">
                     <img class="featured-work__image" src="{{ research.img | relative_url }}" alt="{{ research.img_alt | default: research.title }}" loading="lazy">
-                    <span class="featured-work__badge featured-work__badge--research">Research</span>
                 </div>
                 <div class="featured-work__body">
                     <h3 class="featured-work__title">{{ research.title }}</h3>

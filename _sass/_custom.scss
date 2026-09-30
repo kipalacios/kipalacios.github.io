@@ -380,7 +380,20 @@ a.button.creator-bio__collab-cta {
     font-size: 2em;
     color: $kppr-navy;
     text-align: center;
-    margin: 0 0 1.6em;
+    margin: 0 0 0.3em;
+  }
+
+  /* Names the three categories once, here, instead of as a per-card badge
+     sitting on top of each photo (see .featured-work__card below). */
+  &__subheading {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.78em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--meta);
+    text-align: center;
+    margin: 0 0 1.8em;
   }
 
   &__grid {
@@ -430,24 +443,6 @@ a.button.creator-bio__collab-cta {
     height: 100%;
     object-fit: cover;
     display: block;
-  }
-
-  .featured-work__badge {
-    position: absolute;
-    top: 0.8em;
-    left: 0.8em;
-    font-family: 'Glacial Indifference', sans-serif;
-    font-weight: 700;
-    font-size: 0.66em;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: $kppr-navy;
-    background: $kppr-yellow;
-    border-radius: 999px;
-    padding: 0.4em 0.9em;
-
-    &--research { background: $kppr-blue; }
-    &--content { background: $kppr-gold; }
   }
 
   .featured-work__body {
