@@ -1,0 +1,14 @@
+---
+layout: default
+---
+{% comment %}
+Standalone nav page for the PESO (Paid/Earned/Shared/Owned) gallery —
+same yellow call-out banner every other custom page opens with, then
+straight into the filterable gallery itself.
+{% endcomment %}
+<div class="call-out call-out_solid">
+    <h1 class="call-out_title">{{ page.title }}</h1>
+</div>
+
+{% include portfolio/peso_gallery.liquid %}
+<script defer src="{{ '/assets/js/peso-gallery.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
