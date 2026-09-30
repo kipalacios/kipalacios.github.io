@@ -360,12 +360,19 @@ a.button.creator-bio__collab-cta {
   }
 }
 
-/* Featured project carousel */
-.project-carousel {
-  max-width: 560px;
+/* ==========================================================================
+   Homepage PESO gallery (_includes/home/peso_gallery.liquid)
+   Filterable by media type (Paid/Earned/Shared/Owned), pulling every
+   campaign-hub campaign's own `pillars` list. Reuses .pillar-grid/.pillar-card
+   from the campaign hub itself (see "Campaign hub + PESO sub-pages" below)
+   so a card looks identical whether you land on it from the hub or from
+   here — this section only adds the filter pills and the small campaign
+   byline on each card.
+   ========================================================================== */
+
+.peso-gallery {
+  max-width: 900px;
   margin: 0 auto $padding-large auto;
-  /* Top padding gives the heading room to breathe below the intro band's
-     fade-to-white edge, instead of sitting right at the seam. */
   padding: 2.5rem $padding-medium $padding-large $padding-medium;
 
   &__heading {
@@ -374,151 +381,63 @@ a.button.creator-bio__collab-cta {
     font-size: 2.4em;
     color: $kppr-navy;
     text-align: center;
-    margin: 0 0 1em;
+    margin: 0 0 0.5em;
   }
 
-  &__row {
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-  }
-
-  &__viewport {
-    flex: 1 1 auto;
-    overflow: hidden;
-    border-radius: $border-radius;
-  }
-
-  &__track {
-    display: flex;
-    transition: transform 0.4s ease;
-  }
-
-  /* This is an <article> tag, and the theme gives every <article> a
-     responsive horizontal padding meant for blog-post text columns
-     (article{@extend .comments} in layouts/_posts.scss, same rule whose
-     float:left we already cancel on .about-hero/.case-study) — cancel the
-     padding too, or it silently eats into the space the image and caption
-     actually have to work with. This was the real cause of the image
-     looking cropped/off-ratio, not the aspect-ratio math itself. */
-  &__slide {
-    flex: 0 0 100%;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-  }
-
-  /* 4:5 — the standard Instagram feed "portrait post" ratio, instead of a
-     fixed pixel height. The old 320px-tall crop was much wider/shorter than
-     these images actually are, so it cropped in from the top and bottom and
-     cut off text baked into the graphics themselves (e.g. the Open Mind
-     post's headline). 4:5 keeps far more of the image intact.
-
-     aspect-ratio lives on this wrapper div rather than the <img> itself —
-     the <img> is a flex item (.project-carousel__slide is display:flex),
-     and Chrome collapses a flex item's width when aspect-ratio is set
-     directly on it instead of stretching to fill. Wrapping sidesteps that
-     entirely, same pattern already used by .portfolio-index__image-wrap. */
-  /* The `aspect-ratio` property + a percentage width was collapsing this
-     box's rendered width to a fraction of its container in this nested
-     flex context (track > slide > wrap), for reasons that resisted every
-     standard fix (min-width:0, flex-shrink:0, align-self, even removing
-     aspect-ratio itself made no difference to the already-resolved width).
-     The classic padding-top percentage technique sidesteps whatever that
-     was entirely — padding-top resolves against the element's own width,
-     which has a much simpler, long-established resolution path. */
-  &__image-wrap {
-    position: relative;
-    width: 100%;
-    padding-top: 125%; // 5/4 — a 4:5 box, expressed as height/width
-    overflow: hidden;
-  }
-
-  &__image {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  // Fixed height + line-clamped text so every slide matches, regardless of how long
-  // its excerpt is — flex rows stretch all slides to the tallest one otherwise.
-  &__caption {
-    height: 175px;
-    overflow: hidden;
-    padding: 1.2em 1em 0 1em;
-    text-align: center;
-  }
-
-  &__title {
-    font-family: 'Palmer Lake Print', cursive;
-    font-weight: 400;
-    font-size: 1.7em;
-    line-height: 1.15;
-    margin-bottom: 0.35em;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-  }
-
-  &__link {
-    font-weight: bold;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  &__arrow {
-    flex: 0 0 auto;
-    background: none;
-    border: none;
-    cursor: pointer;
+  &__intro {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95em;
+    line-height: 1.6;
     color: var(--text);
-    padding: 0.5em;
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 1.6em;
+  }
 
-    svg {
-      width: 1.4em;
-      height: 1.4em;
-      display: block;
-    }
+  &__pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6em;
+    margin-bottom: 2em;
+  }
+
+  &__pill {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.78em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $kppr-navy;
+    background: var(--card-background);
+    border: 1px solid rgba($kppr-navy, 0.18);
+    border-radius: 999px;
+    padding: 0.55em 1.3em;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 
     &:hover {
-      color: var(--link);
+      border-color: $kppr-navy;
     }
-  }
-
-  &__dots {
-    display: flex;
-    justify-content: center;
-    gap: 0.5em;
-    margin-top: 1em;
-  }
-
-  &__dot {
-    width: 0.6em;
-    height: 0.6em;
-    border-radius: 50%;
-    border: none;
-    background: var(--border);
-    cursor: pointer;
-    padding: 0;
 
     &.is-active {
-      background: $kppr-yellow;
+      background: $kppr-navy;
+      border-color: $kppr-navy;
+      color: $kppr-yellow;
     }
   }
+}
 
-  @media (prefers-reduced-motion: reduce) {
-    .project-carousel__track {
-      transition: none;
-    }
-  }
-
+/* The campaign a pillar card belongs to — sits between the media-type
+   eyebrow and the pillar title, since the homepage mixes pillars from more
+   than one campaign in the same grid (the hub itself never needs this, a
+   hub only ever shows its own four). */
+.pillar-card__campaign {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.78em;
+  color: var(--meta);
+  margin: 0 0 0.3em;
 }
 
 /* About page: photo in an organic mask beside the bio, modeled on
@@ -2539,6 +2458,14 @@ a.button.creator-bio__collab-cta {
   border-radius: $border-radius;
   padding: 1.5em 1.6em 1.4em;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+
+  /* Our own `display: flex` above outranks the browser's default
+     `[hidden] { display: none }` (same specificity, but ours comes later in
+     the cascade) — without this, the PESO gallery's filter sets `hidden`
+     but the card never actually disappears. */
+  &[hidden] {
+    display: none;
+  }
 
   &:hover {
     transform: translateY(-3px);

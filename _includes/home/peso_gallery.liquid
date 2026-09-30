@@ -1,0 +1,49 @@
+{% comment %}
+Homepage gallery of PESO (Paid/Earned/Shared/Owned) deliverables, pulled
+straight from every campaign-hub campaign's own `pillars` list (see
+_layouts/campaign-hub.liquid) — currently Open Mind and Rare Hair. A
+campaign-single campaign (Sun Bum, CAVA x Bumble, YSC) has no `pillars` and
+is simply skipped, so this grows on its own the next time a campaign gets
+the full PESO treatment; nothing here needs to be hardcoded per campaign.
+
+Replaces the old "Media Specializations" placeholder carousel, which only
+ever looped the theme's demo _portfolio entries.
+{% endcomment %}
+<section class="peso-gallery" data-peso-gallery>
+    <div class="peso-gallery__inner">
+        <h2 class="peso-gallery__heading">Media Specializations</h2>
+        <p class="peso-gallery__intro">
+            Every integrated campaign runs through four channels — Paid, Earned, Shared, and
+            Owned media. Filter below to see how each one plays out in practice.
+        </p>
+
+        <div class="peso-gallery__pills" role="group" aria-label="Filter by media type">
+            <button type="button" class="peso-gallery__pill is-active" data-peso-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="peso-gallery__pill" data-peso-filter="paid" aria-pressed="false">Paid</button>
+            <button type="button" class="peso-gallery__pill" data-peso-filter="earned" aria-pressed="false">Earned</button>
+            <button type="button" class="peso-gallery__pill" data-peso-filter="shared" aria-pressed="false">Shared</button>
+            <button type="button" class="peso-gallery__pill" data-peso-filter="owned" aria-pressed="false">Owned</button>
+        </div>
+
+        <div class="pillar-grid peso-gallery__grid">
+            {% for campaign in site.portfolio %}
+            {% for pillar in campaign.pillars %}
+            <a class="pillar-card" data-media="{{ pillar.key }}"
+               href="{{ pillar.url | relative_url }}"
+               {% if campaign.accent %}style="--campaign-accent: {{ campaign.accent }};"{% endif %}>
+                <span class="pillar-card__eyebrow">{{ pillar.label }}</span>
+                <p class="pillar-card__campaign">{{ campaign.title }}</p>
+                <h3 class="pillar-card__title">{{ pillar.title }}</h3>
+                <p class="pillar-card__desc">{{ pillar.teaser }}</p>
+                {% if pillar.items %}
+                <ul class="pillar-card__items">
+                    {% for item in pillar.items %}<li>{{ item }}</li>{% endfor %}
+                </ul>
+                {% endif %}
+                <span class="pillar-card__cta">{{ pillar.cta | default: 'View this section' }} &rarr;</span>
+            </a>
+            {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
