@@ -4470,6 +4470,23 @@ a.button.client-delivery__download-cta {
       margin: 0 0 1em;
     }
   }
+
+  &__group {
+    margin-top: 1rem;
+
+    & + & {
+      margin-top: 2.5rem;
+    }
+  }
+
+  &__group-title {
+    font-family: 'Palmer Lake Print', cursive;
+    font-weight: 400;
+    font-size: 1.8em;
+    color: $kppr-navy;
+    text-align: center;
+    margin: 0;
+  }
 }
 
 /* ==========================================================================

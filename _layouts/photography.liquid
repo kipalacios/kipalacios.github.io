@@ -4,8 +4,12 @@ layout: default
 {% comment %}
 Photography page: the same branded hero every other custom page uses
 (_layouts/research-hub.liquid, _layouts/portfolio-index.liquid), then a
-masonry grid built from whatever images sit in page.gallery_path — adding a
+masonry grid built from whatever images sit in a gallery_path — adding a
 photo is just dropping a file in that folder, no markdown page to edit.
+
+page.groups (optional) splits the page into titled sections, each with its
+own gallery_path — e.g. Engagement Photography / Family Photography. With
+no groups set, page.gallery_path renders as one flat grid instead.
 {% endcomment %}
 <div class="call-out call-out_solid">
     <h1 class="call-out_title">{{ page.title }}</h1>
@@ -22,7 +26,18 @@ photo is just dropping a file in that folder, no markdown page to edit.
   </div>
   {% endif %}
 
+  {% if page.groups %}
+    {% for g in page.groups %}
+    <div class="photography-page__group">
+      <h2 class="photography-page__group-title">{{ g.title }}</h2>
+      <div class="kppr-photo-grid">
+        {% include gallery.html gallery_path=g.gallery_path %}
+      </div>
+    </div>
+    {% endfor %}
+  {% else %}
   <div class="kppr-photo-grid">
     {% include gallery.html gallery_path=page.gallery_path %}
   </div>
+  {% endif %}
 </section>
