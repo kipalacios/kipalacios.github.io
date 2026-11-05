@@ -10,9 +10,11 @@ noindex to keep it out of site search, sitemap.xml, and search engines.
 Share the page's URL directly with the client instead.
 
 Preview images live in page.gallery_path — small, web-sized, committed to
-the repo so the page loads fast. The full-resolution originals are a single
-zip at page.zip_url, hosted outside the repo (a GitHub Release asset, or
-wherever else), so one delivery never bloats the site's git history.
+the repo so the page loads fast. The full-resolution originals are hosted
+outside the repo (a GitHub Release asset, or wherever else), so one
+delivery never bloats the site's git history: page.zip_url for a single
+zip, or page.zip_parts (a list of {url, label}) when the batch is too big
+for one file — GitHub Release assets cap out at 2GB each.
 {% endcomment %}
 <div class="call-out call-out_solid">
     <h1 class="call-out_title">{{ page.title }}</h1>
@@ -35,6 +37,18 @@ wherever else), so one delivery never bloats the site's git history.
       Download All Photos{% if page.photo_count %} ({{ page.photo_count }}){% endif %}
     </a>
     {% if page.zip_size %}<p class="client-delivery__download-meta">ZIP file &middot; {{ page.zip_size }}</p>{% endif %}
+  </div>
+  {% elsif page.zip_parts %}
+  <div class="client-delivery__download">
+    {% if page.photo_count %}
+    <p class="client-delivery__download-intro">{{ page.photo_count }} photos, split into {{ page.zip_parts.size }} zip files so each download stays a reasonable size — download all {{ page.zip_parts.size }}:</p>
+    {% endif %}
+    <div class="client-delivery__download-group">
+      {% for part in page.zip_parts %}
+      <a class="button client-delivery__download-cta" href="{{ part.url }}">{{ part.label | default: "Download" }}</a>
+      {% endfor %}
+    </div>
+    {% if page.zip_size %}<p class="client-delivery__download-meta">ZIP files &middot; {{ page.zip_size }} total</p>{% endif %}
   </div>
   {% endif %}
 

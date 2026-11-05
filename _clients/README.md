@@ -22,10 +22,28 @@ This file itself is excluded from the build (see `exclude:` in `_config.yml`
    in the public Releases tab — the delivery page itself has their name,
    but that page isn't linked from anywhere or indexed by search engines.
 
-3. **Add `_clients/<slug>.md`** — copy `sophia-ryan.md` as a template and
-   update: title, subtitle, gallery_path, zip_url, photo_count, zip_size.
-   Keep `excluded: true`, `sitemap: false`, and `noindex: true` — those are
-   what keep the page out of site search, sitemap.xml, and search engines.
+   **GitHub Release assets cap out at 2GB each.** For a batch that zips to
+   more than that (Michelle's family session did, at ~3.9GB for 100 photos),
+   split into multiple zips instead of one — balance them by total byte size
+   rather than file count, since photos vary in size:
+   ```python
+   files = [(f, os.path.getsize(f)) for f in os.listdir('.')]
+   files.sort(key=lambda x: -x[1])
+   buckets = [[] for _ in range(n_parts)]
+   sizes = [0] * n_parts
+   for f, sz in files:
+       i = sizes.index(min(sizes))
+       buckets[i].append(f); sizes[i] += sz
+   ```
+   Aim each part comfortably under 2GB (leave headroom — ~1.4-1.6GB is safe).
+   Upload all parts to the same release, one `gh release upload` per file.
+
+3. **Add `_clients/<slug>.md`** — copy `sophia-ryan.md` (single zip) or
+   `michelle-family.md` (split into parts) as a template and update: title,
+   subtitle, gallery_path, zip_url (or zip_parts — a list of {url, label}),
+   photo_count, zip_size. Keep `excluded: true`, `sitemap: false`, and
+   `noindex: true` — those are what keep the page out of site search,
+   sitemap.xml, and search engines.
 
 4. Share `https://klarissapalacios.com/deliver/<slug>/` directly with the
    client. It's not in the navbar (collection documents never are) and not
