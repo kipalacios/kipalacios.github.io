@@ -5,6 +5,7 @@ subtitle: "Your gallery is ready!"
 session_date: "October 10, 2026"
 location: "Lacey Park, San Marino, California"
 gallery_path: "assets/img/clients/michelle-family"
+thumbnail: "assets/img/clients/michelle-family/IMG_0901.jpg"
 photo_count: 100
 zip_size: "~3.9 GB"
 zip_parts:
