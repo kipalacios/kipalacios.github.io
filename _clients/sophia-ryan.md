@@ -2,6 +2,8 @@
 layout: client-delivery
 title: "Sophia & Ryan"
 subtitle: "Your gallery is ready!"
+session_date: "September 26, 2026"
+location: "Manhattan Beach Pier, Manhattan Beach, California"
 gallery_path: "assets/img/clients/sophia-ryan"
 photo_count: 83
 zip_size: "~1 GB"
