@@ -40,9 +40,6 @@ for one file — GitHub Release assets cap out at 2GB each.
   </div>
   {% elsif page.zip_parts %}
   <div class="client-delivery__download">
-    {% if page.photo_count %}
-    <p class="client-delivery__download-intro">{{ page.photo_count }} photos, split into {{ page.zip_parts.size }} zip files so each download stays a reasonable size — download all {{ page.zip_parts.size }}:</p>
-    {% endif %}
     <div class="client-delivery__download-group">
       {% for part in page.zip_parts %}
       <a class="button client-delivery__download-cta" href="{{ part.url }}">{{ part.label | default: "Download" }}</a>
