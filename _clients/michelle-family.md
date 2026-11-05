@@ -2,6 +2,8 @@
 layout: client-delivery
 title: "Michelle's Family"
 subtitle: "Your gallery is ready!"
+session_date: "October 10, 2026"
+location: "Lacey Park, San Marino, California"
 gallery_path: "assets/img/clients/michelle-family"
 photo_count: 100
 zip_size: "~3.9 GB"

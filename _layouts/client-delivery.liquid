@@ -9,6 +9,10 @@ the navbar; each document's own front matter also sets excluded/sitemap/
 noindex to keep it out of site search, sitemap.xml, and search engines.
 Share the page's URL directly with the client instead.
 
+page.session_date and page.location are both optional, plain strings
+(e.g. "October 10, 2026" and "Lacey Park, San Marino, California") — shown
+together as one line under the subtitle when either is set.
+
 Preview images live in page.gallery_path — small, web-sized, committed to
 the repo so the page loads fast. The full-resolution originals are hosted
 outside the repo (a GitHub Release asset, or wherever else), so one
@@ -23,6 +27,12 @@ for one file — GitHub Release assets cap out at 2GB each.
 <section class="client-delivery">
   {% if page.subtitle %}
   <p class="client-delivery__subtitle">{{ page.subtitle }}</p>
+  {% endif %}
+
+  {% if page.session_date or page.location %}
+  <p class="client-delivery__session-meta">
+    {{ page.session_date }}{% if page.session_date and page.location %} &middot; {% endif %}{{ page.location }}
+  </p>
   {% endif %}
 
   {% if page.note %}

@@ -4492,6 +4492,17 @@ a.button.client-delivery__download-cta {
     text-align: center;
   }
 
+  &__session-meta {
+    margin: 0.5em 0 0;
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.72em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--meta);
+    text-align: center;
+  }
+
   &__note {
     max-width: 700px;
     margin: 0.6rem auto 0;
