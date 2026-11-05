@@ -338,11 +338,13 @@ header.site-header {
 }
 
 /* Sharp corners, letterspaced caps — modeled on J/PR's blocky "LET'S CONNECT" button
-   instead of the theme's default soft, rounded pill. Shared by the home CTA and
-   the About page's contact button, so both look like one consistent button style. */
+   instead of the theme's default soft, rounded pill. Shared by the home CTA, the
+   About page's contact button, and the client-delivery download button, so they
+   all look like one consistent button style. */
 a.button.home-intro__cta,
 a.button.about-hero__cta,
-a.button.creator-bio__collab-cta {
+a.button.creator-bio__collab-cta,
+a.button.client-delivery__download-cta {
   background: $kppr-yellow;
   border-color: $kppr-yellow;
   color: $kppr-navy;
@@ -4382,5 +4384,141 @@ a.button.creator-bio__collab-cta {
     &:hover { opacity: 0.88; }
 
     @media (prefers-reduced-motion: reduce) { transition: none; }
+  }
+}
+
+/* ==========================================================================
+   Shared photo-grid card styling (_includes/gallery.html), used by both
+   Photography (_layouts/photography.liquid) and client deliveries
+   (_layouts/client-delivery.liquid). The grid itself stays the theme's own
+   .grid/.grid-col/.grid-item markup — assets/js/partials/img_column.js
+   selects those class names directly to do the masonry column-balancing —
+   these rules only restyle the cards to match the rest of the site, plus
+   fix the theme's columns not collapsing on narrow screens. Wrap the
+   {% include gallery.html %} call in a parent with this class to opt in.
+   ========================================================================== */
+
+.kppr-photo-grid {
+  /* The gallery include's own "coming soon" copy when gallery_path is empty. */
+  > p {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: var(--meta);
+    padding: 3rem 0 5rem;
+  }
+
+  .grid {
+    padding: 2rem $padding-medium 4rem;
+  }
+
+  .grid-item {
+    border-radius: $border-radius;
+    box-shadow: 0 2px 10px rgba($kppr-navy, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba($kppr-navy, 0.18);
+    }
+
+    @media (prefers-reduced-motion: reduce) { transition: none; }
+  }
+
+  /* The theme's gallery grid is 3 fixed-width floated columns with no
+     narrow-screen handling of its own — on a phone that's 3 slivers side
+     by side. Stack them into one full-width column instead. */
+  @media screen and (max-width: $break) {
+    .grid-col {
+      float: none;
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+}
+
+/* ==========================================================================
+   Photography (_layouts/photography.liquid)
+   Same branded hero every other custom page uses (call-out banner, Palmer
+   Lake Print title, Poppins subtitle).
+   ========================================================================== */
+
+.photography-page {
+  max-width: 1100px;
+  margin: 0 auto;
+
+  &__subtitle {
+    max-width: 640px;
+    margin: 2rem auto 0;
+    padding: 0 $padding-medium;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05em;
+    color: var(--meta);
+    text-align: center;
+  }
+
+  &__intro {
+    max-width: 760px;
+    margin: 0.6rem auto 0;
+    padding: 0 $padding-medium;
+    text-align: center;
+
+    p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.02em;
+      line-height: 1.75;
+      color: var(--text);
+      margin: 0 0 1em;
+    }
+  }
+}
+
+/* ==========================================================================
+   Client photo delivery (_layouts/client-delivery.liquid)
+   Same hero + body typography as Photography above, plus a prominent
+   branded download button for the full-resolution zip.
+   ========================================================================== */
+
+.client-delivery {
+  max-width: 1100px;
+  margin: 0 auto;
+
+  &__subtitle {
+    max-width: 640px;
+    margin: 2rem auto 0;
+    padding: 0 $padding-medium;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05em;
+    color: var(--meta);
+    text-align: center;
+  }
+
+  &__note {
+    max-width: 700px;
+    margin: 0.6rem auto 0;
+    padding: 0 $padding-medium;
+    text-align: center;
+
+    p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.02em;
+      line-height: 1.75;
+      color: var(--text);
+      margin: 0 0 1em;
+    }
+  }
+
+  &__download {
+    text-align: center;
+    margin: 2.2rem 0 0.5rem;
+  }
+
+  &__download-meta {
+    margin: 0.7em 0 0;
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.72em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--meta);
   }
 }

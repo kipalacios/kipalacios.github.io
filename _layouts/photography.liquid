@@ -1,0 +1,28 @@
+---
+layout: default
+---
+{% comment %}
+Photography page: the same branded hero every other custom page uses
+(_layouts/research-hub.liquid, _layouts/portfolio-index.liquid), then a
+masonry grid built from whatever images sit in page.gallery_path — adding a
+photo is just dropping a file in that folder, no markdown page to edit.
+{% endcomment %}
+<div class="call-out call-out_solid">
+    <h1 class="call-out_title">{{ page.title }}</h1>
+</div>
+
+<section class="photography-page">
+  {% if page.subtitle %}
+  <p class="photography-page__subtitle">{{ page.subtitle }}</p>
+  {% endif %}
+
+  {% if page.intro %}
+  <div class="photography-page__intro">
+    {% for p in page.intro %}<p>{{ p }}</p>{% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="kppr-photo-grid">
+    {% include gallery.html gallery_path=page.gallery_path %}
+  </div>
+</section>

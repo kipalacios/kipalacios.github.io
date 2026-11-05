@@ -50,6 +50,14 @@ collections:
   research:
     output: true
     permalink: /:collection/:name
+  # Private client photo deliveries (_layouts/client-delivery.liquid). Each
+  # document is its own unlisted page — add one per client, no hub page
+  # links to them. Collection documents never land in site.pages, so these
+  # never show up in the navbar; front matter on each one also sets
+  # excluded/sitemap/noindex to keep them out of search and sitemap.xml too.
+  clients:
+    output: true
+    permalink: /deliver/:name/
 
 # BUILD SETTINGS
 sass:
@@ -71,6 +79,7 @@ exclude:
   - "package.json"
   - "package-lock.json"
   - "README.md"
+  - "_clients/README.md"
   - "LICENSE"
   - ".github"
   - "test-results"
