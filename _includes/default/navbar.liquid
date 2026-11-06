@@ -18,11 +18,32 @@
     <!-- Menu -->
     <ul class="hide">
         {% assign name_page = "" %}
+        {% assign rendered_nav_groups = "" %}
         {% assign emptyArray = '' | split: '' %}
         {% assign menus = site.data.menu | default: emptyArray %}
         {% assign pages = site.pages | concat: menus | sort: 'position' %}
         {% for page in pages %}
         {% unless page.title == null or page.hide or name_page contains page.title %}
+            {% if page.nav_group %}
+                {% unless rendered_nav_groups contains page.nav_group %}
+                    {% assign nav_group_pages = pages | where: 'nav_group', page.nav_group %}
+                    <li class="separator"> | </li>
+                    <li class="navbar-dropdown">
+                        <a class="clear navbar-dropdown__toggle" href="#" aria-haspopup="true" aria-expanded="false">
+                            <span class="navbar-label">{{ page.nav_group }}</span>
+                            <i class="fas fa-chevron-down navbar-dropdown__caret" aria-hidden="true"></i>
+                        </a>
+                        <ul class="navbar-dropdown__menu">
+                            {% for grouped_page in nav_group_pages %}
+                            <li>
+                                <a aria-label="{{ grouped_page.title }}" title="{{ grouped_page.title }}" href="{{ grouped_page.url | relative_url }}">{{ grouped_page.title }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% assign rendered_nav_groups = rendered_nav_groups | append: page.nav_group | append: '|' %}
+                {% endunless %}
+            {% else %}
             <li class="separator"> | </li>
             <li>
                 <a class="clear" aria-label="{{ page.title }}" title="{{ page.title }}" href="{{ page.url | relative_url }}">
@@ -30,6 +51,7 @@
                     <span class="navbar-label {% if page.icon %}navbar-label-with-icon{% endif %}">{{ page.title }}</span>
                 </a>
             </li>
+            {% endif %}
         {% endunless %}
         {% assign name_page = page.title | append: name_page %}
         {% endfor %}
@@ -42,3 +64,5 @@
 
 	</nav>
 </header>
+
+<script defer src="{{ '/assets/js/navbar-dropdown.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

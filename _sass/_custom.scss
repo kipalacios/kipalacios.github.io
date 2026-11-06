@@ -4678,3 +4678,99 @@ body.kppr-lightbox-open {
     color: rgba(#fff, 0.85);
   }
 }
+
+/* ==========================================================================
+   Navbar "Work" dropdown (_includes/default/navbar.liquid,
+   assets/js/navbar-dropdown.js). Groups several top-level pages that share
+   front-matter nav_group: <name> under one toggle, instead of each sitting
+   in the bar on its own — see pages/campaigns.md, media-specializations.md,
+   content-creation.md, photography.md (all nav_group: Work). Click-driven
+   (not :hover) so it behaves the same on touch and desktop; the toggle's
+   own nav styling (color, hover) is inherited from nav a — this only adds
+   the caret, the menu card, and open/close state.
+   ========================================================================== */
+
+.navbar-dropdown {
+  position: relative;
+
+  &__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    cursor: pointer;
+  }
+
+  &__caret {
+    font-size: 0.7em;
+    transition: transform 0.2s ease;
+  }
+
+  &.is-open &__caret {
+    transform: rotate(180deg);
+  }
+
+  &__menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    margin: 0.6em 0 0;
+    padding: 0.4em 0;
+    min-width: 200px;
+    list-style: none;
+    text-align: left;
+    background: $kppr-white;
+    border: 1px solid rgba($kppr-navy, 0.12);
+    border-radius: $border-radius;
+    box-shadow: 0 8px 24px rgba($kppr-navy, 0.16);
+
+    li {
+      display: block;
+      float: none;
+      margin: 0;
+    }
+
+    a {
+      display: block;
+      padding: 0.55em 1.1em;
+      color: var(--text);
+      white-space: nowrap;
+
+      &:hover {
+        color: var(--link);
+        background: rgba($kppr-navy, 0.05);
+      }
+    }
+  }
+
+  &.is-open &__menu {
+    display: block;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .navbar-dropdown__caret { transition: none; }
+  }
+
+  /* Inside the mobile full-width stacked menu, the submenu reads as a
+     nested list in normal flow rather than a floating card. */
+  @media screen and (max-width: $break) {
+    &__menu {
+      position: static;
+      transform: none;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+      border-width: 1px 0;
+      border-radius: 0;
+
+      a {
+        padding: 0.7em 1em;
+        text-align: center;
+        background: rgba($kppr-navy, 0.03);
+      }
+    }
+  }
+}

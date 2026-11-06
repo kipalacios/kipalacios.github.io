@@ -3,6 +3,7 @@ layout: portfolio-index
 title: Campaigns
 permalink: /campaigns/
 position: 2
+nav_group: Work
 # Groups are listed explicitly by permalink so the order is deliberate rather
 # than alphabetical. Any campaign not listed still renders below, so adding one
 # to _portfolio never makes it disappear from this page.

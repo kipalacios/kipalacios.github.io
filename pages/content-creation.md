@@ -3,6 +3,7 @@ layout: content-creation
 title: Content Creation & UGC
 permalink: /content-creation/
 position: 3
+nav_group: Work
 creator_bio:
   photo: assets/img/beach-headshot.jpg
   photo_alt: Klarissa Palacios
