@@ -4694,14 +4694,17 @@ body.kppr-lightbox-open {
   position: relative;
 
   &__toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35em;
+    /* Stays a plain inline element (not inline-flex/inline-block) so it
+       sits on the same baseline as the nav's other plain-text links —
+       flex took it out of normal inline flow and dropped it visibly
+       lower than About/Research next to it. */
     cursor: pointer;
   }
 
   &__caret {
+    margin-left: 0.3em;
     font-size: 0.7em;
+    vertical-align: middle;
     transition: transform 0.2s ease;
   }
 
