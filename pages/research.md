@@ -1,7 +1,6 @@
 ---
 layout: research-hub
-title: Data, AI & Research
-nav_title: Research
+title: Research
 permalink: /research/
 position: 4
 intro:
