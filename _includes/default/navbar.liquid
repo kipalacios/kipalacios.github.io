@@ -45,10 +45,12 @@
                 {% endunless %}
             {% else %}
             <li class="separator"> | </li>
+            {% comment %} nav_title (optional, in a page's front matter) shortens the tab label without changing the page's own heading. {% endcomment %}
+            {% assign nav_label = page.nav_title | default: page.title %}
             <li>
-                <a class="clear" aria-label="{{ page.title }}" title="{{ page.title }}" href="{{ page.url | relative_url }}">
+                <a class="clear" aria-label="{{ nav_label }}" title="{{ nav_label }}" href="{{ page.url | relative_url }}">
                     {% if page.icon %} <i class="navbar-icon fas {{ page.icon }}" aria-hidden="true"></i>{% endif %}
-                    <span class="navbar-label {% if page.icon %}navbar-label-with-icon{% endif %}">{{ page.title }}</span>
+                    <span class="navbar-label {% if page.icon %}navbar-label-with-icon{% endif %}">{{ nav_label }}</span>
                 </a>
             </li>
             {% endif %}
