@@ -11,7 +11,6 @@ One blog post card on the Blog page (_layouts/blog-index.liquid).
         {% if post.cover %}
         <img class="blog-card__image" src="{{ post.cover | relative_url }}" alt="{{ post.cover_alt | default: post.title }}" loading="lazy">
         {% endif %}
-        {% if post.category %}<span class="blog-card__badge blog-card__badge--{{ post.category | slugify }}">{{ post.category }}</span>{% endif %}
     </div>
     <div class="blog-card__body">
         <p class="blog-card__meta">{{ post.date | date: "%B %-d, %Y" }} &middot; {% if post.original_publication %}Originally in the {{ post.original_publication }}{% else %}{{ minutes }} min read{% endif %}</p>
