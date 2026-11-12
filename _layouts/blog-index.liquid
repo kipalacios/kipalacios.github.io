@@ -1,0 +1,35 @@
+---
+layout: default
+---
+{% comment %}
+The Blog page: newest posts first, as a card grid. The filter buttons come
+from `categories_order` in pages/blog.md; blog-filter.js shows/hides cards by
+each post's `category`. Without JS every card simply stays visible.
+{% endcomment %}
+<div class="call-out call-out_solid">
+    <h1 class="call-out_title">{{ page.title }}</h1>
+</div>
+
+{% if page.subtitle %}
+<p class="blog-index__subtitle">{{ page.subtitle }}</p>
+{% endif %}
+
+{% if site.posts.size > 0 %}
+<div class="blog-filter" role="group" aria-label="Filter posts by category" data-blog-filter hidden>
+    <button type="button" class="blog-filter__button is-active" data-filter="all" aria-pressed="true">All</button>
+    {% for c in page.categories_order %}
+    <button type="button" class="blog-filter__button" data-filter="{{ c | slugify }}" aria-pressed="false">{{ c }}</button>
+    {% endfor %}
+</div>
+
+<div class="blog-index" data-blog-grid>
+    {% for post in site.posts %}
+    {% include blog/card.liquid post=post %}
+    {% endfor %}
+</div>
+<p class="blog-index__empty" data-blog-empty hidden>No posts in this category yet. Check back soon!</p>
+
+<script defer src="{{ '/assets/js/blog-filter.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+{% else %}
+<p class="blog-index__empty">The first post is on its way. Check back soon!</p>
+{% endif %}

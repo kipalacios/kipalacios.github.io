@@ -37,8 +37,18 @@ cookie_consent: false                                   # To respect the usage o
 color_theme: light                                      # auto, dark or light
 
 # PAGINATION
-paginate: 5
-paginate_path: "/blog/page:num"
+# Off: jekyll-paginate only paginates the root index.html (the home page),
+# so it can't drive /blog/. The Blog page lists every post itself.
+
+# BLOG POSTS (_posts). Every post uses _layouts/post.liquid and lives at
+# /blog/<post-title>/. New posts: copy _templates/new-post.md.
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      permalink: /blog/:title/
 
 # PORTFOLIO
 collections:

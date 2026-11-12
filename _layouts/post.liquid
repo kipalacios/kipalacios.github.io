@@ -1,38 +1,53 @@
 ---
 layout: default
 ---
-<article {% if page.feature-img or page.color %}class="feature-image" {% endif %}>
-    <header id="main" style="">
-        <div class="title-padder">
-            {% if page.hide_title %}
-                <div class="feature-image-padding"></div>
-            {% else %}
-                <h1 id="{{ page.title | cgi_escape }}" class="title">{{ page.title }}</h1>
-                {% include blog/post_info.liquid author=page.author date=page.date last_modified=page.last_modified %}
-            {% endif %}
-        </div>
+{% comment %}
+A single blog post. Front matter it reads (see _templates/new-post.md):
+  title, date, category, cover, cover_alt, description
+  original_publication, original_url — for a piece first published elsewhere:
+    adds an "Originally published in…" credit and a link to the original
+{% endcomment %}
+{% assign words = content | strip_html | number_of_words %}
+{% assign minutes = words | divided_by: 200 | at_least: 1 %}
+<article class="blog-post">
+    <header class="blog-post__header">
+        <a class="blog-post__back" href="{{ '/blog/' | relative_url }}">&larr; All posts</a>
+        {% if page.category %}<span class="blog-card__badge blog-card__badge--{{ page.category | slugify }} blog-post__badge">{{ page.category }}</span>{% endif %}
+        <h1 class="blog-post__title">{{ page.title }}</h1>
+        <p class="blog-post__meta">{{ page.date | date: "%B %-d, %Y" }} &middot; {{ minutes }} min read</p>
     </header>
 
-    <section class="post-content">
-        {% if page.bootstrap %}<div class="bootstrap-iso">{% endif %}
+    {% if page.cover %}
+    <figure class="blog-post__cover">
+        <img src="{{ page.cover | relative_url }}" alt="{{ page.cover_alt | default: page.title }}">
+    </figure>
+    {% endif %}
+
+    <div class="blog-post__content">
         {{ content }}
-        {% if page.bootstrap %}</div>{% endif %}
-    </section>
-
-    <!-- Social media shares -->
-    {% include social/share_buttons.liquid %}
-
-    <!-- Category and Tag list -->
-    <div class="tag-category-container">
-        <!-- Category list -->
-        {% capture category_list %}{{ page.categories | join: "|" }}{% endcapture %}
-        {% include default/category_list.liquid categories=category_list %}
-
-        <!-- Tag list -->
-        {% capture tag_list %}{{ page.tags | join: "|" }}{% endcapture %}
-        {% include default/tags_list.liquid tags=tag_list %}
     </div>
 
-</article>
+    {% if page.original_url %}
+    <aside class="blog-post__credit">
+        <p class="blog-post__credit-text">Originally published in the <em>{{ page.original_publication | default: "another publication" }}</em> on {{ page.date | date: "%B %-d, %Y" }}.</p>
+        <a class="button blog-post__credit-button" href="{{ page.original_url }}" target="_blank" rel="noopener">Read the full article on the {{ page.original_publication | default: "original site" }} &rarr;</a>
+    </aside>
+    {% endif %}
 
-{% include blog/post_footer.liquid color=page.color img=page.feature-img %}
+    {% if page.previous or page.next %}
+    <nav class="blog-post__nav" aria-label="More posts">
+        {% if page.previous %}
+        <a class="blog-post__nav-link blog-post__nav-link--prev" href="{{ page.previous.url | relative_url }}">
+            <span class="blog-post__nav-label">&larr; Older</span>
+            <span class="blog-post__nav-title">{{ page.previous.title }}</span>
+        </a>
+        {% endif %}
+        {% if page.next %}
+        <a class="blog-post__nav-link blog-post__nav-link--next" href="{{ page.next.url | relative_url }}">
+            <span class="blog-post__nav-label">Newer &rarr;</span>
+            <span class="blog-post__nav-title">{{ page.next.title }}</span>
+        </a>
+        {% endif %}
+    </nav>
+    {% endif %}
+</article>
