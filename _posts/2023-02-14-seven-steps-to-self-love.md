@@ -1,8 +1,8 @@
 ---
 title: "Seven Steps to Self-Love This Valentine's Day"
 category: Lifestyle
-cover: /assets/img/beach-headshot.jpg
-cover_alt: Klarissa Palacios on the beach at sunset
+cover: /assets/img/blog/seven-steps-to-self-love.jpg
+cover_alt: "Cover card: Seven Steps to Self-Love This Valentine's Day, as published in the Daily Trojan, by Klarissa Palacios, February 14, 2023"
 description: My Valentine's Day piece for the Daily Trojan on learning to love yourself unconditionally.
 original_publication: Daily Trojan
 original_url: https://dailytrojan.com/2023/02/14/a-love-letter-to-oneself/
