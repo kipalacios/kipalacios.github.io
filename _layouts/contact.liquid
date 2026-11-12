@@ -1,0 +1,40 @@
+---
+layout: default
+---
+{% comment %}
+Contact page. Everything on it comes from pages/contact.md front matter:
+one card per entry in `paths` (title, blurb, email, button, links, accent).
+{% endcomment %}
+<div class="call-out call-out_solid">
+    <h1 class="call-out_title">{{ page.title }}</h1>
+</div>
+
+<section class="contact-page">
+    {% if page.intro %}<p class="contact-page__intro">{{ page.intro }}</p>{% endif %}
+
+    <div class="contact-page__grid">
+        {% for p in page.paths %}
+        <div class="contact-card{% if p.accent %} contact-card--{{ p.accent }}{% endif %}">
+            <h2 class="contact-card__title">{{ p.title }}</h2>
+            {% if p.blurb %}<p class="contact-card__blurb">{{ p.blurb }}</p>{% endif %}
+            <a class="button contact-card__button" href="mailto:{{ p.email }}">{{ p.button | default: 'Email Me' }}</a>
+            <p class="contact-card__email">{{ p.email }}</p>
+            {% if p.links %}
+            <ul class="contact-card__links">
+                {% for l in p.links %}
+                {% assign external = l.url | slice: 0, 4 %}
+                <li><a href="{% if external == 'http' %}{{ l.url }}{% else %}{{ l.url | relative_url }}{% endif %}"{% if external == 'http' %} target="_blank" rel="noopener"{% endif %}><i class="{{ l.icon }}" aria-hidden="true"></i> {{ l.label }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if page.location %}
+    <p class="contact-page__location">
+        {% include home/sparkle.liquid class="contact-page__sparkle" %}
+        {{ page.location }}
+    </p>
+    {% endif %}
+</section>
