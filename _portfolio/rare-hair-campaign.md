@@ -69,6 +69,7 @@ pillars:
   - key: paid
     label: Paid
     title: Paid Media
+    headline: "Creative Brief &amp; Accessible Social Ads"
     url: /portfolio/rare-hair/paid/
     teaser: >
       The creative brief behind the campaign, the billboard and bus-shelter headlines, and a
@@ -81,6 +82,7 @@ pillars:
   - key: earned
     label: Earned
     title: Earned Media
+    headline: "Launch News Release &amp; Opinion Piece"
     url: /portfolio/rare-hair/earned/
     teaser: >
       The launch news release, plus an opinion piece — "The Beauty Industry Has a Blind Spot.
@@ -93,6 +95,7 @@ pillars:
   - key: shared
     label: Shared
     title: Shared Media
+    headline: "#BeautyYouCanFeel Creator Challenge"
     url: /portfolio/rare-hair/shared/
     teaser: >
       A community-built layer: the #BeautyYouCanFeel challenge, blind and low-vision creators
@@ -105,6 +108,7 @@ pillars:
   - key: owned
     label: Owned
     title: Owned Media
+    headline: "Launch FAQ, Landing Page &amp; Event"
     url: /portfolio/rare-hair/owned/
     teaser: >
       The channels Rare Beauty controls — the launch FAQ, an accessibility-first landing page,

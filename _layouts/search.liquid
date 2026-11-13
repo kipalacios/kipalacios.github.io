@@ -23,6 +23,17 @@ site-wide by the theme.
     <ul id="results-container" class="search-page__results" aria-live="polite"></ul>
 </section>
 
+{% comment %}
+Media Specializations lives here now (it's out of the navbar): browse all
+work by PESO channel under the search box. Same include + filter script as
+the standalone /media-specializations/ page, which still works for old links.
+{% endcomment %}
+<div class="search-browse" id="media-specializations">
+    <h2 class="search-browse__title">Media Specializations</h2>
+    {% include portfolio/peso_gallery.liquid %}
+</div>
+<script defer src="{{ '/assets/js/peso-gallery.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+
 <script type="text/javascript">
     SimpleJekyllSearch({
         searchInput: document.getElementById('search-input'),

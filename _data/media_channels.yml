@@ -1,0 +1,63 @@
+# Media Specializations page (_includes/portfolio/peso_gallery.liquid).
+# One section per PESO channel, in this order. Each section shows:
+#   1. every campaign pillar with a matching `key` (pulled automatically from
+#      _portfolio/*.md `pillars`, titled by its `headline`), then
+#   2. the extra `work` listed here: real-world pieces that aren't part of a
+#      PESO campaign (add new ones here).
+# DRAFT wording: replace any `blurb`, `teaser` or `headline` with your own.
+
+- key: paid
+  label: Paid
+  title: Paid Media
+  blurb: "Media placed with a budget behind it: ads, out-of-home and sponsored social."
+  work:
+    - headline: "Co-Branded Paid Social &amp; Out-of-Home"
+      source: "CAVA x Bumble &middot; Concept campaign"
+      teaser: >
+        One shared idea, "Find Your Flavor," carried across brand copy, paid social and
+        out-of-home creative for a two-brand promotion.
+      items: [Paid social, OOH creative, Brand copy]
+      url: /portfolio/cava-bumble/
+      cta: See the campaign
+
+- key: earned
+  label: Earned
+  title: Earned Media
+  blurb: "Coverage that's earned rather than bought: press releases, op-eds and published articles."
+  work:
+    - headline: "Published Articles in the Daily Trojan"
+      source: "Daily Trojan &middot; 2023"
+      teaser: >
+        Two bylined pieces in USC's student newspaper, including a Spanish-language
+        article on representation on screen.
+      items: [Bylined articles, Spanish-language writing]
+      url: /blog/
+      cta: Read the articles
+
+- key: shared
+  label: Shared
+  title: Shared Media
+  blurb: "Content made to be shared: social series, creator content and community campaigns."
+  work:
+    - headline: "UGC &amp; Creator Content for Brands"
+      source: "Content Creation"
+      teaser: >
+        Short-form videos and creator content for brands including Clinique, Cetaphil,
+        JBL Audio, Poppi and ColourPop.
+      items: [TikTok, Instagram Reels, Brand partnerships]
+      url: /content-creation/
+      cta: See the content
+
+- key: owned
+  label: Owned
+  title: Owned Media
+  blurb: "Channels an organization controls: reports, newsletters, websites, FAQs and events."
+  work:
+    - headline: "2025 Year-in-Review Report"
+      source: "Youth Service Corps LA &middot; City of Los Angeles"
+      teaser: >
+        A 12-page report co-written and edited with fellow interns, turning a year of
+        program data into a story for the Mayor's Office of Economic Opportunity.
+      items: [Co-writer &amp; editor, Data storytelling]
+      url: /portfolio/ysc-la-newsletter/
+      cta: Read the report

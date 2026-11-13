@@ -15,6 +15,7 @@ pillars:
   - key: paid
     label: Paid
     title: Paid Media
+    headline: "Creative Brief &amp; Transit Ad Placement"
     url: /portfolio/open-mind/paid/
     teaser: >
       The creative brief behind the campaign, the reasoning for the tagline, and where
@@ -27,6 +28,7 @@ pillars:
   - key: earned
     label: Earned
     title: Earned Media
+    headline: "CEO Op-Ed: “AI Is the New Literacy”"
     url: /portfolio/open-mind/earned/
     teaser: >
       "AI Is the New Literacy. Treat It Like One." — a CEO-bylined op-ed framing AI
@@ -38,6 +40,7 @@ pillars:
   - key: shared
     label: Shared
     title: Shared Media
+    headline: "Blog Post &amp; 4-Part Instagram Series"
     url: /portfolio/open-mind/shared/
     teaser: >
       "5 Things You Didn't Know You Could Do With AI — For Free, Right Here in LA,"
@@ -50,6 +53,7 @@ pillars:
   - key: owned
     label: Owned
     title: Owned Media
+    headline: "Alphabet SWOT &amp; Strategic Recommendations"
     url: /portfolio/open-mind/owned/
     teaser: >
       A full SWOT on Alphabet and three strategic recommendations, each with the

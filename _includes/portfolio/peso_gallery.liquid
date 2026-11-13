@@ -1,49 +1,67 @@
 {% comment %}
-Gallery of PESO (Paid/Earned/Shared/Owned) deliverables, pulled straight
-from every campaign-hub campaign's own `pillars` list (see
-_layouts/campaign-hub.liquid) — currently Open Mind and Rare Hair. A
-campaign-single campaign (Sun Bum, CAVA x Bumble, YSC) has no `pillars` and
-is simply skipped, so this grows on its own the next time a campaign gets
-the full PESO treatment; nothing here needs to be hardcoded per campaign.
-
-Used by the standalone "Media Specializations" page (_layouts/media-gallery,
-pages/media-specializations.md) — that page's own call-out banner supplies
-the <h1>, so this starts straight at the intro paragraph.
+Media Specializations page, organized by PESO channel (Paid / Earned /
+Shared / Owned). Section order, titles, one-line definitions and the extra
+real-world work all come from _data/media_channels.yml. Campaign pieces are
+pulled automatically from every _portfolio campaign's `pillars` list and
+titled by each pillar's `headline`, so a new PESO campaign shows up here on
+its own. The filter pills show one section at a time (peso-gallery.js).
 {% endcomment %}
 <section class="peso-gallery" data-peso-gallery>
     <div class="peso-gallery__inner">
         <p class="peso-gallery__intro">
-            Every integrated campaign runs through four channels — Paid, Earned, Shared, and
-            Owned media. Filter below to see how each one plays out in practice.
+            Integrated communication runs through four channels: Paid, Earned, Shared, and
+            Owned media. Here's my work in each, from campaign strategy to published pieces.
         </p>
 
         <div class="peso-gallery__pills" role="group" aria-label="Filter by media type">
             <button type="button" class="peso-gallery__pill is-active" data-peso-filter="all" aria-pressed="true">All</button>
-            <button type="button" class="peso-gallery__pill" data-peso-filter="paid" aria-pressed="false">Paid</button>
-            <button type="button" class="peso-gallery__pill" data-peso-filter="earned" aria-pressed="false">Earned</button>
-            <button type="button" class="peso-gallery__pill" data-peso-filter="shared" aria-pressed="false">Shared</button>
-            <button type="button" class="peso-gallery__pill" data-peso-filter="owned" aria-pressed="false">Owned</button>
+            {% for ch in site.data.media_channels %}
+            <button type="button" class="peso-gallery__pill" data-peso-filter="{{ ch.key }}" aria-pressed="false">{{ ch.label }}</button>
+            {% endfor %}
         </div>
 
-        <div class="pillar-grid peso-gallery__grid">
-            {% for campaign in site.portfolio %}
-            {% for pillar in campaign.pillars %}
-            <a class="pillar-card" data-media="{{ pillar.key }}"
-               href="{{ pillar.url | relative_url }}"
-               {% if campaign.accent %}style="--campaign-accent: {{ campaign.accent }};"{% endif %}>
-                <span class="pillar-card__eyebrow">{{ pillar.label }}</span>
-                <p class="pillar-card__campaign">{{ campaign.title }}</p>
-                <h3 class="pillar-card__title">{{ pillar.title }}</h3>
-                <p class="pillar-card__desc">{{ pillar.teaser }}</p>
-                {% if pillar.items %}
-                <ul class="pillar-card__items">
-                    {% for item in pillar.items %}<li>{{ item }}</li>{% endfor %}
-                </ul>
+        {% for ch in site.data.media_channels %}
+        <section class="peso-section peso-section--{{ ch.key }}" data-peso-section="{{ ch.key }}" id="{{ ch.key }}" aria-labelledby="peso-{{ ch.key }}-title">
+            <header class="peso-section__header">
+                <h2 class="peso-section__title" id="peso-{{ ch.key }}-title">{{ ch.title }}</h2>
+                <p class="peso-section__blurb">{{ ch.blurb }}</p>
+            </header>
+
+            <div class="pillar-grid peso-gallery__grid">
+                {% for campaign in site.portfolio %}
+                {% for pillar in campaign.pillars %}
+                {% if pillar.key == ch.key %}
+                <a class="pillar-card" data-media="{{ pillar.key }}" href="{{ pillar.url | relative_url }}"
+                   {% if campaign.accent %}style="--campaign-accent: {{ campaign.accent }};"{% endif %}>
+                    <span class="pillar-card__eyebrow">{{ campaign.title }}{% if campaign.concept %} &middot; Concept campaign{% endif %}</span>
+                    <h3 class="pillar-card__title">{{ pillar.headline | default: pillar.title }}</h3>
+                    <p class="pillar-card__desc">{{ pillar.teaser }}</p>
+                    {% if pillar.items %}
+                    <ul class="pillar-card__items">
+                        {% for item in pillar.items %}<li>{{ item }}</li>{% endfor %}
+                    </ul>
+                    {% endif %}
+                    <span class="pillar-card__cta">{{ pillar.cta | default: 'View this section' }} &rarr;</span>
+                </a>
                 {% endif %}
-                <span class="pillar-card__cta">{{ pillar.cta | default: 'View this section' }} &rarr;</span>
-            </a>
-            {% endfor %}
-            {% endfor %}
-        </div>
+                {% endfor %}
+                {% endfor %}
+
+                {% for w in ch.work %}
+                <a class="pillar-card pillar-card--real" data-media="{{ ch.key }}" href="{{ w.url | relative_url }}">
+                    <span class="pillar-card__eyebrow">{{ w.source }}</span>
+                    <h3 class="pillar-card__title">{{ w.headline }}</h3>
+                    <p class="pillar-card__desc">{{ w.teaser }}</p>
+                    {% if w.items %}
+                    <ul class="pillar-card__items">
+                        {% for item in w.items %}<li>{{ item }}</li>{% endfor %}
+                    </ul>
+                    {% endif %}
+                    <span class="pillar-card__cta">{{ w.cta | default: 'See the work' }} &rarr;</span>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+        {% endfor %}
     </div>
 </section>
