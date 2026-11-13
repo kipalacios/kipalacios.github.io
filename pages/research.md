@@ -3,6 +3,7 @@ layout: research-hub
 title: Research
 permalink: /research/
 position: 4
+nav_group: Work
 intro:
   - >
     Good communication starts with understanding the audience. Through intentional survey design
