@@ -1,19 +1,46 @@
+{% comment %}
+Site footer. Edit links, socials and the call-to-action line here.
+  - CTA: one line + button to /contact/ (DRAFT wording — replace freely)
+  - Brand column: name, tagline, location, email (as copyable text), socials
+  - Two link columns mirror the navbar: Work (the dropdown's pages) + More
+{% endcomment %}
 <footer class="site-footer">
     <div class="site-footer__inner">
-        <p class="site-footer__name">Klarissa Palacios</p>
-        <p class="site-footer__tagline">Create More Than You Consume</p>
+        <div class="site-footer__cta">
+            <p class="site-footer__cta-line">Let's create something together.</p>
+            <a class="site-footer__cta-button" href="{{ '/contact/' | relative_url }}">Get in Touch</a>
+        </div>
 
-        <nav class="site-footer__nav" aria-label="Footer">
-            <a href="{{ '/about/' | relative_url }}">About</a>
-            <a href="{{ '/content-creation/' | relative_url }}">Content Creation &amp; UGC</a>
-            <a href="{{ '/campaigns/' | relative_url }}">Campaigns</a>
-            <a href="{{ '/contact/' | relative_url }}">Contact</a>
-        </nav>
+        <div class="site-footer__grid">
+            <div class="site-footer__brand">
+                <p class="site-footer__name">Klarissa Palacios</p>
+                <p class="site-footer__tagline">Create More Than You Consume</p>
+                <p class="site-footer__meta">Los Angeles / Orange County</p>
+                <p class="site-footer__meta"><a href="mailto:hello@klarissapalacios.com">hello@klarissapalacios.com</a></p>
 
-        <div class="site-footer__icons">
-            <ul>
-                {% include social/icons.liquid %}
-            </ul>
+                <ul class="site-footer__social" aria-label="Social links">
+                    <li><a href="https://www.linkedin.com/in/klarissa-palacios/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.instagram.com/klarissa.palacios/" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.tiktok.com/@klarissapalacios" target="_blank" rel="noopener" title="TikTok" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a></li>
+                    <li><a href="mailto:hello@klarissapalacios.com" title="Email me" aria-label="Email me"><i class="fas fa-envelope" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+
+            <nav class="site-footer__col" aria-label="Work">
+                <p class="site-footer__heading">Work</p>
+                <a href="{{ '/campaigns/' | relative_url }}">Campaigns</a>
+                <a href="{{ '/media-specializations/' | relative_url }}">Media Specializations</a>
+                <a href="{{ '/content-creation/' | relative_url }}">Content Creation &amp; UGC</a>
+                <a href="{{ '/photography/' | relative_url }}">Photography</a>
+            </nav>
+
+            <nav class="site-footer__col" aria-label="More">
+                <p class="site-footer__heading">More</p>
+                <a href="{{ '/about/' | relative_url }}">About</a>
+                <a href="{{ '/research/' | relative_url }}">Research</a>
+                <a href="{{ '/blog/' | relative_url }}">Blog</a>
+                <a href="{{ '/contact/' | relative_url }}">Contact</a>
+            </nav>
         </div>
 
         <p class="site-footer__copyright">&copy; {{ "now" | date: "%Y" }} Klarissa Palacios. All rights reserved.</p>
