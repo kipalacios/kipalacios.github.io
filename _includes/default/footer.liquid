@@ -26,20 +26,27 @@ Site footer. Edit links, socials and the call-to-action line here.
                 </ul>
             </div>
 
+            {% comment %}
+            Footer links are built from the same page list as the navbar
+            (_includes/default/navbar.liquid): every page with a title that
+            isn't `hide`, sorted by `position`, labelled with `nav_title`
+            when set. Pages with a `nav_group` (the Work dropdown) form the
+            first column; everything else forms "More", in navbar order. So
+            adding, renaming, reordering or hiding a page updates both.
+            {% endcomment %}
+            {% assign footer_pages = site.pages | sort: 'position' %}
             <nav class="site-footer__col" aria-label="Work">
                 <p class="site-footer__heading">Work</p>
-                <a href="{{ '/campaigns/' | relative_url }}">Campaigns</a>
-                <a href="{{ '/content-creation/' | relative_url }}">Content Creation &amp; UGC</a>
-                <a href="{{ '/photography/' | relative_url }}">Photography</a>
+                {% for fp in footer_pages %}{% if fp.nav_group == 'Work' and fp.title and fp.hide != true %}
+                <a href="{{ fp.url | relative_url }}">{{ fp.nav_title | default: fp.title }}</a>
+                {% endif %}{% endfor %}
             </nav>
 
             <nav class="site-footer__col" aria-label="More">
                 <p class="site-footer__heading">More</p>
-                <a href="{{ '/about/' | relative_url }}">About</a>
-                <a href="{{ '/research/' | relative_url }}">Research</a>
-                <a href="{{ '/blog/' | relative_url }}">Blog</a>
-                <a href="{{ '/search/' | relative_url }}">Search &amp; Browse</a>
-                <a href="{{ '/contact/' | relative_url }}">Contact</a>
+                {% for fp in footer_pages %}{% if fp.nav_group == nil and fp.title and fp.hide != true and fp.position %}
+                <a href="{{ fp.url | relative_url }}">{{ fp.nav_title | default: fp.title }}</a>
+                {% endif %}{% endfor %}
             </nav>
         </div>
 
