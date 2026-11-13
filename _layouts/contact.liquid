@@ -12,6 +12,53 @@ one card per entry in `paths` (title, blurb, email, button, links, accent).
 <section class="contact-page">
     {% if page.intro %}<p class="contact-page__intro">{{ page.intro }}</p>{% endif %}
 
+    {% comment %}
+    Message form. The site is static, so messages are delivered by FormSubmit
+    (formsubmit.co, free, no account). contact-form.js reads the chosen
+    topic's data-email and posts to that address, so each topic lands in its
+    own inbox. Without JS the form still posts (to the first address) with
+    the topic included in the message. Each address must be activated once:
+    FormSubmit emails a confirmation link on its first submission.
+    {% endcomment %}
+    {% assign first_path = page.paths | first %}
+    <form class="contact-form" action="https://formsubmit.co/{{ first_path.email }}" method="POST" data-contact-form novalidate>
+        <h2 class="contact-form__title">Send a message</h2>
+
+        <div class="contact-form__row">
+            <label class="contact-form__field">
+                <span class="contact-form__label">Name</span>
+                <input type="text" name="name" autocomplete="name" required>
+            </label>
+            <label class="contact-form__field">
+                <span class="contact-form__label">Email</span>
+                <input type="email" name="email" autocomplete="email" required>
+            </label>
+        </div>
+
+        <label class="contact-form__field">
+            <span class="contact-form__label">What's this about?</span>
+            <select name="topic" required data-contact-topic>
+                <option value="" disabled selected>Choose one…</option>
+                {% for p in page.paths %}
+                <option value="{{ p.title }}" data-email="{{ p.email }}">{{ p.title }}</option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <label class="contact-form__field">
+            <span class="contact-form__label">Message</span>
+            <textarea name="message" rows="6" required></textarea>
+        </label>
+
+        <input type="text" name="_honey" class="contact-form__honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="_template" value="table">
+
+        <button type="submit" class="button contact-form__submit" data-contact-submit>Send Message</button>
+        <p class="contact-form__status" data-contact-status role="status" aria-live="polite"></p>
+    </form>
+
+    <h2 class="contact-page__or">Or email me directly</h2>
+
     <div class="contact-page__grid">
         {% for p in page.paths %}
         <div class="contact-card{% if p.accent %} contact-card--{{ p.accent }}{% endif %}">
@@ -38,3 +85,5 @@ one card per entry in `paths` (title, blurb, email, button, links, accent).
     </p>
     {% endif %}
 </section>
+
+<script defer src="{{ '/assets/js/contact-form.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

@@ -4,7 +4,7 @@ title: Contact
 permalink: /contact/
 position: 4.8
 # DRAFT copy: replace any line below with your own wording.
-intro: I'd love to hear from you. Pick whichever fits best and I'll get back to you soon.
+intro: I'd love to hear from you. Send a message below, or email the inbox that fits best.
 location: Based in Los Angeles / Orange County · Open to travel
 paths:
   - title: Careers & PR Opportunities
