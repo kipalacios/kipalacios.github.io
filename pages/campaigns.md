@@ -18,4 +18,5 @@ groups:
     items:
       - /portfolio/ysc-la-newsletter/
       - /portfolio/protest-promise/
+      - /portfolio/la-youth-expo/
 ---
