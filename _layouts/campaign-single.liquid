@@ -30,6 +30,22 @@ empty sections. Every block is optional.
     </div>
   </header>
 
+  {% comment %} Video projects: set `video: { youtube_id, label, title, note }` in front matter.
+  Uses YouTube's privacy-enhanced (no-cookie) player. {% endcomment %}
+  {% if page.video.youtube_id %}
+  <section id="video" class="case-section">
+    <div class="case-section__inner">
+      <p class="case-section__label">{{ page.video.label | default: 'Video' }}</p>
+      <h2 class="case-section__title">{{ page.video.title | default: 'Watch' }}</h2>
+      {% if page.video.note %}<p class="case-section__lead">{{ page.video.note }}</p>{% endif %}
+      <div class="case-video">
+        <iframe src="https://www.youtube-nocookie.com/embed/{{ page.video.youtube_id }}" title="{{ page.video.title | default: page.title | strip_html }}" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      {% if page.video.url %}<p class="case-video__link"><a href="{{ page.video.url }}" target="_blank" rel="noopener">Watch on YouTube &rarr;</a></p>{% endif %}
+    </div>
+  </section>
+  {% endif %}
+
   {% comment %} Same flip-through-plus-download pattern as the research decks: the pages lead, ten seconds of flipping gives the gist before the detail below. {% endcomment %}
   {% if page.presentation %}
   <section id="deck" class="case-section">

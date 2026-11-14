@@ -5889,3 +5889,38 @@ a.button.home-intro__cta--outline {
     border-color: $kppr-navy;
   }
 }
+
+/* Video embed on project pages (_layouts/campaign-single.liquid, `video:`) */
+.case-video {
+  position: relative;
+  width: 100%;
+  max-width: 880px;
+  margin: 1.4rem auto 0;
+  aspect-ratio: 16 / 9;
+  border-radius: $border-radius;
+  overflow: hidden;
+  background: $kppr-navy;
+  box-shadow: 0 14px 30px rgba($kppr-navy, 0.15);
+
+  iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+.case-video__link {
+  text-align: center;
+  margin: 1rem 0 0;
+
+  a {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.8em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $kppr-navy;
+  }
+}

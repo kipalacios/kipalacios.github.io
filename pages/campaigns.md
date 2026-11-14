@@ -17,4 +17,5 @@ groups:
   - title: Professional Work
     items:
       - /portfolio/ysc-la-newsletter/
+      - /portfolio/protest-promise/
 ---
