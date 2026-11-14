@@ -26,7 +26,7 @@ Search index for SimpleJekyllSearch (served as /assets/data/search.liquid).
 {%- assign first = true -%}
 [
 {%- for doc in all -%}
-  {%- unless doc.excluded or doc.title == nil -%}
+  {%- unless doc.excluded or doc.title == nil or doc.noindex or doc.collection == 'clients' -%}
     {%- assign text = doc.content | strip_html | strip_newlines | strip -%}
     {%- if text == "" -%}
       {%- assign text = doc.summary | default: doc.subtitle | default: doc.tagline | default: doc.description -%}
@@ -35,7 +35,37 @@ Search index for SimpleJekyllSearch (served as /assets/data/search.liquid).
     {%- endif -%}
     {%- assign text = text | replace: "&amp;", "&" -%}
     {%- if text == "" -%}{%- assign text = " " -%}{%- endif -%}
+    {%- comment -%} keywords: this page's own front-matter values  (not next/previous
+    neighbours, which a whole-document jsonify drags in), plus its body text. {%- endcomment -%}
+    {%- capture keywords -%}
+      {%- if doc.collection -%}
+        {%- comment -%} Posts / case studies: Liquid can't list a document's
+        front-matter keys, so read the text-bearing fields by name. Add a field
+        here if a new case study keeps its words somewhere else. {%- endcomment -%}
+        {%- assign fields = "summary,tagline,overview,industry,client,role,course,concept_note,at_a_glance,story_title,story_intro,story,story_closer,pillars,paid,earned,shared,owned,creative_groups,brief,team,original_publication,description,subtitle,category,research_questions,question,hypotheses,methods,method,findings,recommendations,limitations" | split: "," -%}
+        {%- for f in fields -%}{%- if doc[f] -%}{{ doc[f] | jsonify }} {% endif -%}{%- endfor -%}
+      {%- else -%}
+        {%- for pair in doc -%}{%- unless pair[0] == 'next' or pair[0] == 'previous' or pair[0] == 'content' or pair[0] == 'output' or pair[0] == 'excerpt' or pair[0] == 'collection' or pair[0] == 'layout' or pair[0] == 'url' or pair[0] == 'path' or pair[0] == 'relative_path' or pair[0] == 'id' or pair[0] == 'slug' or pair[0] == 'ext' or pair[1] == nil -%}{{ pair[1] | jsonify }} {% endunless -%}{%- endfor -%}
+      {%- endif -%}
+      {{ doc.content | strip_html }}
+    {%- endcapture -%}
+    {%- assign keywords = keywords | strip_html | replace: '\n', ' ' | replace: '\"', ' ' | replace: '"', ' ' | replace: '{', ' ' | replace: '}', ' ' | replace: '[', ' ' | replace: ']', ' ' | replace: ':', ' ' | replace: ',', ' ' | replace: '&amp;', '&' | replace: '&middot;', ' ' | replace: '&rsquo;', "'" | replace: '&mdash;', ' ' | replace: '&ndash;', ' ' | normalize_whitespace -%}
     {%- assign title = doc.title | strip_newlines | replace: "&amp;", "&" -%}
+    {%- comment -%} Campaign channel pages (e.g. /portfolio/open-mind/earned/) are all
+    titled "Paid/Earned/... Media": name the campaign, and describe them with
+    that pillar's headline + teaser from the campaign's own front matter. {%- endcomment -%}
+    {%- if doc.campaign_key and doc.pillar -%}
+      {%- assign camp_url = '/portfolio/' | append: doc.campaign_key | append: '/' -%}
+      {%- assign camp = site.portfolio | where: 'url', camp_url | first -%}
+      {%- if camp -%}
+        {%- assign title = camp.title | append: ' · ' | append: title -%}
+        {%- assign pil = camp.pillars | where: 'key', doc.pillar | first -%}
+        {%- if pil -%}
+          {%- assign text = pil.headline | append: '. ' | append: pil.teaser | strip_html | strip_newlines | replace: "&amp;", "&" | strip -%}
+          {%- assign keywords = keywords | append: ' ' | append: pil.headline | append: ' ' | append: pil.teaser | append: ' ' | append: pil.items | strip_html -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endif -%}
     {%- if doc.collection == "posts" -%}
       {%- assign when = doc.date | date: dateFormat -%}
     {%- else -%}
@@ -49,7 +79,8 @@ Search index for SimpleJekyllSearch (served as /assets/data/search.liquid).
         "url"      : {{ doc.url | relative_url | jsonify }},
         "date"     : {{ when | jsonify }},
         "excerpt"  : {{ text | truncate: 250 | jsonify }},
-        "content"  : {{ text | jsonify }}
+        "content"  : {{ text | jsonify }},
+        "keywords" : {{ keywords | jsonify }}
     }
   {%- endunless -%}
 {%- endfor -%}

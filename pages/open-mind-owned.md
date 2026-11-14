@@ -6,5 +6,4 @@ permalink: /portfolio/open-mind/owned/
 campaign_key: open-mind
 pillar: owned
 hide: true
-excluded: true
 ---

@@ -5848,3 +5848,44 @@ a.button.home-intro__cta--outline {
     &:hover { color: $kppr-blue-deep; }
   }
 }
+
+/* Topic chips under the search box (_layouts/search.liquid) */
+.search-page__topics {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  margin: 1.1em auto 0.4em;
+  max-width: 640px;
+}
+
+.search-page__topics-label {
+  font-family: 'Glacial Indifference', sans-serif;
+  font-weight: 700;
+  font-size: 0.72em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--meta);
+  margin-right: 0.2em;
+}
+
+.search-page__topic {
+  font-family: 'Glacial Indifference', sans-serif;
+  font-weight: 700;
+  font-size: 0.74em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $kppr-navy;
+  background: $kppr-yellow-pale;
+  border: 1px solid rgba($kppr-navy, 0.15);
+  border-radius: 999px;
+  padding: 0.45em 1em;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+
+  &:hover, &:focus {
+    background: $kppr-yellow;
+    border-color: $kppr-navy;
+  }
+}

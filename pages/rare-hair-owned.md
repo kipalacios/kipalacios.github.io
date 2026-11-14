@@ -6,5 +6,4 @@ permalink: /portfolio/rare-hair/owned/
 campaign_key: rare-hair
 pillar: owned
 hide: true
-excluded: true
 ---

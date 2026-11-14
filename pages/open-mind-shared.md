@@ -6,5 +6,4 @@ permalink: /portfolio/open-mind/shared/
 campaign_key: open-mind
 pillar: shared
 hide: true
-excluded: true
 ---

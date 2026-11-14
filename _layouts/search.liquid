@@ -20,8 +20,27 @@ site-wide by the theme.
         <input type="text" id="search-input" placeholder="Enter keywords..." class="search-bar" autocomplete="off" autofocus>
     </div>
 
+    {% comment %} Topic chips: one click fills the search box and runs the search.
+    Edit the list freely. {% endcomment %}
+    {% assign search_topics = "Op-Ed,UGC,Survey,Photography,Accessibility,News Release,Newsletter" | split: "," %}
+    <div class="search-page__topics" role="group" aria-label="Popular searches">
+        <span class="search-page__topics-label">Try:</span>
+        {% for t in search_topics %}<button type="button" class="search-page__topic" data-search-topic="{{ t }}">{{ t }}</button>{% endfor %}
+    </div>
+
     <ul id="results-container" class="search-page__results" aria-live="polite"></ul>
 </section>
+<script>
+    document.querySelectorAll('[data-search-topic]').forEach(function (chip) {
+        chip.addEventListener('click', function () {
+            var input = document.getElementById('search-input');
+            input.value = chip.getAttribute('data-search-topic');
+            input.dispatchEvent(new KeyboardEvent('keyup', { bubbles: true }));
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+            input.focus();
+        });
+    });
+</script>
 
 {% comment %}
 Media Specializations lives here now (it's out of the navbar): browse all

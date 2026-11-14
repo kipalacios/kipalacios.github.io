@@ -6,5 +6,4 @@ permalink: /portfolio/rare-hair/earned/
 campaign_key: rare-hair
 pillar: earned
 hide: true
-excluded: true
 ---

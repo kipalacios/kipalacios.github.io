@@ -6,5 +6,4 @@ permalink: /portfolio/open-mind/earned/
 campaign_key: open-mind
 pillar: earned
 hide: true
-excluded: true
 ---

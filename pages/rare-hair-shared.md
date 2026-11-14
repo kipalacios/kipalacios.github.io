@@ -6,5 +6,4 @@ permalink: /portfolio/rare-hair/shared/
 campaign_key: rare-hair
 pillar: shared
 hide: true
-excluded: true
 ---

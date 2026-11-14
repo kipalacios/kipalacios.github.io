@@ -6,5 +6,4 @@ permalink: /portfolio/open-mind/paid/
 campaign_key: open-mind
 pillar: paid
 hide: true
-excluded: true
 ---
