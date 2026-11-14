@@ -2571,7 +2571,22 @@ a.button.client-delivery__download-cta {
   @media screen and (max-width: $break) {
     padding: 0 1rem 3rem;
 
-    .portfolio-index__card { width: min(280px, 78vw); height: 705px; }
+    position: relative;
+
+    /* One whole card per swipe. The arrows float over the image instead of
+       taking ~6em of the row (which left a 280px card wider than the track,
+       clipping its right edge). */
+    .portfolio-index__card { width: 100%; height: 705px; }
+
+    .campaign-scroll__arrow {
+      position: absolute;
+      top: 7.5rem;
+      z-index: 2;
+      width: 2.2em;
+      height: 2.2em;
+    }
+    .campaign-scroll__arrow--prev { left: 0.4rem; }
+    .campaign-scroll__arrow--next { right: 0.4rem; }
   }
 }
 
@@ -2619,6 +2634,12 @@ a.button.client-delivery__download-cta {
   object-fit: cover;
   display: block;
   transition: transform 0.3s ease;
+}
+
+/* Groups with `fit_images: true` (e.g. Professional Work): show the whole
+   image — flyers, reports, video stills — on the pale-yellow frame. */
+.portfolio-group--fit .portfolio-index__image {
+  object-fit: contain;
 }
 
 .portfolio-index__badge {

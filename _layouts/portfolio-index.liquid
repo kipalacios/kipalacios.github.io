@@ -20,8 +20,9 @@ never make it silently disappear from this page.
   {% for u in g.items %}{% assign grouped = grouped | append: u | append: "|" %}{% endfor %}
 {% endfor %}
 
+{% comment %} A group with `fit_images: true` shows each card image whole (contain) instead of cropped to fill (cover). {% endcomment %}
 {% for g in page.groups %}
-<section class="portfolio-group">
+<section class="portfolio-group{% if g.fit_images %} portfolio-group--fit{% endif %}">
     <h2 class="portfolio-group__title">{{ g.title }}</h2>
     {% if g.blurb %}<p class="portfolio-group__blurb">{{ g.blurb }}</p>{% endif %}
     {% comment %}

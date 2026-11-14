@@ -15,6 +15,7 @@ groups:
       - /portfolio/sun-bum-glow/
       - /portfolio/cava-bumble/
   - title: Professional Work
+    fit_images: true
     items:
       - /portfolio/ysc-la-newsletter/
       - /portfolio/protest-promise/
