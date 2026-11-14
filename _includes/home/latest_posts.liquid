@@ -1,0 +1,16 @@
+{% comment %}
+"Latest from the Blog" on the home page: the two newest posts, using the
+same card as the Blog page (_includes/blog/card.liquid). Hidden if there
+are no posts.
+{% endcomment %}
+{% if site.posts.size > 0 %}
+<section class="home-latest">
+    <h2 class="home-latest__heading">Latest from the Blog</h2>
+    <div class="home-latest__grid">
+        {% for post in site.posts limit: 2 %}
+        {% include blog/card.liquid post=post %}
+        {% endfor %}
+    </div>
+    <a class="home-latest__all" href="{{ '/blog/' | relative_url }}">See all posts &rarr;</a>
+</section>
+{% endif %}

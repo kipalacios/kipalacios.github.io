@@ -17,6 +17,7 @@ header_feature_image: assets/img/kppr-logo.png            # Fallback social-shar
 # Home page intro (below the banner)
 intro_name: Klarissa Palacios
 intro_name_suffix: Public Relations
+intro_roles: PR & Campaigns · Content Creation · Photography · Research   # small line under the name
 intro_bio: >
   I'm a Los Angeles–based strategic communicator and storyteller who believes in creating
   more than you consume — crafting accessible ways to tell stories so audiences of every

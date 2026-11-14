@@ -1,0 +1,29 @@
+{% comment %}
+"What I do" strip on the home page: one tile per area of work, each linking
+to its page. DRAFT descriptions: edit freely.
+{% endcomment %}
+<section class="what-i-do">
+    <h2 class="what-i-do__heading">What I Do</h2>
+    <div class="what-i-do__grid">
+        <a class="what-i-do__tile" href="{{ '/campaigns/' | relative_url }}">
+            <span class="what-i-do__icon" aria-hidden="true"><i class="fas fa-bullhorn"></i></span>
+            <h3 class="what-i-do__title">PR &amp; Campaigns</h3>
+            <p class="what-i-do__desc">Integrated campaigns across paid, earned, shared and owned media.</p>
+        </a>
+        <a class="what-i-do__tile" href="{{ '/content-creation/' | relative_url }}">
+            <span class="what-i-do__icon" aria-hidden="true"><i class="fas fa-video"></i></span>
+            <h3 class="what-i-do__title">Content Creation &amp; UGC</h3>
+            <p class="what-i-do__desc">Short-form video and creator content for beauty, lifestyle and food brands.</p>
+        </a>
+        <a class="what-i-do__tile" href="{{ '/photography/' | relative_url }}">
+            <span class="what-i-do__icon" aria-hidden="true"><i class="fas fa-camera"></i></span>
+            <h3 class="what-i-do__title">Photography</h3>
+            <p class="what-i-do__desc">Engagement, family and event photography in LA and Orange County.</p>
+        </a>
+        <a class="what-i-do__tile" href="{{ '/research/' | relative_url }}">
+            <span class="what-i-do__icon" aria-hidden="true"><i class="fas fa-chart-bar"></i></span>
+            <h3 class="what-i-do__title">Research</h3>
+            <p class="what-i-do__desc">Survey design and audience research on AI, media and brand trust.</p>
+        </a>
+    </div>
+</section>

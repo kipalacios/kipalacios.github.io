@@ -39,9 +39,17 @@ layout: default
                           fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
                 </svg>
             </div>
+            {% if site.intro_roles %}<p class="home-intro__roles">{{ site.intro_roles }}</p>{% endif %}
             <p class="home-intro__bio">{{ site.intro_bio }}</p>
-            <a class="button home-intro__cta" href="{{ '/about/' | relative_url }}">About Me</a>
+            <div class="home-intro__actions">
+                <a class="button home-intro__cta" href="{{ '/campaigns/' | relative_url }}">See My Work</a>
+                <a class="button home-intro__cta home-intro__cta--outline" href="{{ '/contact/' | relative_url }}">Get in Touch</a>
+            </div>
+            <a class="home-intro__more" href="{{ '/about/' | relative_url }}">More about me &rarr;</a>
         </div>
     </section>
+    {% include home/credibility.liquid %}
+    {% include home/what_i_do.liquid %}
     {% include home/featured_work.liquid %}
+    {% include home/latest_posts.liquid %}
 </div>
