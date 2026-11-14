@@ -8,8 +8,10 @@ them, so both render identically.
 <a class="portfolio-index__card" href="{{ item.redirect_url | default: item.url | relative_url }}">
     <div class="portfolio-index__image-wrap">
         <img class="portfolio-index__image" src="{{ item.img | relative_url }}" alt="{{ item.img_alt | default: item.title }}" loading="lazy">
+        {% comment %}Concept / Professional Work badge: hidden for now. To bring it back, remove this comment wrapper.{% endcomment %}{% comment %}
         {% if item.concept %}<span class="portfolio-index__badge">Concept Campaign</span>
         {% elsif item.concept == false %}<span class="portfolio-index__badge portfolio-index__badge--work">Professional Work</span>{% endif %}
+        {% endcomment %}
     </div>
     <div class="portfolio-index__body">
         <h3 class="portfolio-index__title">{{ item.title }}</h3>
