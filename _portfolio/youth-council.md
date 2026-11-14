@@ -9,10 +9,10 @@ client: "City of Los Angeles &mdash; Youth Development Department &amp; EmpowerL
 course: "Olivia E. Mitchell LA City Youth Council"
 course_label: "Program"
 date_label: "2023&ndash;2025"
-role: "Bilingual Recruitment Graphics &amp; Cohort Programming"
+role: "Recruitment Graphics &amp; Cohort Programming"
 industry: ["Public Sector", "Civic Engagement &amp; Youth Leadership"]
 summary: >
-  From 2023 to 2025, I created the graphics in English and Spanish for the recruitment of the
+  From 2023 to 2025, I created the graphics for the recruitment of the
   Olivia E. Mitchell Youth Council and helped lead each cohort through monthly City of LA department
   site visits and their year-long capstone project. The council seats 30 young Angelenos, two from
   each of the City's 15 council districts, who make policy and budget recommendations to the Mayor
@@ -28,7 +28,7 @@ creative_groups:
     narrow: true
     items:
       - image: assets/img/portfolio/youth-council/recruitment-2025-en.jpg
-        label: "2025 recruitment flyer &middot; English"
+        label: "2025 recruitment flyer"
         note: "Applications now open, for Angelenos ages 16&ndash;25"
         alt: "Olivia E. Mitchell Youth Council recruitment flyer: applications now open, over a photo of council members holding certificates on the City Hall steps, listing benefits like engaging with City officials and a monthly stipend"
 ---
