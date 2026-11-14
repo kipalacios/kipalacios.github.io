@@ -48,7 +48,7 @@ layout: default
             <a class="home-intro__more" href="{{ '/about/' | relative_url }}">More about me &rarr;</a>
         </div>
     </section>
-    {% include home/credibility.liquid %}
+    {% comment %} "Published & worked with" strip: removed for now. To bring it back, change this line to: include home/credibility.liquid {% endcomment %}
     {% include home/what_i_do.liquid %}
     {% include home/featured_work.liquid %}
     {% comment %} Latest from the Blog: paused until there's a newer post. To bring it back, change this line to: include home/latest_posts.liquid {% endcomment %}
