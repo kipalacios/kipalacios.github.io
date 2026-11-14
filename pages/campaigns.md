@@ -21,4 +21,5 @@ groups:
       - /portfolio/protest-promise/
       - /portfolio/la-youth-expo/
       - /portfolio/youth-summit/
+      - /portfolio/youth-council/
 ---
