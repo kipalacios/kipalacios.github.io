@@ -141,6 +141,44 @@ empty sections. Every block is optional.
   {% include campaign/creatives.liquid items=group.items title=group.title carousel=group.carousel narrow=group.narrow %}
   {% endfor %}
 
+  {% comment %} Notable projects (`notable_projects:`): a project within the program,
+  with my role, a short timeline, a photo carousel and links out. {% endcomment %}
+  {% if page.notable_projects %}
+  <section id="notable-projects" class="case-section notable-projects">
+    <div class="case-section__inner">
+      <p class="case-section__label">{{ page.notable_projects_label | default: 'Notable Projects' }}</p>
+      <h2 class="case-section__title">{{ page.notable_projects_title | default: 'Notable Projects' }}</h2>
+      {% for p in page.notable_projects %}
+      <div class="notable-project">
+        <h3 class="notable-project__title">{{ p.title }}</h3>
+        {% if p.meta %}<p class="notable-project__meta">{{ p.meta }}</p>{% endif %}
+        {% if p.summary %}<p class="notable-project__summary">{{ p.summary }}</p>{% endif %}
+        {% if p.role %}
+        <div class="notable-project__role">
+          <p class="notable-project__role-label">My Role</p>
+          <p>{{ p.role }}</p>
+        </div>
+        {% endif %}
+        {% if p.timeline %}
+        <ol class="notable-project__timeline">
+          {% for t in p.timeline %}
+          <li><span class="notable-project__when">{{ t.when }}</span><strong>{{ t.title }}</strong><span>{{ t.text }}</span></li>
+          {% endfor %}
+        </ol>
+        {% endif %}
+        {% include campaign/creatives.liquid items=p.photos carousel=true bare=true title=p.title %}
+        {% if p.credit %}<p class="notable-project__credit">{{ p.credit }}</p>{% endif %}
+        {% if p.links %}
+        <ul class="notable-project__links">
+          {% for l in p.links %}<li><a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }} &rarr;</a></li>{% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
   <footer class="case-footer">
     <a class="button case-footer__cta" href="{{ '/campaigns/' | relative_url }}">&larr; Back to Campaigns</a>
   </footer>

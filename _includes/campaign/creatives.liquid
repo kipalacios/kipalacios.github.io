@@ -6,12 +6,16 @@
              set of same-shaped pieces like four portrait Instagram ads,
              which stack to ~860px each in the grid),
              narrow (true for tall, skinny pieces like an infographic, which
-             at the grid's full column width run thousands of pixels tall). -->
+             at the grid's full column width run thousands of pixels tall),
+             bare (true to leave out the section wrapper and heading, for a
+             carousel inside another section, e.g. a notable project). -->
 {% if include.items %}
+{% unless include.bare %}
 <section class="case-section">
     <div class="case-section__inner">
         <p class="case-section__label">Creative</p>
         <h2 class="case-section__title">{{ include.title | default: 'The Work' }}</h2>
+{% endunless %}
 
         {% if include.carousel and include.items.size > 1 %}
         {% comment %} Same [data-carousel] contract as the deck and project carousels. {% endcomment %}
@@ -72,6 +76,8 @@
             {% endfor %}
         </div>
         {% endif %}
+{% unless include.bare %}
     </div>
 </section>
+{% endunless %}
 {% endif %}
