@@ -28,8 +28,19 @@ site-wide by the theme.
         {% for t in search_topics %}<button type="button" class="search-page__topic" data-search-topic="{{ t }}">{{ t }}</button>{% endfor %}
     </div>
 
+    {% comment %}
+    Media Specializations (out of the navbar) as filter chips: Paid / Earned /
+    Shared / Owned. Nothing shows until a chip is picked. Picking one clears
+    the search box; typing a search closes the chip. The standalone
+    /media-specializations/ page still shows the full gallery.
+    {% endcomment %}
+    <div class="search-browse" id="media-specializations">
+        {% include portfolio/peso_gallery.liquid filter_only=true %}
+    </div>
+
     <ul id="results-container" class="search-page__results" aria-live="polite"></ul>
 </section>
+<script defer src="{{ '/assets/js/peso-gallery.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 <script>
     document.querySelectorAll('[data-search-topic]').forEach(function (chip) {
         chip.addEventListener('click', function () {
@@ -40,18 +51,24 @@ site-wide by the theme.
             input.focus();
         });
     });
-</script>
 
-{% comment %}
-Media Specializations lives here now (it's out of the navbar): browse all
-work by PESO channel under the search box. Same include + filter script as
-the standalone /media-specializations/ page, which still works for old links.
-{% endcomment %}
-<div class="search-browse" id="media-specializations">
-    <h2 class="search-browse__title">Media Specializations</h2>
-    {% include portfolio/peso_gallery.liquid %}
-</div>
-<script defer src="{{ '/assets/js/peso-gallery.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+    // Search box and media-type chips take turns: one clears the other.
+    document.addEventListener('DOMContentLoaded', function () {
+        var input = document.getElementById('search-input');
+        var results = document.getElementById('results-container');
+        var peso = document.querySelector('[data-peso-gallery]');
+        if (!peso) return;
+        peso.addEventListener('peso:filter', function (e) {
+            if (e.detail && input.value) {
+                input.value = '';
+                results.innerHTML = '';
+            }
+        });
+        input.addEventListener('input', function () {
+            if (input.value.trim() && peso.pesoReset) peso.pesoReset();
+        });
+    });
+</script>
 
 <script type="text/javascript">
     SimpleJekyllSearch({

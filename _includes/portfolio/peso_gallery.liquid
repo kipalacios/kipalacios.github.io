@@ -5,23 +5,33 @@ real-world work all come from _data/media_channels.yml. Campaign pieces are
 pulled automatically from every _portfolio campaign's `pillars` list and
 titled by each pillar's `headline`, so a new PESO campaign shows up here on
 its own. The filter pills show one section at a time (peso-gallery.js).
+
+`filter_only=true` (the search page): no intro, no "All" pill, and every
+section starts hidden, so the four channels act as filter chips. Clicking
+the active chip again closes it.
 {% endcomment %}
-<section class="peso-gallery" data-peso-gallery>
+<section class="peso-gallery{% if include.filter_only %} peso-gallery--filter{% endif %}" data-peso-gallery{% if include.filter_only %} data-peso-toggle{% endif %}>
     <div class="peso-gallery__inner">
+        {% unless include.filter_only %}
         <p class="peso-gallery__intro">
             Integrated communication runs through four channels: Paid, Earned, Shared, and
             Owned media. Here's my work in each, from campaign strategy to published pieces.
         </p>
+        {% endunless %}
 
         <div class="peso-gallery__pills" role="group" aria-label="Filter by media type">
+            {% if include.filter_only %}
+            <span class="search-page__topics-label">Media type:</span>
+            {% else %}
             <button type="button" class="peso-gallery__pill is-active" data-peso-filter="all" aria-pressed="true">All</button>
+            {% endif %}
             {% for ch in site.data.media_channels %}
-            <button type="button" class="peso-gallery__pill" data-peso-filter="{{ ch.key }}" aria-pressed="false">{{ ch.label }}</button>
+            <button type="button" class="peso-gallery__pill{% if include.filter_only %} search-page__topic{% endif %}" data-peso-filter="{{ ch.key }}" aria-pressed="false">{{ ch.label }}</button>
             {% endfor %}
         </div>
 
         {% for ch in site.data.media_channels %}
-        <section class="peso-section peso-section--{{ ch.key }}" data-peso-section="{{ ch.key }}" id="{{ ch.key }}" aria-labelledby="peso-{{ ch.key }}-title">
+        <section class="peso-section peso-section--{{ ch.key }}" data-peso-section="{{ ch.key }}" id="{{ ch.key }}"{% if include.filter_only %} hidden{% endif %} aria-labelledby="peso-{{ ch.key }}-title">
             <header class="peso-section__header">
                 <h2 class="peso-section__title" id="peso-{{ ch.key }}-title">{{ ch.title }}</h2>
                 <p class="peso-section__blurb">{{ ch.blurb }}</p>

@@ -5629,23 +5629,29 @@ article.blog-post {
   margin: 0 0 1.4rem;
 }
 
-/* Media Specializations gallery shown under the search box (_layouts/search.liquid) */
+/* Media Specializations as filter chips under the search box
+   (_layouts/search.liquid, peso_gallery.liquid filter_only=true) */
 .search-browse {
-  border-top: 1px solid rgba($kppr-navy, 0.1);
-  margin-top: 1rem;
-  padding-top: 2.4rem;
-
-  &__title {
-    font-family: 'Palmer Lake Print', cursive;
-    font-weight: 400;
-    font-size: clamp(2em, 5vw, 2.8em);
-    color: $kppr-navy;
-    text-align: center;
-    margin: 0;
+  .peso-gallery--filter {
+    padding: 0;
+    background: none;
   }
-
-  /* The gallery's own top padding assumes it sits right under a banner. */
-  .peso-gallery { padding-top: 1rem; }
+  .peso-gallery--filter .peso-gallery__inner { padding: 0; max-width: none; }
+  .peso-gallery--filter .peso-gallery__pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    margin: 0.4em auto 0;
+    max-width: 640px;
+  }
+  .peso-gallery--filter .search-page__topic.is-active {
+    background: $kppr-navy;
+    border-color: $kppr-navy;
+    color: #fff;
+  }
+  .peso-gallery--filter .peso-section { margin-top: 2rem; }
 }
 
 /* ==========================================================================
