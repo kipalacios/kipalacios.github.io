@@ -39,7 +39,7 @@ notable_projects_label: "Notable Projects"
 notable_projects_title: "Notable Projects from the Youth Council"
 notable_projects:
   - title: "Aluminate LA &mdash; Recycling Program with the Los Angeles Chargers"
-    meta: "With the Los Angeles Chargers &amp; Ball Corporation &middot; October 2023 &ndash; April 2024"
+    meta: "With the Los Angeles Chargers &amp; Ball Corporation &middot; March 2023 &ndash; April 2024"
     summary: >
       Sponsored by Ball Corporation, the Los Angeles Chargers partnered with the Youth Development
       Department to challenge Youth Council members to design a campaign promoting aluminum recycling.
@@ -53,7 +53,17 @@ notable_projects:
       this content on socials, and was the project manager for the Youth Council's project pitches to
       the LA Chargers team. This included briefing presentations for each of the 5 teams before the
       final presentation to the LA Chargers team and City Council.
+    quote: >
+      After learning how recycling is managed at SoFi Stadium and Hollywood Park in partnership with the
+      Ball Corporation, Los Angeles County Sanitation Districts and working with Inner-City Arts to
+      develop youth designed artwork, I have learned the value in collaborating with government entities
+      and the private sector to maximize grants and services.
+    quote_source: "From my LinkedIn post, April 2024"
+    quote_url: https://www.linkedin.com/feed/update/urn:li:activity:7188648970808635392/
     timeline:
+      - when: "March 2023"
+        title: "Partnership Begins"
+        text: "The Chargers approached the Youth Development Department to grow recycling across all 15 council districts."
       - when: "October 2023"
         title: "Orientation at SoFi Stadium"
         text: "Program kickoff and a tour of the stadium's recycling operations."
@@ -67,6 +77,10 @@ notable_projects:
         title: "City Hall Launch"
         text: "The first Aluminate LA bins were unveiled at the Los Angeles City Council meeting."
     photos:
+      - image: assets/img/portfolio/youth-council/chargers-0-aluminate-launch.jpg
+        label: "Aluminate LA launch"
+        note: "City Hall, April 2024 &middot; from my LinkedIn post"
+        alt: "Youth Council members, City leaders and partners gather around a blue Aluminate LA recycling bin with youth-designed artwork at Los Angeles City Hall, two holding framed City proclamations"
       - image: assets/img/portfolio/youth-council/chargers-1-orientation.jpg
         label: "Program orientation"
         note: "SoFi Stadium, October 10, 2023"
@@ -83,6 +97,22 @@ notable_projects:
         label: "In the Chargers locker room"
         note: "The Youth Council at SoFi Stadium"
         alt: "The Youth Council poses for a group photo in front of the Los Angeles Chargers locker room stalls"
+      - image: assets/img/portfolio/youth-council/chargers-4a-judges.jpg
+        label: "Final pitches"
+        note: "Judges from Ball Corp., Hollywood Park and ABM, December 2023"
+        alt: "Three judges seated in the Chargers locker room listen to a Youth Council team's final pitch"
+      - image: assets/img/portfolio/youth-council/chargers-4b-budget-pitch.jpg
+        label: "Pitching the budget"
+        note: "A team presents its proposed budget analysis"
+        alt: "Two Youth Council members present a slide titled Proposed Budget Analysis in the Chargers locker room"
+      - image: assets/img/portfolio/youth-council/chargers-4c-three-components.jpg
+        label: "The winning pitch"
+        note: "Kickoff event, outreach and recycling bins"
+        alt: "A Youth Council member presents a slide titled Three Components, outlining a kickoff event and recycling bins"
+      - image: assets/img/portfolio/youth-council/chargers-4d-bin-placement.jpg
+        label: "Placement of recycling bins"
+        note: "Mapping where the bins would go across the City"
+        alt: "Two Youth Council members present a slide titled Placement of Recycling Bins in the Chargers locker room"
       - image: assets/img/portfolio/youth-council/chargers-5-city-hall.jpg
         label: "Recognized at City Hall"
         note: "With City leaders, April 19, 2024"
@@ -95,14 +125,20 @@ notable_projects:
         label: "An Aluminate LA bin"
         note: "Placed at Los Angeles City Hall"
         alt: "A blue Aluminate LA recycling bin with colorful artwork stands in a hallway at Los Angeles City Hall"
-    credit: "Photos: Los Angeles Chargers"
+    credit: "Photos: Los Angeles Chargers, except where noted"
     links:
+      - label: "My LinkedIn post"
+        url: https://www.linkedin.com/feed/update/urn:li:activity:7188648970808635392/
       - label: "Read the Chargers' recap"
         url: https://www.chargers.com/news/ball-corporation-chargers-recycling-sustainability-program
       - label: "Watch: 2023 kickoff"
         url: https://www.chargers.com/video/community-chargers-partner-with-ball-corp-recap-2023
       - label: "Watch: the program"
         url: https://www.chargers.com/video/chargers-and-ball-corp-partner-with-city-of-la-to-boost-recycling-and-sustainability-practices
+      - label: "Orientation photo gallery"
+        url: https://www.chargers.com/photos/chargers-and-ball-corporation-host-youth-development-department-for-sustainabili
+      - label: "Final presentations gallery"
+        url: https://www.chargers.com/photos/la-s-youth-development-department-gives-final-presentations-for-sustainability-p
       - label: "City Hall photo gallery"
         url: https://www.chargers.com/photos/ydd-unveils-beautified-recycling-bins-with-the-chargers-and-ball-corporation
 ---

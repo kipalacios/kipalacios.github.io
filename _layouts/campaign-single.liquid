@@ -159,6 +159,12 @@ empty sections. Every block is optional.
           <p>{{ p.role }}</p>
         </div>
         {% endif %}
+        {% if p.quote %}
+        <blockquote class="notable-project__quote">
+          <p>&ldquo;{{ p.quote }}&rdquo;</p>
+          {% if p.quote_source %}<cite>{% if p.quote_url %}<a href="{{ p.quote_url }}" target="_blank" rel="noopener">{{ p.quote_source }}</a>{% else %}{{ p.quote_source }}{% endif %}</cite>{% endif %}
+        </blockquote>
+        {% endif %}
         {% if p.timeline %}
         <ol class="notable-project__timeline">
           {% for t in p.timeline %}

@@ -6001,7 +6001,7 @@ a.button.home-intro__cta--outline {
     padding: 0;
     margin: 0 0 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 0.8rem;
     li {
       background: var(--card-background, #fff);
@@ -6023,6 +6023,22 @@ a.button.home-intro__cta--outline {
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--meta);
+  }
+  &__quote {
+    margin: 0 0 1.8em;
+    padding: 0 0 0 1.3em;
+    border-left: 3px solid rgba($kppr-navy, 0.25);
+    p { font-style: italic; margin: 0 0 0.5em; }
+    cite {
+      font-family: 'Glacial Indifference', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 0.74em;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--meta);
+      a { color: inherit; }
+    }
   }
   &__credit {
     font-size: 0.78em;
