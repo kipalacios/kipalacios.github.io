@@ -51,7 +51,7 @@ notable_projects:
       engagement team beyond the recruitment of the Youth Council: I captured content from site visits
       at SoFi Stadium, coordinated with the Los Angeles Chargers communications staff in pushing out
       this content on socials, and was the project manager for the Youth Council's project pitches to
-      the LA Chargers team. This included briefing presentations for each of the 4 teams before the
+      the LA Chargers team. This included briefing presentations for each of the 5 teams before the
       final presentation to the LA Chargers team and City Council.
     timeline:
       - when: "October 2023"
