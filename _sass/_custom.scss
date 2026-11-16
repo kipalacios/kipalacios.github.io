@@ -5996,33 +5996,127 @@ a.button.home-intro__cta--outline {
     color: $kppr-navy;
     margin-bottom: 0.4em !important;
   }
+  /* Timeline: a horizontal track of numbered stops on desktop, a vertical
+     one on phones. */
+  &__timeline-label {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.72em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $kppr-navy;
+    text-align: center;
+    margin: 0 0 1.2em;
+  }
   &__timeline {
     list-style: none;
     padding: 0;
-    margin: 0 0 2rem;
+    margin: 0 0 2.6rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 0.8rem;
-    li {
-      background: var(--card-background, #fff);
-      border: 1px solid rgba($kppr-navy, 0.12);
-      border-radius: 10px;
-      padding: 0.9em 1em;
-      font-size: 0.9em;
-      line-height: 1.45;
-      display: flex;
-      flex-direction: column;
-      gap: 0.25em;
+    grid-template-columns: repeat(var(--steps, 4), minmax(0, 1fr));
+    gap: 0 1rem;
+    position: relative;
+
+    /* the track behind the dots, from the first dot's centre to the last's */
+    &::before {
+      content: "";
+      position: absolute;
+      top: 1.1rem;
+      left: calc(50% / var(--steps, 4));
+      right: calc(50% / var(--steps, 4));
+      height: 3px;
+      border-radius: 3px;
+      background: linear-gradient(90deg, rgba($kppr-navy, 0.2), $kppr-yellow);
     }
-    strong { color: $kppr-navy; }
+  }
+  &__step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.3em;
+    font-size: 0.88em;
+    line-height: 1.45;
+
+    strong { color: $kppr-navy; font-size: 1.05em; }
+  }
+  &__dot {
+    position: relative;
+    z-index: 1;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #fff;
+    border: 3px solid $kppr-navy;
+    color: $kppr-navy;
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.6em;
+  }
+  &__step.is-final &__dot {
+    background: $kppr-yellow;
+    border-color: $kppr-navy;
   }
   &__when {
     font-family: 'Glacial Indifference', sans-serif;
     font-weight: 700;
-    font-size: 0.78em;
+    font-size: 0.8em;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--meta);
+  }
+  &__step-text { color: var(--text); }
+
+  @media screen and (max-width: 700px) {
+    &__timeline {
+      grid-template-columns: 1fr;
+      gap: 1.4rem;
+      &::before {
+        top: 1.25rem;
+        bottom: 1.25rem;
+        left: calc(1.25rem - 1.5px);
+        right: auto;
+        width: 3px;
+        height: auto;
+        background: linear-gradient(180deg, rgba($kppr-navy, 0.2), $kppr-yellow);
+      }
+    }
+    &__step {
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      column-gap: 1rem;
+      align-items: start;
+      text-align: left;
+      > :not(.notable-project__dot) { grid-column: 2; }
+    }
+    &__dot { grid-row: 1 / span 3; margin: 0; }
+  }
+
+  /* Photos: wider than the default carousel (built for portrait social
+     ads), with every photo cropped to the same frame. */
+  &__photos {
+    .creative-carousel__viewport {
+      flex: 1 1 760px;
+      max-width: 760px;
+    }
+    .creative__img {
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+    .creative__caption { text-align: center; }
+
+    @media screen and (max-width: 480px) {
+      .creative-carousel__row { gap: 0.2em; }
+      .creative-carousel__viewport {
+        flex: 1 1 auto;
+        max-width: none;
+      }
+      .creative-carousel__arrow { padding: 0.2em; }
+    }
   }
   &__quote {
     margin: 0 0 1.8em;
@@ -6063,4 +6157,36 @@ a.button.home-intro__cta--outline {
       color: $kppr-navy;
     }
   }
+}
+
+/* Instagram embeds on project pages (_layouts/campaign-single.liquid, `instagram_posts:`) */
+.case-instagram {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.4rem;
+
+  .instagram-media {
+    /* Instagram's script swaps this for an iframe; until then (or if it's
+       blocked) show a tidy link card instead of a bare quote. */
+    margin: 0 !important;
+    width: 100%;
+    max-width: 540px;
+    min-width: 0 !important;
+    background: #fff;
+    border: 1px solid rgba($kppr-navy, 0.12) !important;
+    border-radius: 12px !important;
+    padding: 1.4em;
+    text-align: center;
+    a {
+      font-family: 'Glacial Indifference', sans-serif;
+      font-weight: 700;
+      font-size: 0.8em;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: $kppr-navy;
+    }
+  }
+  iframe.instagram-media { padding: 0; }
 }

@@ -141,6 +141,27 @@ empty sections. Every block is optional.
   {% include campaign/creatives.liquid items=group.items title=group.title carousel=group.carousel narrow=group.narrow %}
   {% endfor %}
 
+  {% comment %} Instagram posts (`instagram_posts:` list of {url}), shown with
+  Instagram's own embed, so the post's photos and caption stay on Instagram.
+  `instagram_title` / `instagram_note` head the section. {% endcomment %}
+  {% if page.instagram_posts %}
+  <section id="instagram" class="case-section">
+    <div class="case-section__inner">
+      <p class="case-section__label">{{ page.instagram_label | default: 'On Instagram' }}</p>
+      <h2 class="case-section__title">{{ page.instagram_title | default: 'From Instagram' }}</h2>
+      {% if page.instagram_note %}<p class="case-section__lead">{{ page.instagram_note }}</p>{% endif %}
+      <div class="case-instagram">
+        {% for post in page.instagram_posts %}
+        <blockquote class="instagram-media" data-instgrm-permalink="{{ post.url }}?utm_source=ig_embed" data-instgrm-version="14" data-instgrm-captioned>
+          <a href="{{ post.url }}" target="_blank" rel="noopener">View this post on Instagram &rarr;</a>
+        </blockquote>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <script async src="https://www.instagram.com/embed.js"></script>
+  {% endif %}
+
   {% comment %} Notable projects (`notable_projects:`): a project within the program,
   with my role, a short timeline, a photo carousel and links out. {% endcomment %}
   {% if page.notable_projects %}
@@ -166,13 +187,21 @@ empty sections. Every block is optional.
         </blockquote>
         {% endif %}
         {% if p.timeline %}
-        <ol class="notable-project__timeline">
+        <p class="notable-project__timeline-label">Project Timeline</p>
+        <ol class="notable-project__timeline" style="--steps: {{ p.timeline.size }};">
           {% for t in p.timeline %}
-          <li><span class="notable-project__when">{{ t.when }}</span><strong>{{ t.title }}</strong><span>{{ t.text }}</span></li>
+          <li class="notable-project__step{% if forloop.last %} is-final{% endif %}">
+            <span class="notable-project__dot" aria-hidden="true">{{ forloop.index }}</span>
+            <span class="notable-project__when">{{ t.when }}</span>
+            <strong>{{ t.title }}</strong>
+            <span class="notable-project__step-text">{{ t.text }}</span>
+          </li>
           {% endfor %}
         </ol>
         {% endif %}
+        <div class="notable-project__photos">
         {% include campaign/creatives.liquid items=p.photos carousel=true bare=true title=p.title %}
+        </div>
         {% if p.credit %}<p class="notable-project__credit">{{ p.credit }}</p>{% endif %}
         {% if p.links %}
         <ul class="notable-project__links">

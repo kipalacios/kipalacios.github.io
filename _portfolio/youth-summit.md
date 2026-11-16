@@ -24,6 +24,11 @@ video:
   label: "The Event"
   title: "Youth Summit 2025 Recap"
   note: "A recap of the March 22, 2025 Summit, from the Youth Development Department."
+instagram_label: "Partnerships"
+instagram_title: "Building the USC Partnership"
+instagram_note: "Our community engagement team met with USC Rossier's SEEDS program, part of the outreach to USC Price and Rossier that brought supporters to the Summit."
+instagram_posts:
+  - url: https://www.instagram.com/p/CyWdeEPPVLc/
 creative_groups:
   - title: Program Cover
     narrow: true
