@@ -141,17 +141,28 @@ empty sections. Every block is optional.
   {% include campaign/creatives.liquid items=group.items title=group.title carousel=group.carousel narrow=group.narrow %}
   {% endfor %}
 
-  {% comment %} Instagram posts (`instagram_posts:` list of {url}), shown with
-  Instagram's own embed, so the post's photos and caption stay on Instagram.
-  `instagram_title` / `instagram_note` head the section. {% endcomment %}
-  {% if page.instagram_posts %}
-  <section id="instagram" class="case-section">
+  {% comment %} Instagram posts, shown with Instagram's own embed so the photos
+  and caption stay on Instagram. Either one section (`instagram_posts:` list of
+  {url}, headed by `instagram_label` / `instagram_title` / `instagram_note`) or
+  several (`instagram_sections:` list of {label, title, note, posts}).
+  Two or more posts in a section sit side by side on desktop. {% endcomment %}
+  {% assign ig_sections = page.instagram_sections %}
+  {% if ig_sections or page.instagram_posts %}
+  {% if ig_sections %}{% assign ig_count = ig_sections.size %}{% else %}{% assign ig_count = 1 %}{% endif %}
+  {% for n in (1..ig_count) %}
+    {% if ig_sections %}
+      {% assign ig = ig_sections[forloop.index0] %}
+      {% assign ig_label = ig.label %}{% assign ig_title = ig.title %}{% assign ig_note = ig.note %}{% assign ig_posts = ig.posts %}
+    {% else %}
+      {% assign ig_label = page.instagram_label %}{% assign ig_title = page.instagram_title %}{% assign ig_note = page.instagram_note %}{% assign ig_posts = page.instagram_posts %}
+    {% endif %}
+  <section {% if forloop.first %}id="instagram" {% endif %}class="case-section">
     <div class="case-section__inner">
-      <p class="case-section__label">{{ page.instagram_label | default: 'On Instagram' }}</p>
-      <h2 class="case-section__title">{{ page.instagram_title | default: 'From Instagram' }}</h2>
-      {% if page.instagram_note %}<p class="case-section__lead">{{ page.instagram_note }}</p>{% endif %}
-      <div class="case-instagram">
-        {% for post in page.instagram_posts %}
+      <p class="case-section__label">{{ ig_label | default: 'On Instagram' }}</p>
+      <h2 class="case-section__title">{{ ig_title | default: 'From Instagram' }}</h2>
+      {% if ig_note %}<p class="case-section__lead">{{ ig_note }}</p>{% endif %}
+      <div class="case-instagram{% if ig_posts.size > 1 %} case-instagram--grid{% endif %}">
+        {% for post in ig_posts %}
         <blockquote class="instagram-media" data-instgrm-permalink="{{ post.url }}?utm_source=ig_embed" data-instgrm-version="14" data-instgrm-captioned>
           <a href="{{ post.url }}" target="_blank" rel="noopener">View this post on Instagram &rarr;</a>
         </blockquote>
@@ -159,6 +170,7 @@ empty sections. Every block is optional.
       </div>
     </div>
   </section>
+  {% endfor %}
   <script async src="https://www.instagram.com/embed.js"></script>
   {% endif %}
 

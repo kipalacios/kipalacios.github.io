@@ -31,6 +31,14 @@ creative_groups:
         label: "2024 recruitment flyer"
         note: "Youth Council 3, applications open May 17"
         alt: "Olivia E. Mitchell Youth Council 3 recruitment flyer: four council members hold City certificates under the headline, with Applications Open May 17th, a scan-to-apply QR code, and a call for Angelenos ages 16 to 25 interested in policy and civic engagement"
+      - image: assets/img/portfolio/youth-council/recruitment-2024-dates.jpg
+        label: "2024 recruitment graphic &middot; Key dates"
+        note: "Applications open May 17, close June 30 &middot; <a href=\"https://www.instagram.com/p/C7E58WWpqL0/\" target=\"_blank\" rel=\"noopener\">See it on Instagram</a>"
+        alt: "Olivia E. Mitchell Youth Council recruitment graphic: applications open May 17 and close June 30, with a scan-to-apply QR code, a list of benefits including a monthly stipend, and a call for Angelenos ages 16 to 25"
+      - image: assets/img/portfolio/youth-council/recruitment-2024-cohort3.jpg
+        label: "2024 recruitment graphic &middot; Youth Council 3"
+        note: "Applications now open, apply by June 30 &middot; <a href=\"https://www.instagram.com/p/C7rd2HfvgDV/\" target=\"_blank\" rel=\"noopener\">See it on Instagram</a>"
+        alt: "Youth Council 3 recruitment flyer: five smiling council members in Youth Council shirts under the headline, with Applications Now Open, a QR code to apply by June 30th, and a call for Angelenos ages 16 to 25"
       - image: assets/img/portfolio/youth-council/recruitment-2025-en.jpg
         label: "2025 recruitment flyer"
         note: "Applications now open, for Angelenos ages 16&ndash;25"

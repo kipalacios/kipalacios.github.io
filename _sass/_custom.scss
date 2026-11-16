@@ -6189,4 +6189,13 @@ a.button.home-intro__cta--outline {
     }
   }
   iframe.instagram-media { padding: 0; }
+
+  /* two or more posts: side by side on desktop, stacked on phones */
+  &--grid {
+    align-items: flex-start;
+    .instagram-media {
+      flex: 1 1 340px;
+      max-width: 420px;
+    }
+  }
 }
