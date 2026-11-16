@@ -35,6 +35,11 @@ creative_groups:
         label: "2025 recruitment flyer"
         note: "Applications now open, for Angelenos ages 16&ndash;25"
         alt: "Olivia E. Mitchell Youth Council recruitment flyer: applications now open, over a photo of council members holding certificates on the City Hall steps, listing benefits like engaging with City officials and a monthly stipend"
+instagram_label: "On Instagram"
+instagram_title: "EmpowerLA Youth Conference at City Hall"
+instagram_note: "The second Youth Council cohort learned how Neighborhood Councils shape local government at EmpowerLA's Youth Conference."
+instagram_posts:
+  - url: https://www.instagram.com/p/C2xv0HvPO--/
 notable_projects_label: "Notable Projects"
 notable_projects_title: "Notable Projects from the Youth Council"
 notable_projects:
