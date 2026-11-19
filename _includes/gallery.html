@@ -18,10 +18,15 @@ html { overflow-y: scroll; }
 {% if image_count == 0 %}
 <p>Photos coming soon.</p>
 {% else %}
-<div class="grid">
-<div class="grid-col grid-col--1"></div>
-<div class="grid-col grid-col--2"></div>
-<div class="grid-col grid-col--3"></div>
+{% comment %}
+.kppr-masonry, not the theme's .grid: the theme's column script (bundled in
+main.min.js) measured lazy-loaded photos before they had a height and dealt
+them out round-robin, leaving columns hundreds of pixels apart. Instead this
+is a justified-rows layout (_sass/_custom.scss): every photo in a row shares
+one height and the row fills the full width, so edges stay flush. Each photo
+gets its aspect ratio as --ar once loaded (portrait 2:3 until then).
+{% endcomment %}
+<div class="kppr-masonry">
 {% for image in site.static_files %}
   {% if image.path contains include.gallery_path %}
     {% unless image.path contains '.md' %}
@@ -30,4 +35,19 @@ html { overflow-y: scroll; }
   {% endif %}
 {% endfor %}
 </div>
+<script>
+(function () {
+  function setRatio(img) {
+    if (img.naturalWidth && img.naturalHeight) {
+      img.style.setProperty('--ar', (img.naturalWidth / img.naturalHeight).toFixed(4));
+    }
+  }
+  var s = document.currentScript, grid = s && s.previousElementSibling;
+  if (!grid) return;
+  grid.querySelectorAll('img').forEach(function (img) {
+    if (img.complete) setRatio(img);
+    else img.addEventListener('load', function () { setRatio(img); });
+  });
+})();
+</script>
 {% endif %}
