@@ -261,7 +261,7 @@ hypotheses simply skips that section.
         <strong>A team project.</strong> Researched and presented with
         {% assign others = page.team | where_exp: "n", "n != 'Klarissa Palacios'" %}
         {% for name in others %}{% if forloop.last and forloop.length > 1 %}and {% endif %}{{ name }}{% unless forloop.last %}{% if forloop.length > 2 %}, {% else %} {% endif %}{% endunless %}{% endfor %}.
-        {% if page.role %}My contribution was {{ page.role | downcase }}.{% endif %}
+        {% if page.role_note %}{{ page.role_note }}{% elsif page.role %}My contribution was {{ page.role | downcase }}.{% endif %}
       </p>
     </div>
   </section>

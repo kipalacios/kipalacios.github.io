@@ -13,7 +13,7 @@ Swap `campaign` below to feature a different campaign later — everything
 else keys off its own front matter, so no other line needs to change.
 {% endcomment %}
 {% assign campaign = site.portfolio | where: 'url', '/portfolio/cava-bumble/' | first %}
-{% assign research = site.research | first %}
+{% assign research = site.research | sort: "order" | first %}
 <section class="featured-work">
     <div class="featured-work__inner">
         <h2 class="featured-work__heading">Featured Work</h2>
