@@ -169,6 +169,36 @@ findings:
       the music and the media around it together. Behind-the-scenes and documentary content is
       where many fans go to understand the group's artistic direction.
 
+visuals:
+  title: What the Analysis Showed
+  lead: >
+    Outputs from the Orange analysis behind the findings above. Click any chart to enlarge it.
+  items:
+    - img: assets/img/research/bts-arirang/data/emotion-profile.png
+      title: Emotion profile
+      alt: "Bar chart of posts by emotion: joy far ahead of surprise, fear, sadness, disgust and anger"
+      caption: >
+        Orange's Tweet Profiler tagged most posts as joy (18,870), well ahead of surprise (1,458),
+        fear (1,040), sadness (465), disgust (35) and anger (33).
+    - img: assets/img/research/bts-arirang/data/word-cloud.png
+      title: Word cloud
+      alt: "Word cloud with comeback, arirang, netflix, return and rehearsal among the largest words"
+      caption: >
+        The most frequent terms center on the comeback itself — "comeback," "return," "rehearsal"
+        and "arirang" — with "Netflix" and "documentary" pointing to interest beyond the music.
+    - img: assets/img/research/bts-arirang/data/topic-comeback.png
+      title: "Topic 4 — comeback, performances &amp; media presence"
+      alt: "LDA topic chart led by bts, netflix, comeback, live, arirang, return and rehearsal"
+      caption: >
+        One of six LDA topics. "Netflix," "comeback," "live," "return" and "rehearsal" carry
+        nearly all of their weight here, tying media content directly to how fans discussed the album.
+    - img: assets/img/research/bts-arirang/data/kmeans-clusters.png
+      title: K-means clusters by sentiment
+      alt: "Bar chart of three k-means clusters split into negative, neutral and positive posts"
+      caption: >
+        Unsupervised k-means clustering grouped the machine-learning sample into three clusters.
+        The largest held most of the conversation and was overwhelmingly positive.
+
 recommendations:
   - title: Address diverse fan expectations
     body: >

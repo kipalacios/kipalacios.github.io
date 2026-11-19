@@ -152,6 +152,18 @@ findings:
       the volume. That kind of real-time buzz is an opening for amplification and longer-term
       momentum.
 
+visuals:
+  title: What the Analysis Showed
+  lead: >
+    Output from the Orange analysis behind the findings above. Click the chart to enlarge it.
+  items:
+    - img: assets/img/research/bad-bunny-effect/data/emotion-profile.png
+      title: Emotion profile
+      alt: "Bar chart of posts by emotion: joy highest, then surprise and sadness, with fear, disgust and anger lowest"
+      caption: >
+        Orange's Tweet Profiler tagged joy most often, followed by surprise and sadness, with fear,
+        disgust and anger far behind — matching the strong emotional engagement in the sentiment split.
+
 recommendations:
   - title: Amplify the positive narrative
     body: >

@@ -226,6 +226,35 @@ hypotheses simply skips that section.
   </section>
   {% endif %}
 
+  {% comment %}
+  Charts and outputs straight from the analysis (Orange screenshots, etc.).
+  visuals: { title?, lead?, items: [{ img, alt, title, caption }] }
+  Images open in the shared lightbox (assets/js/lightbox.js).
+  {% endcomment %}
+  {% if page.visuals and page.visuals.items %}
+  <section id="data" class="case-section case-section--tint">
+    <div class="case-section__inner">
+      <p class="case-section__label">From the Data</p>
+      <h2 class="case-section__title">{{ page.visuals.title | default: "What the Analysis Showed" }}</h2>
+      {% if page.visuals.lead %}<p class="case-section__lead">{{ page.visuals.lead }}</p>{% endif %}
+      <div class="research-visuals{% if page.visuals.items.size == 1 %} research-visuals--single{% endif %}" data-lightbox-set>
+        {% for v in page.visuals.items %}
+        <figure class="research-visual">
+          <button type="button" class="research-visual__frame" aria-label="Enlarge: {{ v.title | escape }}">
+            <img class="research-visual__img" data-lightbox-item src="{{ v.img | relative_url }}" alt="{{ v.alt | default: v.title | escape }}" loading="lazy">
+          </button>
+          <figcaption class="research-visual__caption">
+            <span class="research-visual__title">{{ v.title }}</span>
+            {% if v.caption %}<span class="research-visual__text">{{ v.caption }}</span>{% endif %}
+          </figcaption>
+        </figure>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <script defer src="{{ '/assets/js/lightbox.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+  {% endif %}
+
   {% if page.recommendations %}
   <section id="recommendations" class="case-band case-band--yellow">
     <div class="case-band__inner">

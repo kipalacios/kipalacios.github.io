@@ -6199,3 +6199,140 @@ a.button.home-intro__cta--outline {
     }
   }
 }
+
+
+// ---------------------------------------------------------------------------
+// Research pages — "From the Data" chart gallery (_layouts/research-project).
+// Charts are exported on white, so each sits on a white card in both themes.
+// ---------------------------------------------------------------------------
+.research-visuals {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+
+  @media screen and (max-width: 720px) {
+    grid-template-columns: 1fr;
+  }
+
+  &--single {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.research-visual {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+
+  &__frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 4 / 3;
+    width: 100%;
+    padding: 1rem;
+    background: #fff;
+    border: 1px solid rgba($kppr-navy, 0.12);
+    border-radius: $border-radius;
+    cursor: zoom-in;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover,
+    &:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba($kppr-navy, 0.12);
+    }
+  }
+
+  &__img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &__caption {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  &__title {
+    font-weight: 700;
+  }
+
+  &__text {
+    opacity: 0.85;
+  }
+}
+
+
+// ---------------------------------------------------------------------------
+// Work landing page (/work/, _layouts/work-hub.liquid). Cards reuse
+// .portfolio-index__card so light/dark theming carries over; only the grid,
+// the icon/count row and the footer prompt are new.
+// ---------------------------------------------------------------------------
+.work-hub {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 2.5rem $padding-medium 3rem;
+
+  &__intro {
+    max-width: 720px;
+    margin: 0 auto 2.2rem;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.02em;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+
+    @media screen and (max-width: 720px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__footer {
+    margin-top: 3rem;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text);
+
+    p { margin: 0 0 1rem; }
+  }
+}
+
+.work-card {
+  .research-tags { margin: 0 0 1.2em; }
+
+  &__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    margin: 0 0 0.5em;
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 0.75em;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text);
+    opacity: 0.75;
+
+    i { font-size: 1.15em; }
+  }
+
+  &__image-wrap--contain .portfolio-index__image {
+    object-fit: contain;
+  }
+}

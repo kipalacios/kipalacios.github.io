@@ -61,8 +61,9 @@
   // Each .kppr-photo-grid is its own click-through set, so a page with
   // multiple grouped galleries (e.g. Photography's Engagement/Family
   // sections) never lets next/prev wander from one into the other.
-  document.querySelectorAll('.kppr-photo-grid').forEach(function (gallery) {
-    var imgs = Array.prototype.slice.call(gallery.querySelectorAll('.grid-item'));
+  // Research pages mark their chart sets with data-lightbox-set / data-lightbox-item.
+  document.querySelectorAll('.kppr-photo-grid, [data-lightbox-set]').forEach(function (gallery) {
+    var imgs = Array.prototype.slice.call(gallery.querySelectorAll('.grid-item, [data-lightbox-item]'));
     if (!imgs.length) return;
 
     var galleryItems = imgs.map(function (el) { return { src: el.src, alt: el.alt }; });

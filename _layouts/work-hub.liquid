@@ -1,0 +1,48 @@
+---
+layout: default
+---
+{% comment %}
+Landing page for the Work dropdown (/work/): an intro, then one card per
+specialty from page.specialties. Each card counts what's inside its section
+where the site can tell (campaigns, research studies), so the numbers stay
+right as projects are added.
+{% endcomment %}
+<div class="call-out call-out_solid">
+    <h1 class="call-out_title">Work</h1>
+</div>
+
+<section class="work-hub">
+  {% if page.intro %}<p class="work-hub__intro">{{ page.intro }}</p>{% endif %}
+
+  <div class="work-hub__grid">
+    {% for s in page.specialties %}
+    {% assign count = nil %}
+    {% if s.url == '/campaigns/' %}{% assign count = site.portfolio.size | append: ' projects' %}{% endif %}
+    {% if s.url == '/research/' %}{% assign count = site.research.size | append: ' studies' %}{% endif %}
+    <a class="portfolio-index__card work-card" href="{{ s.url | relative_url }}">
+      <div class="portfolio-index__image-wrap{% if s.img_fit == 'contain' %} work-card__image-wrap--contain{% endif %}">
+        <img class="portfolio-index__image" src="{{ s.img | relative_url }}" alt="{{ s.img_alt | default: s.title }}" loading="lazy">
+      </div>
+      <div class="portfolio-index__body">
+        <p class="work-card__eyebrow">
+          {% if s.icon %}<i class="fas {{ s.icon }}" aria-hidden="true"></i>{% endif %}
+          {% if count %}<span>{{ count }}</span>{% endif %}
+        </p>
+        <h2 class="portfolio-index__title">{{ s.title }}</h2>
+        <p class="portfolio-index__desc">{{ s.desc }}</p>
+        {% if s.tags %}
+        <ul class="research-tags research-tags--small">
+          {% for t in s.tags %}<li>{{ t }}</li>{% endfor %}
+        </ul>
+        {% endif %}
+        <span class="portfolio-index__link">{{ s.cta | default: 'Explore' }} &rarr;</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+
+  <div class="work-hub__footer">
+    <p>Looking for something specific?</p>
+    <a class="button" href="{{ '/contact/' | relative_url }}">Get in Touch</a>
+  </div>
+</section>
